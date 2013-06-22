@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="allUserAction" class="com.jiakun.xplatform.alluser.action.AllUserAction"
+		scope="request" parent="baseAction">
+		<property name="allUserService" ref="allUserService" />
+		<property name="orgService" ref="orgService" />
+		<property name="positionService" ref="positionService" />
+		<property name="dictService" ref="dictService" />
+		<property name="conpointService" ref="conpointService"/>
+	</bean>
+	
+	<bean id="allUserService"
+		class="com.jiakun.xplatform.alluser.service.impl.AllUserServiceImpl">
+		<property name="allUserDao" ref="allUserDao" />
+			<property name="orgService" ref="orgService" />
+					<property name="positionTypeService" ref="positionTypeService" />
+		<property name="transactionTemplate" ref="transactionTemplate" />
+		<property name="positionService" ref="positionService" />
+			<property name="webserviceURL">
+			<value>${adex.webserviceURL}</value>
+		</property>
+	</bean>
+	
+	<bean id="allUserDao"
+		class="com.jiakun.xplatform.alluser.dao.impl.AllUserDaoImpl" parent="baseDao">
+	</bean>
+	
+</beans>

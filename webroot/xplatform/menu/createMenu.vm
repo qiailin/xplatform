@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		#CSSM(["ext", "style"])
+	</head>
+	<body onbeforeunload="window.opener.closeShadeDiv();">
+		<form action="" method="post" target="hideFrame">
+			<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="8">
+				<tr>
+					<td valign="top">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+							<tr>
+								<td class="form_top_icon_01" >
+									菜单配置
+								</td>
+								<td class="title_bottom_line" noWrap align='right'>
+									<a href="javascript:save();">
+                                        <img src="$!{env.imgUrl}/image/actions/icon_save.png" align="absMiddle" >保存 </img>
+									</a>
+									<br>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" class="home_title">
+									菜单内容
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="home_title_line">
+									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
+    									<tr>
+											<td class="head" noWrap style="text-align: right">
+    											上级菜单编号
+    										</td>
+                                     		<td class="even" noWrap >
+    											<input type="text" name="menu.pid" id="pid" />
+    			    						</td>
+                                        </tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											菜单名称
+    										</td>
+											<td class="even" noWrap>
+												<input type='text' id='name' name="menu.name" />
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											目标
+    										</td>
+											<td class="even" noWrap>
+												<input type='text' id='target' name="menu.target" />
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											菜单地址
+    										</td>
+											<td class="even" noWrap>
+												<input type='text' id='url' name="menu.url" />
+                                                <input type="checkbox" name="isRedirect" value="y" >是否属于跨系统跳转地址</input>
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											显示顺序
+    										</td>
+											<td class="even" noWrap>
+												<input type='text' id='orderBy' name="menu.orderBy" />
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											是否为经销商菜单
+    										</td>
+											<td class="even" noWrap>
+												<input type="radio" name="menu.isKuunrMenu" value="1" />是
+												<input type="radio" name="menu.isKuunrMenu" value="0" checked />否
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											是否为办事处菜单
+    										</td>
+											<td class="even" noWrap>
+												<input type="radio" name="menu.isOfficeMenu" value="1" />是
+												<input type="radio" name="menu.isOfficeMenu" value="0" checked />否
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											是否为水站菜单
+    										</td>
+											<td class="even" noWrap>
+												<input type="radio" name="menu.isClientMenu" value="1" />是
+												<input type="radio" name="menu.isClientMenu" value="0" checked />否
+											</td>
+                                    	</tr>
+										<tr>
+    										<td class="head" noWrap style="text-align: right">
+    											是否为客户菜单
+    										</td>
+											<td class="even" noWrap>
+												<input type="radio" name="menu.isCustMenu" value="1" />是
+												<input type="radio" name="menu.isCustMenu" value="0" checked />否
+											</td>
+                                    	</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</form>
+	  <iframe id="hideFrame" name="hideFrame" src="$!{env.imgUrl}/image/space.gif" style="height: 0; width: 0"></iframe>
+	</body>
+#JSM(["common", "ext", "jquery"])
+#JS_ENV_VAL()
+<script type="text/javascript" src="$!{env.imgUrl}/js/xplatform/menu/createMenu.js"></script>
+</html>

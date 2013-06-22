@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="sqlMonitorTask"
+		class="com.jiakun.xplatform.monitor.task.SqlMonitorTask">
+		<property name="sqlMonitorService" ref="sqlMonitorService" />
+		<property name="monitorLogService" ref="monitorLogService" />
+		<property name="messageService" ref="messageService" />
+		<property name="smtpServer">
+			<value>${monitor.mail.smtpServer}</value>
+		</property>
+		<property name="from">
+			<value>${monitor.mail.from}</value>
+		</property>
+	</bean>
+
+	<bean id="sqlMonitorAt15JobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="sqlMonitorTask" />
+		</property>
+		<property name="targetMethod">
+			<value>sqlMonitorAt15</value>
+		</property>
+	</bean>
+
+	<bean id="sqlMonitorAt15Trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sqlMonitorAt15JobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/15 * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="sqlMonitorAt30JobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="sqlMonitorTask" />
+		</property>
+		<property name="targetMethod">
+			<value>sqlMonitorAt30</value>
+		</property>
+	</bean>
+
+	<bean id="sqlMonitorAt30Trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sqlMonitorAt30JobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/30 * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="sqlMonitorAt60JobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="sqlMonitorTask" />
+		</property>
+		<property name="targetMethod">
+			<value>sqlMonitorAt60</value>
+		</property>
+	</bean>
+
+	<bean id="sqlMonitorAt60Trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sqlMonitorAt60JobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/60 * * * ?</value>
+		</property>
+	</bean>
+	
+</beans>

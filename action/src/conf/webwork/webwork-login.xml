@@ -1,0 +1,31 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="{http://xplatform}xplatform$login"
+		extends="{http://xplatform}xplatform$framework" namespace="/login">
+
+		<action name="login" class="loginAction" method="login">
+			<result name="incorrect">/index.vm</result>
+			<result name="success" type="redirect-action">
+				<param name="actionName">loginAction</param>
+				<param name="method">homePage</param>
+			</result>
+		</action>
+		
+		<action name="logout" class="loginAction" method="logout">
+			<result name="logout" type="redirect">
+				/
+			</result>
+		</action>
+		
+		<action name="forgetPasswd" class="loginAction" method="forgetPasswd">
+			<result name="success">/xplatform/login/forgetPasswd.vm</result>
+		</action>
+			
+		<action name="loginAction" class="loginAction" >
+			<interceptor-ref name="authenticationStack" />
+			<result name="homePage">/xplatform/login/homePage.vm</result>
+			<result name="headMenu">/xplatform/login/headMenu.vm</result>
+		</action>
+		
+	</package>
+</xwork>

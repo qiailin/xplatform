@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="cust">
+	
+	<typeAlias alias="customer"
+		type="com.jiakun.xplatform.api.cust.bo.Customer" />
+	
+	<select id="getFnWatersta" parameterClass="java.lang.String"
+		resultClass="java.lang.String">
+	<![CDATA[
+		select cms.cms_api_pack.fn_watersta(#userId#) from dual
+	]]>
+	</select>
+	
+	<select id="getCustomerById" parameterClass="java.lang.Long"
+		resultClass="customer">
+	<![CDATA[
+		select t.cust_id as custId, t.cust_name_zh as custName
+		  from smsuser.b_customer t
+		 where t.cust_id = #custId#
+	]]>
+	</select>
+	
+</sqlMap>

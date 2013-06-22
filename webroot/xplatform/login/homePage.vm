@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>ũ��ɽȪ - ũ��ɽȪ�е���</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		#CSSM(["ext"])
+		
+    	<!-- Google Analytics --> 
+    	<script type="text/javascript">
+    
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-17060347-7']);
+          _gaq.push(['_setDomainName', 'jiakun.com']);
+    	  _gaq.push(['_trackPageLoadTime']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>
+	</head>
+	<body>
+		#if($!{ACEGI_SECURITY_LAST_LOGINUSER.custType} == 'O')
+			<!-- object id="testa" classid="CLSID:592ED53A-A185-4BAD-95BD-5E2C49863D9D" codebase="testa.ocx" width="0" height="0" -->
+  			<!-- /object -->
+  		#end
+    </body>
+	#JS_ENV_VAL
+	<script type="text/javascript">
+		var custType = '$!{ACEGI_SECURITY_LAST_LOGINUSER.custType}';
+		var token= '$!{token}';
+	</script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/ext/ext-base.js" ></script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/ext/ext-all.js" ></script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/xplatform/login/homePage.js?v=20130124"></script>
+</html>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="menu">
+	<typeAlias alias="menu" type="com.jiakun.xplatform.api.menu.bo.Menu" />
+	
+	<select id="getMenuTreeList" parameterClass="menu" resultClass="menu">
+	<![CDATA[
+		select t.MENU_ID as id,
+			   t.NAME    as name,
+			   t.URL     as url,
+			   t.TARGET  as target
+		  from cms.cms_vw_user_station_menu t
+		 where t.PID = #pid#
+		   and t.USER_ID = #userId#
+		 order by t.ORDER_BY
+	]]>
+	</select>
+	
+	<select id="getMenuCount" parameterClass="menu" resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(t.id)
+		  from osap.menu_items t, osap.menu_items p
+		 where t.pid = p.id
+	]]>
+		<dynamic>
+			<isNotEmpty property="id" prepend="and">
+			<![CDATA[ t.id = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="pid" prepend="and">
+			<![CDATA[ t.pid = #pid# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="name" prepend="and">
+			<![CDATA[ t.name like #name,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="pname" prepend="and">
+			<![CDATA[ p.name like #pname,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="search" prepend="and">
+			<![CDATA[
+				  ( t.id like #search,handler=wildcard# escape '\'
+				 or t.name like #search,handler=wildcard# escape '\' )
+			]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getMenuList" parameterClass="menu" resultClass="menu">
+		<include refid="global.paginationStart" />
+	<![CDATA[
+		select t.id,
+			   t.pid,
+			   t.name,
+			   t.url,
+			   t.target,
+			   t.redirect_url as redirectUrl,
+			   p.name         as pname
+		  from osap.menu_items t, osap.menu_items p
+		 where t.pid = p.id
+	]]>
+		<dynamic>
+			<isNotEmpty property="id" prepend="and">
+			<![CDATA[ t.id = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="pid" prepend="and">
+			<![CDATA[ t.pid = #pid# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="name" prepend="and">
+			<![CDATA[ t.name like #name,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="pname" prepend="and">
+			<![CDATA[ p.name like #pname,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="search" prepend="and">
+			<![CDATA[
+				  ( t.id like #search,handler=wildcard# escape '\'
+				 or t.name like #search,handler=wildcard# escape '\' )
+			]]>
+			</isNotEmpty>
+			<isEmpty property="sort">
+			<![CDATA[ order by t.pid desc, t.id desc ]]>
+			</isEmpty>
+		</dynamic>
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" />
+	</select>
+	
+	<insert id="createMenu" parameterClass="menu">
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+		<![CDATA[
+			select osap.seq_menu_items_id.NEXTVAL as id from dual
+		]]>
+		</selectKey>
+	<![CDATA[
+		insert into osap.menu_items
+		  (ID,
+		   PID,
+		   NAME,
+		   URL,
+		   TARGET,
+		   ORDER_BY,
+		   ISKUUNR_MENU,
+		   ISOFFICE_MENU,
+		   ISCLIENT_MENU,
+		   ISCUST_MENU,
+		   LAST_MODIFY,
+		   REDIRECT_URL)
+		values
+		  (#id:NUMBER#,
+		   #pid:NUMBER#,
+		   #name:VARCHAR#,
+	]]>
+		<dynamic>
+			<isNotEmpty property="redirectUrl" >
+			<![CDATA[
+				   #url:VARCHAR# || #id:NUMBER#,
+			]]>
+			</isNotEmpty>
+			<isEmpty property="redirectUrl" >
+			<![CDATA[
+				   #url:VARCHAR#,
+			]]>
+			</isEmpty>
+		</dynamic>
+	<![CDATA[
+		   #target:VARCHAR#,
+		   #orderBy:NUMBER#,
+		   #isKuunrMenu:VARCHAR#,
+		   #isOfficeMenu:VARCHAR#,
+		   #isClientMenu:VARCHAR#,
+		   #isCustMenu:VARCHAR#,
+		   sysdate,
+		   #redirectUrl:VARCHAR#)
+	]]>
+	</insert>
+	
+	<select id="getMenuById" parameterClass="java.lang.Long" resultClass="menu">
+	<![CDATA[
+		select t.id,
+			   t.pid,
+			   t.name,
+			   t.url,
+			   t.target,
+			   t.order_by      as orderBy,
+			   t.iskuunr_menu  as isKuunrMenu,
+			   t.isoffice_menu as isOfficeMenu,
+			   t.isclient_menu as isClientMenu,
+			   t.iscust_menu   as isCustMenu,
+			   t.redirect_url  as redirectUrl
+		  from osap.menu_items t
+		 where t.id = #id#
+	]]>
+	</select>
+	
+	<update id="updateMenu" parameterClass="menu">
+	<![CDATA[
+		update osap.menu_items t
+		   set t.last_modify   = sysdate,
+			   t.pid           = #pid#,
+			   t.name          = #name#,
+			   t.url           = #url#,
+			   t.target        = #target#,
+			   t.order_by      = #orderBy#,
+			   t.iskuunr_menu  = #isKuunrMenu#,
+			   t.isoffice_menu = #isOfficeMenu#,
+			   t.isclient_menu = #isClientMenu#,
+			   t.iscust_menu   = #isCustMenu#,
+			   t.redirect_url  = #redirectUrl#
+		 where t.id = #id#
+	]]>
+	</update>
+	
+	<delete id="deleteMenu" parameterClass="menu">
+	<![CDATA[
+		delete osap.menu_items t
+		 where t.id in
+	]]>
+		<iterate property="codes" open="(" close=")" conjunction=",">#codes[]#
+		</iterate>
+	<![CDATA[
+		   and not exists (select 1 from role_menu p where t.id = p.menu_id)
+		   and not exists (select 1 from menu_items q where t.id = q.pid)
+	]]>
+	</delete>
+	
+	<select id="getSelectedMenu4RoleCount" parameterClass="menu" resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(t.id)
+		  from osap.role_menu t, osap.menu_items p
+		 where t.menu_id = p.id
+		   and t.role_id = #roleId#
+	]]>
+		<dynamic>
+			<isNotEmpty property="id" prepend="and">
+			<![CDATA[ p.id = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="name" prepend="and">
+			<![CDATA[ p.name like #name,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getSelectedMenu4RoleList" parameterClass="menu" resultClass="menu">
+		<include refid="global.paginationStart" />
+	<![CDATA[
+		select t.id           as roleMenuId,
+			   p.id,
+			   p.pid,
+			   p.name,
+			   p.url,
+			   p.target,
+			   p.redirect_url as redirectUrl
+		  from osap.role_menu t, osap.menu_items p
+		 where t.menu_id = p.id
+		   and t.role_id = #roleId#
+	]]>
+		<dynamic>
+			<isNotEmpty property="id" prepend="and">
+			<![CDATA[ p.id = #id# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="name" prepend="and">
+			<![CDATA[ p.name like #name,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+		</dynamic>
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" />
+	</select>
+	
+	<delete id="deleteSelectedMenu4Role" parameterClass="menu">
+	<![CDATA[
+		delete osap.role_menu t
+		 where t.role_id = #roleId#
+		   and t.menu_id in
+	]]>
+		<iterate property="codes" open="(" close=")" conjunction=",">#codes[]#
+		</iterate>
+	</delete>
+	
+	<select id="checkSelectedMenu4Role" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(t.id)
+		  from osap.role_menu t
+		 where t.role_id = #roleId#
+		   and t.menu_id = #menuId#
+	]]>
+	</select>
+	
+	<insert id="selectMenu4Role" parameterClass="java.util.Map">
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+		<![CDATA[
+			select osap.seq_permis_resc_user_role_id.nextval as id from dual
+		]]>
+		</selectKey>
+	<![CDATA[
+		insert into osap.role_menu
+		  (ID, ROLE_ID, MENU_ID, LAST_MODIFY)
+		values
+		  (#id#, #roleId#, #menuId#, sysdate)
+	]]>
+	</insert>
+	
+	<select id="getParentMenuId4Role" parameterClass="java.util.Map" resultClass="java.lang.Long">
+	<![CDATA[
+		select t.pid
+		  from osap.menu_items t
+		 where not exists (select 1
+				  from osap.role_menu p
+				 where t.pid = p.menu_id
+				   and p.role_id = #roleId#)
+		   and t.pid <> -1
+		   and t.id = #menuId#
+	]]>
+	</select>
+	
+	<select id="getChildMenuId4Role" parameterClass="java.util.Map" resultClass="java.lang.Long">
+	<![CDATA[
+		select t.menu_id
+		  from osap.role_menu t, osap.menu_items p
+		 where t.menu_id = p.id
+		   and t.role_id = #roleId#
+		   and p.pid = #menuId#
+	]]>
+	</select>
+
+</sqlMap>

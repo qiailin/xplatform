@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="alluser">
+	<typeAlias alias="allUsers" type="com.jiakun.xplatform.api.alluser.bo.AllUsers" />
+	<typeAlias alias="userChange" type="com.jiakun.xplatform.api.alluser.bo.UserChange"/>
+	<typeAlias alias="applyUsers" type="com.jiakun.xplatform.api.alluser.bo.ApplyUsers"/>
+	<typeAlias alias="cmsVwSupplier" type="com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier"/>
+	<select id="getAllUserByPassport" parameterClass="java.lang.String"
+		resultClass="allUsers">
+	<![CDATA[
+		select t.cust_type  as custType,
+			   t.passwd     as passWd,
+			   t.login_id   as loginId,
+			   t.mobile,
+			   t.phone,
+			   t.user_state as userState,
+			   t.user_id    as userId,
+			   t.user_name  as userName,
+			   t.hq_sign    as hqSign,
+			   t.org_id     as orgId,
+			   t.kunnr_sign as kunnrSign
+		  from cms.cms_vw_user_psw t
+		 where (t.login_id = #passport# or
+			   (t.mobile = #passport# and t.cust_type = 'X') or
+			   (t.phone = #passport# and t.cust_type = 'X'))
+		   and t.user_state in ('1', 'Y', 'U')
+	]]>
+	</select>
+	
+	<select id="getAllUsersByOrgId" parameterClass="java.lang.Long"
+		resultClass="allUsers">
+	<![CDATA[
+		   select o.emp_id as userId,
+			   o.emp_name as userName,
+			   o.emp_code as loginId,
+			   o.emp_phone as phone,
+			   o.org_id as orgId
+			 from smsuser.b_salesemp_info o
+		 where o.org_id =#orgId#
+			 and o.emp_state = 'Y'
+	]]>
+	</select>
+	
+	<select id="getAllUsersByIds" parameterClass="java.util.Map" resultClass="allUsers">
+	<![CDATA[
+		select t.emp_id as userId, t.emp_name as userName
+		  from smsuser.b_salesemp_info t
+		 where t.emp_state = 'Y'
+		   and t.emp_id in
+	]]>
+		<iterate property="userIds" open="(" close=")" conjunction=",">#userIds[]#
+		</iterate>
+	</select>
+	
+	<update id="updateAllUser" parameterClass="allUsers">
+	<![CDATA[
+		update smsuser.b_salesemp_info t
+		   set t.last_modify = sysdate, t.emp_psd = #passWd#
+		 where t.emp_id = #userId#
+	]]>
+	</update>
+	
+	
+	<update id="modifyAllUser" parameterClass="allUsers">
+	<![CDATA[
+		update smsuser.b_salesemp_info t
+		   set t.last_modify = sysdate, t.modify_date = sysdate
+	]]>
+		<dynamic>
+			<isNotNull property="userShowName" prepend=",">
+			<![CDATA[  t.emp_showname =#userShowName#]]>
+			</isNotNull>
+			<isNotNull property="idCard" prepend=",">
+			<![CDATA[  t.emp_id_card =#idCard#]]>
+			</isNotNull>
+			<isNotNull property="phone" prepend=",">
+			<![CDATA[  t.emp_phone =#phone#]]>
+			</isNotNull>
+			<isNotNull property="workFax" prepend=",">
+			<![CDATA[  t.emp_workfax =#workFax#]]>
+			</isNotNull>
+			<isNotNull property="mobile" prepend=",">
+			<![CDATA[  t.emp_mobile_phone =#mobile#]]>
+			</isNotNull>
+			<isNotNull property="homePhone" prepend=",">
+			<![CDATA[  t.emp_homephone =#homePhone#]]>
+			</isNotNull>
+			<isNotNull property="address" prepend=",">
+			<![CDATA[  t.emp_address =#address#]]>
+			</isNotNull>
+			<isNotNull property="email" prepend=",">
+			<![CDATA[  t.emp_email =#email#]]>
+			</isNotNull>
+			<isNotNull property="sex" prepend=",">
+			<![CDATA[  t.emp_sex =#sex#]]>
+			</isNotNull>
+			<isNotNull property="supplierNumber" prepend=",">
+			<![CDATA[  t.supplier_number =#supplierNumber#]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+			<![CDATA[  t.emp_remark =#remark#]]>
+			</isNotNull>
+			<isNotEmpty property="userState" prepend=",">
+			<![CDATA[ t.emp_state = #userState# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="busMobilephone" prepend=",">
+			<![CDATA[ t.bus_mobilePhone = #busMobilephone# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="empShortmsgbook" prepend=",">
+			<![CDATA[ t.emp_shortmsgbook = #empShortmsgbook# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="smsUserTypeId" prepend=",">
+			<![CDATA[ t.sms_usertype_id = #smsUserTypeId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="chargeId" prepend=",">
+			<![CDATA[ t.charge_id = #chargeId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="haveMail" prepend=",">
+			<![CDATA[ t.havemail = #haveMail# ]]>
+			</isNotEmpty>
+		</dynamic>
+	<![CDATA[  
+		 where t.emp_id = #userId#
+	]]>
+	</update>
+	
+	<delete id="deleteBImplementByEmpId" parameterClass="java.lang.Long">
+	<![CDATA[
+		delete smsuser.b_implement t 
+		where exists (select 1 from smsuser.b_position p 
+			  where t.pos_id = p.pos_id and p.emp_id = #userId#)
+	]]>
+	</delete>
+	
+	<select id="getAllUser" parameterClass="java.lang.String"
+		resultClass="allUsers">
+	<![CDATA[
+		select t.emp_id           as userId,
+			   t.emp_code         as loginId,
+			   t.emp_name         as userName,
+			   t.emp_showname     as userShowName,
+			   t.emp_id_card      as idCard,
+			   t.emp_phone        as phone,
+			   t.emp_workfax      as workFax,
+			   t.emp_mobile_phone as mobile,
+			   t.emp_homephone    as homePhone,
+			   t.emp_start_date   as startDate,
+			   t.emp_address      as address,
+			   t.emp_email        as email,
+			   t.emp_sex          as sex,
+			   p.pos_name         as posName,
+			   t.havemail         as haveMail,
+			   t.emp_remark       as remark,
+			   t.org_id           as orgId,
+			   t.emp_shortmsgbook  as empShortmsgbook,
+			   t.sms_usertype_id   as smsUserTypeId,
+			   t.charge_id         as chargeId ,
+			   t.bus_mobilephone    as busMobilephone,
+			   t.supplier_number   as supplierNumber,
+			   t.emp_shortmsgbook as empShortmsgbook,
+			   t.sms_usertype_id  as smsUserTypeId,
+			   t.charge_id        as chargeId,
+			   t.bus_mobilephone  as busMobilephone 
+		  from  smsuser.b_salesemp_info t,
+			   (select q.pos_name, q.emp_id
+				  from  smsuser.b_position q
+				 where q.use_state = 'A') p
+		 where t.emp_id = p.emp_id(+) 
+		   and t.emp_id = #empId#
+	]]>
+	</select>
+	
+	<select id="searchAllUsers" parameterClass="allUsers"
+		resultClass="allUsers">
+		<include refid="global.paginationStart" /> 
+	<![CDATA[
+		select t.emp_code           as loginId,
+			   t.emp_name           as userName,
+			   t.emp_showname       as userShowName,
+			   t.emp_state          as userState,
+			   p.pos_name           as posName,
+			   p.position_type_name as positionTypeName,
+			   t.havemail           as haveMail,
+			   t.org_id             as orgId,
+			   t.emp_id             as userId,
+			   t.emp_phone          as phone,
+			   t.bus_mobilephone    as mobile,
+			   t.emp_email          as email,
+			   t.emp_address        as address
+		  from smsuser.b_salesemp_info t,
+			   (select q.pos_name, q.emp_id, e.position_type_name
+				  from smsuser.b_position q, smsuser.b_position_type e
+				 where q.use_state = 'A'
+				   and e.position_type_id = q.pos_type) p
+		 where t.emp_id = p.emp_id(+)
+		   and t.emp_state <> 'D'
+	]]>
+		<dynamic>
+			<isNotEmpty property="loginId" prepend="and">
+			<![CDATA[ t.emp_code like #loginId,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">
+			<![CDATA[ t.emp_name like #userName,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="positionTypeName" prepend="and">
+			<![CDATA[ p.position_type_name like #positionTypeName,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="phone" prepend="and">
+			<![CDATA[ t.emp_phone like #phone,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="mobile" prepend="and">
+			<![CDATA[ t.bus_mobilephone like #mobile,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="orgId" prepend="and">
+			<![CDATA[ t.org_id = #orgId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="orgIds" prepend="and">
+			<![CDATA[ t.org_id in ]]>
+				<iterate property="orgIds" open="(" close=")" conjunction=",">#orgIds[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" /> 
+	</select>
+	
+	<select id="searchAllUsersCount" parameterClass="allUsers"
+		resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(t.emp_id)
+		  from smsuser.b_salesemp_info t,
+			   (select q.emp_id, e.position_type_name
+				  from smsuser.b_position q, smsuser.b_position_type e
+				 where q.use_state = 'A'
+				   and e.position_type_id = q.pos_type) p
+		 where t.emp_id = p.emp_id(+)
+		   and t.emp_state <> 'D'
+	]]>
+		<dynamic>
+			<isNotEmpty property="loginId" prepend="and">
+			<![CDATA[ t.emp_code like #loginId,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">
+			<![CDATA[ t.emp_name like #userName,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="positionTypeName" prepend="and">
+			<![CDATA[ p.position_type_name like #positionTypeName,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="phone" prepend="and">
+			<![CDATA[ t.emp_phone like #phone,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="mobile" prepend="and">
+			<![CDATA[ t.bus_mobilephone like #mobile,handler=wildcard# escape '\']]>
+			</isNotEmpty>
+			<isNotEmpty property="orgId" prepend="and">
+			<![CDATA[ t.org_id = #orgId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="orgIds" prepend="and">
+			<![CDATA[ t.org_id in ]]>
+				<iterate property="orgIds" open="(" close=")" conjunction=",">#orgIds[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getUserChangeList" parameterClass="userChange"
+		resultClass="userChange">
+		<include refid="global.paginationStart" /> 
+	<![CDATA[
+		select e.id,
+			   e.emp_id as userId,
+			   e.emp_code as empCode,
+			   e.emp_name as empName,
+			   e.changetype as changeType,
+			   e.opname as opName,
+			   to_char(e.createtime, 'yyyy-MM-dd HH24:mm:ss') as createTime,
+			   e.sourcs as sourcs,
+			   s.org_name as yorgName,
+			   w.org_name as norgName
+		  from smsuser.b_userchange e, smsuser.b_org s, smsuser.b_org w
+		 where e.yorgid = s.org_id
+		   and e.norgid = w.org_id
+	]]>
+		<dynamic>
+			<isNotEmpty property="empCode" prepend="and">
+			<![CDATA[ e.emp_code like #empCode,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="empName" prepend="and">
+			<![CDATA[ e.emp_name like #empName,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="changeType" prepend="and">
+			<![CDATA[ e.changetype like #changeType,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="beginDate" prepend="and">
+			<![CDATA[ e.createtime >= to_date( #beginDate# ,'yyyy/MM/dd') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="endDate" prepend="and">
+			<![CDATA[ e.createtime < to_date( #endDate# ,'yyyy/MM/dd') + 1 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="norGid" prepend="and">
+			<![CDATA[ e.norgid = #norGid# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="norGids" prepend="and">
+			<![CDATA[ e.norgid in ]]>
+				<iterate property="norGids" open="(" close=")" conjunction=",">#norGids[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" /> 
+	</select>
+ 
+	<select id="getUserChangeCount" parameterClass="userChange"
+		resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(e.id) from smsuser.b_userchange e where 1 = 1
+	]]>
+		<dynamic>
+			<isNotEmpty property="empCode" prepend="and">
+			<![CDATA[ e.emp_code like #empCode,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="empName" prepend="and">
+			<![CDATA[ e.emp_name like #empName,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="changeType" prepend="and">
+			<![CDATA[ e.changetype like #changeType,handler=wildcard# escape '\' ]]>
+			</isNotEmpty>
+			<isNotEmpty property="beginDate" prepend="and">
+			<![CDATA[ e.createtime >= to_date( #beginDate# ,'yyyy/MM/dd') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="endDate" prepend="and">
+			<![CDATA[ e.createtime < to_date( #endDate# ,'yyyy/MM/dd') + 1 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="norGid" prepend="and">
+			<![CDATA[ e.norgid = #norGid# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="norGids" prepend="and">
+			<![CDATA[ e.norgid in ]]>
+				<iterate property="norGids" open="(" close=")" conjunction=",">#norGids[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getCheckUserCount" parameterClass="applyUsers"
+		resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(1) from smsuser.applyusers t where 1 = 1
+	]]>
+		<dynamic>
+			<isNotEmpty property="hrsh" prepend="and">
+			<![CDATA[ t.hrsh = #hrsh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="infosh" prepend="and">
+			<![CDATA[ t.infosh = #infosh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="squserId" prepend="and">
+			<![CDATA[ t.squserId = #squserId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="beginDate" prepend="and">
+			<![CDATA[ t.createtime >= to_date( #beginDate# ,'yyyy-MM-dd') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="endDate" prepend="and">
+			<![CDATA[ t.createtime <= to_date( #endDate# ,'yyyy-MM-dd') + 1 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="organiseId" prepend="and">
+			<![CDATA[ t.organiseid = #organiseId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="orgIds" prepend="and">
+			<![CDATA[ t.organiseid in ]]>
+				<iterate property="orgIds" open="(" close=")" conjunction=",">#orgIds[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<insert id="insertAlluser" parameterClass="allUsers">
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+		      SELECT SMSUSER.EMP_ID_SEQ.NEXTVAL AS id FROM DUAL	
+		</selectKey>
+	<![CDATA[
+		 insert into smsuser.b_salesemp_info
+		  (emp_id,
+		   org_id,
+		   bus_mobilephone,
+		   emp_name,
+		   emp_id_card,
+		   emp_code,
+		   emp_sex,
+		   emp_phone,
+		   emp_mobile_phone,
+		   emp_start_date,
+		   emp_state,
+		   emp_remark,
+		   last_modify,
+		   emp_address,
+		   emp_shortmsgbook,
+		   sms_usertype_id,
+		   charge_id,
+		   modify_date,
+		   emp_psd,
+		   hq_sign,
+		   emp_email,
+		   havemail,
+		   emp_showname,
+		   emp_workfax,
+		   emp_homephone,
+		   supplier_number,
+		   questionlinkid,
+		   paswd_sign_Date
+
+		   )
+		values
+		  (#id#,
+		   #orgId#,
+		   #busMobilephone#,
+		   #userName#,
+		   #idCard#,
+		   #loginId#,
+		   #sex#,
+		   #phone#,
+		   #mobile#,
+		   sysdate,
+		   #userState#,
+		   #remark#,
+		   sysdate,
+		   #address#,
+		   #empShortmsgbook#,
+		   #smsUserTypeId#,
+		   #chargeId#,
+		   sysdate,
+		   #passWd#,
+		   #hqSign#,
+		   #email#,
+		   #haveMail#,
+		   #userShowName#,
+		   #workFax#,
+		   #homePhone#,
+		   #supplierNumber#,
+		   #questionLinkId#,
+		   sysdate
+
+		   )
+
+	]]>
+	</insert>
+    
+	
+	
+	
+	
+	<insert id="insertUserChange"   parameterClass="userChange">
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+		      SELECT SMSUSER.B_USERCHANGE_SEQ.NEXTVAL AS id FROM DUAL	
+		</selectKey>
+	<![CDATA[
+		insert into smsuser.B_USERCHANGE (
+		id,
+		emp_id  ,
+		emp_code ,
+		emp_name ,
+		yorgid,
+		norgid,
+		changetype ,
+		opid,
+		opname ,
+		   createtime  ,
+		sourcs   ,
+		   oplogid  
+
+
+		) values (
+		#id#,
+		#userId#,
+		#empCode#,
+		#empName#,
+		#orgId#,
+		#orgId#,
+		#changeType#,
+		#opId#,
+		#opName#,
+		sysdate,
+		#sourcs#,
+		#oploGid#
+		)
+
+	]]>
+	</insert>
+	
+	
+	<insert id="insertApplyUser"   parameterClass="applyUsers">
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+		      SELECT SMSUSER.APPLYUSERS_SEQ.NEXTVAL AS id FROM DUAL	
+		</selectKey>
+	<![CDATA[
+		insert into smsuser.APPLYUSERS (
+		id,
+		usercode  ,
+		username ,
+		usershowname ,
+		workphone,
+		workfax,
+		mobilephone ,
+		address,
+		mailaddress,
+		  sex  ,
+		havemail   ,
+		organiseid  ,
+		squserid,
+		squsershowname,
+		hrsh,
+		infosh,
+		remark,
+		stationid,
+		createtime,
+		pwd,
+		homephone,
+		last_modify,
+		emp_id_card,
+		emp_start_date
+
+		) values (
+		#id#,
+		#userCode#,
+		#userName#,
+		#userShowName#,
+		#workPhone#,
+		#workFax#,
+		#mobilePhone#,
+		#address#,
+		#mailAddress#,
+		#sex#,
+		#haveMail#,
+		#organiseId#,
+		#squserId#,
+		#squserShowName#,
+		'F',
+		'F',
+		#remark#,
+		#stationId#,
+		sysdate,
+		#pwd#,
+		#homePhone#,
+		sysdate,
+		#empIdCard#,
+		#empStartDate#
+		)
+
+	]]>
+	</insert>
+	
+	<select id="getCheckUserList" parameterClass="applyUsers"
+		resultClass="applyUsers">
+		<include refid="global.paginationStart" /> 
+	<![CDATA[
+		select t.id,
+			   t.usercode       as userCode,
+			   t.username       as userName,
+			   t.usershowname   as userShowName,
+			   t.squsershowname as squserShowName,
+			   t.hrsh,
+			   t.infosh,
+			   t.createtime     as createTime
+		  from smsuser.applyusers t
+		 where 1 = 1
+	]]>
+		<dynamic>
+			<isNotEmpty property="hrsh" prepend="and">
+			<![CDATA[ t.hrsh = #hrsh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="infosh" prepend="and">
+			<![CDATA[ t.infosh = #infosh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="squserId" prepend="and">
+			<![CDATA[ t.squserId = #squserId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="beginDate" prepend="and">
+			<![CDATA[ t.createtime >= to_date( #beginDate# ,'yyyy-MM-dd') ]]>
+			</isNotEmpty>
+			<isNotEmpty property="endDate" prepend="and">
+			<![CDATA[ t.createtime <= to_date( #endDate# ,'yyyy-MM-dd') + 1 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="organiseId" prepend="and">
+			<![CDATA[ t.organiseid = #organiseId# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="orgIds" prepend="and">
+			<![CDATA[ t.organiseid in ]]>
+				<iterate property="orgIds" open="(" close=")" conjunction=",">#orgIds[]#
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" /> 
+	</select>
+
+	<procedure id="p_release_dv">
+	<![CDATA[
+		{call oabg.p_release_dv(#myposid#,#reason#)}
+	]]>
+	</procedure>
+
+	<select id="getCheckUserDetail" parameterClass="applyUsers"
+		resultClass="allUsers">
+	<![CDATA[
+		select t.id,
+			   t.usercode       as loginId,
+			   t.username       as userName,
+			   t.usershowname   as userShowName,
+			   t.pwd,
+			   t.emp_id_card    as idCard,
+			   t.workphone      as phone,
+			   t.workfax        as workFax,
+			   t.mobilephone    as mobile,
+			   t.homephone      as homePhone,
+			   t.emp_start_date as startDate,
+			   t.address,
+			   t.mailaddress    as email,
+			   t.sex,
+			   p.pos_name       as posName,
+			   t.havemail       as haveMail,
+			   t.organiseid     as orgId,
+			   t.remark,
+			   t.stationid      as posId,
+			   t.jjreason       as reason
+		  from smsuser.applyusers t, smsuser.b_position p
+		 where t.stationid = p.pos_id
+		   and t.id = #id#
+	]]>
+	</select>
+	
+	<update id="updateApplyUsers" parameterClass="applyUsers">
+	<![CDATA[
+		update smsuser.applyusers t set t.last_modify = sysdate
+	]]>
+		<dynamic>
+			<isNotEmpty property="hrsh" prepend=",">
+			<![CDATA[ t.hrsh = #hrsh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="infosh" prepend=",">
+			<![CDATA[ t.infosh = #infosh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="jjReason" prepend=",">
+			<![CDATA[ t.jjReason = #jjReason# ]]>
+			</isNotEmpty>
+		</dynamic>
+	<![CDATA[
+		where t.id = #id#
+	]]>
+	</update>
+
+	<select id="selectCountWithLoginId" parameterClass="java.lang.String"
+		resultClass="java.lang.Integer">
+	<![CDATA[
+		select count(*)
+		  from (select o.login_id
+				  from cms.cms_vw_user_psw o
+				union all
+				select s.usercode
+				  from smsuser.APPLYUSERS s
+				 where (s.hrsh = 'F' and s.infosh = 'F')
+					or (s.hrsh = 'T' and s.infosh = 'F')) m
+		 where m.login_id = #loginId#
+	]]>
+	</select>
+		
+	<select id="selectCountWithUserName" parameterClass="allUsers"
+		resultClass="java.lang.Integer">
+	<![CDATA[
+					 select count(*)
+		  from (select o.emp_name
+				  from smsuser.b_salesemp_info o where o.org_id=#orgId#
+				union
+				select s.username
+				  from smsuser.APPLYUSERS s
+				 where
+				  s.organiseid =#orgId#
+				 and  (s.hrsh = 'F' and s.infosh = 'F')
+					or (s.hrsh = 'T' and s.infosh = 'F')) m
+				 where m.emp_name = #userName#
+
+	]]>
+	</select>
+	
+	<select id="getsuppliername" parameterClass="cmsVwSupplier"
+		resultClass="java.lang.String">
+	<![CDATA[
+		select vs.supplier_name_zh from cms.cms_vw_supplier vs where vs.supplier_number=#supplierNumber#
+	]]>
+	</select>
+	
+	<select id="getSupplierList" resultClass="cmsVwSupplier" parameterClass="cmsVwSupplier">
+		<include refid="global.paginationStart" /> 
+	<![CDATA[
+		select 
+				vs.supplier_number as supplierNumber,
+				vs.supplier_name_zh as supplierNameZh,
+				vs.supplier_type as supplierType
+		from cms.cms_vw_supplier vs  where 1=1
+	]]>	
+		<dynamic>
+			<isNotEmpty property="supplierNumber" prepend="and">
+			<![CDATA[ vs.supplier_number = #supplierNumber# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="supplierNameZh" prepend="and">
+			<![CDATA[ vs.supplier_name_zh = #supplierNameZh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="supplierType" prepend="and">
+			<![CDATA[ vs.supplier_type = #supplierType# ]]>
+			</isNotEmpty>
+		</dynamic>
+		
+		<include refid="global.orderBy" />
+		<include refid="global.paginationEnd" /> 
+	</select>
+	
+	<select id="getSupplierCount" resultClass="java.lang.Integer" parameterClass="cmsVwSupplier">
+	<![CDATA[
+		select 
+				count(vs.supplier_number)
+		from cms.cms_vw_supplier vs where 1=1
+	]]>
+		<dynamic>
+			<isNotEmpty property="supplierNumber" prepend="and">
+			<![CDATA[ vs.supplier_number = #supplierNumber# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="supplierNameZh" prepend="and">
+			<![CDATA[ vs.supplier_name_zh = #supplierNameZh# ]]>
+			</isNotEmpty>
+			<isNotEmpty property="supplierType" prepend="and">
+			<![CDATA[ vs.supplier_type = #supplierType# ]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+</sqlMap>

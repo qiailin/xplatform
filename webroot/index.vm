@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>ũ��ɽȪ - ũ��ɽȪ�е���</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="$!{env.imgUrl}/css/login.css" type="text/css" rel="stylesheet" />
+
+	<!-- Google Analytics --> 
+	<script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_setDomainName', 'jiakun.com']);
+      _gaq.push(['_trackPageview']);
+	  _gaq.push(['_trackPageLoadTime']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+	</head>
+	
+	<body onload="setPassport(); ">
+		<form action="/$!{env.appName}/login/login.htm" method="post">
+			<table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center">
+						<img src="$!{env.imgUrl}/image/login/Flogo.jpg" alt="ũ��ɽȪ - ũ��ɽȪ�е���" border="" />
+					</td>
+				</tr>
+			</table>
+			<table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="103" height="29" background="$!{env.imgUrl}/image/login/FPic1.jpg"></td>
+					<td width="251" background="$!{env.imgUrl}/image/login/FPic2.jpg"></td>
+					<td width="383" background="$!{env.imgUrl}/image/login/FPic3.jpg"></td>
+					<td width="104" background="$!{env.imgUrl}/image/login/FPic4.jpg"></td>
+				</tr>
+				<tr>
+					<td height="210" align="right" background="$!{env.imgUrl}/image/login/FPic5.jpg"></td>
+					<td valign="top" background="$!{env.imgUrl}/image/login/FPic12.jpg" class="FLogin">
+						<table width="251" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="59" height="33">
+									<img src="$!{env.imgUrl}/image/login/FLoginA.jpg" alt="�û���" border="" />
+								</td>
+								<td>
+									<input type='text' maxLength='50' name='passport' autocomplete="on" class="LoginPut">
+								</td>
+							</tr>
+							<tr>
+								<td height="33">
+									<img src="$!{env.imgUrl}/image/login/FLoginB.jpg" alt="����" border="" />
+								</td>
+								<td>
+									<input type='password' maxLength='50' class="LoginPut" name='password' autocomplete="off">
+								</td>
+							</tr>
+							<tr>
+								<div align="left" valign="top" >
+									<font size="1px" >
+										$!{failMessage}
+                                    </font>
+                                </div>
+								<td colspan="2">
+									<div align="right" valign="top">
+										<font size="2.5px" >
+											<a href="" ><b>������룿</b></a>
+										</font>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td background="$!{env.imgUrl}/image/login/FPic6.jpg"></td>
+					<td background="$!{env.imgUrl}/image/login/FPic7.jpg"></td>
+				</tr>
+				<tr>
+					<td height="120" background="$!{env.imgUrl}/image/login/FPic8.jpg"></td>
+					<td align="center" valign="top" background="$!{env.imgUrl}/image/login/FPic11.jpg" class="FLoginA">
+						<input type='image' src="$!{env.imgUrl}/image/login/FLoginC.jpg" alt="��¼" name='submit' onclick="setPassportCookies();">
+						<a href="#">
+							<img src="$!{env.imgUrl}/image/login/FLoginD.jpg" alt="ע��" border="" onclick="reg();"/>
+						</a>
+					</td>
+					<td background="$!{env.imgUrl}/image/login/FPic9.jpg"></td>
+					<td background="$!{env.imgUrl}/image/login/FPic10.jpg"></td>
+				</tr>
+			</table>
+			<table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center">
+						<img src="$!{env.imgUrl}/image/login/Bottom.jpg" alt="" border="" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+	<script>
+	var appName = '$!{env.appName}';
+	var domain = '$!{env.domain}';
+	var appUrl = '$!{env.appUrl}'
+    </script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/jquery/jquery.cookie.js"></script>
+	<script type="text/javascript" src="$!{env.imgUrl}/js/xplatform/login/login.js"></script>
+</html>

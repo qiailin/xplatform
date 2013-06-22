@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/env.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource"
+		destroy-method="close">
+		<property name="driver">
+			<value>${oracle.jdbc.driver}</value>
+		</property>
+		<property name="driverUrl">
+			<value>${oracle.jdbc.driverUrl}</value>
+		</property>
+		<property name="user">
+			<value>${oracle.jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${oracle.jdbc.password}</value>
+		</property>
+		<!-- <property name="alias"> <value>${oracle.jdbc.alias}</value> </property> 
+			<property name="houseKeepingSleepTime"> <value>${oracle.jdbc.houseKeepingSleepTime}</value> 
+			</property> -->
+		<property name="prototypeCount">
+			<value>${oracle.jdbc.prototypeCount}</value>
+		</property>
+		<property name="maximumConnectionCount">
+			<value>${oracle.jdbc.maximumConnectionCount}</value>
+		</property>
+		<property name="minimumConnectionCount">
+			<value>${oracle.jdbc.minimumConnectionCount}</value>
+		</property>
+		<property name="simultaneousBuildThrottle">
+			<value>${oracle.jdbc.simultaneousBuildThrottle}</value>
+		</property>
+		<property name="trace">
+			<value>${oracle.jdbc.trace}</value>
+		</property>
+		<property name="verbose">
+			<value>${oracle.jdbc.verbose}</value>
+		</property>
+	</bean>
+	
+	<!--配置ibatis的资源文件载入 -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ibatis/ibatis-config.xml </value>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+	
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref local="transactionManager" />
+		</property>
+	</bean>
+	
+</beans>

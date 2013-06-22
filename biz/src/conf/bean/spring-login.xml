@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="loginAction" class="com.jiakun.xplatform.login.action.LoginAction"
+		parent="baseAction" scope="request">
+		<property name="validate">
+			<value>${ldap.jdbc.validate}</value>
+		</property>
+		<property name="domain">
+			<value>${domain}</value>
+		</property>
+		<property name="caService" ref="caService" />
+		<property name="eventService" ref="eventService" />
+		
+		<property name="fchCookieKey">
+			<value>${fch.cookie.key}</value>
+		</property>
+		<property name="fchCookieValue">
+			<value>${fch.cookie.value}</value>
+		</property>
+		<property name="fchCookieDomain">
+			<value>${fch.cookie.domain}</value>
+		</property>
+		<property name="memcachedCacheService" ref="memcachedCacheService" />
+	</bean>
+	
+	<bean id="caService"
+		class="com.jiakun.xplatform.login.service.impl.CAServiceImpl">
+		<property name="allUserService" ref="allUserService" />
+		<property name="ldapService" ref="ldapService" />
+		<property name="memcachedCacheService" ref="memcachedCacheService" />
+	</bean>
+	
+	<bean id="ldapService"
+		class="com.jiakun.xplatform.login.service.impl.LDAPServiceImpl">
+		<property name="ldapHost">
+			<value>${ldap.jdbc.ldapHost}</value>
+		</property>
+		<property name="ldapPort">
+			<value>${ldap.jdbc.ldapPort}</value>
+		</property>
+		<property name="domain">
+			<value>${ldap.jdbc.domain}</value>
+		</property>
+	</bean>
+	
+</beans>

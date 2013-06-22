@@ -1,0 +1,88 @@
+package com.jiakun.xplatform.dict.dao;
+
+import java.util.List;
+
+import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
+import com.jiakun.xplatform.api.dict.bo.CmsTbDictType;
+
+public interface IDictDao {
+
+	/**
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public int getCmsTbDictCount(CmsTbDict cmsTbDict);
+
+	/**
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public List<CmsTbDict> getCmsTbDictList(CmsTbDict cmsTbDict);
+
+	/**
+	 * ���� dict type ��ѯ dict
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public int getDictCount(CmsTbDict cmsTbDict);
+
+	/**
+	 * ���� dict type ��ѯ dict
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public List<CmsTbDict> getDictList(CmsTbDict cmsTbDict);
+
+	/**
+	 * 
+	 * @param cmsTbDictType
+	 * @return
+	 */
+	public int getCmsTbDictTypeCount(CmsTbDictType cmsTbDictType);
+
+	/**
+	 * 
+	 * @param cmsTbDictType
+	 * @return
+	 */
+	public List<CmsTbDictType> getCmsTbDictTypeList(CmsTbDictType cmsTbDictType);
+
+	/**
+	 * 
+	 * @param cmsTbDictType
+	 * @return
+	 */
+	public Long CreateDictType(CmsTbDictType cmsTbDictType);
+
+	/**
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public Long CreateDict(CmsTbDict cmsTbDict);
+
+	/**
+	 * 
+	 * @param cmsTbDict
+	 * @return
+	 */
+	public int updateDict(CmsTbDict cmsTbDict);
+
+	/**
+	 * 
+	 * @param cmsTbDictType
+	 * @return
+	 */
+	public int updateDictType(CmsTbDictType cmsTbDictType);
+
+	public CmsTbDictType getCmsTbDictType(CmsTbDictType cmsTbDictType);
+
+	public CmsTbDict getCmsTbDict(CmsTbDict cmsTbDict);
+
+	public List<CmsTbDict> getCmsTbDictByType(CmsTbDict cmsTbDict);
+
+}
