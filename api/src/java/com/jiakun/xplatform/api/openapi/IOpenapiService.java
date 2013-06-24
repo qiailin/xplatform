@@ -15,18 +15,18 @@ import javax.ws.rs.core.MultivaluedMap;
  */
 public interface IOpenapiService {
 
-	public static final String XPLATFORM_USER_LOGIN = "xplatform.user.login";
+	static final String XPLATFORM_USER_LOGIN = "xplatform.user.login";
 
-	public static final String ERROR = "-1";
+	static final String ERROR = "-1";
 
-	public static final String ERROR_MSG_PARAMS = "The params can not be empty.";
+	static final String ERROR_MSG_PARAMS = "The params can not be empty.";
 
-	public static final String ERROR_MSG_METHOD = "The method can not be empty.";
+	static final String ERROR_MSG_METHOD = "The method can not be empty.";
 
 	@POST
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String rest(MultivaluedMap<String, String> params);
+	String rest(MultivaluedMap<String, String> params);
 
 }

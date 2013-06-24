@@ -14,17 +14,17 @@ import com.jiakun.xplatform.framework.bo.StringResult;
  */
 public interface IMenuService {
 
-	public static final String SUCCESS = "success";
+	static final String SUCCESS = "success";
 
-	public static final String ERROR = "error";
+	static final String ERROR = "error";
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
 
-	public static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
-	public static final String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
+	static final String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
 
-	public static final String MENU_REDIRECT_URL = "/menu/menuAction!redirectMenu.htm?node=";
+	static final String MENU_REDIRECT_URL = "/menu/menuAction!redirectMenu.htm?node=";
 
 	/**
 	 * �˵���
@@ -32,21 +32,21 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getMenuTreeList(Menu menu);
+	List<Menu> getMenuTreeList(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int getMenuCount(Menu menu);
+	int getMenuCount(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getMenuList(Menu menu);
+	List<Menu> getMenuList(Menu menu);
 
 	/**
 	 * �����ˆ�
@@ -54,7 +54,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public StringResult createMenu(Menu menu);
+	StringResult createMenu(Menu menu);
 
 	/**
 	 * �޸Ĳˆ�
@@ -62,7 +62,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public StringResult updateMenu(Menu menu);
+	StringResult updateMenu(Menu menu);
 
 	/**
 	 * ���id��ѯ�˵���Ϣ
@@ -70,7 +70,7 @@ public interface IMenuService {
 	 * @param id
 	 * @return
 	 */
-	public Menu getMenuById(Long id);
+	Menu getMenuById(Long id);
 
 	/**
 	 * �h��ˆ�
@@ -78,7 +78,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public StringResult deleteMenu(Menu menu);
+	StringResult deleteMenu(Menu menu);
 
 	/**
 	 * ��ѯ��ɫ�����˵�
@@ -86,7 +86,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public int getSelectedMenu4RoleCount(Menu menu);
+	int getSelectedMenu4RoleCount(Menu menu);
 
 	/**
 	 * ��ѯ��ɫ�����˵�
@@ -94,7 +94,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getSelectedMenu4RoleList(Menu menu);
+	List<Menu> getSelectedMenu4RoleList(Menu menu);
 
 	/**
 	 * ѡ���ɫ�˵�
@@ -102,7 +102,7 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public StringResult selectMenu4Role(Menu menu);
+	StringResult selectMenu4Role(Menu menu);
 
 	/**
 	 * ɾ���ɫ�����˵�
@@ -110,6 +110,6 @@ public interface IMenuService {
 	 * @param menu
 	 * @return
 	 */
-	public StringResult deleteSelectedMenu4Role(Menu menu);
+	StringResult deleteSelectedMenu4Role(Menu menu);
 
 }

@@ -3,123 +3,126 @@ package com.jiakun.xplatform.api.cache;
 import java.util.Date;
 
 /**
- * Cacheͳһ�ӿ�
+ * Cache������������
  * 
  */
 public interface ICacheService<K, V> {
 
 	/**
-	 * �������
+	 * ���������������������
 	 * 
 	 * @param key
 	 * @param value
 	 * @return
 	 * @throws Exception
 	 */
-	public V add(K key, V value) throws Exception;
+	V add(K key, V value) throws Exception;
 
 	/**
-	 * ��������Ч�ڵ����
+	 * �������������������������������������������
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��Ч��
+	 * @param ��������������
 	 * @return
 	 * @throws Exception
 	 */
-	public V add(K key, V value, Date expiry) throws Exception;
+	V add(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * ��������Ч�ڵ����
+	 * �������������������������������������������
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��ݳ�ʱ������
+	 * @param �������������������������������
 	 * @return
 	 * @throws Exception
 	 */
-	public V add(K key, V value, int exp) throws Exception;
+	V add(K key, V value, int exp) throws Exception;
 
 	/**
-	 * �������
-	 * 
-	 * @param key
-	 * @param value
-	 * @return
-	 * @throws Exception
-	 */
-	public V set(K key, V value) throws Exception;
-
-	/**
-	 * ��������Ч�ڵ����
-	 * 
-	 * @param key
-	 * @param value
-	 * @param ��Ч��
-	 * @return
-	 * @throws Exception
-	 */
-	public V set(K key, V value, Date expiry) throws Exception;
-
-	/**
-	 * ��������Ч�ڵ����
-	 * 
-	 * @param key
-	 * @param value
-	 * @param ��ݳ�ʱ������
-	 * @return
-	 * @throws Exception
-	 */
-	public V set(K key, V value, int exp) throws Exception;
-
-	/**
-	 * �������,ǰ����key���������memcache�У����򱣴治�ɹ�
+	 * ���������������������
 	 * 
 	 * @param key
 	 * @param value
 	 * @return
 	 * @throws Exception
 	 */
-	public V replace(K key, V value) throws Exception;
+	V set(K key, V value) throws Exception;
 
 	/**
-	 * ��������Ч�ڵ���ݣ�ǰ����key���������memcache�У����򱣴治�ɹ�
+	 * �������������������������������������������
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��Ч��
+	 * @param ��������������
 	 * @return
 	 * @throws Exception
 	 */
-	public V replace(K key, V value, Date expiry) throws Exception;
+	V set(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * ��������Ч�ڵ���ݣ�ǰ����key���������memcache�У����򱣴治�ɹ�
+	 * �������������������������������������������
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��Ч��
+	 * @param �������������������������������
 	 * @return
 	 * @throws Exception
 	 */
-	public V replace(K key, V value, int exp) throws Exception;
+	V set(K key, V value, int exp) throws Exception;
 
 	/**
-	 * ��ȡ�������
+	 * ���������������������,��������������key���������������������������
+	 * memcache��������������������������������
+	 * 
+	 * @param key
+	 * @param value
+	 * @return
+	 * @throws Exception
+	 */
+	V replace(K key, V value) throws Exception;
+
+	/**
+	 * �����������������������������������������������������������key�����������
+	 * ����������������memcache��������������������������������
+	 * 
+	 * @param key
+	 * @param value
+	 * @param ��������������
+	 * @return
+	 * @throws Exception
+	 */
+	V replace(K key, V value, Date expiry) throws Exception;
+
+	/**
+	 * �����������������������������������������������������������key�����������
+	 * ����������������memcache��������������������������������
+	 * 
+	 * @param key
+	 * @param value
+	 * @param ��������������
+	 * @return
+	 * @throws Exception
+	 */
+	V replace(K key, V value, int exp) throws Exception;
+
+	/**
+	 * �����������������������������
 	 * 
 	 * @param key
 	 * @return
 	 * @throws Exception
 	 */
-	public V get(K key) throws Exception;
+	V get(K key) throws Exception;
 
 	/**
-	 * �Ƴ��������
+	 * �����������������������������
 	 * 
 	 * @param key
 	 * @return
 	 * @throws Exception
 	 */
-	public V remove(K key) throws Exception;
+	V remove(K key) throws Exception;
 
 }

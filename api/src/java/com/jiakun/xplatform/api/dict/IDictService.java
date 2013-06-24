@@ -17,14 +17,14 @@ public interface IDictService {
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public int getCmsTbDictCount(CmsTbDict cmsTbDict);
+	int getCmsTbDictCount(CmsTbDict cmsTbDict);
 
 	/**
 	 * 
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public List<CmsTbDict> getCmsTbDictList(CmsTbDict cmsTbDict);
+	List<CmsTbDict> getCmsTbDictList(CmsTbDict cmsTbDict);
 
 	/**
 	 * ���� dict type ��ѯ dict
@@ -32,7 +32,7 @@ public interface IDictService {
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public int getDictCount(CmsTbDict cmsTbDict);
+	int getDictCount(CmsTbDict cmsTbDict);
 
 	/**
 	 * ���� dict type ��ѯ dict
@@ -40,54 +40,54 @@ public interface IDictService {
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public List<CmsTbDict> getDictList(CmsTbDict cmsTbDict);
+	List<CmsTbDict> getDictList(CmsTbDict cmsTbDict);
 
 	/**
 	 * 
 	 * @param cmsTbDictType
 	 * @return
 	 */
-	public int getCmsTbDictTypeCount(CmsTbDictType cmsTbDictType);
+	int getCmsTbDictTypeCount(CmsTbDictType cmsTbDictType);
 
 	/**
 	 * 
 	 * @param cmsTbDictType
 	 * @return
 	 */
-	public List<CmsTbDictType> getCmsTbDictTypeList(CmsTbDictType cmsTbDictType);
+	List<CmsTbDictType> getCmsTbDictTypeList(CmsTbDictType cmsTbDictType);
 
 	/**
 	 * 
 	 * @param cmsTbDictType
 	 * @return
 	 */
-	public BooleanResult createDictType(CmsTbDictType cmsTbDictType);
+	BooleanResult createDictType(CmsTbDictType cmsTbDictType);
 
 	/**
 	 * 
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public BooleanResult createDict(CmsTbDict cmsTbDict);
+	BooleanResult createDict(CmsTbDict cmsTbDict);
 
 	/**
 	 * 
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public BooleanResult updateDict(CmsTbDict cmsTbDict);
+	BooleanResult updateDict(CmsTbDict cmsTbDict);
 
 	/**
 	 * 
 	 * @param cmsTbDict
 	 * @return
 	 */
-	public BooleanResult updateDictType(CmsTbDictType cmsTbDictType);
+	BooleanResult updateDictType(CmsTbDictType cmsTbDictType);
 
-	public CmsTbDictType getCmsTbDictType(CmsTbDictType cmsTbDictType);
+	CmsTbDictType getCmsTbDictType(CmsTbDictType cmsTbDictType);
 
-	public CmsTbDict getCmsTbDict(CmsTbDict cmsTbDict);
+	CmsTbDict getCmsTbDict(CmsTbDict cmsTbDict);
 
-	public List<CmsTbDict> getCmsTbDictByType(CmsTbDict cmsTbDict);
+	List<CmsTbDict> getCmsTbDictByType(CmsTbDict cmsTbDict);
 
 }

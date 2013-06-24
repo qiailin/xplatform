@@ -13,21 +13,21 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface ILogMonitorService {
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
 	 * @param logMonitor
 	 * @return
 	 */
-	public int getLogMonitorCount(LogMonitor logMonitor);
+	int getLogMonitorCount(LogMonitor logMonitor);
 
 	/**
 	 * 
 	 * @param logMonitor
 	 * @return
 	 */
-	public List<LogMonitor> getLogMonitorList(LogMonitor logMonitor);
+	List<LogMonitor> getLogMonitorList(LogMonitor logMonitor);
 
 	/**
 	 * ��������log��Ϣ
@@ -35,13 +35,13 @@ public interface ILogMonitorService {
 	 * @param logMonitorList
 	 * @return
 	 */
-	public BooleanResult createLogMonitor(List<LogMonitor> logMonitorList);
+	BooleanResult createLogMonitor(List<LogMonitor> logMonitorList);
 
 	/**
 	 * ��ȡ������־ ���ͼ�ؽ���ʼ�
 	 * 
 	 * @return
 	 */
-	public List<LogMonitor> getLogMonitorList4SendEmail();
+	List<LogMonitor> getLogMonitorList4SendEmail();
 
 }

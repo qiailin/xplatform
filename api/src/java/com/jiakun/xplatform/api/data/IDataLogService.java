@@ -18,22 +18,14 @@ public interface IDataLogService {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	public int getDataLogTotalCount(DataLogTotal dataLogTotal);
+	int getDataLogTotalCount(DataLogTotal dataLogTotal);
 
 	/**
 	 * 
 	 * @param dataLogTotal
 	 * @return
 	 */
-	public List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal);
-
-	/**
-	 * ��ȡ��ǰ���������Ӧtable
-	 * 
-	 * @param dataLogTotal
-	 * @return
-	 */
-	public int getDBTableCount(DataLogTotal dataLogTotal);
+	List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal);
 
 	/**
 	 * ��ȡ��ǰ���������Ӧtable
@@ -41,6 +33,14 @@ public interface IDataLogService {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
+	int getDBTableCount(DataLogTotal dataLogTotal);
+
+	/**
+	 * ��ȡ��ǰ���������Ӧtable
+	 * 
+	 * @param dataLogTotal
+	 * @return
+	 */
+	List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
 
 }

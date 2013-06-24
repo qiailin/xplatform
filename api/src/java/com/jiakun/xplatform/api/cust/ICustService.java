@@ -17,6 +17,6 @@ public interface ICustService {
 	 * @param userId
 	 * @return
 	 */
-	public Customer getFnWatersta(String userId);
+	Customer getFnWatersta(String userId);
 
 }

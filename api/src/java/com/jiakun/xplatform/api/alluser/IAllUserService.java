@@ -10,190 +10,190 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
 import com.jiakun.xplatform.framework.bo.StringResult;
 
 /**
- * �ˆT��Ϣ�ӿ�<br>
- * ���ˆT����Ϣ ��I�ܘ�
+ * �����T����������������<br>
+ * �����������T�������������� ������I��������
  * 
  * @author xujiakun
  * 
  */
 public interface IAllUserService {
 
-	public static final String SUCCESS = "success";
+	static final String SUCCESS = "success";
 
-	public static final String ERROR = "error";
+	static final String ERROR = "error";
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����������������������";
 
-	public static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	static final String ERROR_INPUT_MESSAGE = "����������������������������������������������";
 
-	public static final String ERROR_NULL_MESSAGE = "����ʧ�ܣ������ڣ�";
+	static final String ERROR_NULL_MESSAGE = "������������������������������������������";
 
-	public static final String ERROR_EXIST_MESSAGE = "����ʧ�ܣ� �Ѵ��ڣ�";
+	static final String ERROR_EXIST_MESSAGE = "���������������������� ����������������";
 
-	public static final String ERROR_CONNET_MESSAGE = "����ʧ�ܣ�WebService�����쳣��";
+	static final String ERROR_CONNET_MESSAGE = "����������������������WebService������������������������";
 
-	public static final String CHECK_TYPE_HR = "hr";
+	static final String CHECK_TYPE_HR = "hr";
 
-	public static final String CHECK_TYPE_IT = "it";
+	static final String CHECK_TYPE_IT = "it";
 
-	public static final String CHECK_TYPE_NONE = "none";
+	static final String CHECK_TYPE_NONE = "none";
 
 	/**
 	 * 
 	 * @param passport
 	 * @return
 	 */
-	public AllUsers getAllUserByPassport(String passport);
+	AllUsers getAllUserByPassport(String passport);
 
 	/**
-	 * �����֯��ѯ��Ա
+	 * ���������������������������������
 	 * 
 	 * @param orgId
 	 * @return
 	 */
-	public List<AllUsers> getAllUsersByOrgId(String orgId);
+	List<AllUsers> getAllUsersByOrgId(String orgId);
 
 	/**
-	 * ��ѯ��Ա
+	 * ����������������
 	 * 
 	 * @param userIds
 	 * @return
 	 */
-	public List<AllUsers> getAllUsersByIds(List<String> userIds);
+	List<AllUsers> getAllUsersByIds(List<String> userIds);
 
 	/**
-	 * ������Ա
+	 * ��������������������
 	 * 
 	 * @param allUsers
 	 * @return
 	 */
-	public BooleanResult updateAllUser(AllUsers allUsers);
+	BooleanResult updateAllUser(AllUsers allUsers);
 
 	/**
-	 * �޸���Աinfo
+	 * ����������������info
 	 * 
 	 * @param allUsers
 	 * @return
 	 */
 
-	public BooleanResult modifyAllUserInfo(AllUsers allUsers);
+	BooleanResult modifyAllUserInfo(AllUsers allUsers);
 
 	/**
-	 * ��ѯ��Ա����ϸ��Ϣ��ͨѶ¼��
+	 * ��������������������������������������������������������
 	 * 
 	 * @param userId
 	 * @return
 	 */
-	public AllUsers getAllUser(String userId);
+	AllUsers getAllUser(String userId);
 
 	/**
-	 * ��ѯ��Ա����ҵ�ܹ���
+	 * ��������������������������������������������
 	 * 
 	 * @param AllUsers
 	 * @return
 	 */
-	public List<AllUsers> searchAllUsers(AllUsers alluser);
+	List<AllUsers> searchAllUsers(AllUsers alluser);
 
 	/**
-	 * ��ѯ��Աcount����ҵ�ܹ���
+	 * ����������������count����������������������������
 	 * 
 	 * @param AllUsers
 	 * @return
 	 */
-	public int searchAllUsersCount(AllUsers alluser);
+	int searchAllUsersCount(AllUsers alluser);
 
 	/**
-	 * ��ѯ��Ա����Ա���
+	 * ���������������������������������������
 	 * 
 	 * @param UserChange
 	 * @return
 	 */
 
-	public int getUserChangeCount(UserChange bUser);
+	int getUserChangeCount(UserChange bUser);
 
 	/**
-	 * ��ѯ��Աcount����Ա���
+	 * ����������������count�����������������������
 	 * 
 	 * @param UserChange
 	 * @return
 	 */
-	public List<UserChange> getUserChangeList(UserChange bUser);
+	List<UserChange> getUserChangeList(UserChange bUser);
 
-	public BooleanResult deleteBImplementByEmpId(Long userId);
+	BooleanResult deleteBImplementByEmpId(Long userId);
 
 	/**
-	 * д����Ա���
+	 * �������������������������
 	 * 
 	 * @param UserChange
 	 * @return
 	 */
-	public StringResult insertUserChange(UserChange bUser);
+	StringResult insertUserChange(UserChange bUser);
 
 	/**
-	 * ��ȡ�����Ա��Ϣ
+	 * ���������������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public int getCheckUserCount(ApplyUsers applyUsers);
+	int getCheckUserCount(ApplyUsers applyUsers);
 
 	/**
-	 * ��ȡ�����Ա��Ϣ
+	 * ���������������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
+	List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
 
 	/**
-	 * �����ϸ��Ϣ
+	 * �������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public AllUsers getCheckUserDetail(ApplyUsers applyUsers);
+	AllUsers getCheckUserDetail(ApplyUsers applyUsers);
 
 	/**
-	 * �޸�����
+	 * ��������������������
 	 * 
 	 * @param AllUsers
 	 * @return
 	 */
-	public BooleanResult modifyUserPsw(AllUsers User);
+	BooleanResult modifyUserPsw(AllUsers User);
 
 	/**
-	 * дApplyUsers
+	 * ��ApplyUsers
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public StringResult insertApplyUser(ApplyUsers applyUsers);
+	StringResult insertApplyUser(ApplyUsers applyUsers);
 
 	/**
-	 * ���ҹ�Ӧ��������
+	 * ����������������������������������������
 	 * 
 	 * @param supplier
 	 * @return
 	 */
-	public String getsuppliername(CmsVwSupplier supplier);
+	String getsuppliername(CmsVwSupplier supplier);
 
 	/**
-	 * ����ȫ����Ӧ���б�
+	 * ������������������������������������������
 	 * 
 	 * @return
 	 */
-	public List<CmsVwSupplier> getSupplierList(CmsVwSupplier supplier);
+	List<CmsVwSupplier> getSupplierList(CmsVwSupplier supplier);
 
-	public int getSupplierCount(CmsVwSupplier supplier);
+	int getSupplierCount(CmsVwSupplier supplier);
 
 	/**
-	 * �����û��Ƿ����
+	 * �������������������������������������
 	 * 
-	 * @param ���loginId
+	 * @param ���������loginId
 	 * @return
 	 */
-	public BooleanResult checkUserAvilb(String loginId);
+	BooleanResult checkUserAvilb(String loginId);
 
-	public void upReleaseDv(Long myposid, String reason);
+	void upReleaseDv(Long myposid, String reason);
 
 }

@@ -14,7 +14,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IDataService {
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * �����־id��ѯ��Ӧ���ֶ���Ϣ
@@ -23,8 +23,7 @@ public interface IDataService {
 	 * @param userId
 	 * @return
 	 */
-	public List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId,
-			String userId);
+	List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId);
 
 	/**
 	 * ��ȡ���ֶ���Ϣ
@@ -33,8 +32,7 @@ public interface IDataService {
 	 * @param userId
 	 * @return
 	 */
-	public List<TabColumn> getTabColumnsByConfigId(Long dataConfigId,
-			String userId);
+	List<TabColumn> getTabColumnsByConfigId(Long dataConfigId, String userId);
 
 	/**
 	 * ��������datainfo
@@ -42,8 +40,7 @@ public interface IDataService {
 	 * @param dataInfoList
 	 * @return
 	 */
-	public BooleanResult createDataInfo(Long dataConfigId,
-			List<DataInfo> dataInfoList);
+	BooleanResult createDataInfo(Long dataConfigId, List<DataInfo> dataInfoList);
 
 	/**
 	 * ���dataLogTotalId ���Ԥ��
@@ -51,7 +48,7 @@ public interface IDataService {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	public int getDataPreviewCount(DataLogTotal dataLogTotal);
+	int getDataPreviewCount(DataLogTotal dataLogTotal);
 
 	/**
 	 * 
@@ -59,7 +56,7 @@ public interface IDataService {
 	 * @param userId
 	 * @return
 	 */
-	public List<DataInfo> getDataPreviewList(DataLogTotal dataLogTotal);
+	List<DataInfo> getDataPreviewList(DataLogTotal dataLogTotal);
 
 	/**
 	 * ɾ�����
@@ -68,6 +65,6 @@ public interface IDataService {
 	 * @param userId
 	 * @return
 	 */
-	public BooleanResult deleteDataInfo(Long dataLogTotalId, String userId);
+	BooleanResult deleteDataInfo(Long dataLogTotalId, String userId);
 
 }

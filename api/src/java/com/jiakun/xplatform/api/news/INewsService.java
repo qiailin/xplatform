@@ -19,14 +19,14 @@ public interface INewsService {
 	 * 
 	 * @return
 	 */
-	public List<NewsDetail> getNewsList();
+	List<NewsDetail> getNewsList();
 
 	/**
 	 * ��ȡ�����ܱ���Ϣ
 	 * 
 	 * @return
 	 */
-	public List<NewsTotal> getNewsTotalList();
+	List<NewsTotal> getNewsTotalList();
 
 	/**
 	 * ��ȡ������ϸ�б�
@@ -34,7 +34,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public List<NewsDetail> getNewsDetailList(NewsTotal lanNewsTotal);
+	List<NewsDetail> getNewsDetailList(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ������ϸ
@@ -42,7 +42,7 @@ public interface INewsService {
 	 * @param NewsDetail
 	 * @return
 	 */
-	public NewsDetail getNewsDetail(NewsDetail NewsDetail);
+	NewsDetail getNewsDetail(NewsDetail NewsDetail);
 
 	/**
 	 * �������ŵ������
@@ -50,7 +50,7 @@ public interface INewsService {
 	 * @param NewsDetail
 	 * @return
 	 */
-	public int updateNewsDetail(NewsDetail NewsDetail);
+	int updateNewsDetail(NewsDetail NewsDetail);
 
 	/**
 	 * ��ȡ������ϸ����
@@ -58,7 +58,7 @@ public interface INewsService {
 	 * @param NewsDetail
 	 * @return
 	 */
-	public List<NewsFile> getNewsFileList(NewsFile NewsFile);
+	List<NewsFile> getNewsFileList(NewsFile NewsFile);
 
 	/**
 	 * ��ȡ������Ŀ
@@ -66,7 +66,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public List<NewsTotal> getNewsTreeTypeList(NewsTotal lanNewsTotal);
+	List<NewsTotal> getNewsTreeTypeList(NewsTotal lanNewsTotal);
 
 	/**
 	 * ���������ܱ�lanNewsTotal
@@ -74,7 +74,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public Long createNewsTotal(NewsTotal lanNewsTotal);
+	Long createNewsTotal(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ�����ܱ�����
@@ -82,7 +82,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public int getNewsTotalJsonCount(NewsTotal lanNewsTotal);
+	int getNewsTotalJsonCount(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ�����ܱ��ҳ
@@ -90,7 +90,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public List<NewsTotal> getNewsTotalJsonList(NewsTotal lanNewsTotal);
+	List<NewsTotal> getNewsTotalJsonList(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ������ϸ������
@@ -98,7 +98,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public int getNewsDetailJsonCount(NewsDetail lanNewsDetail);
+	int getNewsDetailJsonCount(NewsDetail lanNewsDetail);
 
 	/**
 	 * ��ȡ������ϸ���ҳ
@@ -106,7 +106,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public List<NewsDetail> getNewsDetailJsonList(NewsDetail lanNewsDetail);
+	List<NewsDetail> getNewsDetailJsonList(NewsDetail lanNewsDetail);
 
 	/**
 	 * ɾ����ϸ
@@ -114,7 +114,7 @@ public interface INewsService {
 	 * @param NewsDetail
 	 * @return
 	 */
-	public int deleteNewsDetail(NewsDetail NewsDetail);
+	int deleteNewsDetail(NewsDetail NewsDetail);
 
 	/**
 	 * ��ȡ������ϸ������
@@ -122,7 +122,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public int getNewsDetailMoreListCount(NewsTotal lanNewsTotal);
+	int getNewsDetailMoreListCount(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ������ϸ���ҳ
@@ -130,7 +130,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public List<NewsDetail> getNewsDetailMoreList(NewsTotal lanNewsTotal);
+	List<NewsDetail> getNewsDetailMoreList(NewsTotal lanNewsTotal);
 
 	/**
 	 * ����������ϸ��lanNewsDetail
@@ -138,7 +138,7 @@ public interface INewsService {
 	 * @param lanNewsDetail
 	 * @return
 	 */
-	public Long createNewsDetail(NewsDetail lanNewsDetail);
+	Long createNewsDetail(NewsDetail lanNewsDetail);
 
 	/**
 	 * ����������ϸ��lanNewsDetail
@@ -146,7 +146,7 @@ public interface INewsService {
 	 * @param lanNewsDetail
 	 * @return
 	 */
-	public Long createNewsFile(NewsFile newsFilebean);
+	Long createNewsFile(NewsFile newsFilebean);
 
 	/**
 	 * �޸�������ϸ������
@@ -154,7 +154,7 @@ public interface INewsService {
 	 * @param newsFilebean
 	 * @return
 	 */
-	public int updateNewsFile(NewsFile newsFilebean);
+	int updateNewsFile(NewsFile newsFilebean);
 
 	/**
 	 * ���������ܱ�
@@ -162,7 +162,7 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public int updateNewsTotal(NewsTotal lanNewsTotal);
+	int updateNewsTotal(NewsTotal lanNewsTotal);
 
 	/**
 	 * ��ȡ���������ܱ�
@@ -170,6 +170,6 @@ public interface INewsService {
 	 * @param lanNewsTotal
 	 * @return
 	 */
-	public NewsTotal getNewsTotal(NewsTotal lanNewsTotal);
+	NewsTotal getNewsTotal(NewsTotal lanNewsTotal);
 
 }
