@@ -18,14 +18,14 @@ public interface IMonitorLogService {
 	 * @param monitorLog
 	 * @return
 	 */
-	public int getMonitorLogCount(MonitorLog monitorLog);
+	int getMonitorLogCount(MonitorLog monitorLog);
 
 	/**
 	 * 
 	 * @param monitorLog
 	 * @return
 	 */
-	public List<MonitorLog> getMonitorLogList(MonitorLog monitorLog);
+	List<MonitorLog> getMonitorLogList(MonitorLog monitorLog);
 
 	/**
 	 * ���������־
@@ -33,6 +33,6 @@ public interface IMonitorLogService {
 	 * @param monitorLog
 	 * @return
 	 */
-	public BooleanResult createMonitorLog(MonitorLog monitorLog);
+	BooleanResult createMonitorLog(MonitorLog monitorLog);
 
 }

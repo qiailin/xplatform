@@ -15,6 +15,6 @@ public interface ILDAPService {
 	 * @param password
 	 * @return
 	 */
-	public boolean authenticate(String fullDN, String password);
+	boolean authenticate(String fullDN, String password);
 
 }

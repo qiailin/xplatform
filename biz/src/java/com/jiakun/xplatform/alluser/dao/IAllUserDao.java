@@ -14,35 +14,35 @@ public interface IAllUserDao {
 	 * @param passport
 	 * @return
 	 */
-	public AllUsers getAllUserByPassport(String passport);
+	AllUsers getAllUserByPassport(String passport);
 
 	/**
 	 * 
 	 * @param orgId
 	 * @return
 	 */
-	public List<AllUsers> getAllUsersByOrgId(Long orgId);
+	List<AllUsers> getAllUsersByOrgId(Long orgId);
 
 	/**
 	 * 
 	 * @param userIds
 	 * @return
 	 */
-	public List<AllUsers> getAllUsersByIds(List<String> userIds);
+	List<AllUsers> getAllUsersByIds(List<String> userIds);
 
 	/**
 	 * 
 	 * @param allUsers
 	 * @return
 	 */
-	public int updateAllUser(AllUsers allUsers);
+	int updateAllUser(AllUsers allUsers);
 
 	/**
 	 * 
 	 * @param userId
 	 * @return
 	 */
-	public AllUsers getAllUser(String userId);
+	AllUsers getAllUser(String userId);
 
 	/**
 	 * ��ѯ��Ա����ҵ�ܹ���
@@ -50,7 +50,7 @@ public interface IAllUserDao {
 	 * @param AllUsers
 	 * @return
 	 */
-	public List<AllUsers> searchAllUsers(AllUsers alluser);
+	List<AllUsers> searchAllUsers(AllUsers alluser);
 
 	/**
 	 * ��ѯ��Աcount����ҵ�ܹ���
@@ -58,7 +58,7 @@ public interface IAllUserDao {
 	 * @param AllUsers
 	 * @return
 	 */
-	public int searchAllUsersCount(AllUsers alluser);
+	int searchAllUsersCount(AllUsers alluser);
 
 	/**
 	 * ��ѯ��Ա����Ա���
@@ -66,11 +66,11 @@ public interface IAllUserDao {
 	 * @param UserChange
 	 * @return
 	 */
-	public List<UserChange> getUserChangeList(UserChange bUser);
+	List<UserChange> getUserChangeList(UserChange bUser);
 
-	public int modifyAllUserInfo(AllUsers allUsers);
+	int modifyAllUserInfo(AllUsers allUsers);
 
-	public int deleteBImplementByEmpId(Long userId);
+	int deleteBImplementByEmpId(Long userId);
 
 	/**
 	 * ��ѯ��Աcount����Ա���
@@ -78,7 +78,7 @@ public interface IAllUserDao {
 	 * @param UserChange
 	 * @return
 	 */
-	public int getUserChangeCount(UserChange bUser);
+	int getUserChangeCount(UserChange bUser);
 
 	/**
 	 * ��ȡ�����Ա��Ϣ
@@ -86,7 +86,7 @@ public interface IAllUserDao {
 	 * @param applyUsers
 	 * @return
 	 */
-	public int getCheckUserCount(ApplyUsers applyUsers);
+	int getCheckUserCount(ApplyUsers applyUsers);
 
 	/**
 	 * ��ȡ�����Ա��Ϣ
@@ -94,7 +94,7 @@ public interface IAllUserDao {
 	 * @param applyUsers
 	 * @return
 	 */
-	public List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
+	List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
 
 	/**
 	 * ���루��Ա���
@@ -102,42 +102,40 @@ public interface IAllUserDao {
 	 * @param UserChange
 	 * @return
 	 */
-	public Long insertUserChange(UserChange bUser);
+	Long insertUserChange(UserChange bUser);
 
 	/**
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public AllUsers getCheckUserDetail(ApplyUsers applyUsers);
+	AllUsers getCheckUserDetail(ApplyUsers applyUsers);
 
-
-
-	public void upReleaseDv(Long myposid,String reason);
+	void upReleaseDv(Long myposid, String reason);
 
 	/**
 	 * 
 	 * @param applyUsers
 	 * @return
 	 */
-	public int updateApplyUsers(ApplyUsers applyUsers);
+	int updateApplyUsers(ApplyUsers applyUsers);
 
-	
-	public int checkUserAvilb(String loginId);
-	
-	public Long insertApplyUser(ApplyUsers applyUsers);
-	
+	int checkUserAvilb(String loginId);
+
+	Long insertApplyUser(ApplyUsers applyUsers);
+
 	/**
-	 *  дb_salesinfo
+	 * дb_salesinfo
+	 * 
 	 * @param allUsers
 	 * @return
 	 */
-	public Long insertAllUser(AllUsers allUsers);
+	Long insertAllUser(AllUsers allUsers);
 
-	public String getsuppliername(CmsVwSupplier supplier);
+	String getsuppliername(CmsVwSupplier supplier);
 
-	public List<CmsVwSupplier> getSupplierList(CmsVwSupplier supplier);
+	List<CmsVwSupplier> getSupplierList(CmsVwSupplier supplier);
 
-	public int getSupplierCount(CmsVwSupplier supplier);
-	
+	int getSupplierCount(CmsVwSupplier supplier);
+
 }

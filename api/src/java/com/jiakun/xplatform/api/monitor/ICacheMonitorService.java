@@ -13,21 +13,21 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface ICacheMonitorService {
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
 	 * @param cacheStats
 	 * @return
 	 */
-	public int getCacheMonitorCount(CacheStats cacheStats);
+	int getCacheMonitorCount(CacheStats cacheStats);
 
 	/**
 	 * 
 	 * @param cacheStats
 	 * @return
 	 */
-	public List<CacheStats> getCacheMonitorList(CacheStats cacheStats);
+	List<CacheStats> getCacheMonitorList(CacheStats cacheStats);
 
 	/**
 	 * ��������cacheStats��Ϣ
@@ -35,6 +35,6 @@ public interface ICacheMonitorService {
 	 * @param cacheStatsList
 	 * @return
 	 */
-	public BooleanResult createCacheMonitor(List<CacheStats> cacheStatsList);
+	BooleanResult createCacheMonitor(List<CacheStats> cacheStatsList);
 
 }

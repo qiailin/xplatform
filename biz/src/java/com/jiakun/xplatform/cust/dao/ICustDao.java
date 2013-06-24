@@ -10,7 +10,7 @@ public interface ICustDao {
 	 * @param userId
 	 * @return
 	 */
-	public String getFnWatersta(String userId);
+	String getFnWatersta(String userId);
 
 	/**
 	 * ���custId���Customer��Ϣ
@@ -18,6 +18,6 @@ public interface ICustDao {
 	 * @param custId
 	 * @return
 	 */
-	public Customer getCustomerById(Long custId);
+	Customer getCustomerById(Long custId);
 
 }

@@ -9,6 +9,6 @@ public interface IMessageDao {
 	 * @param message
 	 * @return
 	 */
-	public int createMessage(Message message);
+	int createMessage(Message message);
 
 }

@@ -11,11 +11,11 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IMessageService {
 
-	public static final String SMS_TYPE_DEFAULT = "WBZ";
+	static final String SMS_TYPE_DEFAULT = "WBZ";
 
-	public static final Long SEND_FLAG_DEFAULT = 0l;
+	static final Long SEND_FLAG_DEFAULT = 0l;
 
-	public static final String SMS_ID_PREFIX_DEFAULT = "NF";
+	static final String SMS_ID_PREFIX_DEFAULT = "NF";
 
 	/**
 	 * ���Ͷ���
@@ -23,6 +23,6 @@ public interface IMessageService {
 	 * @param message
 	 * @return
 	 */
-	public BooleanResult sendMessage(Message message);
+	BooleanResult sendMessage(Message message);
 
 }

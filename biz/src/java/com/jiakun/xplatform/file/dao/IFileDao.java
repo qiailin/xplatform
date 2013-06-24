@@ -11,34 +11,34 @@ public interface IFileDao {
 	 * @param fileInfo
 	 * @return
 	 */
-	public FileInfo getFileInfo(FileInfo fileInfo);
+	FileInfo getFileInfo(FileInfo fileInfo);
 
 	/**
 	 * 
 	 * @param fileInfo
 	 * @return
 	 */
-	public String createFileInfo(FileInfo fileInfo);
+	String createFileInfo(FileInfo fileInfo);
 
 	/**
 	 * 
 	 * @param fileInfo
 	 * @return
 	 */
-	public int getFileCount(FileInfo fileInfo);
+	int getFileCount(FileInfo fileInfo);
 
 	/**
 	 * 
 	 * @param fileInfo
 	 * @return
 	 */
-	public List<FileInfo> getFileList(FileInfo fileInfo);
+	List<FileInfo> getFileList(FileInfo fileInfo);
 
 	/**
 	 * 
 	 * @param fileInfo
 	 * @return
 	 */
-	public int deleteFile(FileInfo fileInfo);
+	int deleteFile(FileInfo fileInfo);
 
 }

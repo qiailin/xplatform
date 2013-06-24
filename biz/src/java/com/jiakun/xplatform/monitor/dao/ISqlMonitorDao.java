@@ -12,48 +12,48 @@ public interface ISqlMonitorDao {
 	 * @param sql
 	 * @return
 	 */
-	public int execMonitorSql(String sql);
+	int execMonitorSql(String sql);
 
 	/**
 	 * 
 	 * @param sqlDetail
 	 * @return
 	 */
-	public List<Map<String, Object>> execMonitorSqlDetail(String sqlDetail);
+	List<Map<String, Object>> execMonitorSqlDetail(String sqlDetail);
 
 	/**
 	 * 
 	 * @param sqlMonitor
 	 * @return
 	 */
-	public int getSqlMonitorCount(SqlMonitor sqlMonitor);
+	int getSqlMonitorCount(SqlMonitor sqlMonitor);
 
 	/**
 	 * 
 	 * @param sqlMonitor
 	 * @return
 	 */
-	public List<SqlMonitor> getSqlMonitorList(SqlMonitor sqlMonitor);
+	List<SqlMonitor> getSqlMonitorList(SqlMonitor sqlMonitor);
 
 	/**
 	 * 
 	 * @param sqlMonitor
 	 * @return
 	 */
-	public Long createSqlMonitor(SqlMonitor sqlMonitor);
+	Long createSqlMonitor(SqlMonitor sqlMonitor);
 
 	/**
 	 * 
 	 * @param sqlMonitorId
 	 * @return
 	 */
-	public SqlMonitor getSqlMonitorById(Long sqlMonitorId);
+	SqlMonitor getSqlMonitorById(Long sqlMonitorId);
 
 	/**
 	 * 
 	 * @param sqlMonitor
 	 * @return
 	 */
-	public int updateSqlMonitor(SqlMonitor sqlMonitor);
+	int updateSqlMonitor(SqlMonitor sqlMonitor);
 
 }

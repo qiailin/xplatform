@@ -11,7 +11,7 @@ import java.io.OutputStream;
  */
 public interface IDFSService {
 
-	public static final String DFS_TYPE_HDFS = "hdfs";
+	static final String DFS_TYPE_HDFS = "hdfs";
 
 	/**
 	 * get a file's name
@@ -19,7 +19,7 @@ public interface IDFSService {
 	 * @param fileId
 	 * @return fileName if save successully, or null if fail
 	 */
-	public String getFileName(String fileId);
+	String getFileName(String fileId);
 
 	/**
 	 * fetch a file to local disk
@@ -28,7 +28,7 @@ public interface IDFSService {
 	 * @param localFilePath
 	 * @return
 	 */
-	public boolean fetchFile(String fileId, String localFilePath);
+	boolean fetchFile(String fileId, String localFilePath);
 
 	/**
 	 * fetch a file to output stream
@@ -37,7 +37,7 @@ public interface IDFSService {
 	 * @param output
 	 * @return
 	 */
-	public boolean fetchFile(String fileId, OutputStream output);
+	boolean fetchFile(String fileId, OutputStream output);
 
 	/**
 	 * save a local file to hdfs
@@ -47,7 +47,7 @@ public interface IDFSService {
 	 * @param localFileName
 	 * @return fileId if save successully, or null if fail
 	 */
-	public String saveFile(String fileName, String suffix, String localFileName);
+	String saveFile(String fileName, String suffix, String localFileName);
 
 	/**
 	 * save a local file(file) to hdfs
@@ -57,7 +57,7 @@ public interface IDFSService {
 	 * @param localFile
 	 * @return fileId if save successully, or null if fail
 	 */
-	public String saveFile(String fileName, String suffix, File localFile);
+	String saveFile(String fileName, String suffix, File localFile);
 
 	/**
 	 * save a local file(byte) to hdfs
@@ -67,6 +67,6 @@ public interface IDFSService {
 	 * @param bytes
 	 * @return fileId if save successully, or null if fail
 	 */
-	public String saveFile(String fileName, String suffix, byte[] bytes);
+	String saveFile(String fileName, String suffix, byte[] bytes);
 
 }

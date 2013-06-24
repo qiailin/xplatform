@@ -12,21 +12,21 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IResponseService {
 
-	public static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
 	 * @param responseStats
 	 * @return
 	 */
-	public int getResponseStatsCount(ResponseStats responseStats);
+	int getResponseStatsCount(ResponseStats responseStats);
 
 	/**
 	 * 
 	 * @param responseStats
 	 * @return
 	 */
-	public List<ResponseStats> getResponseStatsList(ResponseStats responseStats);
+	List<ResponseStats> getResponseStatsList(ResponseStats responseStats);
 
 	/**
 	 * ��������ӿ���Ӧ��Ϣ
@@ -34,7 +34,6 @@ public interface IResponseService {
 	 * @param responseStatsList
 	 * @return
 	 */
-	public BooleanResult createResponseStats(
-			List<ResponseStats> responseStatsList);
+	BooleanResult createResponseStats(List<ResponseStats> responseStatsList);
 
 }

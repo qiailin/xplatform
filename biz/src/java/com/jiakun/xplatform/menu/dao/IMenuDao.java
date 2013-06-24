@@ -12,70 +12,70 @@ public interface IMenuDao {
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getMenuTreeList(Menu menu);
+	List<Menu> getMenuTreeList(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int getMenuCount(Menu menu);
+	int getMenuCount(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getMenuList(Menu menu);
+	List<Menu> getMenuList(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public Long createMenu(Menu menu);
+	Long createMenu(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int updateMenu(Menu menu);
+	int updateMenu(Menu menu);
 
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public Menu getMenuById(Long id);
+	Menu getMenuById(Long id);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int deleteMenu(Menu menu);
+	int deleteMenu(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int getSelectedMenu4RoleCount(Menu menu);
+	int getSelectedMenu4RoleCount(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public List<Menu> getSelectedMenu4RoleList(Menu menu);
+	List<Menu> getSelectedMenu4RoleList(Menu menu);
 
 	/**
 	 * 
 	 * @param menu
 	 * @return
 	 */
-	public int deleteSelectedMenu4Role(Menu menu);
+	int deleteSelectedMenu4Role(Menu menu);
 
 	/**
 	 * ��֤��ɫ+�˵��Ƿ��Ѿ�����; true: ����
@@ -84,7 +84,7 @@ public interface IMenuDao {
 	 * @param menuId
 	 * @return
 	 */
-	public boolean checkSelectedMenu4Role(String roleId, Long menuId);
+	boolean checkSelectedMenu4Role(String roleId, Long menuId);
 
 	/**
 	 * ������ɫ�˵�
@@ -93,7 +93,7 @@ public interface IMenuDao {
 	 * @param menuId
 	 * @return
 	 */
-	public Long selectMenu4Role(String roleId, Long menuId);
+	Long selectMenu4Role(String roleId, Long menuId);
 
 	/**
 	 * ��ݲ˵�menuId ��ȡ������ɫ�˵�menuId
@@ -102,7 +102,7 @@ public interface IMenuDao {
 	 * @param menuId
 	 * @return
 	 */
-	public Long getParentMenuId4Role(String roleId, Long menuId);
+	Long getParentMenuId4Role(String roleId, Long menuId);
 
 	/**
 	 * ��ݲ˵�menuId ��ȡ�Ӽ���ɫ�˵�menuId
@@ -111,6 +111,6 @@ public interface IMenuDao {
 	 * @param menuId
 	 * @return
 	 */
-	public List<Long> getChildMenuId4Role(String roleId, Long menuId);
+	List<Long> getChildMenuId4Role(String roleId, Long menuId);
 
 }

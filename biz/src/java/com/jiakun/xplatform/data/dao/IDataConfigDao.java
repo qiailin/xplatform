@@ -11,14 +11,14 @@ public interface IDataConfigDao {
 	 * @param dataConfig
 	 * @return
 	 */
-	public int getDataConfigCount(DataConfig dataConfig);
+	int getDataConfigCount(DataConfig dataConfig);
 
 	/**
 	 * 
 	 * @param dataConfig
 	 * @return
 	 */
-	public List<DataConfig> getDataConfigList(DataConfig dataConfig);
+	List<DataConfig> getDataConfigList(DataConfig dataConfig);
 
 	/**
 	 * ��������data����
@@ -26,7 +26,7 @@ public interface IDataConfigDao {
 	 * @param dataConfigList
 	 * @return
 	 */
-	public String createDataConfig(List<DataConfig> dataConfigList);
+	String createDataConfig(List<DataConfig> dataConfigList);
 
 	/**
 	 * ����data����
@@ -34,6 +34,6 @@ public interface IDataConfigDao {
 	 * @param dataConfig
 	 * @return
 	 */
-	public int updateDataConfig(DataConfig dataConfig);
+	int updateDataConfig(DataConfig dataConfig);
 
 }

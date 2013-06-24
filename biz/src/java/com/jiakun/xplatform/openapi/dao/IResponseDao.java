@@ -11,20 +11,20 @@ public interface IResponseDao {
 	 * @param responseStats
 	 * @return
 	 */
-	public int getResponseStatsCount(ResponseStats responseStats);
+	int getResponseStatsCount(ResponseStats responseStats);
 
 	/**
 	 * 
 	 * @param responseStats
 	 * @return
 	 */
-	public List<ResponseStats> getResponseStatsList(ResponseStats responseStats);
+	List<ResponseStats> getResponseStatsList(ResponseStats responseStats);
 
 	/**
 	 * 
 	 * @param responseStatsList
 	 * @return
 	 */
-	public String createResponseStats(List<ResponseStats> responseStatsList);
+	String createResponseStats(List<ResponseStats> responseStatsList);
 
 }

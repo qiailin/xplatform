@@ -15,8 +15,7 @@ public interface IDataDao {
 	 * @param userId
 	 * @return
 	 */
-	public List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId,
-			String userId);
+	List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId);
 
 	/**
 	 * ��ȡ���ֶ���Ϣ
@@ -25,23 +24,21 @@ public interface IDataDao {
 	 * @param userId
 	 * @return
 	 */
-	public List<TabColumn> getTabColumnsByConfigId(Long dataConfigId,
-			String userId);
+	List<TabColumn> getTabColumnsByConfigId(Long dataConfigId, String userId);
 
 	/**
 	 * 
 	 * @param dataInfoList
 	 * @return
 	 */
-	public String createDataInfo(List<DataInfo> dataInfoList);
+	String createDataInfo(List<DataInfo> dataInfoList);
 
 	/**
 	 * 
 	 * @param dataLogTotal
 	 * @return
 	 */
-	public List<Map<String, Object>> getDataPreviewList(
-			DataLogTotal dataLogTotal);
+	List<Map<String, Object>> getDataPreviewList(DataLogTotal dataLogTotal);
 
 	/**
 	 * 
@@ -50,7 +47,7 @@ public interface IDataDao {
 	 * @param primaryKey
 	 * @return
 	 */
-	public int deleteDataInfo(Long dataLogTotalId, String userId,
-			String tableName, String primaryKey);
+	int deleteDataInfo(Long dataLogTotalId, String userId, String tableName,
+			String primaryKey);
 
 }

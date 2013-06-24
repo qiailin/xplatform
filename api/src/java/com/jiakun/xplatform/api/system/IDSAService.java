@@ -22,7 +22,7 @@ public interface IDSAService {
 	 * 
 	 * @return base64�����ǩ��
 	 */
-	public String sign(String content, String keyPairName)
+	String sign(String content, String keyPairName)
 			throws NoSuchKeyPairException, DSAException;
 
 	/**
@@ -37,7 +37,7 @@ public interface IDSAService {
 	 * 
 	 * @return base64�����ǩ��
 	 */
-	public String sign(String content, String keyPairName, String charset)
+	String sign(String content, String keyPairName, String charset)
 			throws NoSuchKeyPairException, DSAException;
 
 	/**
@@ -52,7 +52,7 @@ public interface IDSAService {
 	 * 
 	 * @return ���ǩ����ȷ���򷵻�<code>true</code>
 	 */
-	public boolean check(String content, String signature, String keyPairName)
+	boolean check(String content, String signature, String keyPairName)
 			throws NoSuchKeyPairException, DSAException;
 
 	/**
@@ -68,12 +68,12 @@ public interface IDSAService {
 	 * 
 	 * @return ���ǩ����ȷ���򷵻�<code>true</code>
 	 */
-	public boolean check(String content, String signature, String keyPairName,
+	boolean check(String content, String signature, String keyPairName,
 			String charset) throws NoSuchKeyPairException, DSAException;
 
 	/**
 	 * @throws ServiceInitializationException
 	 */
-	public void init() throws ServiceInitializationException;
+	void init() throws ServiceInitializationException;
 
 }

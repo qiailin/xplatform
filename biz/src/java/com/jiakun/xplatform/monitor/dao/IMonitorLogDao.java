@@ -11,20 +11,20 @@ public interface IMonitorLogDao {
 	 * @param monitorLog
 	 * @return
 	 */
-	public int getMonitorLogCount(MonitorLog monitorLog);
+	int getMonitorLogCount(MonitorLog monitorLog);
 
 	/**
 	 * 
 	 * @param monitorLog
 	 * @return
 	 */
-	public List<MonitorLog> getMonitorLogList(MonitorLog monitorLog);
+	List<MonitorLog> getMonitorLogList(MonitorLog monitorLog);
 
 	/**
 	 * 
 	 * @param monitorLog
 	 * @return
 	 */
-	public Long createMonitorLog(MonitorLog monitorLog);
+	Long createMonitorLog(MonitorLog monitorLog);
 
 }

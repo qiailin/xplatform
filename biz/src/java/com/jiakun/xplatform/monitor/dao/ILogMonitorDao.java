@@ -11,26 +11,26 @@ public interface ILogMonitorDao {
 	 * @param logMonitor
 	 * @return
 	 */
-	public int getLogMonitorCount(LogMonitor logMonitor);
+	int getLogMonitorCount(LogMonitor logMonitor);
 
 	/**
 	 * 
 	 * @param logMonitor
 	 * @return
 	 */
-	public List<LogMonitor> getLogMonitorList(LogMonitor logMonitor);
+	List<LogMonitor> getLogMonitorList(LogMonitor logMonitor);
 
 	/**
 	 * 
 	 * @param logMonitorList
 	 * @return
 	 */
-	public String createLogMonitor(List<LogMonitor> logMonitorList);
+	String createLogMonitor(List<LogMonitor> logMonitorList);
 
 	/**
 	 * 
 	 * @return
 	 */
-	public List<LogMonitor> getLogMonitorList4SendEmail();
+	List<LogMonitor> getLogMonitorList4SendEmail();
 
 }

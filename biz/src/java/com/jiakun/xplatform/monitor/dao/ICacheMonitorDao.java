@@ -11,20 +11,20 @@ public interface ICacheMonitorDao {
 	 * @param cacheStats
 	 * @return
 	 */
-	public int getCacheMonitorCount(CacheStats cacheStats);
+	int getCacheMonitorCount(CacheStats cacheStats);
 
 	/**
 	 * 
 	 * @param cacheStats
 	 * @return
 	 */
-	public List<CacheStats> getCacheMonitorList(CacheStats cacheStats);
+	List<CacheStats> getCacheMonitorList(CacheStats cacheStats);
 
 	/**
 	 * 
 	 * @param cacheStatsList
 	 * @return
 	 */
-	public String createCacheMonitor(List<CacheStats> cacheStatsList);
+	String createCacheMonitor(List<CacheStats> cacheStatsList);
 
 }
