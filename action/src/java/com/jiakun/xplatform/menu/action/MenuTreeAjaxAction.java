@@ -25,8 +25,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 
 	private static final long serialVersionUID = -785317530988895673L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MenuTreeAjaxAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MenuTreeAjaxAction.class);
 
 	private IMenuService menuService;
 
@@ -37,8 +36,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 	private List<Tree4Ajax> treeList = new ArrayList<Tree4Ajax>();
 
 	@SuppressWarnings("unchecked")
-	@JsonResult(field = "treeList", include = { "id", "text", "href",
-			"hrefTarget", "leaf" })
+	@JsonResult(field = "treeList", include = { "id", "text", "href", "hrefTarget", "leaf" })
 	public String getMenuTreeListByAjax() {
 
 		List<Menu> menuList = null;
@@ -58,26 +56,22 @@ public class MenuTreeAjaxAction extends BaseAction {
 
 			if ("1".equals(node)) {
 				try {
-					o = (List<Menu>) memcachedCacheService
-							.get(IMemcachedCacheService.CACHE_KEY_MENU_TREE
-									+ alluser.getUserId() + "_" + node);
+					o =
+						(List<Menu>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_MENU_TREE
+							+ alluser.getUserId() + "_" + node);
 				} catch (Exception e) {
 				}
 			}
 
-			menuList = (o == null || o.size() == 0) ? menuService
-					.getMenuTreeList(menu) : o;
+			menuList = (o == null || o.size() == 0) ? menuService.getMenuTreeList(menu) : o;
 
 			menu = null;
 
 			if ("1".equals(node)) {
 				if (o == null || o.size() == 0) {
 					try {
-						memcachedCacheService
-								.set(IMemcachedCacheService.CACHE_KEY_MENU_TREE
-										+ alluser.getUserId() + "_" + node,
-										menuList,
-										IMemcachedCacheService.CACHE_KEY_MENU_TREE_DEFAULT_EXP);
+						memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_MENU_TREE + alluser.getUserId()
+							+ "_" + node, menuList, IMemcachedCacheService.CACHE_KEY_MENU_TREE_DEFAULT_EXP);
 					} catch (Exception e) {
 					}
 				}
@@ -92,9 +86,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 			Tree4Ajax tree = new Tree4Ajax();
 			tree.setId(String.valueOf(menu.getId()));
 			tree.setText(menu.getName());
-			if (StringUtil.isEmpty(menu.getUrl())) {
-				// tree.setHref("#");
-			} else {
+			if (StringUtil.isNotEmpty(menu.getUrl())) {
 				tree.setHref(menu.getUrl());
 			}
 			tree.setHrefTarget(menu.getTarget());
@@ -123,8 +115,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 
