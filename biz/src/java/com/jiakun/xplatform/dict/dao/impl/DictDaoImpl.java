@@ -42,12 +42,12 @@ public class DictDaoImpl extends BaseDaoImpl implements IDictDao {
 				"dict.getCmsTbDictTypeList", cmsTbDictType);
 	}
 
-	public Long CreateDict(CmsTbDict cmsTbDict) {
+	public Long createDict(CmsTbDict cmsTbDict) {
 		return (Long) getSqlMapClientTemplate().insert("dict.createDict",
 				cmsTbDict);
 	}
 
-	public Long CreateDictType(CmsTbDictType cmsTbDictType) {
+	public Long createDictType(CmsTbDictType cmsTbDictType) {
 		return (Long) getSqlMapClientTemplate().insert("dict.createDictType",
 				cmsTbDictType);
 	}

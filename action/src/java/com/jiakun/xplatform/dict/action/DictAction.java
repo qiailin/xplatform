@@ -136,7 +136,7 @@ public class DictAction extends BaseAction {
 		return "toCreateDict";
 	}
 
-	public String CreateDictType() {
+	public String createDictType() {
 		this.setSuccessMessage("�����ɹ�.");
 
 		BooleanResult booleanResult = dictService.createDictType(cmsTbDictType);
@@ -147,7 +147,7 @@ public class DictAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	public String CreateDict() {
+	public String createDict() {
 		this.setSuccessMessage("�����ɹ�.");
 		BooleanResult booleanResult = dictService.createDict(cmsTbDict);
 		if (!booleanResult.getResult()) {
@@ -189,7 +189,7 @@ public class DictAction extends BaseAction {
 	}
 
 	@JsonResult(field = "stringResult", include = { "result", "code" })
-	public String DeleteDict() {
+	public String deleteDict() {
 		stringResult.setResult("T");
 		CmsTbDict deleteCmsTbDict = new CmsTbDict();
 		deleteCmsTbDict.setItemId(itemId);
@@ -204,7 +204,7 @@ public class DictAction extends BaseAction {
 	}
 
 	@JsonResult(field = "stringResult", include = { "result", "code" })
-	public String DeleteDictType() {
+	public String deleteDictType() {
 		stringResult.setResult("T");
 		CmsTbDictType deleteCmsTbDictType = new CmsTbDictType();
 		deleteCmsTbDictType.setDictTypeId(dictTypeId);
