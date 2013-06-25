@@ -61,8 +61,7 @@ public class BaseAction extends ActionSupport {
 	 */
 	protected HttpServletResponse getServletResponse() {
 		ActionContext ctx = ActionContext.getContext();
-		return (HttpServletResponse) ctx
-				.get(ServletActionContext.HTTP_RESPONSE);
+		return (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
 	}
 
 	protected String actionName;
@@ -129,7 +128,7 @@ public class BaseAction extends ActionSupport {
 	/**
 	 * ��������
 	 */
-	protected Properties env;
+	protected Properties env = new Properties();
 
 	protected String token;
 
@@ -156,8 +155,7 @@ public class BaseAction extends ActionSupport {
 	 * @return
 	 */
 	public AllUsers getUser() {
-		AllUsers loginUser = (AllUsers) getSession().getAttribute(
-				"ACEGI_SECURITY_LAST_LOGINUSER");
+		AllUsers loginUser = (AllUsers) getSession().getAttribute("ACEGI_SECURITY_LAST_LOGINUSER");
 		return loginUser;
 	}
 
