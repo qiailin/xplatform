@@ -40,7 +40,7 @@ public class DateUtil {
 
 	/** ��֤�����ַ���Ч���ڷ�Χ1900-1-1��2099-12-31. */
 	private static final Pattern pattern = Pattern
-			.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
+		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
 
 	/**
 	 * ��ǰʱ�����days��
@@ -360,8 +360,7 @@ public class DateUtil {
 		}
 
 		try {
-			@SuppressWarnings("unused")
-			Date test = getDateFromStr(datetime); // �����ܷ��ʽ����ʱ��
+			getDateFromStr(datetime);
 			return datetime;
 		} catch (Exception e) {
 			return "";
@@ -451,11 +450,9 @@ public class DateUtil {
 	 *            ʱ���ʽ
 	 * @return
 	 */
-	public static int getQuot(String startDateStr, String endDateStr,
-			String format) {
+	public static int getQuot(String startDateStr, String endDateStr, String format) {
 		long quot = 0;
-		format = (format != null && format.length() > 0) ? format
-				: DEFAULT_DATE_FORMAT;
+		format = (format != null && format.length() > 0) ? format : DEFAULT_DATE_FORMAT;
 		SimpleDateFormat ft = new SimpleDateFormat(format);
 		try {
 			Date date1 = ft.parse(endDateStr);
@@ -539,8 +536,7 @@ public class DateUtil {
 
 	public static Date getDateTime(String dateTime, String formatPattern) {
 		try {
-			if (StringUtil.isNotBlank(dateTime)
-					&& StringUtil.isNotBlank(formatPattern)) {
+			if (StringUtil.isNotBlank(dateTime) && StringUtil.isNotBlank(formatPattern)) {
 				SimpleDateFormat format = new SimpleDateFormat(formatPattern);
 				return format.parse(dateTime);
 			}
@@ -560,8 +556,7 @@ public class DateUtil {
 	public static Date getDateDetailTime(String dateTime) {
 		try {
 			if (StringUtil.isNotBlank(dateTime)) {
-				SimpleDateFormat format = new SimpleDateFormat(
-						"yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 				return format.parse(dateTime);
 			}
@@ -622,8 +617,7 @@ public class DateUtil {
 	 * @param pattern
 	 * @return Map{firstDay:yyyy-MM-dd, lastDay:yyyy-MM-dd}
 	 */
-	public static Map<String, String> getFLDayMap(String monthRange,
-			String pattern) {
+	public static Map<String, String> getFLDayMap(String monthRange, String pattern) {
 		Map<String, String> rs = new LinkedHashMap<String, String>();
 
 		SimpleDateFormat df = new SimpleDateFormat(pattern);
@@ -642,8 +636,7 @@ public class DateUtil {
 			calendar.set(Calendar.DAY_OF_MONTH, 1);
 			rs.put("firstDay", df.format(calendar.getTime()));
 
-			calendar.set(Calendar.DAY_OF_MONTH,
-					calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+			calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 			rs.put("lastDay", df.format(calendar.getTime()));
 
 			return rs;
@@ -653,10 +646,10 @@ public class DateUtil {
 		 * �����ȵ��³�����ĩ
 		 */
 		int[][] seasons = { { 2, 4 }, // ����
-				{ 5, 7 }, // �ļ�
-				{ 8, 10 }, // �＾
-				{ 11, 1 } // ����
-		};
+			{ 5, 7 }, // �ļ�
+			{ 8, 10 }, // �＾
+			{ 11, 1 } // ����
+			};
 		int cm = calendar.get(Calendar.MONTH) + 1;
 
 		for (int[] im : seasons) {
@@ -666,8 +659,7 @@ public class DateUtil {
 				rs.put("firstDay", df.format(calendar.getTime()));
 
 				calendar.set(Calendar.MONTH, im[1] - 1);
-				calendar.set(Calendar.DAY_OF_MONTH,
-						calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+				calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 				rs.put("lastDay", df.format(calendar.getTime()));
 
 				break;

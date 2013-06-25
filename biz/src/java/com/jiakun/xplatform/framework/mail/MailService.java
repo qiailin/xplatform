@@ -28,8 +28,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 
 public class MailService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MailService.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MailService.class);
 
 	// ���巢���ˡ��ռ��ˡ�SMTP���������û������롢���⡢���ݵ�
 	private String displayName;
@@ -117,9 +116,8 @@ public class MailService {
 	/**
 	 * ��ʼ��SMTP��������ַ��������E-mail��ַ���û������롢�����ߡ����⡢����
 	 */
-	public MailService(String smtpServer, String from, String displayName,
-			String username, String password, String to, String subject,
-			String content) {
+	public MailService(String smtpServer, String from, String displayName, String username, String password, String to,
+		String subject, String content) {
 		this.smtpServer = smtpServer;
 		this.from = from;
 		this.displayName = displayName;
@@ -134,8 +132,7 @@ public class MailService {
 	/**
 	 * ��ʼ��SMTP��������ַ��������E-mail��ַ�������ߡ����⡢����
 	 */
-	public MailService(String smtpServer, String from, String displayName,
-			String to, String subject, String content) {
+	public MailService(String smtpServer, String from, String displayName, String to, String subject, String content) {
 		this.smtpServer = smtpServer;
 		this.from = from;
 		this.displayName = displayName;
@@ -173,11 +170,10 @@ public class MailService {
 			msg = new MimeMessage(session);
 			Address from_address = null;
 			try {
-				displayName = MimeUtility
-						.encodeText(displayName, "gb2312", "B");
+				displayName = MimeUtility.encodeText(displayName, "gb2312", "B");
 				from_address = new InternetAddress(from, displayName);
 				msg.setFrom(from_address);
-			} catch (java.io.UnsupportedEncodingException e) {
+			} catch (UnsupportedEncodingException e) {
 				logger.error(LogUtil.parserBean(from_address), e);
 			}
 			// ����ռ���
@@ -198,7 +194,7 @@ public class MailService {
 			msg.setSubject(subject);
 			Multipart mp = new MimeMultipart();
 			MimeBodyPart mbp = new MimeBodyPart();
-			mbp.setContent(content.toString(), "text/html;charset=GBK");
+			mbp.setContent(content, "text/html;charset=GBK");
 			mp.addBodyPart(mbp);
 			// �и���
 			if (!files.isEmpty()) {
@@ -209,8 +205,7 @@ public class MailService {
 					// �õ��������?����BodyPart
 					mbp.setDataHandler(new DataHandler(fds));
 					try {
-						filename = MimeUtility.encodeText(file.getFilename(),
-								"gb2312", "B");
+						filename = MimeUtility.encodeText(file.getFilename(), "gb2312", "B");
 					} catch (UnsupportedEncodingException e) {
 						logger.error(LogUtil.parserBean(file), e);
 					}
