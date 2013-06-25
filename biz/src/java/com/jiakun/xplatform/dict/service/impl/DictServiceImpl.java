@@ -81,7 +81,7 @@ public class DictServiceImpl implements IDictService {
 	public BooleanResult createDict(CmsTbDict cmsTbDict) {
 		BooleanResult booleanResult = new BooleanResult();
 		try {
-			long itemId = dictDao.CreateDict(cmsTbDict);
+			long itemId = dictDao.createDict(cmsTbDict);
 			booleanResult.setResult(true);
 			booleanResult.setCode(String.valueOf(itemId));
 		} catch (Exception e) {
@@ -96,7 +96,7 @@ public class DictServiceImpl implements IDictService {
 	public BooleanResult createDictType(CmsTbDictType cmsTbDictType) {
 		BooleanResult booleanResult = new BooleanResult();
 		try {
-			long dictTypeId = dictDao.CreateDictType(cmsTbDictType);
+			long dictTypeId = dictDao.createDictType(cmsTbDictType);
 			booleanResult.setResult(true);
 			booleanResult.setCode(String.valueOf(dictTypeId));
 		} catch (Exception e) {

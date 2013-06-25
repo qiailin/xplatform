@@ -22,8 +22,8 @@ import com.alibaba.common.lang.ArrayUtil;
 
 public class Encrypter {
 	private static final Logger log = Logger.getLogger(Encrypter.class);
-	private static byte[] salt = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8,
-			(byte) 0x32, (byte) 0x56, (byte) 0x35, (byte) 0xE3, (byte) 0x03 };
+	private static byte[] salt = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32, (byte) 0x56, (byte) 0x35,
+		(byte) 0xE3, (byte) 0x03 };
 	private static int iterationCount = 19;
 	private Cipher ecipher;
 	private Cipher dcipher;
@@ -32,12 +32,9 @@ public class Encrypter {
 		String passPhrase = "!@#$%^&*()_&^$%^$%$#@KJOIJ*&W&^T$%$#W@%*&(U)(JUOIJJIieohfiuehgtru";
 
 		try {
-			KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt,
-					iterationCount);
-			SecretKey key = SecretKeyFactory.getInstance("PBEWithMD5AndDES")
-					.generateSecret(keySpec);
-			AlgorithmParameterSpec paramSpec = new PBEParameterSpec(salt,
-					iterationCount);
+			KeySpec keySpec = new PBEKeySpec(passPhrase.toCharArray(), salt, iterationCount);
+			SecretKey key = SecretKeyFactory.getInstance("PBEWithMD5AndDES").generateSecret(keySpec);
+			AlgorithmParameterSpec paramSpec = new PBEParameterSpec(salt, iterationCount);
 
 			ecipher = Cipher.getInstance(key.getAlgorithm());
 			dcipher = Cipher.getInstance(key.getAlgorithm());
@@ -60,39 +57,27 @@ public class Encrypter {
 		try {
 			return ecipher.doFinal(plaintext);
 		} catch (IllegalStateException e) {
-			log.error(
-					"Failed to encrypt object" + ArrayUtil.toString(plaintext),
-					e);
+			log.error("Failed to encrypt object" + ArrayUtil.toString(plaintext), e);
 		} catch (IllegalBlockSizeException e) {
-			log.error(
-					"Failed to encrypt object" + ArrayUtil.toString(plaintext),
-					e);
+			log.error("Failed to encrypt object" + ArrayUtil.toString(plaintext), e);
 		} catch (BadPaddingException e) {
-			log.error(
-					"Failed to encrypt object" + ArrayUtil.toString(plaintext),
-					e);
+			log.error("Failed to encrypt object" + ArrayUtil.toString(plaintext), e);
 		}
 
-		return null;
+		return new byte[0];
 	}
 
 	public byte[] decrypt(byte[] cryptotext) {
 		try {
 			return dcipher.doFinal(cryptotext);
 		} catch (IllegalStateException e) {
-			log.error(
-					"Failed to decrypt object" + ArrayUtil.toString(cryptotext),
-					e);
+			log.error("Failed to decrypt object" + ArrayUtil.toString(cryptotext), e);
 		} catch (IllegalBlockSizeException e) {
-			log.error(
-					"Failed to decrypt object" + ArrayUtil.toString(cryptotext),
-					e);
+			log.error("Failed to decrypt object" + ArrayUtil.toString(cryptotext), e);
 		} catch (BadPaddingException e) {
-			log.error(
-					"Failed to decrypt object" + ArrayUtil.toString(cryptotext),
-					e);
+			log.error("Failed to decrypt object" + ArrayUtil.toString(cryptotext), e);
 		}
 
-		return null;
+		return new byte[0];
 	}
 }

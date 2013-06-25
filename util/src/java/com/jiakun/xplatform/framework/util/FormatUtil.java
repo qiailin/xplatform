@@ -101,7 +101,7 @@ public class FormatUtil {
 	/**
 	 * �ַ��Сдת��
 	 */
-	public static String LowerToUpper(String s) {
+	public static String lowerToUpper(String s) {
 		if (StringUtil.isEmpty(s)) {
 			return null;
 		}

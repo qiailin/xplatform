@@ -56,14 +56,14 @@ public interface IDictDao {
 	 * @param cmsTbDictType
 	 * @return
 	 */
-	Long CreateDictType(CmsTbDictType cmsTbDictType);
+	Long createDictType(CmsTbDictType cmsTbDictType);
 
 	/**
 	 * 
 	 * @param cmsTbDict
 	 * @return
 	 */
-	Long CreateDict(CmsTbDict cmsTbDict);
+	Long createDict(CmsTbDict cmsTbDict);
 
 	/**
 	 * 
