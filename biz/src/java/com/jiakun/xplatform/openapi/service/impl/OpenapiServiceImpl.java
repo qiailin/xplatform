@@ -23,8 +23,6 @@ public class OpenapiServiceImpl implements IOpenapiService {
 
 	private ICAService caService;
 
-	private IAllUserService allUserService;
-
 	public String rest(MultivaluedMap<String, String> params) {
 		Long startTime = System.currentTimeMillis();
 
@@ -34,8 +32,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			response.setCode(IOpenapiService.ERROR);
 			response.setMsg(IOpenapiService.ERROR_MSG_PARAMS);
 
-			return response(IOpenapiService.ERROR_MSG_PARAMS, startTime,
-					response);
+			return response(IOpenapiService.ERROR_MSG_PARAMS, startTime, response);
 		}
 
 		String method = null;
@@ -51,8 +48,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			response.setCode(IOpenapiService.ERROR);
 			response.setMsg(IOpenapiService.ERROR_MSG_METHOD);
 
-			return response(IOpenapiService.ERROR_MSG_METHOD, startTime,
-					response);
+			return response(IOpenapiService.ERROR_MSG_METHOD, startTime, response);
 		}
 
 		// ��� method�жϽӿ�
@@ -87,12 +83,6 @@ public class OpenapiServiceImpl implements IOpenapiService {
 
 			return response(method, startTime, response);
 
-		} else if ("getAllUsersByOrgId".equals(method)) {
-			List<AllUsers> resultList = allUserService
-					.getAllUsersByOrgId(params.get("orgId").get(0));
-
-			return response(method, startTime, resultList);
-
 		}
 
 		return null;
@@ -114,8 +104,8 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			responseStats.setStartTime(startTime);
 			responseStats.setEndTime(System.currentTimeMillis());
 
-			List<ResponseStats> list = (List<ResponseStats>) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
+			List<ResponseStats> list =
+				(List<ResponseStats>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
 
 			// ��ʼ��cache
 			if (list == null || list.size() == 0) {
@@ -124,9 +114,8 @@ public class OpenapiServiceImpl implements IOpenapiService {
 
 			list.add(responseStats);
 
-			memcachedCacheService.set(
-					IMemcachedCacheService.CACHE_KEY_OPEN_API, list,
-					IMemcachedCacheService.CACHE_KEY_OPEN_API_DEFAULT_EXP);
+			memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_OPEN_API, list,
+				IMemcachedCacheService.CACHE_KEY_OPEN_API_DEFAULT_EXP);
 
 		} catch (Exception e) {
 		}
@@ -138,8 +127,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 
@@ -149,14 +137,6 @@ public class OpenapiServiceImpl implements IOpenapiService {
 
 	public void setCaService(ICAService caService) {
 		this.caService = caService;
-	}
-
-	public IAllUserService getAllUserService() {
-		return allUserService;
-	}
-
-	public void setAllUserService(IAllUserService allUserService) {
-		this.allUserService = allUserService;
 	}
 
 }

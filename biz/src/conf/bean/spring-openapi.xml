@@ -7,9 +7,6 @@
 		class="com.jiakun.xplatform.openapi.service.impl.OpenapiServiceImpl">
 		<property name="memcachedCacheService" ref="memcachedCacheService" />
 		<property name="caService" ref="caService" />
-		<property name="workflowEngineService" ref="workflowEngineService"/>
-		<property name="orgService" ref="orgService"/>
-		<property name="allUserService" ref="allUserService"/>
 	</bean>
 	
 	<bean id="responseAction" class="com.jiakun.xplatform.openapi.action.ResponseAction"
