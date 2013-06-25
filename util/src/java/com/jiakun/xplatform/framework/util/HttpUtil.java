@@ -55,8 +55,7 @@ public class HttpUtil {
 	 */
 	private static HttpRequestRetryHandler requestRetryHandler = new HttpRequestRetryHandler() {
 		// �Զ���Ļָ�����
-		public boolean retryRequest(IOException exception, int executionCount,
-				HttpContext context) {
+		public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
 			// ���ûָ����ԣ��ڷ����쳣ʱ���Զ�����3��
 			if (executionCount >= 3) {
 				// Do not retry if over max retry count
@@ -70,8 +69,7 @@ public class HttpUtil {
 				// Do not retry on SSL handshake exception
 				return false;
 			}
-			HttpRequest request = (HttpRequest) context
-					.getAttribute(ExecutionContext.HTTP_REQUEST);
+			HttpRequest request = (HttpRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
 			boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
 			if (!idempotent) {
 				// Retry if the request is considered idempotent
@@ -87,13 +85,12 @@ public class HttpUtil {
 	 */
 	private static ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 		// �Զ�����Ӧ����
-		public String handleResponse(HttpResponse response)
-				throws ClientProtocolException, IOException {
+		public String handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
 				@SuppressWarnings("deprecation")
-				String charset = EntityUtils.getContentCharSet(entity) == null ? CHARSET_GBK
-						: EntityUtils.getContentCharSet(entity);
+				String charset =
+					EntityUtils.getContentCharSet(entity) == null ? CHARSET_GBK : EntityUtils.getContentCharSet(entity);
 				return new String(EntityUtils.toByteArray(entity), charset);
 			} else {
 				return null;
@@ -123,8 +120,7 @@ public class HttpUtil {
 	 * @return ��Ӧ��Ϣ
 	 * @throws Exception
 	 */
-	public static String get(String url, Map<String, String> params)
-			throws Exception {
+	public static String get(String url, Map<String, String> params) throws Exception {
 		return get(url, params, null);
 	}
 
@@ -140,8 +136,7 @@ public class HttpUtil {
 	 * @return ��Ӧ��Ϣ
 	 * @throws Exception
 	 */
-	public static String get(String url, Map<String, String> params,
-			String charset) throws Exception {
+	public static String get(String url, Map<String, String> params, String charset) throws Exception {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
@@ -149,8 +144,9 @@ public class HttpUtil {
 		if (qparams != null && qparams.size() > 0) {
 			charset = (charset == null ? CHARSET_GBK : charset);
 			String formatParams = URLEncodedUtils.format(qparams, charset);
-			url = (url.indexOf("?")) < 0 ? (url + "?" + formatParams) : (url
-					.substring(0, url.indexOf("?") + 1) + formatParams);
+			url =
+				(url.indexOf("?")) < 0 ? (url + "?" + formatParams)
+					: (url.substring(0, url.indexOf("?") + 1) + formatParams);
 		}
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		HttpGet hg = new HttpGet(url);
@@ -179,8 +175,7 @@ public class HttpUtil {
 	 * @return ��Ӧ��Ϣ
 	 * @throws Exception
 	 */
-	public static String post(String url, Map<String, String> params)
-			throws Exception {
+	public static String post(String url, Map<String, String> params) throws Exception {
 		return post(url, params, null);
 	}
 
@@ -196,8 +191,7 @@ public class HttpUtil {
 	 * @return ��Ӧ��Ϣ
 	 * @throws Exception
 	 */
-	public static String post(String url, Map<String, String> params,
-			String charset) throws Exception {
+	public static String post(String url, Map<String, String> params, String charset) throws Exception {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
@@ -208,8 +202,7 @@ public class HttpUtil {
 			if (charset == null || StringUtil.isEmpty(charset)) {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params));
 			} else {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params),
-						charset);
+				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
 			throw new Exception("��֧�ֵı��뼯", e);
@@ -251,10 +244,8 @@ public class HttpUtil {
 	 * @return ��Ӧ��Ϣ
 	 * @throws Exception
 	 */
-	public static String post(String url, Map<String, String> params,
-			String charset, final URL keystoreUrl,
-			final String keystorePassword, final URL truststoreUrl,
-			final String truststorePassword) throws Exception {
+	public static String post(String url, Map<String, String> params, String charset, final URL keystoreUrl,
+		final String keystorePassword, final URL truststoreUrl, final String truststorePassword) throws Exception {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
@@ -264,8 +255,7 @@ public class HttpUtil {
 			if (charset == null || StringUtil.isEmpty(charset)) {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params));
 			} else {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params),
-						charset);
+				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
 			throw new Exception("��֧�ֵı��뼯", e);
@@ -274,15 +264,11 @@ public class HttpUtil {
 		String responseStr = null;
 		try {
 			KeyStore keyStore = createKeyStore(keystoreUrl, keystorePassword);
-			KeyStore trustStore = createKeyStore(truststoreUrl,
-					keystorePassword);
-			SSLSocketFactory socketFactory = new SSLSocketFactory(keyStore,
-					keystorePassword, trustStore);
+			KeyStore trustStore = createKeyStore(truststoreUrl, keystorePassword);
+			SSLSocketFactory socketFactory = new SSLSocketFactory(keyStore, keystorePassword, trustStore);
 			@SuppressWarnings("deprecation")
-			Scheme scheme = new Scheme(SSL_DEFAULT_SCHEME, socketFactory,
-					SSL_DEFAULT_PORT);
-			httpclient.getConnectionManager().getSchemeRegistry()
-					.register(scheme);
+			Scheme scheme = new Scheme(SSL_DEFAULT_SCHEME, socketFactory, SSL_DEFAULT_PORT);
+			httpclient.getConnectionManager().getSchemeRegistry().register(scheme);
 			hp = new HttpPost(url);
 			hp.setEntity(formEntity);
 			responseStr = httpclient.execute(hp, responseHandler);
@@ -316,16 +302,13 @@ public class HttpUtil {
 	 */
 	private static DefaultHttpClient getDefaultHttpClient(final String charset) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
-		httpclient.getParams().setParameter(
-				CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+		httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 		// ģ������������һЩ����������ֻ������������ʵ�����
 		httpclient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,
-				"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)");
-		httpclient.getParams().setParameter(
-				CoreProtocolPNames.USE_EXPECT_CONTINUE, Boolean.FALSE);
-		httpclient.getParams().setParameter(
-				CoreProtocolPNames.HTTP_CONTENT_CHARSET,
-				charset == null ? CHARSET_GBK : charset);
+			"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)");
+		httpclient.getParams().setParameter(CoreProtocolPNames.USE_EXPECT_CONTINUE, Boolean.FALSE);
+		httpclient.getParams().setParameter(CoreProtocolPNames.HTTP_CONTENT_CHARSET,
+			charset == null ? CHARSET_GBK : charset);
 		httpclient.setHttpRequestRetryHandler(requestRetryHandler);
 
 		return httpclient;
@@ -339,8 +322,7 @@ public class HttpUtil {
 	 * @param httpclient
 	 *            client����
 	 */
-	private static void abortConnection(final HttpRequestBase hrb,
-			final HttpClient httpclient) {
+	private static void abortConnection(final HttpRequestBase hrb, final HttpClient httpclient) {
 		if (hrb != null) {
 			hrb.abort();
 		}
@@ -358,9 +340,8 @@ public class HttpUtil {
 	 *            keystore������Կ
 	 * @return keystore ����
 	 */
-	private static KeyStore createKeyStore(final URL url, final String password)
-			throws KeyStoreException, NoSuchAlgorithmException,
-			CertificateException, IOException {
+	private static KeyStore createKeyStore(final URL url, final String password) throws KeyStoreException,
+		NoSuchAlgorithmException, CertificateException, IOException {
 		if (url == null) {
 			throw new IllegalArgumentException("Keystore url may not be null");
 		}
@@ -386,8 +367,7 @@ public class HttpUtil {
 	 *            ����, ��/ֵ��
 	 * @return NameValuePair����
 	 */
-	private static List<NameValuePair> getParamsList(
-			Map<String, String> paramsMap) {
+	private static List<NameValuePair> getParamsList(Map<String, String> paramsMap) {
 		if (paramsMap == null || paramsMap.size() == 0) {
 			return null;
 		}
@@ -399,19 +379,13 @@ public class HttpUtil {
 		return params;
 	}
 
-	public static void main(String[] args) {
-		try {
-			Map<String, String> params = new HashMap<String, String>();
-			params.put("method", "xplatform.user.login");
-			params.put("passport", "123");
-			params.put("password", "123");
-			for (int i = 0; i < 10; i++) {
-				HttpUtil.post(
-						"http://ims.jiakun.com.cn:8191/xplatform/router/rest",
-						params);
-			}
-		} catch (Exception e) {
-
+	public static void main(String[] args) throws Throwable {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("method", "xplatform.user.login");
+		params.put("passport", "123");
+		params.put("password", "123");
+		for (int i = 0; i < 10; i++) {
+			HttpUtil.post("http://ims.jiakun.com.cn:8191/xplatform/router/rest", params);
 		}
 	}
 }

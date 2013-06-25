@@ -24,10 +24,14 @@ import com.jiakun.xplatform.framework.util.DateUtil;
 import com.jiakun.xplatform.framework.util.FileUtil;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class NewsAction extends BaseAction {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(NewsAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(NewsAction.class);
 
 	private static final long serialVersionUID = 1L;
 	private int total;
@@ -84,19 +88,16 @@ public class NewsAction extends BaseAction {
 
 		List<NewsDetail> o = null;
 		try {
-			o = (List<NewsDetail>) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_NEWS);
+			o = (List<NewsDetail>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_NEWS);
 		} catch (Exception e) {
 		}
 
-		List<NewsDetail> detailList = (o == null || o.size() == 0) ? newsService
-				.getNewsList() : o;
+		List<NewsDetail> detailList = (o == null || o.size() == 0) ? newsService.getNewsList() : o;
 
 		if (o == null || o.size() == 0) {
 			try {
-				memcachedCacheService.set(
-						IMemcachedCacheService.CACHE_KEY_NEWS, detailList,
-						IMemcachedCacheService.CACHE_KEY_NEWS_DEFAULT_EXP);
+				memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_NEWS, detailList,
+					IMemcachedCacheService.CACHE_KEY_NEWS_DEFAULT_EXP);
 			} catch (Exception e) {
 			}
 		}
@@ -141,8 +142,7 @@ public class NewsAction extends BaseAction {
 
 			// ��ȡ������ϸ
 			lanNewsDelailbean = newsService.getNewsDetail(lanNewsDelailbean);
-			lanNewsDelailbean.setClicks_ratio(lanNewsDelailbean
-					.getClicks_ratio() + 1);
+			lanNewsDelailbean.setClicks_ratio(lanNewsDelailbean.getClicks_ratio() + 1);
 
 			// �޸ĵ������
 			newsService.updateNewsDetail(lanNewsDelailbean);
@@ -150,8 +150,7 @@ public class NewsAction extends BaseAction {
 			// ��ȡ����
 			if (StringUtil.isNotEmpty(lanNewsDelailbean.getDelail_content())) {
 				try {
-					conent = FileUtil.readFile(oaTxtFilePath + "/"
-							+ lanNewsDelailbean.getDelail_content());
+					conent = FileUtil.readFile(oaTxtFilePath + "/" + lanNewsDelailbean.getDelail_content());
 				} catch (Exception e) {
 					logger.error(e);
 				}
@@ -166,8 +165,7 @@ public class NewsAction extends BaseAction {
 			lanNewsFileList = newsService.getNewsFileList(lanNewsFile);
 			if (lanNewsFileList != null && lanNewsFileList.size() > 0) {
 				for (NewsFile NewsFile : lanNewsFileList) {
-					NewsFile.setNews_file_url(oaReadFilePath + "/"
-							+ NewsFile.getNews_file_url());
+					NewsFile.setNews_file_url(oaReadFilePath + "/" + NewsFile.getNews_file_url());
 				}
 				upload_sign = "Y";
 			} else {
@@ -219,8 +217,7 @@ public class NewsAction extends BaseAction {
 			for (NewsTotal total : newsTreeList) {
 				Tree4Ajax tree = new Tree4Ajax();
 				tree.setId(String.valueOf(total.getTotal_id()));
-				tree.setText(total.getTotal_name() + "|"
-						+ total.getTotal_upload_sign());
+				tree.setText(total.getTotal_name() + "|" + total.getTotal_upload_sign());
 				// tree.setCls("folder");
 				treeList.add(tree);
 			}
@@ -275,9 +272,8 @@ public class NewsAction extends BaseAction {
 	 * @return
 	 */
 
-	@JsonResult(field = "lanNewsTotalList", include = { "total_id",
-			"total_parent_id", "total_name", "total_title", "total_date",
-			"total_code", "total_show", "total_sign", "total_upload_sign" }, total = "total")
+	@JsonResult(field = "lanNewsTotalList", include = { "total_id", "total_parent_id", "total_name", "total_title",
+		"total_date", "total_code", "total_show", "total_sign", "total_upload_sign" }, total = "total")
 	public String searchNewsTotalList() {
 		NewsTotal newsTotal = new NewsTotal();
 		newsTotal = this.getSearchInfo(newsTotal);
@@ -318,9 +314,8 @@ public class NewsAction extends BaseAction {
 	 * @return
 	 */
 
-	@JsonResult(field = "lanNewsDetailList", include = { "delail_id",
-			"total_id", "delail_title", "delail_operator", "detail_date",
-			"clicks_ratio", "total_name" }, total = "total")
+	@JsonResult(field = "lanNewsDetailList", include = { "delail_id", "total_id", "delail_title", "delail_operator",
+		"detail_date", "clicks_ratio", "total_name" }, total = "total")
 	public String searchNewsDetailList() {
 		NewsDetail newsDetail = new NewsDetail();
 		newsDetail = this.getSearchInfo(newsDetail);
@@ -387,8 +382,7 @@ public class NewsAction extends BaseAction {
 	 * @return
 	 */
 
-	@JsonResult(field = "lanNewsDetailList", include = { "delail_id",
-			"delail_title", "detail_date", "clicks_ratio" }, total = "total")
+	@JsonResult(field = "lanNewsDetailList", include = { "delail_id", "delail_title", "detail_date", "clicks_ratio" }, total = "total")
 	public String searchNewsD() {
 		NewsTotal NewsTotal = new NewsTotal();
 		NewsTotal = this.getSearchInfo(NewsTotal);
@@ -510,8 +504,7 @@ public class NewsAction extends BaseAction {
 		NewsFile newsFilebean = new NewsFile();
 		String imageFileName = "";
 
-		if ("N".equals(totalUploadSign)
-				&& StringUtil.isNotEmpty(delail_content)) {
+		if ("N".equals(totalUploadSign) && StringUtil.isNotEmpty(delail_content)) {
 			File savedir = new File(oaTxtFilePath);
 			// ���Ŀ¼�����ڣ����½�
 			if (!savedir.exists()) {
@@ -539,23 +532,20 @@ public class NewsAction extends BaseAction {
 		if (upload != null && upload.length > 0) {
 			for (int i = 0; i < upload.length; i++) {
 				if (uploadFileName[i] != null && uploadFileName[i].length() > 0) {
-					imageFileName = UUID.randomUUID()
-							+ FileUtil.getFileExtention(uploadFileName[i]);
+					imageFileName = UUID.randomUUID() + FileUtil.getFileExtention(uploadFileName[i]);
 					File savedir = new File(oaFileFilePath);
 					// ���Ŀ¼�����ڣ����½�
 					if (!savedir.exists()) {
 						savedir.mkdirs();
 					}
-					File imageFile = new File(oaFileFilePath + "/"
-							+ imageFileName);
+					File imageFile = new File(oaFileFilePath + "/" + imageFileName);
 					FileUtil.saveAsFile(upload[i], imageFile);
 
 					newsFilebean.setDetail_id(detailId);
 					newsFilebean.setNews_file_name(uploadFileName[i]);
 					newsFilebean.setNews_file_url(imageFileName);
 
-					Long news_file_id = newsService
-							.createNewsFile(newsFilebean);
+					Long news_file_id = newsService.createNewsFile(newsFilebean);
 					if (0l == news_file_id) {
 						this.setFailMessage("�������Ÿ���ʧ�ܣ�");
 						return SUCCESS;
@@ -593,8 +583,7 @@ public class NewsAction extends BaseAction {
 			// ��ȡ����
 			if (StringUtil.isNotEmpty(lanNewsDelailbean.getDelail_content())) {
 				try {
-					conent = FileUtil.readFile(oaTxtFilePath + "/"
-							+ lanNewsDelailbean.getDelail_content());
+					conent = FileUtil.readFile(oaTxtFilePath + "/" + lanNewsDelailbean.getDelail_content());
 				} catch (Exception e) {
 					logger.error(e);
 				}
@@ -610,8 +599,7 @@ public class NewsAction extends BaseAction {
 			lanNewsFileList = newsService.getNewsFileList(lanNewsFile);
 			if (lanNewsFileList != null && lanNewsFileList.size() > 0) {
 				for (NewsFile NewsFile : lanNewsFileList) {
-					NewsFile.setNews_file_url(oaReadFilePath + "/"
-							+ NewsFile.getNews_file_url());
+					NewsFile.setNews_file_url(oaReadFilePath + "/" + NewsFile.getNews_file_url());
 				}
 			}
 		}
@@ -637,15 +625,13 @@ public class NewsAction extends BaseAction {
 			// �Ƿ���
 			lanNewsDelailbean.setCss_flag(css_flag);
 			// ��ȡ����
-			if (StringUtil.isNotEmpty(filename)
-					&& StringUtil.isNotEmpty(delail_content)) {
+			if (StringUtil.isNotEmpty(filename) && StringUtil.isNotEmpty(delail_content)) {
 				File savedir = new File(oaTxtFilePath);
 				// ���Ŀ¼�����ڣ����½�
 				if (!savedir.exists()) {
 					savedir.mkdirs();
 				}
-				FileUtil.saveFile(oaTxtFilePath + "/" + filename,
-						delail_content);
+				FileUtil.saveFile(oaTxtFilePath + "/" + filename, delail_content);
 			}
 
 			if (newsService.updateNewsDetail(lanNewsDelailbean) <= 0) {// �޸�������ϸ
@@ -658,24 +644,19 @@ public class NewsAction extends BaseAction {
 			if (newsService.updateNewsFile(newsFilebean) >= 0) { // ɾ���
 				if (upload != null && upload.length > 0) { // ��������
 					for (int i = 0; i < upload.length; i++) {
-						if (uploadFileName[i] != null
-								&& uploadFileName[i].length() > 0) {
-							imageFileName = UUID.randomUUID()
-									+ FileUtil
-											.getFileExtention(uploadFileName[i]);
+						if (uploadFileName[i] != null && uploadFileName[i].length() > 0) {
+							imageFileName = UUID.randomUUID() + FileUtil.getFileExtention(uploadFileName[i]);
 							File savedir = new File(oaFileFilePath);
 							// ���Ŀ¼�����ڣ����½�
 							if (!savedir.exists()) {
 								savedir.mkdirs();
 							}
-							File imageFile = new File(oaFileFilePath + "/"
-									+ imageFileName);
+							File imageFile = new File(oaFileFilePath + "/" + imageFileName);
 							FileUtil.saveAsFile(upload[i], imageFile);
 
 							newsFilebean.setNews_file_name(uploadFileName[i]);
 							newsFilebean.setNews_file_url(imageFileName);
-							Long news_file_id = newsService
-									.createNewsFile(newsFilebean);
+							Long news_file_id = newsService.createNewsFile(newsFilebean);
 							if (0l == news_file_id) {
 								this.setFailMessage("�������Ÿ���ʧ�ܣ�");
 								return SUCCESS;
@@ -987,8 +968,7 @@ public class NewsAction extends BaseAction {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 

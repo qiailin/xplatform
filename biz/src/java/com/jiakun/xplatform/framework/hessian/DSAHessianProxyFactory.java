@@ -14,8 +14,7 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
 public class DSAHessianProxyFactory extends HessianProxyFactory {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DSAHessianProxyFactory.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAHessianProxyFactory.class);
 
 	private IDSAService dsaService;
 
@@ -37,16 +36,11 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 		long timestamp = System.currentTimeMillis();
 		// ��ɷ���ǩ��
 		try {
-			signature = dsaService.sign(
-					secureKey + "|" + Long.toString(timestamp), keyPairName);
+			signature = dsaService.sign(secureKey + "|" + Long.toString(timestamp), keyPairName);
 		} catch (NoSuchKeyPairException ne) {
-			logger.error(
-					"error in DSAHessianProxyFactory.openConnection,no such key"
-							+ keyPairName, ne);
+			logger.error("error in DSAHessianProxyFactory.openConnection,no such key" + keyPairName, ne);
 		} catch (DSAException de) {
-			logger.error(
-					"error in DSAHessianProxyFactory.openConnection,DSA sign error"
-							+ keyPairName, de);
+			logger.error("error in DSAHessianProxyFactory.openConnection,DSA sign error" + keyPairName, de);
 		}
 		if (!"?".equals(queryBuilder.charAt(queryBuilder.length() - 1))) {
 			queryBuilder.append("?");
@@ -68,6 +62,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 			try {
 				conn.setReadTimeout((int) getReadTimeout());
 			} catch (Throwable e) {
+				logger.error(e);
 			}
 		}
 
