@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>²Ëµ¥ÅäÖÃ</title>
+		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,21 +13,21 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									²Ëµ¥ÅäÖÃ
+									ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:createMenu();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >´´½¨ </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >ï¿½ï¿½ï¿½ï¿½ </img>
 									</a>
 									<a href="javascript:deleteMenu();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >É¾³ý </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >É¾ï¿½ï¿½ </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									²éÑ¯Ìõ¼þ
+									ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 								</td>
 							</tr>
 							<tr>
@@ -35,13 +35,13 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											²Ëµ¥±àºÅ
+    											ï¿½Ëµï¿½ï¿½ï¿½ï¿½
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="id" id="id" />
     			    						</td>
 											<td class="head" noWrap style="text-align: center">
-    											²Ëµ¥Ãû³Æ
+    											ï¿½Ëµï¿½ï¿½ï¿½ï¿½
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='name' name="name" />
@@ -49,23 +49,23 @@
                                         </tr>
 										<tr>
 											<td class="head" noWrap style="text-align: center">
-    											ÉÏ¼¶²Ëµ¥±àºÅ
+    											ï¿½Ï¼ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="pid" id="pid" />
     			    						</td>
     										<td class="head" noWrap style="text-align: center">
-    											ÉÏ¼¶²Ëµ¥Ãû³Æ
+    											ï¿½Ï¼ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='pname' name="pname" />
-												<input type="button" onclick="javascript:search()" value="²éÑ¯" />
+												<input type="button" onclick="javascript:search()" value="ï¿½ï¿½Ñ¯" />
 											</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									²éÑ¯ÁÐ±í
+        									ï¿½ï¿½Ñ¯ï¿½Ð±ï¿½
         								</td>
 									</tr>
 								</td>
