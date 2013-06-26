@@ -6,7 +6,6 @@
 	<include file="webwork/webwork-login.xml" />
 	<include file="webwork/webwork-menu.xml" />
 	<include file="webwork/webwork-monitor.xml" />
-	<include file="webwork/webwork-news.xml" />
 	<include file="webwork/webwork-openapi.xml" />
 	<include file="webwork/webwork-file.xml" />
 	<include file="webwork/webwork-data.xml" />

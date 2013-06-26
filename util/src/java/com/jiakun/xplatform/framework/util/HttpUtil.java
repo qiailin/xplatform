@@ -40,10 +40,13 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 
 import com.alibaba.common.lang.StringUtil;
 
 public class HttpUtil {
+
+	private static Logger logger = Logger.getLogger(HttpUtil.class);
 
 	// private static final String CHARSET_UTF8 = "UTF-8";
 	private static final String CHARSET_GBK = "GBK";
@@ -379,13 +382,17 @@ public class HttpUtil {
 		return params;
 	}
 
-	public static void main(String[] args) throws Throwable {
+	public static void main(String[] arg) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("method", "xplatform.user.login");
 		params.put("passport", "123");
 		params.put("password", "123");
 		for (int i = 0; i < 10; i++) {
-			HttpUtil.post("http://ims.jiakun.com.cn:8191/xplatform/router/rest", params);
+			try {
+				HttpUtil.post("http://ims.jiakun.com.cn:8191/xplatform/router/rest", params);
+			} catch (Exception e) {
+				logger.error(e);
+			}
 		}
 	}
 }
