@@ -363,7 +363,7 @@ public class MD5 {
 		return s;
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		MD5 m = new MD5();
 		if (Array.getLength(args) == 0) { // ���û�в���ִ�б�׼��Test Suite
 			logger.info("MD5(\"111111\"):" + m.getMD5ofStr("111111"));
