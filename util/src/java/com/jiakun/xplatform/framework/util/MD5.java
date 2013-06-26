@@ -228,7 +228,7 @@ public class MD5 {
 	/*
 	 * md5Transform��MD5���ı任������md5Update���ã�block�Ƿֿ��ԭʼ�ֽ�
 	 */
-	private void md5Transform(byte block[]) {
+	private void md5Transform(byte[] block) {
 		long a = state[0], b = state[1], c = state[2], d = state[3];
 		long[] x = new long[16];
 
