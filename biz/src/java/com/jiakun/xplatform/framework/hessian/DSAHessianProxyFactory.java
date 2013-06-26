@@ -12,6 +12,12 @@ import com.jiakun.xplatform.api.system.IDSAService;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
+/**
+ * DSA for Hessian
+ * 
+ * @author xujiakun
+ * 
+ */
 public class DSAHessianProxyFactory extends HessianProxyFactory {
 
 	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAHessianProxyFactory.class);
@@ -61,7 +67,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 		if (getReadTimeout() > 0) {
 			try {
 				conn.setReadTimeout((int) getReadTimeout());
-			} catch (Throwable e) {
+			} catch (Exception e) {
 				logger.error(e);
 			}
 		}
