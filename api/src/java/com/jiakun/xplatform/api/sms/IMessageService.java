@@ -11,7 +11,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IMessageService {
 
-	static final String SMS_TYPE_DEFAULT = "WBZ";
+	String SMS_TYPE_DEFAULT = "WBZ";
 
 	static final Long SEND_FLAG_DEFAULT = 0l;
 

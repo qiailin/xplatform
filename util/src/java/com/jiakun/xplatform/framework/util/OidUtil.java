@@ -9,13 +9,12 @@ import java.util.UUID;
  */
 public class OidUtil {
 	/* ������� */
-	private static char x36s[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-			.toCharArray();
+	private static char[] x36s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 	/* ������ */
 	private static short len = 20;
 
 	public static String newId() {
-		char chs[] = new char[len];
+		char[] chs = new char[len];
 
 		/**
 		 * ���ǰ8λ����ַ�(��ϵͳʱ��Ϊ����, ��36λ����+Ӣ����ĸΪ�������)
