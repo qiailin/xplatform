@@ -88,7 +88,7 @@ public class HttpUtil {
 	 */
 	private static ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
 		// �Զ�����Ӧ����
-		public String handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+		public String handleResponse(HttpResponse response) throws IOException {
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
 				@SuppressWarnings("deprecation")
