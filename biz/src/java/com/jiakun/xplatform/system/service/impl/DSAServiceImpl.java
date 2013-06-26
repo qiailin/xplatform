@@ -168,7 +168,7 @@ public class DSAServiceImpl implements IDSAService {
 		}
 	}
 
-	public String sign(String content, String keyPairName, String charset) throws NoSuchKeyPairException, DSAException {
+	public String sign(String content, String keyPairName, String charset) throws DSAException {
 		return dsa.sign(content, keyPairName, charset);
 	}
 
