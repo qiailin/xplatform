@@ -25,8 +25,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 
 public class DSAServiceImpl implements IDSAService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DSAServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAServiceImpl.class);
 
 	/**
 	 * �����ļ���
@@ -56,8 +55,7 @@ public class DSAServiceImpl implements IDSAService {
 	@SuppressWarnings("rawtypes")
 	private List<KeyInfoElement> getKeyInformation() {
 		ArrayList<KeyInfoElement> keyInfoList = new ArrayList<KeyInfoElement>();
-		InputStream inputStream = this.getClass().getResourceAsStream(
-				CONF_SUB_DIR + KEY_CONFIG_FILE);
+		InputStream inputStream = this.getClass().getResourceAsStream(CONF_SUB_DIR + KEY_CONFIG_FILE);
 		SAXReader reader = new SAXReader();
 		try {
 			Document doc = reader.read(inputStream);
@@ -90,18 +88,15 @@ public class DSAServiceImpl implements IDSAService {
 					tempPriKey = CONF_SUB_DIR + tempPriKey;
 				}
 
-				KeyInfoElement keyInfoElement = KeyInfoElement
-						.createKeyInfoElement(tempKeyName, tempPubKey,
-								tempPriKey);
+				KeyInfoElement keyInfoElement =
+					KeyInfoElement.createKeyInfoElement(tempKeyName, tempPubKey, tempPriKey);
 
 				if (keyInfoElement != null) {
 					keyInfoList.add(keyInfoElement);
 				}
 			}
 		} catch (Exception ex) {
-			logger.error(
-					"exception in getKeyInformation: "
-							+ LogUtil.parserBean(keyInfoList), ex);
+			logger.error("exception in getKeyInformation: " + LogUtil.parserBean(keyInfoList), ex);
 		}
 
 		return keyInfoList;
@@ -133,8 +128,7 @@ public class DSAServiceImpl implements IDSAService {
 				pubKeyFileName = keyInfoElement.getPubKeyFileName();
 				priKeyFileName = keyInfoElement.getPriKeyFileName();
 
-				if (StringUtil.isNotEmpty(keyPairName)
-						&& !keys.contains(keyPairName)) {
+				if (StringUtil.isNotEmpty(keyPairName) && !keys.contains(keyPairName)) {
 					keys.add(keyPairName);
 					logger.debug("Reading DSA key pair: name=" + keyPairName);
 
@@ -148,31 +142,25 @@ public class DSAServiceImpl implements IDSAService {
 
 					if (pubKeyFileName != null) {
 						try {
-							dsa.setPublicKey(keyPairName, this.getClass()
-									.getResourceAsStream(pubKeyFileName));
+							dsa.setPublicKey(keyPairName, this.getClass().getResourceAsStream(pubKeyFileName));
 						} catch (DSAException e) {
-							throw new ServiceInitializationException(
-									"Failed to read public key file: "
-											+ pubKeyFileName, e);
+							throw new ServiceInitializationException("Failed to read public key file: "
+								+ pubKeyFileName, e);
 						} catch (IOException e) {
-							throw new ServiceInitializationException(
-									"Failed to read public key file: "
-											+ pubKeyFileName, e);
+							throw new ServiceInitializationException("Failed to read public key file: "
+								+ pubKeyFileName, e);
 						}
 					}
 
 					if (priKeyFileName != null) {
 						try {
-							dsa.setPrivateKey(keyPairName, this.getClass()
-									.getResourceAsStream(priKeyFileName));
+							dsa.setPrivateKey(keyPairName, this.getClass().getResourceAsStream(priKeyFileName));
 						} catch (DSAException e) {
-							throw new ServiceInitializationException(
-									"Failed to read private key file: "
-											+ priKeyFileName, e);
+							throw new ServiceInitializationException("Failed to read private key file: "
+								+ priKeyFileName, e);
 						} catch (IOException e) {
-							throw new ServiceInitializationException(
-									"Failed to read public key file: "
-											+ pubKeyFileName, e);
+							throw new ServiceInitializationException("Failed to read public key file: "
+								+ pubKeyFileName, e);
 						}
 					}
 				}
@@ -180,23 +168,19 @@ public class DSAServiceImpl implements IDSAService {
 		}
 	}
 
-	public String sign(String content, String keyPairName, String charset)
-			throws NoSuchKeyPairException, DSAException {
+	public String sign(String content, String keyPairName, String charset) throws NoSuchKeyPairException, DSAException {
 		return dsa.sign(content, keyPairName, charset);
 	}
 
-	public String sign(String content, String keyPairName)
-			throws NoSuchKeyPairException, DSAException {
+	public String sign(String content, String keyPairName) throws DSAException {
 		return dsa.sign(content, keyPairName);
 	}
 
-	public boolean check(String content, String signature, String keyPairName,
-			String charset) throws NoSuchKeyPairException, DSAException {
+	public boolean check(String content, String signature, String keyPairName, String charset) throws DSAException {
 		return dsa.check(content, signature, keyPairName, charset);
 	}
 
-	public boolean check(String content, String signature, String keyPairName)
-			throws NoSuchKeyPairException, DSAException {
+	public boolean check(String content, String signature, String keyPairName) throws DSAException {
 		return dsa.check(content, signature, keyPairName);
 	}
 

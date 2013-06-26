@@ -37,11 +37,10 @@ public class ExcelUtil {
 	 * @param dataList
 	 */
 	@SuppressWarnings("rawtypes")
-	public void createExcelWithTemplate(InputStream inputStream,
-			OutputStream os, List<String> props, List dataList) {
+	public void createExcelWithTemplate(InputStream inputStream, OutputStream os, List<String> props, List dataList) {
 		Workbook tBook = null;
 		WritableWorkbook wbook = null;
-		// ��Ҫ������������getter
+		// ��������������������������������������������getter
 		List<String> getterList = new ArrayList<String>();
 
 		try {
@@ -52,8 +51,7 @@ public class ExcelUtil {
 			WritableSheet wsheet = wbook.getSheet(0);
 			if (props != null) {
 				for (String prop : props) {
-					getterList.add("get" + prop.substring(0, 1).toUpperCase()
-							+ prop.substring(1));
+					getterList.add("get" + prop.substring(0, 1).toUpperCase() + prop.substring(1));
 				}
 			}
 			int row = 1;
@@ -64,19 +62,17 @@ public class ExcelUtil {
 					Class clazz = obj.getClass();
 
 					for (int i = 0; i < size; i++) {
-						Method method = BeanUtils.findMethod(clazz,
-								getterList.get(i), new Class[0]);
+						Method method = BeanUtils.findMethod(clazz, getterList.get(i), new Class[0]);
 						Object valObj = method.invoke(obj, new Object[0]);
 						addCell(wsheet, col++, row, valObj);
 					}
 					row++;
 				}
 			}
-			// �������
+			// ���������������������
 			wbook.write();
 		} catch (Exception e) {
-			logger.error(
-					LogUtil.parserBean(props) + LogUtil.parserBean(dataList), e);
+			logger.error(LogUtil.parserBean(props) + LogUtil.parserBean(dataList), e);
 		} finally {
 			if (wbook != null) {
 				try {
@@ -96,15 +92,14 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * ��ӵ�Ԫ��&����.
+	 * �������������������&������������.
 	 * 
 	 * @param ws
 	 * @param cel
 	 * @param row
 	 * @param valObject
 	 */
-	private void addCell(WritableSheet ws, int cel, int row, Object valObj)
-			throws RowsExceededException, WriteException {
+	private void addCell(WritableSheet ws, int cel, int row, Object valObj) throws WriteException {
 
 		if (valObj == null) {
 			Label cr = new Label(cel, row, "");
@@ -119,23 +114,19 @@ public class ExcelUtil {
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == int.class || clazz2 == Integer.class) {
-			Number cr = new Number(cel, row,
-					Double.parseDouble(((Integer) valObj).toString()));
+			Number cr = new Number(cel, row, Double.parseDouble(((Integer) valObj).toString()));
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == long.class || clazz2 == Long.class) {
-			Number cr = new Number(cel, row, Double.parseDouble(((Long) valObj)
-					.toString()));
+			Number cr = new Number(cel, row, Double.parseDouble(((Long) valObj).toString()));
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == float.class || clazz2 == Float.class) {
-			Number cr = new Number(cel, row,
-					Double.parseDouble(((Float) valObj).toString()));
+			Number cr = new Number(cel, row, Double.parseDouble(((Float) valObj).toString()));
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == double.class || clazz2 == Double.class) {
-			Number cr = new Number(cel, row,
-					Double.parseDouble(((Double) valObj).toString()));
+			Number cr = new Number(cel, row, Double.parseDouble(((Double) valObj).toString()));
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == Date.class) {
@@ -143,21 +134,18 @@ public class ExcelUtil {
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == boolean.class || clazz2 == Boolean.class) {
-			jxl.write.Boolean cr = new jxl.write.Boolean(cel, row,
-					(Boolean) valObj);
+			jxl.write.Boolean cr = new jxl.write.Boolean(cel, row, (Boolean) valObj);
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == BigDecimal.class) {
 			NumberFormat nf = new NumberFormat("0.00");
 			WritableCellFormat wcf = new WritableCellFormat(nf);
-			wcf.setFont(new WritableFont(WritableFont.createFont("����"), 9));
-			Number cr = new Number(cel, row,
-					((BigDecimal) valObj).doubleValue(), wcf);
+			wcf.setFont(new WritableFont(WritableFont.createFont("������������"), 9));
+			Number cr = new Number(cel, row, ((BigDecimal) valObj).doubleValue(), wcf);
 			ws.addCell(cr);
 			return;
 		} else if (clazz2 == Short.class) {
-			Number cr = new Number(cel, row,
-					Double.parseDouble(((Short) valObj).toString()));
+			Number cr = new Number(cel, row, Double.parseDouble(((Short) valObj).toString()));
 			ws.addCell(cr);
 			return;
 		}
