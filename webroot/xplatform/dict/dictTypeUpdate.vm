@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>字典类型修改</title>
+		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -16,12 +16,12 @@
 							cellpadding="0">
 							<tr>
 						 		<td colspan="2"  class="home_title"  noWrap >
-                                                                                       字典类型修改
+                                                                                       锟街碉拷锟斤拷锟斤拷锟睫革拷
 			                     </td>
 								 <td  noWrap align="right">
 									<A  class=icon_but  href="#" onclick="dictTypeUpdateSave();"><IMG height=16
 											src="$!{env.imgUrl}/image/actions/icon_save.png" width="16" id="name"
-											align=absMiddle border=0>保存</A>
+											align=absMiddle border=0>锟斤拷锟斤拷</A>
 									
 								</td>
                             </tr>
@@ -33,7 +33,7 @@
                                         <tr>
 											
 											<td bgcolor="#FFFFFF" class="head" nowrap>
-												类型名称<font color='red'>*</font>：
+												锟斤拷锟斤拷锟斤拷锟�<font color='red'>*</font>锟斤拷
 											</td>
 											<td bgcolor="#FFFFFF" class="even" nowrap>
 											  <input type="hidden" id="dictTypeId" name="cmsTbDictType.dictTypeId" value="$!{cmsTbDictType.dictTypeId}" />
@@ -43,7 +43,7 @@
                                          </tr>
                                         <tr>
                                             <td bgcolor="#FFFFFF" class="head" nowrap>
-												类型值<font color='red'>*</font>：
+												锟斤拷锟斤拷值<font color='red'>*</font>锟斤拷
 											</td>
 											
 											<td bgcolor="#FFFFFF" class="even" nowrap>
@@ -53,7 +53,7 @@
 										<tr>
 											
 											<td bgcolor="#FFFFFF" class="head" nowrap>
-                                                                                                                                   备注：
+                                                                                                                                   锟斤拷注锟斤拷
 											</td>
 										
 											<td bgcolor="#FFFFFF" class="even" nowrap >
