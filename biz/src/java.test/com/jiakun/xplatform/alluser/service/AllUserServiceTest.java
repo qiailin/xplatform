@@ -23,7 +23,7 @@ public class AllUserServiceTest {
 
 	@Test
 	public void findTest() {
-		AllUsers user = allUserService.getAllUserByPassport("kchen9");
+		AllUsers user = allUserService.getAllUserByPassport("");
 		// junit ����
 		Assert.assertNotNull(user);
 	}
