@@ -159,7 +159,10 @@ public class MD5 {
 	 */
 	private void md5Update(byte[] inbuf, int inputLen) {
 
-		int i, index, partLen;
+		int i;
+		int index;
+		int partLen;
+
 		byte[] block = new byte[64];
 		index = (int) (count[0] >>> 3) & 0x3F;
 		// /* Update number of bits */
@@ -195,7 +198,8 @@ public class MD5 {
 	 */
 	private void md5Final() {
 		byte[] bits = new byte[8];
-		int index, padLen;
+		int index;
+		int padLen;
 
 		// /* Save number of bits */
 		Encode(bits, count, 8);
@@ -230,7 +234,11 @@ public class MD5 {
 	 * md5Transform��MD5���ı任������md5Update���ã�block�Ƿֿ��ԭʼ�ֽ�
 	 */
 	private void md5Transform(byte[] block) {
-		long a = state[0], b = state[1], c = state[2], d = state[3];
+		long a = state[0];
+		long b = state[1];
+		long c = state[2];
+		long d = state[3];
+
 		long[] x = new long[16];
 
 		Decode(x, block, 64);
@@ -319,7 +327,8 @@ public class MD5 {
 	 * ֻ���32bit������ӦԭʼCʵ�ֵ���;
 	 */
 	private void Encode(byte[] output, long[] input, int len) {
-		int i, j;
+		int i;
+		int j;
 
 		for (i = 0, j = 0; j < len; i++, j += 4) {
 			output[j] = (byte) (input[i] & 0xffL);
@@ -334,7 +343,8 @@ public class MD5 {
 	 * ֻ�ϳɵ�32bit����32bit���㣬����ӦԭʼCʵ�ֵ���;
 	 */
 	private void Decode(long[] output, byte[] input, int len) {
-		int i, j;
+		int i;
+		int j;
 
 		for (i = 0, j = 0; j < len; i++, j += 4) {
 			output[i] =

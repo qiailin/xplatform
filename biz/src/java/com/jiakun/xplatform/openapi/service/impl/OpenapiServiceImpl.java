@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ws.rs.core.MultivaluedMap;
 
 import com.alibaba.common.lang.StringUtil;
-import com.jiakun.xplatform.api.alluser.IAllUserService;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.login.ICAService;
@@ -17,6 +16,11 @@ import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
 import com.jiakun.xplatform.api.openapi.bo.UserResponse;
 import com.jiakun.xplatform.framework.util.JsonUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class OpenapiServiceImpl implements IOpenapiService {
 
 	private IMemcachedCacheService memcachedCacheService;
