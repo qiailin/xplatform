@@ -7,3 +7,5 @@
 
 # Mac Files #
 .DS_Store
+
+webroot/WEB-INF/classes
