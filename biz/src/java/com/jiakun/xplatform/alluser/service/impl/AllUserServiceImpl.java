@@ -171,8 +171,8 @@ public class AllUserServiceImpl implements IAllUserService {
 		return null;
 	}
 
-	public BooleanResult modifyUserPsw(AllUsers User) {
-		BooleanResult bResult = updateAllUser(User);
+	public BooleanResult modifyUserPsw(AllUsers user) {
+		BooleanResult bResult = updateAllUser(user);
 		// ���貹���޸�AD�����webservice����
 		return bResult;
 	}

@@ -218,7 +218,7 @@ public class MenuAction extends BaseAction {
 
 		String[] l = new String[menuList.size()];
 		int i = 0;
-		Menu menu = new Menu();
+		Menu me = new Menu();
 
 		try {
 			for (Menu m : menuList) {
@@ -238,8 +238,8 @@ public class MenuAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		menu.setCodes(l);
-		StringResult result = menuService.deleteMenu(menu);
+		me.setCodes(l);
+		StringResult result = menuService.deleteMenu(me);
 
 		if (IMenuService.ERROR.equals(result.getCode())) {
 			this.setFailMessage(result.getResult());
@@ -338,7 +338,7 @@ public class MenuAction extends BaseAction {
 	 */
 	public String deleteSelectedMenu4Role() {
 
-		Menu menu = new Menu();
+		Menu me = new Menu();
 		List<Long> ids = new ArrayList<Long>();
 
 		try {
@@ -359,9 +359,9 @@ public class MenuAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		menu.setIds(ids);
-		menu.setRoleId(roleId);
-		StringResult result = menuService.deleteSelectedMenu4Role(menu);
+		me.setIds(ids);
+		me.setRoleId(roleId);
+		StringResult result = menuService.deleteSelectedMenu4Role(me);
 
 		if (IMenuService.ERROR.equals(result.getCode())) {
 			this.setFailMessage(result.getResult());
@@ -380,8 +380,8 @@ public class MenuAction extends BaseAction {
 	public String redirectMenu() {
 		if (StringUtil.isNotEmpty(node) && StringUtil.isNotEmpty(node.trim())) {
 			try {
-				Menu menu = menuService.getMenuById(Long.parseLong(node));
-				redirectUrl = menu.getRedirectUrl();
+				Menu me = menuService.getMenuById(Long.parseLong(node));
+				redirectUrl = me.getRedirectUrl();
 
 				sso();
 

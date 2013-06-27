@@ -6,16 +6,16 @@ import com.jiakun.xplatform.api.data.bo.DataConfig;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * data����Ȩ������
+ * dataConfig.
  * 
  * @author xujiakun
  * 
  */
 public interface IDataConfigService {
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
-	static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public interface IDataConfigService {
 	List<DataConfig> getDataConfigList(DataConfig dataConfig);
 
 	/**
-	 * ��������data����
+	 * createDataConfig.
 	 * 
 	 * @param dataConfigList
 	 * @return
@@ -40,7 +40,7 @@ public interface IDataConfigService {
 	BooleanResult createDataConfig(List<DataConfig> dataConfigList);
 
 	/**
-	 * ����data����
+	 * updateDataConfig.
 	 * 
 	 * @param dataConfig
 	 * @return

@@ -4,7 +4,6 @@ import com.jiakun.xplatform.api.sms.bo.Message;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * ���Žӿ�
  * 
  * @author xujiakun
  * 
@@ -13,12 +12,12 @@ public interface IMessageService {
 
 	String SMS_TYPE_DEFAULT = "WBZ";
 
-	static final Long SEND_FLAG_DEFAULT = 0l;
+	Long SEND_FLAG_DEFAULT = 0L;
 
-	static final String SMS_ID_PREFIX_DEFAULT = "NF";
+	String SMS_ID_PREFIX_DEFAULT = "NF";
 
 	/**
-	 * ���Ͷ���
+	 * sendMessage.
 	 * 
 	 * @param message
 	 * @return

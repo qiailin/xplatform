@@ -6,14 +6,14 @@ import com.jiakun.xplatform.api.monitor.bo.LogMonitor;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * log���
+ * logMonitor.
  * 
  * @author xujiakun
  * 
  */
 public interface ILogMonitorService {
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public interface ILogMonitorService {
 	List<LogMonitor> getLogMonitorList(LogMonitor logMonitor);
 
 	/**
-	 * ��������log��Ϣ
+	 * createLogMonitor.
 	 * 
 	 * @param logMonitorList
 	 * @return
@@ -38,7 +38,7 @@ public interface ILogMonitorService {
 	BooleanResult createLogMonitor(List<LogMonitor> logMonitorList);
 
 	/**
-	 * ��ȡ������־ ���ͼ�ؽ���ʼ�
+	 * getLogMonitorList4SendEmail.
 	 * 
 	 * @return
 	 */

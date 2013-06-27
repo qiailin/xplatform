@@ -30,20 +30,20 @@ public class DSAServiceImpl implements IDSAService {
 	/**
 	 * �����ļ���
 	 */
-	static private final String KEY_CONFIG_FILE = "dsaConfig.xml";
+	private static final String KEY_CONFIG_FILE = "dsaConfig.xml";
 
-	static private final String CONF_SUB_DIR = "/dsa/";
+	private static final String CONF_SUB_DIR = "/dsa/";
 
 	/**
 	 * �������ļ��еĽڵ��ʶ
 	 */
-	static private final String KEY_TOKEN_TEXT = "key";
+	private static final String KEY_TOKEN_TEXT = "key";
 
-	static private final String KEY_NAME_TEXT = "name";
+	private static final String KEY_NAME_TEXT = "name";
 
-	static private final String PUBKEY_FILE_TEXT = "pubKey";
+	private static final String PUBKEY_FILE_TEXT = "pubKey";
 
-	static private final String PRIKEY_FILE_TEXT = "priKey";
+	private static final String PRIKEY_FILE_TEXT = "priKey";
 
 	private DSA dsa;
 

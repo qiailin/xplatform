@@ -6,6 +6,11 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.jiakun.xplatform.framework.dao.IBaseDao;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 
 	/**
@@ -13,7 +18,7 @@ public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 	 */
 	protected String namespace;
 
-	private final static String PFIX = ",";
+	private static final String PFIX = ",";
 
 	public void setNamespace(String namespace) {
 		this.namespace = namespace;

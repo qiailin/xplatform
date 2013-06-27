@@ -25,10 +25,9 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 
 	private static final long serialVersionUID = 6484320257843908148L;
 
-	private static Logger4jExtend log = Logger4jCollection
-			.getLogger(DecodeParametersInterceptor.class);
+	private static Logger4jExtend log = Logger4jCollection.getLogger(DecodeParametersInterceptor.class);
 
-	private final static ThreadLocal<Boolean> encoded = new ThreadLocal<Boolean>();
+	private static final ThreadLocal<Boolean> encoded = new ThreadLocal<Boolean>();
 
 	public static boolean isEncoded() {
 		return encoded.get() == null ? false : encoded.get();
@@ -42,15 +41,13 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 		OgnlRuntime.setPropertyAccessor(Object.class, getObjectAccessor());
 	}
 
-	protected void after(ActionInvocation invocation, String result)
-			throws Exception {
+	protected void after(ActionInvocation invocation, String result) throws Exception {
 		encoded.set(null);
 		encoded.remove();
 	}
 
 	protected void before(ActionInvocation invocation) throws Exception {
-		setEncoded("XMLHttpRequest".equalsIgnoreCase(ServletActionContext
-				.getRequest().getHeader("x-requested-with")));
+		setEncoded("XMLHttpRequest".equalsIgnoreCase(ServletActionContext.getRequest().getHeader("x-requested-with")));
 	}
 
 	private static final PropertyAccessor getObjectAccessor() {
@@ -58,19 +55,16 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 		return new ObjectPropertyAccessor() {
 			@SuppressWarnings("rawtypes")
 			@Override
-			public void setProperty(Map context, Object target, Object oname,
-					Object value) throws OgnlException {
+			public void setProperty(Map context, Object target, Object oname, Object value) throws OgnlException {
 				if (DecodeParametersInterceptor.isEncoded()) {
 					try {
-						boolean decode = target.getClass().isAnnotationPresent(
-								Decode.class);
-						decode = decode
-								|| getDeclaredField(target.getClass(),
-										(String) oname).isAnnotationPresent(
-										Decode.class);
+						boolean decode = target.getClass().isAnnotationPresent(Decode.class);
+						decode =
+							decode
+								|| getDeclaredField(target.getClass(), (String) oname)
+									.isAnnotationPresent(Decode.class);
 						if (decode) {
-							String[] tmp = (value == null ? new String[0]
-									: (String[]) value);
+							String[] tmp = (value == null ? new String[0] : (String[]) value);
 							for (int i = 0, len = tmp.length; i < len; i++) {
 								if (tmp[i] != null) {
 									tmp[i] = URLDecoder.decode(tmp[i], "UTF-8");
