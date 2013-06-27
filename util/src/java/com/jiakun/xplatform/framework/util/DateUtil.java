@@ -39,7 +39,7 @@ public class DateUtil {
 	public static final String DEFAULT_MONTH_FORMAT = "MM";
 
 	/** ��֤�����ַ���Ч���ڷ�Χ1900-1-1��2099-12-31. */
-	private static final Pattern pattern = Pattern
+	private static final Pattern PATTERN = Pattern
 		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
 
 	/**
@@ -791,7 +791,7 @@ public class DateUtil {
 		if (StringUtil.isBlank(ds)) {
 			return false;
 		}
-		return pattern.matcher(ds).matches();
+		return PATTERN.matcher(ds).matches();
 	}
 
 	/** ��֤�����Ƿ���Ч����Ч���ڷ�Χ1900-1-1��2099-12-31. */
@@ -799,7 +799,7 @@ public class DateUtil {
 		if (d == null) {
 			return false;
 		}
-		return pattern.matcher(date(d, DEFAULT_DATE_FORMAT)).matches();
+		return PATTERN.matcher(date(d, DEFAULT_DATE_FORMAT)).matches();
 	}
 
 }

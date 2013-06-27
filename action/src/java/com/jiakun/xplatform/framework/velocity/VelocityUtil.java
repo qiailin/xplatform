@@ -15,16 +15,16 @@ import com.opensymphony.webwork.views.velocity.VelocityManager;
 
 public class VelocityUtil {
 
-	private static final String defaultInputEncoding = "GBK";
-	private static final String defaultOutputEncoding = "GBK";
+	private static final String DEFAULT_INPUT_ENCODING = "GBK";
+	private static final String DEFAULT_OUTPUT_ENCODING = "GBK";
 
 	/**
 	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�
 	 */
 	public static void mergeFile(String fileName, Context ctx, OutputStream os)
 			throws Exception {
-		mergeFile(fileName, ctx, os, defaultInputEncoding,
-				defaultOutputEncoding);
+		mergeFile(fileName, ctx, os, DEFAULT_INPUT_ENCODING,
+				DEFAULT_OUTPUT_ENCODING);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class VelocityUtil {
 	 */
 	public static void mergeFile(String fileName, Context ctx, Writer writer)
 			throws Exception {
-		mergeFile(fileName, ctx, writer, defaultInputEncoding);
+		mergeFile(fileName, ctx, writer, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class VelocityUtil {
 	 */
 	public static String mergeFile(String fileName, Context ctx)
 			throws Exception {
-		return mergeFile(fileName, ctx, defaultInputEncoding);
+		return mergeFile(fileName, ctx, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**

@@ -62,9 +62,8 @@ public class DictAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemName",
-			"itemValue", "parentItemId", "itemDescription", "remark",
-			"lastModify", "dictTypeId" }, total = "total")
+	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemName", "itemValue", "parentItemId",
+		"itemDescription", "remark", "lastModify", "dictTypeId" }, total = "total")
 	public String getCmsTbDictJsonList() {
 		CmsTbDict m = new CmsTbDict();
 		m = getSearchInfo(m);
@@ -82,8 +81,7 @@ public class DictAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemValue",
-			"itemState", "remark" }, total = "total")
+	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemValue", "itemState", "remark" }, total = "total")
 	public String getDictJsonList() {
 		CmsTbDict m = new CmsTbDict();
 		m = getSearchInfo(m);
@@ -112,8 +110,8 @@ public class DictAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "cmsTbDictTypeList", include = { "dictTypeId",
-			"dictTypeName", "dictTypeValue", "remark", "lastModify" }, total = "total")
+	@JsonResult(field = "cmsTbDictTypeList", include = { "dictTypeId", "dictTypeName", "dictTypeValue", "remark",
+		"lastModify" }, total = "total")
 	public String getCmsTbDictTypeJsonList() {
 		CmsTbDictType m = new CmsTbDictType();
 		m = getSearchInfo(m);
@@ -170,7 +168,7 @@ public class DictAction extends BaseAction {
 		return "toUpdateDict";
 	}
 
-	public String UpdateDict() {
+	public String updateDict() {
 		this.setSuccessMessage("���³ɹ�.");
 		BooleanResult booleanResult = dictService.updateDict(cmsTbDict);
 		if (!booleanResult.getResult()) {
@@ -179,7 +177,7 @@ public class DictAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	public String UpdateDictType() {
+	public String updateDictType() {
 		this.setSuccessMessage("���³ɹ�.");
 		BooleanResult booleanResult = dictService.updateDictType(cmsTbDictType);
 		if (!booleanResult.getResult()) {
@@ -209,8 +207,7 @@ public class DictAction extends BaseAction {
 		CmsTbDictType deleteCmsTbDictType = new CmsTbDictType();
 		deleteCmsTbDictType.setDictTypeId(dictTypeId);
 		deleteCmsTbDictType.setDictTypeState("D");
-		BooleanResult booleanResult = dictService
-				.updateDictType(deleteCmsTbDictType);
+		BooleanResult booleanResult = dictService.updateDictType(deleteCmsTbDictType);
 		if (!booleanResult.getResult()) {
 			stringResult.setResult("F");
 			stringResult.setCode(booleanResult.getCode());

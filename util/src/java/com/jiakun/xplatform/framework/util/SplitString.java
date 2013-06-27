@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.alibaba.common.lang.StringUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class SplitString {
 
 	/**

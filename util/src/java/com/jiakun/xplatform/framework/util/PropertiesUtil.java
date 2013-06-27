@@ -16,7 +16,7 @@ import org.springframework.util.PropertiesPersister;
  * Properties Util.
  * 
  */
-public class PropertiesUtil {
+public final class PropertiesUtil {
 
 	private static final Logger logger = Logger.getLogger(PropertiesUtil.class);
 
@@ -24,6 +24,10 @@ public class PropertiesUtil {
 
 	private static PropertiesPersister propertiesPersister = new DefaultPropertiesPersister();
 	private static ResourceLoader resourceLoader = new DefaultResourceLoader();
+
+	private PropertiesUtil() {
+
+	}
 
 	/**
 	 * ������properties�ļ�, ��ͬ�����������������ļ��е�ֵ���Ḳ��֮ǰ������. �ļ�·��ʹ��Spring

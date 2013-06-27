@@ -21,15 +21,15 @@ public abstract class JSONPResult implements Result, WebWorkStatics {
 
 	private static final long serialVersionUID = -7892028541361553348L;
 
-	private String APPLICATION_JAVASCRIPT = "application/x-javascript";
+	private static final String APPLICATION_JAVASCRIPT = "application/x-javascript";
 
 	/**
-	 * Callback name
+	 * Callback name.
 	 */
 	protected String callback;
 
 	/**
-	 * Charset
+	 * Charset.
 	 */
 	protected String charset;
 
@@ -61,13 +61,11 @@ public abstract class JSONPResult implements Result, WebWorkStatics {
 		// ����ContentType
 		StringBuffer contentType = new StringBuffer();
 		contentType.append(APPLICATION_JAVASCRIPT);
-		contentType.append(isLegalCharSet() ? ("; charset=" + charset)
-				: "; charset=GBK");
+		contentType.append(isLegalCharSet() ? ("; charset=" + charset) : "; charset=GBK");
 		response.setContentType(contentType.toString());
 
 		StringBuffer jsonp = new StringBuffer();
-		jsonp.append(request.getParameter(this.callback == null ? "jsonp"
-				: this.callback));
+		jsonp.append(request.getParameter(this.callback == null ? "jsonp" : this.callback));
 		jsonp.append("(");
 		jsonp.append(jsonRepresentation(invocation));
 		jsonp.append(");");

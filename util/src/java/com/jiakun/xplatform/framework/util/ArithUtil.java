@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 /**
  * ����Java�ļ����Ͳ��ܹ���ȷ�ĶԸ�����������㣬 ����������ṩ�� ȷ�ĸ��������㣬�����Ӽ��˳���������롣
  */
-public class ArithUtil {
+public final class ArithUtil {
 	// Ĭ�ϳ����㾫��
 	private static final int DEF_DIV_SCALE = 10;
 

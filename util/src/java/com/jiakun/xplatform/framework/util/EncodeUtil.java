@@ -18,8 +18,9 @@ import com.alibaba.common.lang.StringUtil;
  */
 public class EncodeUtil {
 
-	public static final String appEncoding = "GBK";
-	public static final String dbEncoding = "GBK";
+	public static final String APP_ENCODING = "GBK";
+	
+	public static final String DB_ENCODING = "GBK";
 
 	/** Ԥ����ͼƬ��ʽ. */
 	public static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
@@ -33,7 +34,7 @@ public class EncodeUtil {
 		}
 
 		try {
-			return str.getBytes(dbEncoding).length;
+			return str.getBytes(DB_ENCODING).length;
 		} catch (UnsupportedEncodingException e) {
 			throw new IllegalStateException(e);
 		}
@@ -45,7 +46,7 @@ public class EncodeUtil {
 	public static byte[] toBytes(String str) {
 		if (str != null) {
 			try {
-				return str.getBytes(appEncoding);
+				return str.getBytes(APP_ENCODING);
 			} catch (UnsupportedEncodingException e) {
 				throw new IllegalStateException(e);
 			}
@@ -60,7 +61,7 @@ public class EncodeUtil {
 	public static String toString(byte[] bytes) {
 		if (bytes != null) {
 			try {
-				return new String(bytes, appEncoding);
+				return new String(bytes, APP_ENCODING);
 			} catch (UnsupportedEncodingException e) {
 				throw new IllegalStateException(e);
 			}
@@ -78,7 +79,7 @@ public class EncodeUtil {
 		}
 
 		try {
-			return URLEncoder.encode(obj.toString(), appEncoding);
+			return URLEncoder.encode(obj.toString(), APP_ENCODING);
 		} catch (UnsupportedEncodingException e) {
 			throw new IllegalStateException(e);
 		}
@@ -96,7 +97,7 @@ public class EncodeUtil {
 		}
 
 		try {
-			return URLDecoder.decode(obj.toString(), appEncoding);
+			return URLDecoder.decode(obj.toString(), APP_ENCODING);
 		} catch (UnsupportedEncodingException e) {
 			throw new IllegalStateException(e);
 		}
@@ -207,7 +208,7 @@ public class EncodeUtil {
 				tmp = str.substring(i, i + 1);
 				rtStr.append(tmp);
 
-				cLen += (tmp.getBytes(appEncoding).length == 2 ? 2 : 1);
+				cLen += (tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1);
 
 				if (cLen >= iLen) {
 					break;
@@ -241,7 +242,7 @@ public class EncodeUtil {
 		try {
 			for (int i = 0; i < s.length(); i++) {
 				String tmp = s.substring(i, i + 1);
-				len += (tmp.getBytes(appEncoding).length == 2 ? 2 : 1);
+				len += (tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1);
 			}
 		} catch (Exception e) {
 			return len;
