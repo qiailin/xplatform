@@ -22,8 +22,7 @@ public class EncodeUtil {
 	public static final String dbEncoding = "GBK";
 
 	/** Ԥ����ͼƬ��ʽ. */
-	public static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png",
-			".ico" };
+	public static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
 
 	/**
 	 * �����ݿ���ַ��������ַ�Ĵ洢�ֽ���
@@ -193,8 +192,9 @@ public class EncodeUtil {
 	 * @return substr
 	 */
 	public static String substr(String str, int iLen, boolean showTitle) {
-		if (str == null || "".equals(str))
+		if (str == null || "".equals(str)) {
 			return "";
+		}
 
 		try {
 			str = html(str);
@@ -214,9 +214,9 @@ public class EncodeUtil {
 				}
 			}
 
-			if (iLen < getByteLen(str) && showTitle)
-				return "<span title=\"" + str + "\">" + rtStr.toString()
-						+ "...</span>";
+			if (iLen < getByteLen(str) && showTitle) {
+				return "<span title=\"" + str + "\">" + rtStr.toString() + "...</span>";
+			}
 
 			return rtStr.toString();
 

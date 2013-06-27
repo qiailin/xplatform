@@ -71,8 +71,9 @@ public class FormatUtil {
 	 * @return
 	 */
 	public static String getAmountFormat(BigDecimal amount) {
-		if (amount == null || amount.signum() == 0)
+		if (amount == null || amount.signum() == 0) {
 			return "0.00";
+		}
 		return new DecimalFormat("###,##0.00").format(amount);
 	}
 
@@ -93,8 +94,9 @@ public class FormatUtil {
 	 * @return��if(amount==null||amount<=0):0.00;else 220.00
 	 */
 	public static String getAmountFormatStr(BigDecimal amount) {
-		if (amount == null || amount.signum() != 1)
+		if (amount == null || amount.signum() != 1) {
 			return "0.00";
+		}
 		return new DecimalFormat("###,##0.00").format(amount);
 	}
 
@@ -108,8 +110,7 @@ public class FormatUtil {
 
 		StringBuffer t = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {
-			if (s.substring(i, i + 1).equals(
-					s.substring(i, i + 1).toLowerCase())) {
+			if (s.substring(i, i + 1).equals(s.substring(i, i + 1).toLowerCase())) {
 				t.append(s.substring(i, i + 1).toUpperCase());
 			} else {
 				t.append(s.substring(i, i + 1).toUpperCase());

@@ -81,8 +81,9 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 
 			@SuppressWarnings("rawtypes")
 			private Field getDeclaredField(Class target, String name) {
-				if (target == null)
+				if (target == null) {
 					return null;
+				}
 				try {
 					return target.getDeclaredField(name);
 				} catch (Exception e) {

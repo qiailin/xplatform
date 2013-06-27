@@ -63,11 +63,9 @@ public class AuthencationInterceptor implements Interceptor {
 		ActionContext ctx = ActionContext.getContext();
 		// Map map = ctx.getSession();
 		// ���õ�ǰ�����URL
-		HttpServletRequest request = (HttpServletRequest) ctx
-				.get(ServletActionContext.HTTP_REQUEST);
+		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		StringBuffer url = request.getRequestURL();
-		int index = url.lastIndexOf(request.getContextPath())
-				+ request.getContextPath().length();
+		int index = url.lastIndexOf(request.getContextPath()) + request.getContextPath().length();
 		actionName = url.substring(index, url.length());
 		return actionName;
 	}
@@ -75,16 +73,14 @@ public class AuthencationInterceptor implements Interceptor {
 	private String getRequetSessionId() {
 		// ��ȡ��ǰapplicationContex
 		ActionContext ctx = ActionContext.getContext();
-		HttpServletRequest request = (HttpServletRequest) ctx
-				.get(ServletActionContext.HTTP_REQUEST);
+		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		return request.getRequestedSessionId();
 	}
 
 	@SuppressWarnings("rawtypes")
 	private Map getRequestParam() {
 		ActionContext ctx = ActionContext.getContext();
-		HttpServletRequest request = (HttpServletRequest) ctx
-				.get(ServletActionContext.HTTP_REQUEST);
+		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		return request.getParameterMap();
 	}
 
