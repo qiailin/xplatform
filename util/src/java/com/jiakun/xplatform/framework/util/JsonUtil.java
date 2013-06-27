@@ -239,7 +239,7 @@ public class JsonUtil {
 		while (iter.hasNext()) {
 			String key = (String) iter.next();
 			Object val = object.get(key);
-			if (val != null && !val.toString().trim().equals("")) {
+			if (val != null && !"".equals(val.toString().trim())) {
 				map.put(key, val);
 			}
 		}

@@ -143,7 +143,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 		while (iter.hasNext()) {
 			String key = (String) iter.next();
 			Object val = object.get(key);
-			map.put(key, val == null || val.toString().equals("") ? null : val);
+			map.put(key, "".equals(val.toString()) ? null : val);
 		}
 		return map;
 	}

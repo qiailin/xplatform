@@ -333,7 +333,7 @@ public class DateUtil {
 				if (count == 1) {
 					datetime = sttemp;
 				} else {
-					if ((sttemp.equals("0")) || (sttemp.equals("00"))) {
+					if (("0".equals(sttemp)) || ("00".equals(sttemp))) {
 						sttemp = "0";
 					} else if ((Integer.valueOf(sttemp).intValue()) < 10) {
 						sttemp = sttemp.replaceAll("0", "");
