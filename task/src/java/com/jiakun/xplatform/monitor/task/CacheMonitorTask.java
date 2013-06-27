@@ -17,8 +17,7 @@ public class CacheMonitorTask {
 	public void cacheMonitor() {
 
 		try {
-			cacheMonitorService.createCacheMonitor(memcachedCacheService
-					.getStats());
+			cacheMonitorService.createCacheMonitor(memcachedCacheService.getStats());
 		} catch (Exception e) {
 		}
 
@@ -28,8 +27,7 @@ public class CacheMonitorTask {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 
