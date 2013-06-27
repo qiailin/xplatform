@@ -19,7 +19,6 @@ import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
