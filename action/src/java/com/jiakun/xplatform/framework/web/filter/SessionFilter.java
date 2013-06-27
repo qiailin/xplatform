@@ -33,8 +33,7 @@ import com.jiakun.xplatform.framework.util.PropertiesUtil;
 
 public class SessionFilter implements Filter {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(SessionFilter.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(SessionFilter.class);
 
 	private MemcachedCacheServiceImpl memcachedCacheService;
 
@@ -42,8 +41,8 @@ public class SessionFilter implements Filter {
 		this.memcachedCacheService = null;
 	}
 
-	public void doFilter(ServletRequest req, ServletResponse res,
-			FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
+		ServletException {
 		if (req instanceof HttpServletRequest) {
 			doFilter((HttpServletRequest) req, (HttpServletResponse) res, chain);
 		} else {
@@ -52,9 +51,8 @@ public class SessionFilter implements Filter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void doFilter(HttpServletRequest request,
-			HttpServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+		throws IOException, ServletException {
 		String requestSessionId = null;
 		HttpSession session = null;
 		Map<String, Object> map = null;
@@ -63,8 +61,7 @@ public class SessionFilter implements Filter {
 			requestSessionId = request.getRequestedSessionId();
 
 			if (StringUtil.isNotEmpty(requestSessionId)) {
-				map = (Map<String, Object>) this.memcachedCacheService
-						.get(requestSessionId);
+				map = (Map<String, Object>) this.memcachedCacheService.get(requestSessionId);
 
 				if (map != null && map.size() != 0) {
 					session = request.getSession();
@@ -93,21 +90,16 @@ public class SessionFilter implements Filter {
 					map = new HashMap<String, Object>();
 
 					while (attributeNames.hasMoreElements()) {
-						String attributeName = (String) attributeNames
-								.nextElement();
-						map.put(attributeName,
-								session.getAttribute(attributeName));
+						String attributeName = (String) attributeNames.nextElement();
+						map.put(attributeName, session.getAttribute(attributeName));
 					}
 
 					this.memcachedCacheService
-							.set(sessionId,
-									map,
-									IMemcachedCacheService.CACHE_KEY_SESSION_DEFAULT_EXP);
+						.set(sessionId, map, IMemcachedCacheService.CACHE_KEY_SESSION_DEFAULT_EXP);
 
-					if (!sessionId.equals(requestSessionId)
-							&& StringUtil.isNotEmpty(requestSessionId)) {
+					if (!sessionId.equals(requestSessionId) && StringUtil.isNotEmpty(requestSessionId)) {
 						this.memcachedCacheService.set(requestSessionId, map,
-								IMemcachedCacheService.CACHE_KEY_SESSION_EXP);
+							IMemcachedCacheService.CACHE_KEY_SESSION_EXP);
 					}
 				}
 			}
@@ -122,12 +114,10 @@ public class SessionFilter implements Filter {
 
 	public void init(FilterConfig config) throws ServletException {
 		try {
-			Properties proobj = PropertiesUtil
-					.loadProperties("../env.properties");
+			Properties proobj = PropertiesUtil.loadProperties("../env.properties");
 
-			MemcachedClientBuilder builder = new XMemcachedClientBuilder(
-					AddrUtil.getAddresses((String) proobj
-							.get("xmemcached.memcached.servers")));
+			MemcachedClientBuilder builder =
+				new XMemcachedClientBuilder(AddrUtil.getAddresses((String) proobj.get("xmemcached.memcached.servers")));
 
 			builder.setConnectionPoolSize(2);
 			builder.setCommandFactory(new BinaryCommandFactory());
