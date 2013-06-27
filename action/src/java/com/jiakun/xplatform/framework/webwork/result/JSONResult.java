@@ -38,7 +38,7 @@ public class JSONResult implements Result, WebWorkStatics {
 	private static final String APPLICATION_JSON = "application/json";
 
 	/**
-	 * Charset
+	 * Charset.
 	 */
 	protected String charset;
 
