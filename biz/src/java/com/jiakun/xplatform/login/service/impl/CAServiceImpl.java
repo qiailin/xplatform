@@ -14,10 +14,14 @@ import com.jiakun.xplatform.framework.util.EncryptUtil;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.framework.util.OidUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class CAServiceImpl implements ICAService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(CAServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(CAServiceImpl.class);
 
 	private IAllUserService allUserService;
 
@@ -33,8 +37,7 @@ public class CAServiceImpl implements ICAService {
 		return validateUser(passport, password, true);
 	}
 
-	private ValidateResult validateUser(String passport, String password,
-			boolean validate) {
+	private ValidateResult validateUser(String passport, String password, boolean validate) {
 
 		// ��ʼ������ֵ ״̬ = ʧ��
 		ValidateResult result = new ValidateResult();
@@ -69,11 +72,8 @@ public class CAServiceImpl implements ICAService {
 		// ϵͳ����Ա���������֤ �������
 		if ("admin".equals(passport) || "X".equals(loginUser.getCustType())) {
 			try {
-				if ((passport.equals(loginUser.getLoginId())
-						|| passport.equals(loginUser.getMobile()) || passport
-							.equals(loginUser.getPhone()))
-						&& (EncryptUtil.md5Encry(password).equals(loginUser
-								.getPassWd()))) {
+				if ((passport.equals(loginUser.getLoginId()) || passport.equals(loginUser.getMobile()) || passport
+					.equals(loginUser.getPhone())) && (EncryptUtil.md5Encry(password).equals(loginUser.getPassWd()))) {
 
 					return setSuccessResult(result, loginUser);
 				}
@@ -86,11 +86,8 @@ public class CAServiceImpl implements ICAService {
 
 		if ("V".equals(loginUser.getCustType())) {
 			try {
-				if ((passport.equals(loginUser.getLoginId())
-						|| passport.equals(loginUser.getMobile()) || passport
-							.equals(loginUser.getPhone()))
-						&& (EncryptUtil.md5Encry(password).equals(loginUser
-								.getPassWd()))) {
+				if ((passport.equals(loginUser.getLoginId()) || passport.equals(loginUser.getMobile()) || passport
+					.equals(loginUser.getPhone())) && (EncryptUtil.md5Encry(password).equals(loginUser.getPassWd()))) {
 
 					return setSuccessResult(result, loginUser);
 				}
@@ -117,15 +114,13 @@ public class CAServiceImpl implements ICAService {
 						allUsers.setUserId(loginUser.getUserId());
 						allUsers.setPassWd(pw);
 
-						BooleanResult r = allUserService
-								.updateAllUser(allUsers);
+						BooleanResult r = allUserService.updateAllUser(allUsers);
 						// �޸ĳɹ� -> �ɹ�
 						// �޸�ʧ�� -> ���µ�¼
 						if (r.getResult()) {
 							return setSuccessResult(result, loginUser);
 						} else {
-							logger.error("passport:" + passport
-									+ " ���˺�������IMS��һ��");
+							logger.error("passport:" + passport + " ���˺�������IMS��һ��");
 						}
 					}
 				} catch (Exception e) {
@@ -135,8 +130,7 @@ public class CAServiceImpl implements ICAService {
 		} else {
 			try {
 				if (passport.equals(loginUser.getLoginId())
-						&& EncryptUtil.md5Encry(password).equals(
-								loginUser.getPassWd())) {
+					&& EncryptUtil.md5Encry(password).equals(loginUser.getPassWd())) {
 					return setSuccessResult(result, loginUser);
 				}
 			} catch (Exception e) {
@@ -168,8 +162,7 @@ public class CAServiceImpl implements ICAService {
 	public String generateToken(Object object) {
 		try {
 			String token = OidUtil.newId();
-			memcachedCacheService.add(token, object,
-					IMemcachedCacheService.CACHE_KEY_SSO_TOKEN_DEFAULT_EXP);
+			memcachedCacheService.add(token, object, IMemcachedCacheService.CACHE_KEY_SSO_TOKEN_DEFAULT_EXP);
 
 			return token;
 		} catch (Exception e) {
@@ -207,8 +200,7 @@ public class CAServiceImpl implements ICAService {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 
