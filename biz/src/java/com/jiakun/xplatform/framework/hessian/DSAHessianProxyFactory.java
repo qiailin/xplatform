@@ -48,7 +48,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 		} catch (DSAException de) {
 			logger.error("error in DSAHessianProxyFactory.openConnection,DSA sign error" + keyPairName, de);
 		}
-		if (!"?".equals(queryBuilder.charAt(queryBuilder.length() - 1))) {
+		if ('?' != (queryBuilder.charAt(queryBuilder.length() - 1))) {
 			queryBuilder.append("?");
 		}
 
