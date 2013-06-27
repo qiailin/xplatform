@@ -2,7 +2,6 @@ package com.jiakun.xplatform.framework.util;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URLDecoder;

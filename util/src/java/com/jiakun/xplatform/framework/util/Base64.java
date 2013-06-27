@@ -829,6 +829,13 @@ public class Base64 {
 
 	// end decodeObject
 
+	public static void main(String[] args) {
+		String str = Base64.encodeBytes("��С��".getBytes());
+		logger.info(str);
+
+		logger.info(new String(Base64.decode("Pz8/")));
+	}
+
 	/* ******** I N N E R C L A S S I N P U T S T R E A M ******** */
 
 	/**
@@ -1318,13 +1325,6 @@ public class Base64 {
 		}
 
 		// end resumeEncoding
-	}
-
-	public static void main(String[] args) {
-		String str = Base64.encodeBytes("��С��".getBytes());
-		logger.info(str);
-
-		logger.info(new String(Base64.decode("Pz8/")));
 	}
 
 	// end inner class OutputStream

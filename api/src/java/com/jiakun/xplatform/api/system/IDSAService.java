@@ -2,7 +2,6 @@ package com.jiakun.xplatform.api.system;
 
 import com.alibaba.service.ServiceInitializationException;
 import com.alibaba.service.dsa.DSAException;
-import com.alibaba.service.dsa.NoSuchKeyPairException;
 
 /**
  * DSA���ܺ���ӿ�
