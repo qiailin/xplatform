@@ -14,10 +14,10 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IDataService {
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
-	 * �����־id��ѯ��Ӧ���ֶ���Ϣ
+	 * getTabColumnsByLogId.
 	 * 
 	 * @param dataLogTotalId
 	 * @param userId
@@ -26,7 +26,7 @@ public interface IDataService {
 	List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId);
 
 	/**
-	 * ��ȡ���ֶ���Ϣ
+	 * getTabColumnsByConfigId.
 	 * 
 	 * @param dataConfigId
 	 * @param userId
@@ -35,7 +35,7 @@ public interface IDataService {
 	List<TabColumn> getTabColumnsByConfigId(Long dataConfigId, String userId);
 
 	/**
-	 * ��������datainfo
+	 * createDataInfo.
 	 * 
 	 * @param dataInfoList
 	 * @return
@@ -43,7 +43,7 @@ public interface IDataService {
 	BooleanResult createDataInfo(Long dataConfigId, List<DataInfo> dataInfoList);
 
 	/**
-	 * ���dataLogTotalId ���Ԥ��
+	 * getDataPreviewCount.
 	 * 
 	 * @param dataLogTotal
 	 * @return
@@ -59,7 +59,7 @@ public interface IDataService {
 	List<DataInfo> getDataPreviewList(DataLogTotal dataLogTotal);
 
 	/**
-	 * ɾ�����
+	 * deleteDataInfo.
 	 * 
 	 * @param dataLogTotalId
 	 * @param userId

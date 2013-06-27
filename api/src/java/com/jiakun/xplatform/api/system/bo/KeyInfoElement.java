@@ -1,27 +1,40 @@
 package com.jiakun.xplatform.api.system.bo;
 
 /**
- * ��ʹ�÷ǶԳƼ��ܷ�ʽ���м��ܡ�ǩ����֤�Ȳ���ʱ��������ȡ��˽Կ�Ե�model
  * 
- * @author
+ * @author jiakunxu
  * 
  */
-public class KeyInfoElement {
+public final class KeyInfoElement {
 
 	/**
-	 * ��˽Կ�Ե�����
+	 * keyPairName.
 	 */
 	private String keyPairName;
 
 	/**
-	 * ��Ź�Կ���ļ�·��
+	 * pubKeyFileName.
 	 */
 	private String pubKeyFileName;
 
 	/**
-	 * ���˽Կ���ļ�·��
+	 * priKeyFileName.
 	 */
 	private String priKeyFileName;
+
+	private KeyInfoElement(String keyPairName, String pubKeyFileName, String priKeyFileName) {
+		super();
+		this.keyPairName = keyPairName;
+		this.pubKeyFileName = pubKeyFileName;
+		this.priKeyFileName = priKeyFileName;
+	}
+
+	public static KeyInfoElement createKeyInfoElement(String keyPairName, String pubKeyFileName, String priKeyFileName) {
+		if (keyPairName == null) {
+			return null;
+		}
+		return new KeyInfoElement(keyPairName, pubKeyFileName, priKeyFileName);
+	}
 
 	public String getKeyPairName() {
 		return keyPairName;
@@ -45,22 +58,6 @@ public class KeyInfoElement {
 
 	public void setPubKeyFileName(String pubKeyFileName) {
 		this.pubKeyFileName = pubKeyFileName;
-	}
-
-	private KeyInfoElement(String keyPairName, String pubKeyFileName,
-			String priKeyFileName) {
-		super();
-		this.keyPairName = keyPairName;
-		this.pubKeyFileName = pubKeyFileName;
-		this.priKeyFileName = priKeyFileName;
-	}
-
-	static public KeyInfoElement createKeyInfoElement(String keyPairName,
-			String pubKeyFileName, String priKeyFileName) {
-		if (keyPairName == null) {
-			return null;
-		}
-		return new KeyInfoElement(keyPairName, pubKeyFileName, priKeyFileName);
 	}
 
 }

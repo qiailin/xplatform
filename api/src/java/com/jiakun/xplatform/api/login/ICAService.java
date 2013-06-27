@@ -3,38 +3,28 @@ package com.jiakun.xplatform.api.login;
 import com.jiakun.xplatform.api.login.bo.ValidateResult;
 
 /**
- * Ȩ����֤
  * 
  * @author xujiakun
  * 
  */
 public interface ICAService {
 
-	/**
-	 * �ɹ�
-	 */
-	static final String RESULT_SUCCESS = "0";
+	String RESULT_SUCCESS = "0";
+
+	String RESULT_FAILED = "1";
+
+	String RESULT_ERROR = "2";
+
+	String INCORRECT_NULL = "�û�������벻��Ϊ�գ�";
+
+	String INCORRECT_LOGINID = "���û���ϵͳ�в����ڣ�";
+
+	String INCORRECT_LOGIN = "�û�����������벻��ȷ��";
+
+	String INCORRECT_TOKEN = "token��֤ʧ�ܣ�";
 
 	/**
-	 * ʧ��
-	 */
-	static final String RESULT_FAILED = "1";
-
-	/**
-	 * ϵͳ������
-	 */
-	static final String RESULT_ERROR = "2";
-
-	static final String INCORRECT_NULL = "�û�������벻��Ϊ�գ�";
-
-	static final String INCORRECT_LOGINID = "���û���ϵͳ�в����ڣ�";
-
-	static final String INCORRECT_LOGIN = "�û�����������벻��ȷ��";
-
-	static final String INCORRECT_TOKEN = "token��֤ʧ�ܣ�";
-
-	/**
-	 * ��֤��¼����ͨ������֤��
+	 * validateUser.
 	 * 
 	 * @param passport
 	 * @param password
@@ -43,7 +33,7 @@ public interface ICAService {
 	ValidateResult validateUser(String passport, String password);
 
 	/**
-	 * ��֤��¼��ͨ������֤��
+	 * validateUserByLDAP.
 	 * 
 	 * @param passport
 	 * @param password
@@ -52,7 +42,7 @@ public interface ICAService {
 	ValidateResult validateUserByLDAP(String passport, String password);
 
 	/**
-	 * ��֤token
+	 * validateToken.
 	 * 
 	 * @param token
 	 * @return
@@ -60,7 +50,7 @@ public interface ICAService {
 	ValidateResult validateToken(String token);
 
 	/**
-	 * ������token
+	 * generateToken.
 	 * 
 	 * @param object
 	 * @return

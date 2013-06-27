@@ -6,28 +6,26 @@ import com.jiakun.xplatform.api.menu.bo.Menu;
 import com.jiakun.xplatform.framework.bo.StringResult;
 
 /**
- * �ˆνӿ�<br>
- * �����ˆξS�o ��ɫ�ˆξS�o
  * 
  * @author xujiakun
  * 
  */
 public interface IMenuService {
 
-	static final String SUCCESS = "success";
+	String SUCCESS = "success";
 
-	static final String ERROR = "error";
+	String ERROR = "error";
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
-	static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
-	static final String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
+	String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
 
-	static final String MENU_REDIRECT_URL = "/menu/menuAction!redirectMenu.htm?node=";
+	String MENU_REDIRECT_URL = "/menu/menuAction!redirectMenu.htm?node=";
 
 	/**
-	 * �˵���
+	 * getMenuTreeList.
 	 * 
 	 * @param menu
 	 * @return
@@ -49,7 +47,7 @@ public interface IMenuService {
 	List<Menu> getMenuList(Menu menu);
 
 	/**
-	 * �����ˆ�
+	 * createMenu.
 	 * 
 	 * @param menu
 	 * @return
@@ -57,7 +55,7 @@ public interface IMenuService {
 	StringResult createMenu(Menu menu);
 
 	/**
-	 * �޸Ĳˆ�
+	 * updateMenu.
 	 * 
 	 * @param menu
 	 * @return
@@ -65,7 +63,7 @@ public interface IMenuService {
 	StringResult updateMenu(Menu menu);
 
 	/**
-	 * ���id��ѯ�˵���Ϣ
+	 * getMenuById.
 	 * 
 	 * @param id
 	 * @return
@@ -73,7 +71,7 @@ public interface IMenuService {
 	Menu getMenuById(Long id);
 
 	/**
-	 * �h��ˆ�
+	 * deleteMenu.
 	 * 
 	 * @param menu
 	 * @return
@@ -81,7 +79,7 @@ public interface IMenuService {
 	StringResult deleteMenu(Menu menu);
 
 	/**
-	 * ��ѯ��ɫ�����˵�
+	 * getSelectedMenu4RoleCount.
 	 * 
 	 * @param menu
 	 * @return
@@ -89,7 +87,7 @@ public interface IMenuService {
 	int getSelectedMenu4RoleCount(Menu menu);
 
 	/**
-	 * ��ѯ��ɫ�����˵�
+	 * getSelectedMenu4RoleList.
 	 * 
 	 * @param menu
 	 * @return
@@ -97,7 +95,7 @@ public interface IMenuService {
 	List<Menu> getSelectedMenu4RoleList(Menu menu);
 
 	/**
-	 * ѡ���ɫ�˵�
+	 * selectMenu4Role.
 	 * 
 	 * @param menu
 	 * @return
@@ -105,7 +103,7 @@ public interface IMenuService {
 	StringResult selectMenu4Role(Menu menu);
 
 	/**
-	 * ɾ���ɫ�����˵�
+	 * deleteSelectedMenu4Role.
 	 * 
 	 * @param menu
 	 * @return

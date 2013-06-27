@@ -5,7 +5,6 @@ import java.util.List;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
-import com.jiakun.xplatform.api.alluser.bo.UserChange;
 
 public interface IAllUserDao {
 
@@ -60,25 +59,9 @@ public interface IAllUserDao {
 	 */
 	int searchAllUsersCount(AllUsers alluser);
 
-	/**
-	 * ��ѯ��Ա����Ա���
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	List<UserChange> getUserChangeList(UserChange bUser);
-
 	int modifyAllUserInfo(AllUsers allUsers);
 
 	int deleteBImplementByEmpId(Long userId);
-
-	/**
-	 * ��ѯ��Աcount����Ա���
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	int getUserChangeCount(UserChange bUser);
 
 	/**
 	 * ��ȡ�����Ա��Ϣ
@@ -95,14 +78,6 @@ public interface IAllUserDao {
 	 * @return
 	 */
 	List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
-
-	/**
-	 * ���루��Ա���
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	Long insertUserChange(UserChange bUser);
 
 	/**
 	 * 

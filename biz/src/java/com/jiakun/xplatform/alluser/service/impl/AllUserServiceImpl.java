@@ -10,7 +10,6 @@ import com.jiakun.xplatform.api.alluser.IAllUserService;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
-import com.jiakun.xplatform.api.alluser.bo.UserChange;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 import com.jiakun.xplatform.framework.bo.StringResult;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
@@ -19,8 +18,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 
 public class AllUserServiceImpl implements IAllUserService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(AllUserServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(AllUserServiceImpl.class);
 
 	private TransactionTemplate transactionTemplate;
 
@@ -127,27 +125,6 @@ public class AllUserServiceImpl implements IAllUserService {
 		return 0;
 	}
 
-	public int getUserChangeCount(UserChange bUser) {
-		try {
-			return allUserDao.getUserChangeCount(bUser);
-		} catch (Exception e) {
-			logger.error(LogUtil.parserBean(bUser), e);
-		}
-
-		return 0;
-	}
-
-	public List<UserChange> getUserChangeList(UserChange bUser) {
-		try {
-			return allUserDao.getUserChangeList(bUser);
-		} catch (Exception e) {
-			logger.error(LogUtil.parserBean(bUser), e);
-		}
-
-		return null;
-
-	};
-
 	public BooleanResult deleteBImplementByEmpId(Long userId) {
 		BooleanResult result = new BooleanResult();
 		result.setResult(false);
@@ -184,22 +161,6 @@ public class AllUserServiceImpl implements IAllUserService {
 		return null;
 	}
 
-	public StringResult insertUserChange(UserChange bUser) {
-		StringResult result = new StringResult();
-
-		try {
-			Long id = allUserDao.insertUserChange(bUser);
-			result.setResult(id.toString());
-			result.setCode(IAllUserService.SUCCESS);
-		} catch (Exception e) {
-			result.setCode(IAllUserService.ERROR);
-			result.setResult(IAllUserService.ERROR_MESSAGE);
-			logger.error(LogUtil.parserBean(bUser), e);
-		}
-
-		return result;
-	}
-
 	public AllUsers getCheckUserDetail(ApplyUsers applyUsers) {
 		try {
 			return allUserDao.getCheckUserDetail(applyUsers);
@@ -210,8 +171,8 @@ public class AllUserServiceImpl implements IAllUserService {
 		return null;
 	}
 
-	public BooleanResult modifyUserPsw(AllUsers User) {
-		BooleanResult bResult = updateAllUser(User);
+	public BooleanResult modifyUserPsw(AllUsers user) {
+		BooleanResult bResult = updateAllUser(user);
 		// ���貹���޸�AD�����webservice����
 		return bResult;
 	}

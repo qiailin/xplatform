@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.OutputStream;
 
 /**
- * DFS
+ * DFS.
  * 
  * @author xujiakun
  * 
  */
 public interface IDFSService {
 
-	static final String DFS_TYPE_HDFS = "hdfs";
+	String DFS_TYPE_HDFS = "hdfs";
 
 	/**
-	 * get a file's name
+	 * get a file's name.
 	 * 
 	 * @param fileId
 	 * @return fileName if save successully, or null if fail
@@ -22,7 +22,7 @@ public interface IDFSService {
 	String getFileName(String fileId);
 
 	/**
-	 * fetch a file to local disk
+	 * fetch a file to local disk.
 	 * 
 	 * @param fileId
 	 * @param localFilePath
@@ -31,7 +31,7 @@ public interface IDFSService {
 	boolean fetchFile(String fileId, String localFilePath);
 
 	/**
-	 * fetch a file to output stream
+	 * fetch a file to output stream.
 	 * 
 	 * @param fileId
 	 * @param output
@@ -40,7 +40,7 @@ public interface IDFSService {
 	boolean fetchFile(String fileId, OutputStream output);
 
 	/**
-	 * save a local file to hdfs
+	 * save a local file to hdfs.
 	 * 
 	 * @param fileName
 	 * @param suffix
@@ -50,7 +50,7 @@ public interface IDFSService {
 	String saveFile(String fileName, String suffix, String localFileName);
 
 	/**
-	 * save a local file(file) to hdfs
+	 * save a local file(file) to hdfs.
 	 * 
 	 * @param fileName
 	 * @param suffix
@@ -60,7 +60,7 @@ public interface IDFSService {
 	String saveFile(String fileName, String suffix, File localFile);
 
 	/**
-	 * save a local file(byte) to hdfs
+	 * save a local file(byte) to hdfs.
 	 * 
 	 * @param fileName
 	 * @param suffix

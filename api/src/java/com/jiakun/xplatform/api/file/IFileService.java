@@ -12,16 +12,16 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IFileService {
 
-	static final String FILE_FLAG_USED = "U";
+	String FILE_FLAG_USED = "U";
 
-	static final String FILE_FLAG_DELETED = "D";
+	String FILE_FLAG_DELETED = "D";
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
-	static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
 	/**
-	 * ��ȡ�ļ���Ϣ
+	 * getFileInfo.
 	 * 
 	 * @param fileInfo
 	 * @return
@@ -29,7 +29,7 @@ public interface IFileService {
 	FileInfo getFileInfo(FileInfo fileInfo);
 
 	/**
-	 * �����ļ���Ϣ
+	 * createFileInfo.
 	 * 
 	 * @param fileInfo
 	 * @return
@@ -51,7 +51,7 @@ public interface IFileService {
 	List<FileInfo> getFileList(FileInfo fileInfo);
 
 	/**
-	 * ɾ���ļ�
+	 * deleteFile.
 	 * 
 	 * @param fileInfo
 	 * @return

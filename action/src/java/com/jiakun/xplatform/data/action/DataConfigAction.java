@@ -26,8 +26,7 @@ public class DataConfigAction extends BaseAction {
 
 	private static final long serialVersionUID = 1683301014926124737L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataConfigAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataConfigAction.class);
 
 	private IDataConfigService dataConfigService;
 
@@ -61,9 +60,8 @@ public class DataConfigAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "dataConfigList", include = { "dataConfigId", "flag",
-			"createDate", "modifyDate", "userName", "tableName",
-			"sequenceValue", "primaryKey" }, total = "total")
+	@JsonResult(field = "dataConfigList", include = { "dataConfigId", "flag", "createDate", "modifyDate", "userName",
+		"tableName", "sequenceValue", "primaryKey" }, total = "total")
 	public String getDataConfigJsonList() {
 		DataConfig s = new DataConfig();
 		s = getSearchInfo(s);
@@ -119,18 +117,17 @@ public class DataConfigAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		List<DataConfig> dataConfigList = new ArrayList<DataConfig>();
+		List<DataConfig> list = new ArrayList<DataConfig>();
 		String[] ids = userIds.split(",");
 
 		for (String id : ids) {
 			DataConfig dataConfig = new DataConfig();
 			dataConfig.setUserId(id);
 			dataConfig.setItemId(item);
-			dataConfigList.add(dataConfig);
+			list.add(dataConfig);
 		}
 
-		BooleanResult result = dataConfigService
-				.createDataConfig(dataConfigList);
+		BooleanResult result = dataConfigService.createDataConfig(list);
 
 		if (!result.getResult()) {
 			this.setFailMessage(result.getCode());
@@ -181,8 +178,7 @@ public class DataConfigAction extends BaseAction {
 	}
 
 	public String getOrgPeopleTree() {
-		this.actionName = "dataConfigAction!sendOrgToGetPeople.htm?itemId="
-				+ itemId;
+		this.actionName = "dataConfigAction!sendOrgToGetPeople.htm?itemId=" + itemId;
 		return "orgTreeAjax";
 	}
 
