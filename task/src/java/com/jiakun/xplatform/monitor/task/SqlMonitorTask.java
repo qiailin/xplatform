@@ -1,6 +1,5 @@
 package com.jiakun.xplatform.monitor.task;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,8 +64,7 @@ public class SqlMonitorTask {
 				sqlMonitor.setStart(start);
 
 				// ��ѯ��Ҫ��ص�sql�б�
-				List<SqlMonitor> list = sqlMonitorService
-						.getSqlMonitorList(sqlMonitor);
+				List<SqlMonitor> list = sqlMonitorService.getSqlMonitorList(sqlMonitor);
 
 				StringBuffer content = new StringBuffer();
 
@@ -83,24 +81,22 @@ public class SqlMonitorTask {
 						if (StringUtil.isNotEmpty(emailAlarm)) {
 
 							// ��ȡ���sql��ϸ��Ϣ ֻ����ǰ10��
-							List<Map<String, Object>> detailList = sqlMonitorService
-									.execMonitorSqlDetail(s.getSqlDetail());
+							List<Map<String, Object>> detailList =
+								sqlMonitorService.execMonitorSqlDetail(s.getSqlDetail());
 
 							// ���� detailList
 							for (Map<String, Object> map : detailList) {
 								for (String o : map.keySet()) {
-									content.append(o).append(":")
-											.append(map.get(o)).append(";");
+									content.append(o).append(":").append(map.get(o)).append(";");
 								}
 								content.append("<br />");
 							}
 
 							// �����ʼ�
 							@SuppressWarnings("unused")
-							HashMap<String, String> map = new MailService(
-									smtpServer, from, "monitor", emailAlarm,
-									s.getSqlMonitorTitle(), content.toString())
-									.send();
+							Map<String, String> map =
+								new MailService(smtpServer, from, "monitor", emailAlarm, s.getSqlMonitorTitle(),
+									content.toString()).send();
 						}
 
 						String smsAlarm = s.getSmsAlarm();
@@ -108,8 +104,7 @@ public class SqlMonitorTask {
 						if (StringUtil.isNotEmpty(smsAlarm)) {
 							Message message = new Message();
 							message.setMobile(smsAlarm);
-							message.setSmsContent(s.getSqlMonitorTitle() + ":"
-									+ re);
+							message.setSmsContent(s.getSqlMonitorTitle() + ":" + re);
 							message.setSmsType(IMessageService.SMS_TYPE_DEFAULT);
 							message.setSendFlag(IMessageService.SEND_FLAG_DEFAULT);
 							message.setSmsId(IMessageService.SMS_ID_PREFIX_DEFAULT);

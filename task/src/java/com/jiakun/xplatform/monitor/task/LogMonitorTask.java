@@ -1,7 +1,7 @@
 package com.jiakun.xplatform.monitor.task;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.monitor.ILogMonitorService;
@@ -30,10 +30,8 @@ public class LogMonitorTask {
 	public void logMonitor() {
 		List<LogMonitor> list = null;
 		try {
-			list = (List<LogMonitor>) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
-			memcachedCacheService
-					.remove(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
+			list = (List<LogMonitor>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
+			memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
 		} catch (Exception e) {
 		}
 
@@ -64,23 +62,16 @@ public class LogMonitorTask {
 		if (list != null && list.size() != 0) {
 			for (LogMonitor monitor : list) {
 				content.append("<tr>");
-				content.append("<td>").append(monitor.getLogMonitorId())
-						.append("</td>");
-				content.append("<td>").append(monitor.getClassName())
-						.append("</td>");
-				content.append("<td>").append(monitor.getMethodName())
-						.append("</td>");
-				content.append("<td>").append(monitor.getLineNumber())
-						.append("</td>");
-				content.append("<td>").append(monitor.getMessage())
-						.append("</td>");
+				content.append("<td>").append(monitor.getLogMonitorId()).append("</td>");
+				content.append("<td>").append(monitor.getClassName()).append("</td>");
+				content.append("<td>").append(monitor.getMethodName()).append("</td>");
+				content.append("<td>").append(monitor.getLineNumber()).append("</td>");
+				content.append("<td>").append(monitor.getMessage()).append("</td>");
 				content.append("<td>").append(monitor.getE()).append("</td>");
-				content.append("<td>").append(monitor.getLogDate())
-						.append("</td>");
+				content.append("<td>").append(monitor.getLogDate()).append("</td>");
 				content.append("<td>")
-						.append(DateUtil.datetime(monitor.getCreateDate(),
-								DateUtil.DEFAULT_DATETIME_FORMAT))
-						.append("</td>");
+					.append(DateUtil.datetime(monitor.getCreateDate(), DateUtil.DEFAULT_DATETIME_FORMAT))
+					.append("</td>");
 				content.append("</tr>");
 			}
 		}
@@ -89,9 +80,8 @@ public class LogMonitorTask {
 
 		if (list != null && list.size() != 0) {
 			@SuppressWarnings("unused")
-			HashMap<String, String> map = new MailService(smtpServer, from,
-					"monitor", to, "xplatform��̨������־", content.toString())
-					.send();
+			Map<String, String> map =
+				new MailService(smtpServer, from, "monitor", to, "xplatform��̨������־", content.toString()).send();
 		}
 	}
 
@@ -99,8 +89,7 @@ public class LogMonitorTask {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 
