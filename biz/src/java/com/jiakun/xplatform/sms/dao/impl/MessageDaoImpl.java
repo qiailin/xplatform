@@ -10,29 +10,32 @@ import com.jiakun.xplatform.api.sms.bo.Message;
 import com.jiakun.xplatform.framework.dao.impl.BaseDaoImpl;
 import com.jiakun.xplatform.sms.dao.IMessageDao;
 
+/**
+ * 
+ * @author xujiakun
+ * 
+ */
 public class MessageDaoImpl extends BaseDaoImpl implements IMessageDao {
 
 	public int createMessage(final Message message) {
 
-		return (Integer) getSqlMapClientTemplate().execute(
-				new SqlMapClientCallback() {
-					public Object doInSqlMapClient(SqlMapExecutor executor)
-							throws SQLException {
-						executor.startBatch();
+		return (Integer) getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
+			public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
+				executor.startBatch();
 
-						String mobile = message.getMobile();
+				String mobile = message.getMobile();
 
-						if (StringUtil.isNotEmpty(mobile)) {
-							String[] mobiles = mobile.split(";");
-							for (String m : mobiles) {
-								message.setMobile(m.trim());
-								executor.insert("sms.createMessage", message);
-							}
-						}
-
-						return executor.executeBatch();
+				if (StringUtil.isNotEmpty(mobile)) {
+					String[] mobiles = mobile.split(";");
+					for (String m : mobiles) {
+						message.setMobile(m.trim());
+						executor.insert("sms.createMessage", message);
 					}
-				});
+				}
+
+				return executor.executeBatch();
+			}
+		});
 	}
 
 }

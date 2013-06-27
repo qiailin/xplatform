@@ -10,10 +10,14 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.openapi.dao.IResponseDao;
 
+/**
+ * 
+ * @author xujiakun
+ * 
+ */
 public class ResponseServiceImpl implements IResponseService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(ResponseServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(ResponseServiceImpl.class);
 
 	private IResponseDao responseDao;
 
@@ -37,8 +41,7 @@ public class ResponseServiceImpl implements IResponseService {
 		return null;
 	}
 
-	public BooleanResult createResponseStats(
-			List<ResponseStats> responseStatsList) {
+	public BooleanResult createResponseStats(List<ResponseStats> responseStatsList) {
 		BooleanResult res = new BooleanResult();
 
 		try {
