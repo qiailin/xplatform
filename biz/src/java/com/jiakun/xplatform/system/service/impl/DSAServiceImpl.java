@@ -22,9 +22,12 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DSAServiceImpl implements IDSAService {
-
-	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAServiceImpl.class);
 
 	/**
 	 * �����ļ���
@@ -43,6 +46,8 @@ public class DSAServiceImpl implements IDSAService {
 	private static final String PUBKEY_FILE_TEXT = "pubKey";
 
 	private static final String PRIKEY_FILE_TEXT = "priKey";
+
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAServiceImpl.class);
 
 	private DSA dsa;
 

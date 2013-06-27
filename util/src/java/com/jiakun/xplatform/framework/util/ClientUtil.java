@@ -79,9 +79,8 @@ public class ClientUtil {
 	}
 
 	/**
-	 * 
 	 * @param uri
-	 *            https://fi.alisoft.com
+	 * 
 	 * @return
 	 */
 	public static String getDomainForURI(String uri) {
@@ -97,7 +96,7 @@ public class ClientUtil {
 	 * @return String 12λ���ֵ��ַ�. �쳣�������"-1"
 	 */
 	public static double ip2number(String ip) {
-		double IPString = 0.0;
+		double ipString = 0.0;
 		String[] ipblocks = ip.split("\\.");
 		double ip1 = 0.0;
 		double ip2 = 0.0;
@@ -107,12 +106,13 @@ public class ClientUtil {
 		ip2 = Double.parseDouble(ipblocks[1]) * 65536;
 		ip3 = Double.parseDouble(ipblocks[2]) * 256;
 		ip4 = Double.parseDouble(ipblocks[3]);
-		IPString = ip1 + ip2 + ip3 + ip4;
-		return IPString;
+		ipString = ip1 + ip2 + ip3 + ip4;
+		return ipString;
 	}
 
 	public static boolean isIP(String str) {
-		Pattern p = Pattern
+		Pattern p =
+			Pattern
 				.compile("^([01]?[0-9][0-9]|[01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9][0-9]|[01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9][0-9]|[01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9][0-9]|[01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$");
 		Matcher m = p.matcher(str);
 		return m.matches();
@@ -130,8 +130,7 @@ public class ClientUtil {
 		return false;
 	}
 
-	public static void sendRedirect(HttpServletResponse response, String url)
-			throws IOException {
+	public static void sendRedirect(HttpServletResponse response, String url) throws IOException {
 		try {
 			url = new String(url.getBytes("GBK"), "ISO8859_1");
 			response.sendRedirect(url);

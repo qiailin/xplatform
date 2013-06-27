@@ -169,13 +169,13 @@ public class MailService {
 		Message msg = null;
 		try {
 			msg = new MimeMessage(session);
-			Address from_address = null;
+			Address fromAddress = null;
 			try {
 				displayName = MimeUtility.encodeText(displayName, "gb2312", "B");
-				from_address = new InternetAddress(from, displayName);
-				msg.setFrom(from_address);
+				fromAddress = new InternetAddress(from, displayName);
+				msg.setFrom(fromAddress);
 			} catch (UnsupportedEncodingException e) {
-				logger.error(LogUtil.parserBean(from_address), e);
+				logger.error(LogUtil.parserBean(fromAddress), e);
 			}
 			// ����ռ���
 			String[] toArray = to.split(";");
@@ -189,7 +189,7 @@ public class MailService {
 			try {
 				subject = MimeUtility.encodeText(subject, "gb2312", "B");
 			} catch (Exception e) {
-				logger.error(LogUtil.parserBean(from_address), e);
+				logger.error(LogUtil.parserBean(fromAddress), e);
 			}
 
 			msg.setSubject(subject);

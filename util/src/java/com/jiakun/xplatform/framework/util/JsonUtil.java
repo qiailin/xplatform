@@ -32,6 +32,9 @@ import com.opensymphony.xwork.util.OgnlUtil;
 
 public class JsonUtil {
 
+	// private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+	private static Log log = LogFactory.getLog(JsonUtil.class);
+
 	/**
 	 * ��json�ַ�ת��javabean
 	 * 
@@ -333,8 +336,5 @@ public class JsonUtil {
 		}
 		return json == null ? "" : json;
 	}
-
-	// private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
-	private static Log log = LogFactory.getLog(JsonUtil.class);
 
 }

@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
  * @author gus
  * @version $Id: Base64.java,v 1.1 2005/11/22 09:40:32 leon Exp $
  */
-public class Base64 {
+public final class Base64 {
 
 	private static final Logger logger = Logger.getLogger(Base64.class);
 
@@ -56,17 +56,17 @@ public class Base64 {
 	 * Determine which ALPHABET to use.
 	 */
 	static {
-		byte[] __bytes;
+		byte[] bytes;
 
 		try {
-			__bytes = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".getBytes(PREFERRED_ENCODING);
+			bytes = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".getBytes(PREFERRED_ENCODING);
 		} // end try
 		catch (java.io.UnsupportedEncodingException use) {
-			__bytes = _NATIVE_ALPHABET; // Fall back to native encoding
+			bytes = _NATIVE_ALPHABET; // Fall back to native encoding
 		}
 
 		// end catch
-		ALPHABET = __bytes;
+		ALPHABET = bytes;
 	}
 
 	// end static
@@ -1102,7 +1102,8 @@ public class Base64 {
 		private int bufferLength;
 		private int lineLength;
 		private boolean breakLines;
-		private byte[] b4; // Scratch used in a few places
+		// Scratch used in a few places
+		private byte[] b4;
 		private boolean suspendEncoding;
 
 		/**

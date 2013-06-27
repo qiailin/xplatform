@@ -13,12 +13,12 @@ import com.jiakun.xplatform.framework.dao.IBaseDao;
  */
 public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 
+	private static final String PFIX = ",";
+
 	/**
 	 * sql������namespace
 	 */
 	protected String namespace;
-
-	private static final String PFIX = ",";
 
 	public void setNamespace(String namespace) {
 		this.namespace = namespace;

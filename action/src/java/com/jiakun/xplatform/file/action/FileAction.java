@@ -27,9 +27,9 @@ import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
  */
 public class FileAction extends BaseAction {
 
-	private Logger4jExtend logger = Logger4jCollection.getLogger(FileAction.class);
-
 	private static final long serialVersionUID = 6285367046945881121L;
+
+	private Logger4jExtend logger = Logger4jCollection.getLogger(FileAction.class);
 
 	private IFileService fileService;
 

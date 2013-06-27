@@ -33,7 +33,9 @@ import com.opensymphony.xwork.util.OgnlUtil;
  */
 public class JSONResult implements Result, WebWorkStatics {
 
-	private String APPLICATION_JSON = "application/json";
+	private static final long serialVersionUID = -4293657447642850227L;
+
+	private static final String APPLICATION_JSON = "application/json";
 
 	/**
 	 * Charset
@@ -58,30 +60,25 @@ public class JSONResult implements Result, WebWorkStatics {
 		// ����ContentType
 		StringBuffer contentType = new StringBuffer();
 		contentType.append(APPLICATION_JSON);
-		contentType.append(isLegalCharSet() ? ("; charset=" + charset)
-				: "; charset=GBK");
+		contentType.append(isLegalCharSet() ? ("; charset=" + charset) : "; charset=GBK");
 		response.setContentType(contentType.toString());
 
 		Object action = invocation.getAction();
 		Method method = null;
 		try {
-			method = action.getClass().getDeclaredMethod(
-					invocation.getProxy().getMethod(), new Class[0]);
+			method = action.getClass().getDeclaredMethod(invocation.getProxy().getMethod(), new Class[0]);
 		} catch (Exception e) {
-			method = action.getClass().getDeclaredMethod(
-					"do"
-							+ invocation.getProxy().getMethod().substring(0, 1)
-									.toUpperCase()
-							+ invocation.getProxy().getMethod().substring(1),
-					new Class[0]);
+			method =
+				action.getClass().getDeclaredMethod(
+					"do" + invocation.getProxy().getMethod().substring(0, 1).toUpperCase()
+						+ invocation.getProxy().getMethod().substring(1), new Class[0]);
 		}
 		StringBuffer json = new StringBuffer();
 		JsonResult result = method.getAnnotation(JsonResult.class);
 		if (result != null) {
 			Field field = action.getClass().getDeclaredField(result.field());
 			field.setAccessible(true);
-			Object obj = transToJSONObject(field.getType(), field.get(action),
-					result);
+			Object obj = transToJSONObject(field.getType(), field.get(action), result);
 			if (obj != null) {
 				if (String.class.isAssignableFrom(obj.getClass())) {
 					obj = JSONObject.quote((String) obj);
@@ -91,8 +88,7 @@ public class JSONResult implements Result, WebWorkStatics {
 			String fieldName = result.total();
 
 			if (!"".equals(fieldName)) {
-				Field total = action.getClass()
-						.getDeclaredField(result.total());
+				Field total = action.getClass().getDeclaredField(result.total());
 				total.setAccessible(true);
 				json.insert(0, "{values:");
 				json.append(",total:");
@@ -113,15 +109,13 @@ public class JSONResult implements Result, WebWorkStatics {
 		}
 	}
 
-	private Object transToJSONObject(Class<?> cls, Object value)
-			throws Exception {
+	private Object transToJSONObject(Class<?> cls, Object value) throws Exception {
 		return transToJSONObject(cls, value, null);
 	}
 
 	// ��valueת����JSONObject
 	@SuppressWarnings("rawtypes")
-	private Object transToJSONObject(Class<?> cls, Object value,
-			JsonResult tojson) throws Exception {
+	private Object transToJSONObject(Class<?> cls, Object value, JsonResult tojson) throws Exception {
 		Object json = null;
 		if (value != null) {
 			if (Collection.class.isAssignableFrom(cls)) {
@@ -131,8 +125,7 @@ public class JSONResult implements Result, WebWorkStatics {
 				while (iter.hasNext()) {
 					Object element = iter.next();
 					if (element != null) {
-						array.put(transToJSONObject(element.getClass(),
-								element, tojson));
+						array.put(transToJSONObject(element.getClass(), element, tojson));
 					}
 				}
 				json = array;
@@ -143,8 +136,7 @@ public class JSONResult implements Result, WebWorkStatics {
 				for (int i = 0; i < length; i++) {
 					Object element = Array.get(value, i);
 					if (element != null) {
-						array.put(transToJSONObject(element.getClass(),
-								element, tojson));
+						array.put(transToJSONObject(element.getClass(), element, tojson));
 					}
 				}
 				json = array;
@@ -156,30 +148,23 @@ public class JSONResult implements Result, WebWorkStatics {
 					Map.Entry entry = (Map.Entry) iter.next();
 					Object v = entry.getValue();
 					if (v != null) {
-						object.put(entry.getKey().toString(),
-								transToJSONObject(v.getClass(), v, tojson));
+						object.put(entry.getKey().toString(), transToJSONObject(v.getClass(), v, tojson));
 					}
 				}
 				json = object;
-			} else if (cls.isPrimitive()
-					|| CharSequence.class.isAssignableFrom(cls)
-					|| Number.class.isAssignableFrom(cls)
-					|| Boolean.class.isAssignableFrom(cls)) {
+			} else if (cls.isPrimitive() || CharSequence.class.isAssignableFrom(cls)
+				|| Number.class.isAssignableFrom(cls) || Boolean.class.isAssignableFrom(cls)) {
 				// �����͡���ֵ���ַ�
 				// 2012-2-12 modify by xujiakun
 				// cls.isAssignableFrom(Boolean.class)
-				if (cls == Boolean.TYPE || cls == Integer.TYPE
-						|| cls == Float.TYPE || cls == Double.TYPE
-						|| cls == Long.TYPE || cls == Short.TYPE
-						|| cls == Byte.TYPE
-						|| cls.isAssignableFrom(Number.class)
-						|| cls.isAssignableFrom(Boolean.class)) {
+				if (cls == Boolean.TYPE || cls == Integer.TYPE || cls == Float.TYPE || cls == Double.TYPE
+					|| cls == Long.TYPE || cls == Short.TYPE || cls == Byte.TYPE || cls.isAssignableFrom(Number.class)
+					|| cls.isAssignableFrom(Boolean.class)) {
 					json = value;
 				} else {
 					json = value.toString();
 				}
-			} else if (java.util.Date.class.isAssignableFrom(cls)
-					|| java.sql.Date.class.isAssignableFrom(cls)) {
+			} else if (java.util.Date.class.isAssignableFrom(cls) || java.sql.Date.class.isAssignableFrom(cls)) {
 				json = value.toString();
 			} else {
 				// ����
@@ -208,8 +193,7 @@ public class JSONResult implements Result, WebWorkStatics {
 						Map.Entry element = (Map.Entry) iter.next();
 						Object v = element.getValue();
 						if (v != null) {
-							object.put((String) element.getKey(),
-									transToJSONObject(v.getClass(), v));
+							object.put((String) element.getKey(), transToJSONObject(v.getClass(), v));
 						}
 					}
 					json = object;
@@ -236,5 +220,4 @@ public class JSONResult implements Result, WebWorkStatics {
 		return tmp != null;
 	}
 
-	private static final long serialVersionUID = -4293657447642850227L;
 }

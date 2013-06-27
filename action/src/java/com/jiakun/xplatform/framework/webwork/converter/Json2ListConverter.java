@@ -32,10 +32,10 @@ import com.opensymphony.xwork.util.XWorkConverter;
  */
 public class Json2ListConverter extends WebWorkTypeConverter {
 
-	private Logger4jExtend log = Logger4jCollection.getLogger(Json2ListConverter.class);
-
 	// modify by xujiakun yyyy-MM-dd'T'HH:mm:ss'Z' to yyyy-MM-dd'T'HH:mm:ss
 	private static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
+
+	private Logger4jExtend log = Logger4jCollection.getLogger(Json2ListConverter.class);
 
 	/**
 	 * �����е�ʵ������

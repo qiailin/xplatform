@@ -9,29 +9,30 @@ public class SAPConnectionBean {
 
 	private static Logger logger = Logger.getLogger(SAPConnectionBean.class);
 
-	private String poolName;// ���ӳر���
+	private String poolName;
 
-	private int maximumConnectionCount;// ���������
+	private int maximumConnectionCount;
 
-	private String clientName;// SAP�ͻ���(SAP����)
+	private String clientName;
 
-	private String user;// ��½�û�
+	private String user;
 
-	private String password;// ��½����
+	private String password;
 
-	private String language;// ����
+	private String language;
 
-	private String hostName;// SAP���������IP��ַ
+	private String hostName;
 
-	private String sysnr;// SAPϵͳ��
+	private String sysnr;
 
-	private String group;// Name of the group of application servers
+	// Name of the group of application servers
+	private String group;
 
-	private String byGroup;// �Ƿ�ͨ��GROUP��ʽ����
+	private String byGroup;
 
-	private String repositoryName;// ����ֿ����
+	private String repositoryName;
 
-	private String funcName;// �������
+	private String funcName;
 
 	public String getRepositoryName() {
 		return repositoryName;

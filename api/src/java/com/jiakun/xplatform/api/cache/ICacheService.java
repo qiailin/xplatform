@@ -3,8 +3,12 @@ package com.jiakun.xplatform.api.cache;
 import java.util.Date;
 
 /**
- * Cache������������
+ * cacheService.
  * 
+ * @author jiakunxu
+ * 
+ * @param <K>
+ * @param <V>
  */
 public interface ICacheService<K, V> {
 

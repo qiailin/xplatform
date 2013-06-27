@@ -27,14 +27,14 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 
 	private static Logger4jExtend log = Logger4jCollection.getLogger(DecodeParametersInterceptor.class);
 
-	private static final ThreadLocal<Boolean> encoded = new ThreadLocal<Boolean>();
+	private static final ThreadLocal<Boolean> ENCODED = new ThreadLocal<Boolean>();
 
 	public static boolean isEncoded() {
-		return encoded.get() == null ? false : encoded.get();
+		return ENCODED.get() == null ? false : ENCODED.get();
 	}
 
 	public static void setEncoded(boolean value) {
-		encoded.set(value);
+		ENCODED.set(value);
 	}
 
 	static {
@@ -42,8 +42,8 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 	}
 
 	protected void after(ActionInvocation invocation, String result) throws Exception {
-		encoded.set(null);
-		encoded.remove();
+		ENCODED.set(null);
+		ENCODED.remove();
 	}
 
 	protected void before(ActionInvocation invocation) throws Exception {
@@ -73,7 +73,7 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 						}
 					} catch (Exception e) {
 						// getDeclaredField���ܻ᷵�ؿ�ֵ���Ҳ�����Ӧ��fieldʱ��
-						log.error(e); // do nothing
+						log.error(e);
 					}
 				}
 				super.setProperty(context, target, oname, value);
