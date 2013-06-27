@@ -16,7 +16,6 @@ import com.alibaba.common.lang.StringUtil;
 import com.alibaba.service.ServiceInitializationException;
 import com.alibaba.service.dsa.DSA;
 import com.alibaba.service.dsa.DSAException;
-import com.alibaba.service.dsa.NoSuchKeyPairException;
 import com.jiakun.xplatform.api.system.IDSAService;
 import com.jiakun.xplatform.api.system.bo.KeyInfoElement;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;

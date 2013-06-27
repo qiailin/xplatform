@@ -10,8 +10,7 @@ import com.jiakun.xplatform.sms.dao.IMessageDao;
 
 public class MessageServiceImpl implements IMessageService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MessageServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MessageServiceImpl.class);
 
 	private IMessageDao messageDao;
 
