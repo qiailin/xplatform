@@ -5,7 +5,6 @@ import java.util.List;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
-import com.jiakun.xplatform.api.alluser.bo.UserChange;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 import com.jiakun.xplatform.framework.bo.StringResult;
 
@@ -18,25 +17,25 @@ import com.jiakun.xplatform.framework.bo.StringResult;
  */
 public interface IAllUserService {
 
-	static final String SUCCESS = "success";
+	String SUCCESS = "success";
 
-	static final String ERROR = "error";
+	String ERROR = "error";
 
-	static final String ERROR_MESSAGE = "����������������������";
+	String ERROR_MESSAGE = "����������������������";
 
-	static final String ERROR_INPUT_MESSAGE = "����������������������������������������������";
+	String ERROR_INPUT_MESSAGE = "����������������������������������������������";
 
-	static final String ERROR_NULL_MESSAGE = "������������������������������������������";
+	String ERROR_NULL_MESSAGE = "������������������������������������������";
 
-	static final String ERROR_EXIST_MESSAGE = "���������������������� ����������������";
+	String ERROR_EXIST_MESSAGE = "���������������������� ����������������";
 
-	static final String ERROR_CONNET_MESSAGE = "����������������������WebService������������������������";
+	String ERROR_CONNET_MESSAGE = "����������������������WebService������������������������";
 
-	static final String CHECK_TYPE_HR = "hr";
+	String CHECK_TYPE_HR = "hr";
 
-	static final String CHECK_TYPE_IT = "it";
+	String CHECK_TYPE_IT = "it";
 
-	static final String CHECK_TYPE_NONE = "none";
+	String CHECK_TYPE_NONE = "none";
 
 	/**
 	 * 
@@ -102,32 +101,7 @@ public interface IAllUserService {
 	 */
 	int searchAllUsersCount(AllUsers alluser);
 
-	/**
-	 * ���������������������������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-
-	int getUserChangeCount(UserChange bUser);
-
-	/**
-	 * ����������������count�����������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	List<UserChange> getUserChangeList(UserChange bUser);
-
 	BooleanResult deleteBImplementByEmpId(Long userId);
-
-	/**
-	 * �������������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	StringResult insertUserChange(UserChange bUser);
 
 	/**
 	 * ���������������������������������
@@ -159,7 +133,7 @@ public interface IAllUserService {
 	 * @param AllUsers
 	 * @return
 	 */
-	BooleanResult modifyUserPsw(AllUsers User);
+	BooleanResult modifyUserPsw(AllUsers user);
 
 	/**
 	 * ��ApplyUsers

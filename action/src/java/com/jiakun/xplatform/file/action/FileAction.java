@@ -27,8 +27,7 @@ import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
  */
 public class FileAction extends BaseAction {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(FileAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(FileAction.class);
 
 	private static final long serialVersionUID = 6285367046945881121L;
 
@@ -54,8 +53,8 @@ public class FileAction extends BaseAction {
 		return "searchFile";
 	}
 
-	@JsonResult(field = "fileInfoList", include = { "fileId", "fileName",
-			"suffix", "filePath", "flag", "createDate", "modifyDate" }, total = "total")
+	@JsonResult(field = "fileInfoList", include = { "fileId", "fileName", "suffix", "filePath", "flag", "createDate",
+		"modifyDate" }, total = "total")
 	public String getFileJsonList() {
 		FileInfo c = new FileInfo();
 		c = getSearchInfo(c);
@@ -84,10 +83,8 @@ public class FileAction extends BaseAction {
 				HttpServletResponse response = getServletResponse();
 				response.reset();
 				response.setContentType("application/x-msdownload");
-				response.setHeader("Content-Disposition",
-						"attachment; filename=\""
-								+ new String(dfsService.getFileName(fileId)
-										.getBytes("GBK"), ("ISO8859-1")) + "\"");
+				response.setHeader("Content-Disposition", "attachment; filename=\""
+					+ new String(dfsService.getFileName(fileId).getBytes("GBK"), ("ISO8859-1")) + "\"");
 
 				out = response.getOutputStream();
 
@@ -158,12 +155,11 @@ public class FileAction extends BaseAction {
 			response.setContentType("text/html; charset=GBK");
 			out = response.getWriter();
 
-			String fileId = dfsService.saveFile(
-					FileUtil.getFileName(uploadFileName),
-					FileUtil.getFileSuffix(uploadFileName), upload);
+			String id =
+				dfsService.saveFile(FileUtil.getFileName(uploadFileName), FileUtil.getFileSuffix(uploadFileName),
+					upload);
 
-			out.write(StringUtil.isNotEmpty(fileId) ? "{success:true,msg:'"
-					+ fileId + "'}" : "{success:false,msg:'failure'}");
+			out.write(StringUtil.isNotEmpty(id) ? "{success:true,msg:'" + id + "'}" : "{success:false,msg:'failure'}");
 			out.flush();
 		} catch (Exception e) {
 			logger.error(e);

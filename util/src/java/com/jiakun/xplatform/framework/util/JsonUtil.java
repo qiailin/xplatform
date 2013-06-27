@@ -2,7 +2,6 @@ package com.jiakun.xplatform.framework.util;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URLDecoder;
@@ -49,8 +48,7 @@ public class JsonUtil {
 	 */
 
 	@SuppressWarnings("rawtypes")
-	public static Object json2Bean(Class toClass, String jsonValue,
-			Map<String, Class> childMap) throws Exception {
+	public static Object json2Bean(Class toClass, String jsonValue, Map<String, Class> childMap) throws Exception {
 		if (toClass == null) {
 			return null;
 		}
@@ -87,58 +85,41 @@ public class JsonUtil {
 				Object value = null;
 				// ����������
 				// "yyyy-MM-dd'T'HH:mm:ss'Z'"�˸�ʽ����json2.jsת�����Date��ʽ
-				if (java.util.Date.class.isAssignableFrom(desc
-						.getPropertyType())) {
+				if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
 						throw new Exception(desc.getName() + "���ڸ�ʽ����!");
 					}
-					value = new SimpleDateFormat("yyyy-MM-dd").parse(date
-							.trim());
-				} else if (java.sql.Date.class.isAssignableFrom(desc
-						.getPropertyType())) {
+					value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
+				} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
 						throw new Exception(desc.getName() + "���ڸ�ʽ����!");
 					}
-					value = new java.sql.Date(
-							new SimpleDateFormat("yyyy-MM-dd").parse(
-									date.trim()).getTime());
-				} else if (Collection.class.isAssignableFrom(desc
-						.getPropertyType())) {
+					value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
+				} else if (Collection.class.isAssignableFrom(desc.getPropertyType())) {
 					Class clz = childMap.get(desc.getName());
-					if (clz.isPrimitive()
-							|| CharSequence.class.isAssignableFrom(clz)
-							|| Number.class.isAssignableFrom(clz))
-						value = convertFromStringListSimple(
-								map.get(desc.getName()).toString(), clz);
+					if (clz.isPrimitive() || CharSequence.class.isAssignableFrom(clz)
+						|| Number.class.isAssignableFrom(clz))
+						value = convertFromStringListSimple(map.get(desc.getName()).toString(), clz);
 					else
-						value = convertFromStringListComplex(
-								map.get(desc.getName()).toString(), clz);
+						value = convertFromStringListComplex(map.get(desc.getName()).toString(), clz);
 				} else {
 
 					if (desc.getPropertyType().isPrimitive()
-							|| CharSequence.class.isAssignableFrom(desc
-									.getPropertyType())
-							|| Number.class.isAssignableFrom(desc
-									.getPropertyType())) {
+						|| CharSequence.class.isAssignableFrom(desc.getPropertyType())
+						|| Number.class.isAssignableFrom(desc.getPropertyType())) {
 						try {
-							value = OgnlOps.convertValue(
-									map.get(desc.getName()),
-									desc.getPropertyType());
+							value = OgnlOps.convertValue(map.get(desc.getName()), desc.getPropertyType());
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
-							if (clz == Integer.TYPE || clz == Short.TYPE
-									|| clz == Long.TYPE
-									|| clz == BigInteger.class)
+							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class)
 								throw new Exception(desc.getName() + "ӦΪ����!");
-							else if (clz == Double.TYPE || clz == Float.TYPE
-									|| clz == BigDecimal.class)
+							else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class)
 								throw new Exception(desc.getName() + "ӦΪ����!");
 						}
 					} else {
-						value = json2Bean(desc.getPropertyType(),
-								map.get(desc.getName()).toString(), null);
+						value = json2Bean(desc.getPropertyType(), map.get(desc.getName()).toString(), null);
 					}
 
 				}
@@ -154,21 +135,23 @@ public class JsonUtil {
 		else {
 			date = date.trim();
 			String[] param = date.split("-");
-			if (param[0].length() != 4)
+			if (param[0].length() != 4) {
 				return false;
+			}
 			int month = Integer.parseInt(param[1]);
-			if (month < 1 || month > 12)
+			if (month < 1 || month > 12) {
 				return false;
+			}
 			int day = Integer.parseInt(param[2]);
-			if (day < 1 || day > 31)
+			if (day < 1 || day > 31) {
 				return false;
+			}
 		}
 		return true;
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static Object convertFromStringListSimple(String jsonValue,
-			Class toClass) throws Exception {
+	private static Object convertFromStringListSimple(String jsonValue, Class toClass) throws Exception {
 		if (toClass == null) {
 			return null;
 		}
@@ -189,18 +172,17 @@ public class JsonUtil {
 				if (!validateDate(date)) {
 					throw new Exception("���ڸ�ʽ����!");
 				}
-				value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd")
-						.parse(date.trim()).getTime());
-			} else
+				value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
+			} else {
 				value = OgnlOps.convertValue(property, toClass);
+			}
 			list.add(value);
 		}
 		return list;
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static Object convertFromStringListComplex(String jsonValue,
-			Class toClass) throws Exception {
+	private static Object convertFromStringListComplex(String jsonValue, Class toClass) throws Exception {
 		if (toClass == null) {
 			return null;
 		}
@@ -215,36 +197,29 @@ public class JsonUtil {
 					Object value = null;
 					// ����������
 					// "yyyy-MM-dd'T'HH:mm:ss'Z'"�˸�ʽ����json2.jsת�����Date��ʽ
-					if (java.util.Date.class.isAssignableFrom(desc
-							.getPropertyType())) {
+					if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
 							throw new Exception(desc.getName() + "���ڸ�ʽ����!");
 						}
-						value = new SimpleDateFormat("yyyy-MM-dd").parse(date
-								.trim());
-					} else if (java.sql.Date.class.isAssignableFrom(desc
-							.getPropertyType())) {
+						value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
+					} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
 							throw new Exception(desc.getName() + "���ڸ�ʽ����!");
 						}
-						value = new java.sql.Date(new SimpleDateFormat(
-								"yyyy-MM-dd").parse(date.trim()).getTime());
+						value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
 					} else {
 						try {
-							value = OgnlOps.convertValue(
-									map.get(desc.getName()),
-									desc.getPropertyType());
+							value = OgnlOps.convertValue(map.get(desc.getName()), desc.getPropertyType());
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
-							if (clz == Integer.class || clz == Short.class
-									|| clz == Long.class
-									|| clz == BigInteger.class)
+							if (clz == Integer.class || clz == Short.class || clz == Long.class
+								|| clz == BigInteger.class) {
 								throw new Exception(desc.getName() + "ӦΪ����!");
-							else if (clz == Double.class || clz == Float.class
-									|| clz == BigDecimal.class)
+							} else if (clz == Double.class || clz == Float.class || clz == BigDecimal.class) {
 								throw new Exception(desc.getName() + "ӦΪ����!");
+							}
 						}
 
 					}
@@ -256,16 +231,16 @@ public class JsonUtil {
 		return list;
 	}
 
-	private static Map<String, Object> toMap(JSONObject object)
-			throws Exception {
+	private static Map<String, Object> toMap(JSONObject object) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		@SuppressWarnings("rawtypes")
 		Iterator iter = object.keys();
 		while (iter.hasNext()) {
 			String key = (String) iter.next();
 			Object val = object.get(key);
-			if (val != null && !val.toString().trim().equals(""))
+			if (val != null && !"".equals(val.toString().trim())) {
 				map.put(key, val);
+			}
 		}
 		return map;
 	}
@@ -291,8 +266,7 @@ public class JsonUtil {
 
 	// ��valueת����JSONObject
 	@SuppressWarnings("rawtypes")
-	private static Object transToJSONObject(Class<?> cls, Object value)
-			throws Exception {
+	private static Object transToJSONObject(Class<?> cls, Object value) throws Exception {
 		Object json = null;
 		if (value != null) {
 			if (Collection.class.isAssignableFrom(cls)) {
@@ -325,27 +299,20 @@ public class JsonUtil {
 					Map.Entry entry = (Map.Entry) iter.next();
 					Object v = entry.getValue();
 					if (v != null) {
-						object.put(entry.getKey().toString(),
-								transToJSONObject(v.getClass(), v));
+						object.put(entry.getKey().toString(), transToJSONObject(v.getClass(), v));
 					}
 				}
 				json = object;
-			} else if (cls.isPrimitive()
-					|| CharSequence.class.isAssignableFrom(cls)
-					|| Number.class.isAssignableFrom(cls)
-					|| Boolean.class.isAssignableFrom(cls)) {
+			} else if (cls.isPrimitive() || CharSequence.class.isAssignableFrom(cls)
+				|| Number.class.isAssignableFrom(cls) || Boolean.class.isAssignableFrom(cls)) {
 				// �����͡���ֵ���ַ�
-				if (cls == Boolean.TYPE || cls == Integer.TYPE
-						|| cls == Float.TYPE || cls == Double.TYPE
-						|| cls == Long.TYPE || cls == Short.TYPE
-						|| cls == Byte.TYPE
-						|| cls.isAssignableFrom(Number.class)) {
+				if (cls == Boolean.TYPE || cls == Integer.TYPE || cls == Float.TYPE || cls == Double.TYPE
+					|| cls == Long.TYPE || cls == Short.TYPE || cls == Byte.TYPE || cls.isAssignableFrom(Number.class)) {
 					json = value;
 				} else {
 					json = value.toString();
 				}
-			} else if (java.util.Date.class.isAssignableFrom(cls)
-					|| java.sql.Date.class.isAssignableFrom(cls)) {
+			} else if (java.util.Date.class.isAssignableFrom(cls) || java.sql.Date.class.isAssignableFrom(cls)) {
 				json = value.toString();
 			} else {
 				// ����
@@ -357,8 +324,7 @@ public class JsonUtil {
 						Map.Entry element = (Map.Entry) iter.next();
 						Object v = element.getValue();
 						if (v != null) {
-							object.put((String) element.getKey(),
-									transToJSONObject(v.getClass(), v));
+							object.put((String) element.getKey(), transToJSONObject(v.getClass(), v));
 						}
 					}
 					json = object;

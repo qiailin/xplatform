@@ -1,7 +1,7 @@
 package com.jiakun.xplatform.framework.util;
 
-/* 
- * �����Ҫ��ȷ����,��Ҫ��String������BigDecimal���� 
+/*
+ * �����Ҫ��ȷ����,��Ҫ��String������BigDecimal����
  */
 import java.math.BigDecimal;
 
@@ -90,8 +90,7 @@ public class ArithUtil {
 	 */
 	public static double div(double v1, double v2, int scale) {
 		if (scale < 0) {
-			throw new IllegalArgumentException(
-					"The scale must be a positive integer or zero");
+			throw new IllegalArgumentException("The scale must be a positive integer or zero");
 		}
 
 		BigDecimal b1 = new BigDecimal(Double.toString(v1));
@@ -111,12 +110,11 @@ public class ArithUtil {
 	 */
 	public static double round(double v, int scale) {
 		if (scale < 0) {
-			throw new IllegalArgumentException(
-					"The scale must be a positive integer or zero");
+			throw new IllegalArgumentException("The scale must be a positive integer or zero");
 		}
 
 		BigDecimal b = new BigDecimal(Double.toString(v));
-		BigDecimal one = new BigDecimal("1");
+		BigDecimal one = BigDecimal.ONE;
 
 		return b.divide(one, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
@@ -127,8 +125,7 @@ public class ArithUtil {
 	}
 
 	public static double add(double count, BigDecimal remainingSum) {
-		return new BigDecimal(Double.toString(count)).add(remainingSum)
-				.doubleValue();
+		return new BigDecimal(Double.toString(count)).add(remainingSum).doubleValue();
 	}
 
 }

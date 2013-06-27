@@ -13,7 +13,7 @@ import org.springframework.util.DefaultPropertiesPersister;
 import org.springframework.util.PropertiesPersister;
 
 /**
- * Properties ������
+ * Properties Util.
  * 
  */
 public class PropertiesUtil {
@@ -26,7 +26,8 @@ public class PropertiesUtil {
 	private static ResourceLoader resourceLoader = new DefaultResourceLoader();
 
 	/**
-	 * ������properties�ļ�, ��ͬ�����������������ļ��е�ֵ���Ḳ��֮ǰ������. �ļ�·��ʹ��Spring Resource��ʽ,
+	 * ������properties�ļ�, ��ͬ�����������������ļ��е�ֵ���Ḳ��֮ǰ������. �ļ�·��ʹ��Spring
+	 * Resource��ʽ,
 	 * �ļ�����ʹ��UTF-8.
 	 * 
 	 * @see org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
@@ -40,11 +41,9 @@ public class PropertiesUtil {
 			try {
 				Resource resource = resourceLoader.getResource(location);
 				is = resource.getInputStream();
-				propertiesPersister.load(props, new InputStreamReader(is,
-						DEFAULT_ENCODING));
+				propertiesPersister.load(props, new InputStreamReader(is, DEFAULT_ENCODING));
 			} catch (IOException e) {
-				logger.error("Could not load properties from classpath:"
-						+ location + ": " + e.getMessage(), e);
+				logger.error("Could not load properties from classpath:" + location + ": " + e.getMessage(), e);
 			} finally {
 				if (is != null) {
 					try {

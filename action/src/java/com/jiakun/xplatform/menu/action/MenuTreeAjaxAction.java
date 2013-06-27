@@ -16,7 +16,7 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
 /**
- * MenuTreeAjax
+ * MenuTreeAjax.
  * 
  * @author xujiakun
  * 

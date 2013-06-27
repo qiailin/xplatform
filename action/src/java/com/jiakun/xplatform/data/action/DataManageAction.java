@@ -43,8 +43,7 @@ public class DataManageAction extends BaseAction {
 
 	private static final long serialVersionUID = 7511837191810578359L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataManageAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataManageAction.class);
 
 	private IDataService dataService;
 
@@ -72,9 +71,8 @@ public class DataManageAction extends BaseAction {
 		OutputStream outputStream = null;
 
 		try {
-			List<TabColumn> tabColumnList = dataService
-					.getTabColumnsByConfigId(Long.parseLong(dataConfigId),
-							users.getUserId());
+			List<TabColumn> tabColumnList =
+				dataService.getTabColumnsByConfigId(Long.parseLong(dataConfigId), users.getUserId());
 
 			List<String> props = new ArrayList<String>();
 			List<DataInfo> dataInfos = new ArrayList<DataInfo>();
@@ -88,38 +86,29 @@ public class DataManageAction extends BaseAction {
 
 					@SuppressWarnings("rawtypes")
 					Class[] c = { String.class };
-					Method method = BeanUtils.findMethod(dataInfo.getClass(),
-							"setParameter" + i, c);
+					Method method = BeanUtils.findMethod(dataInfo.getClass(), "setParameter" + i, c);
 
-					method.invoke(
-							dataInfo,
-							new Object[] { tabColumn.getColumnName()
-									+ (StringUtil.isNotEmpty(tabColumn
-											.getComments()) ? ":"
-											+ tabColumn.getComments() : "") });
+					method.invoke(dataInfo,
+						new Object[] { tabColumn.getColumnName()
+							+ (StringUtil.isNotEmpty(tabColumn.getComments()) ? ":" + tabColumn.getComments() : "") });
 					i++;
 				}
 
 				dataInfos.add(dataInfo);
 
 				ExcelUtil util = new ExcelUtil();
-				inputStream = Thread.currentThread().getContextClassLoader()
-						.getResource("/resource/exportDataTemplate.xls")
+				inputStream =
+					Thread.currentThread().getContextClassLoader().getResource("/resource/exportDataTemplate.xls")
 						.openStream();
 				HttpServletResponse response = this.getServletResponse();
 				response.setContentType("application/x-download");
 				response.setHeader(
-						"Content-Disposition",
-						"attachment; filename=\""
-								+ new String(
-										("���ģ��("
-												+ tabColumnList.get(0)
-														.getTableName() + ")")
-												.getBytes("GBK"), ("ISO8859-1"))
-								+ ".xls\"");
+					"Content-Disposition",
+					"attachment; filename=\""
+						+ new String(("���ģ��(" + tabColumnList.get(0).getTableName() + ")").getBytes("GBK"),
+							("ISO8859-1")) + ".xls\"");
 				outputStream = response.getOutputStream();
-				util.createExcelWithTemplate(inputStream, outputStream, props,
-						dataInfos);
+				util.createExcelWithTemplate(inputStream, outputStream, props, dataInfos);
 				outputStream.flush();
 
 				return RESULT_MESSAGE;
@@ -161,11 +150,10 @@ public class DataManageAction extends BaseAction {
 			response.setContentType("text/html; charset=GBK");
 			out = response.getWriter();
 
-			String resultMsg = processData(uploadFileName, upload,
-					Long.parseLong(dataConfigId), users.getUserId());
+			String resultMsg = processData(uploadFileName, upload, Long.parseLong(dataConfigId), users.getUserId());
 
-			out.write(StringUtil.isEmpty(resultMsg) ? "{success:true,msg:'�����ɹ�'}"
-					: "{success:false,msg:'" + resultMsg + "'}");
+			out.write(StringUtil.isEmpty(resultMsg) ? "{success:true,msg:'�����ɹ�'}" : "{success:false,msg:'"
+				+ resultMsg + "'}");
 			out.flush();
 		} catch (Exception e) {
 			logger.error("dataConfigId:" + dataConfigId, e);
@@ -180,8 +168,7 @@ public class DataManageAction extends BaseAction {
 		}
 	}
 
-	private String processData(String uploadFileName, File upload,
-			Long dataConfigId, String userId) {
+	private String processData(String uploadFileName, File upload, Long dataConfigId, String userId) {
 		InputStream inputStream = null;
 		Workbook tBook = null;
 		StringBuilder sb = new StringBuilder();
@@ -192,12 +179,10 @@ public class DataManageAction extends BaseAction {
 				return "��ѡ����Ҫ�ϴ��ļ�";
 			}
 
-			String end = StringUtil.substring(uploadFileName,
-					StringUtil.lastIndexOf(uploadFileName, '.'));
+			String end = StringUtil.substring(uploadFileName, StringUtil.lastIndexOf(uploadFileName, '.'));
 
 			// �ļ���ʽ����ȷ
-			if (StringUtil.isEmpty(end)
-					|| (!end.equals(".xls") && !end.equals(".xlsx"))) {
+			if (StringUtil.isEmpty(end) || (!".xls".equals(end) && !".xlsx".equals(end))) {
 				return "�ϴ��ļ������޷�ʶ��";
 			}
 
@@ -207,8 +192,7 @@ public class DataManageAction extends BaseAction {
 			int rsColumns = rs.getColumns();
 			int rsRows = rs.getRows();
 
-			List<TabColumn> tabColumnList = dataService
-					.getTabColumnsByConfigId(dataConfigId, userId);
+			List<TabColumn> tabColumnList = dataService.getTabColumnsByConfigId(dataConfigId, userId);
 
 			if (tabColumnList == null || tabColumnList.size() == 0) {
 				return "û�и���ݿ��ĵ���Ȩ��";
@@ -226,26 +210,21 @@ public class DataManageAction extends BaseAction {
 
 				// init tableName and tableSequence
 				dataInfo.setTableName(tabColumnList.get(0).getTableName());
-				dataInfo.setSequenceValue(tabColumnList.get(0)
-						.getSequenceValue());
+				dataInfo.setSequenceValue(tabColumnList.get(0).getSequenceValue());
 
 				for (int j = 0; j < rsColumns; j++) {
 					@SuppressWarnings("rawtypes")
 					Class[] c = { String.class };
 					TabColumn tabColumn = tabColumnList.get(j);
 
-					Method method1 = BeanUtils.findMethod(dataInfo.getClass(),
-							"setParameter" + (j + 1), c);
-					method1.invoke(dataInfo,
-							new Object[] { tabColumn.getColumnName() });
+					Method method1 = BeanUtils.findMethod(dataInfo.getClass(), "setParameter" + (j + 1), c);
+					method1.invoke(dataInfo, new Object[] { tabColumn.getColumnName() });
 
 					// ��i�� ��j�� rs.getCell(j, i).getContents()
 					String value = rs.getCell(j, i).getContents();
 
-					Method method2 = BeanUtils.findMethod(dataInfo.getClass(),
-							"setValue" + (j + 1), c);
-					method2.invoke(dataInfo, new Object[] { StringUtil
-							.isNotEmpty(value) ? value : "" });
+					Method method2 = BeanUtils.findMethod(dataInfo.getClass(), "setValue" + (j + 1), c);
+					method2.invoke(dataInfo, new Object[] { StringUtil.isNotEmpty(value) ? value : "" });
 
 					// ��֤value��Ч��
 					// �ж��Ƿ��Ϊ��
@@ -254,9 +233,8 @@ public class DataManageAction extends BaseAction {
 							if (sb.length() > 0) {
 								sb.append("</br>");
 							}
-							sb.append("��").append(i + 1).append("��")
-									.append("��").append(j + 1).append("��")
-									.append("����Ϊ��");
+							sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
+								.append("����Ϊ��");
 						}
 					} else {
 						// �ж��Ƿ�Ϊdate
@@ -265,10 +243,8 @@ public class DataManageAction extends BaseAction {
 								if (sb.length() > 0) {
 									sb.append("</br>");
 								}
-								sb.append("��").append(i + 1).append("��")
-										.append("��").append(j + 1)
-										.append("��")
-										.append("������yyyy-MM-dd��ʽ");
+								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
+									.append("������yyyy-MM-dd��ʽ");
 							}
 						} else if ("NUMBER".equals(tabColumn.getDataType())) {
 							try {
@@ -281,19 +257,16 @@ public class DataManageAction extends BaseAction {
 									if (sb.length() > 0) {
 										sb.append("</br>");
 									}
-									sb.append("��").append(i + 1).append("��")
-											.append("��").append(j + 1)
-											.append("��").append("�ֶγ��ȳ���")
-											.append(length);
+									sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
+										.append("�ֶγ��ȳ���").append(length);
 								}
 							} catch (Exception e) {
 								logger.error("value:" + value, e);
 								if (sb.length() > 0) {
 									sb.append("</br>");
 								}
-								sb.append("��").append(i + 1).append("��")
-										.append("��").append(j + 1)
-										.append("��").append("���������ָ�ʽ");
+								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
+									.append("���������ָ�ʽ");
 							}
 						} else if ("VARCHAR2".equals(tabColumn.getDataType())) {
 							// �жϳ���
@@ -302,10 +275,8 @@ public class DataManageAction extends BaseAction {
 								if (sb.length() > 0) {
 									sb.append("</br>");
 								}
-								sb.append("��").append(i + 1).append("��")
-										.append("��").append(j + 1)
-										.append("��").append("�ֶγ��ȳ���")
-										.append(length);
+								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
+									.append("�ֶγ��ȳ���").append(length);
 							}
 						}
 					}
@@ -319,8 +290,7 @@ public class DataManageAction extends BaseAction {
 			}
 
 			// insert
-			BooleanResult result = dataService.createDataInfo(dataConfigId,
-					dataInfos);
+			BooleanResult result = dataService.createDataInfo(dataConfigId, dataInfos);
 
 			if (result.getResult()) {
 				return "";
@@ -357,11 +327,10 @@ public class DataManageAction extends BaseAction {
 		AllUsers users = this.getUser();
 		if (StringUtil.isNotEmpty(dataLogTotalId)) {
 			try {
-				List<TabColumn> tabColumns = dataService.getTabColumnsByLogId(
-						Long.parseLong(dataLogTotalId), users.getUserId());
+				List<TabColumn> tabColumns =
+					dataService.getTabColumnsByLogId(Long.parseLong(dataLogTotalId), users.getUserId());
 
-				listJson = JsonUtil
-						.bean2Json(tabColumns.getClass(), tabColumns);
+				listJson = JsonUtil.bean2Json(tabColumns.getClass(), tabColumns);
 				StringBuilder temp = new StringBuilder();
 				temp.append(listJson);
 				temp.insert(0, "{values:");
@@ -378,8 +347,7 @@ public class DataManageAction extends BaseAction {
 		return "searchDataPreview";
 	}
 
-	@JsonResult(field = "dataInfoList", exclude = { "tableName",
-			"sequenceValue" }, total = "total")
+	@JsonResult(field = "dataInfoList", exclude = { "tableName", "sequenceValue" }, total = "total")
 	public String getDataPreviewJsonList() {
 		AllUsers users = this.getUser();
 		DataLogTotal s = new DataLogTotal();
@@ -415,8 +383,7 @@ public class DataManageAction extends BaseAction {
 
 		if (StringUtil.isNotEmpty(dataLogTotalId)) {
 			try {
-				reult = dataService.deleteDataInfo(
-						Long.parseLong(dataLogTotalId), users.getUserId());
+				reult = dataService.deleteDataInfo(Long.parseLong(dataLogTotalId), users.getUserId());
 				if (reult.getResult()) {
 					return RESULT_MESSAGE;
 				}

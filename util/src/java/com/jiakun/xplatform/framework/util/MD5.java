@@ -159,12 +159,16 @@ public class MD5 {
 	 */
 	private void md5Update(byte[] inbuf, int inputLen) {
 
-		int i, index, partLen;
+		int i;
+		int index;
+		int partLen;
+
 		byte[] block = new byte[64];
 		index = (int) (count[0] >>> 3) & 0x3F;
 		// /* Update number of bits */
-		if ((count[0] += (inputLen << 3)) < (inputLen << 3))
+		if ((count[0] += (inputLen << 3)) < (inputLen << 3)) {
 			count[1]++;
+		}
 		count[1] += (inputLen >>> 29);
 
 		partLen = 64 - index;
@@ -181,10 +185,9 @@ public class MD5 {
 			}
 			index = 0;
 
-		} else
-
+		} else {
 			i = 0;
-
+		}
 		// /* Buffer remaining input */
 		md5Memcpy(buffer, inbuf, index, i, inputLen - i);
 
@@ -195,7 +198,8 @@ public class MD5 {
 	 */
 	private void md5Final() {
 		byte[] bits = new byte[8];
-		int index, padLen;
+		int index;
+		int padLen;
 
 		// /* Save number of bits */
 		Encode(bits, count, 8);
@@ -221,15 +225,20 @@ public class MD5 {
 	private void md5Memcpy(byte[] output, byte[] input, int outpos, int inpos, int len) {
 		int i;
 
-		for (i = 0; i < len; i++)
+		for (i = 0; i < len; i++) {
 			output[outpos + i] = input[inpos + i];
+		}
 	}
 
 	/*
 	 * md5Transform��MD5���ı任������md5Update���ã�block�Ƿֿ��ԭʼ�ֽ�
 	 */
 	private void md5Transform(byte[] block) {
-		long a = state[0], b = state[1], c = state[2], d = state[3];
+		long a = state[0];
+		long b = state[1];
+		long c = state[2];
+		long d = state[3];
+
 		long[] x = new long[16];
 
 		Decode(x, block, 64);
@@ -318,7 +327,8 @@ public class MD5 {
 	 * ֻ���32bit������ӦԭʼCʵ�ֵ���;
 	 */
 	private void Encode(byte[] output, long[] input, int len) {
-		int i, j;
+		int i;
+		int j;
 
 		for (i = 0, j = 0; j < len; i++, j += 4) {
 			output[j] = (byte) (input[i] & 0xffL);
@@ -333,11 +343,13 @@ public class MD5 {
 	 * ֻ�ϳɵ�32bit����32bit���㣬����ӦԭʼCʵ�ֵ���;
 	 */
 	private void Decode(long[] output, byte[] input, int len) {
-		int i, j;
+		int i;
+		int j;
 
-		for (i = 0, j = 0; j < len; i++, j += 4)
+		for (i = 0, j = 0; j < len; i++, j += 4) {
 			output[i] =
 				b2iu(input[j]) | (b2iu(input[j + 1]) << 8) | (b2iu(input[j + 2]) << 16) | (b2iu(input[j + 3]) << 24);
+		}
 
 		return;
 	}
@@ -359,8 +371,7 @@ public class MD5 {
 		char[] ob = new char[2];
 		ob[0] = Digit[(ib >>> 4) & 0X0F];
 		ob[1] = Digit[ib & 0X0F];
-		String s = new String(ob);
-		return s;
+		return new String(ob);
 	}
 
 	public static void main(String[] args) {

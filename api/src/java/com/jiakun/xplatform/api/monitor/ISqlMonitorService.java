@@ -7,35 +7,35 @@ import com.jiakun.xplatform.api.monitor.bo.SqlMonitor;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * sql���
+ * sqlMonitor.
  * 
  * @author xujiakun
  * 
  */
 public interface ISqlMonitorService {
 
-	static final int MONITOR_FREQ_15 = 15;
+	int MONITOR_FREQ_15 = 15;
 
-	static final int MONITOR_FREQ_30 = 30;
+	int MONITOR_FREQ_30 = 30;
 
-	static final int MONITOR_FREQ_60 = 60;
+	int MONITOR_FREQ_60 = 60;
 
-	static final String MONITOR_LOG_Y = "Y";
+	String MONITOR_LOG_Y = "Y";
 
-	static final String MONITOR_LOG_N = "N";
+	String MONITOR_LOG_N = "N";
 
-	static final String MONITOR_STATUS_N = "N";
+	String MONITOR_STATUS_N = "N";
 
-	static final String MONITOR_STATUS_Y = "Y";
+	String MONITOR_STATUS_Y = "Y";
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
-	static final String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
-	static final String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
+	String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
 
 	/**
-	 * ִ�м��sql
+	 * execMonitorSql.
 	 * 
 	 * @param sql
 	 * @return
@@ -57,7 +57,7 @@ public interface ISqlMonitorService {
 	int getSqlMonitorCount(SqlMonitor sqlMonitor);
 
 	/**
-	 * ��ѯ��Ҫ���sql���б�
+	 * getSqlMonitorList.
 	 * 
 	 * @param sqlMonitor
 	 * @return
@@ -65,7 +65,7 @@ public interface ISqlMonitorService {
 	List<SqlMonitor> getSqlMonitorList(SqlMonitor sqlMonitor);
 
 	/**
-	 * ����sql���
+	 * createSqlMonitor.
 	 * 
 	 * @param sqlMonitor
 	 * @return

@@ -1,7 +1,17 @@
 package com.jiakun.xplatform.framework.mail;
 
-public class SmtpAuth extends javax.mail.Authenticator {
-	private String username, password;
+import javax.mail.Authenticator;
+
+/**
+ * 
+ * @author
+ * 
+ */
+public class SmtpAuth extends Authenticator {
+
+	private String username;
+
+	private String password;
 
 	public SmtpAuth(String username, String password) {
 		this.username = username;

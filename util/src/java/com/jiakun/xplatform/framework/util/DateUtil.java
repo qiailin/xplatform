@@ -322,37 +322,42 @@ public class DateUtil {
 		for (int i = 0; i < list.size(); i++) {
 			String temp = (String) list.get(i);
 			StringTokenizer st;
-			if (i == 0)
+			if (i == 0) {
 				st = new StringTokenizer(temp, "-");
-			else
+			} else {
 				st = new StringTokenizer(temp, ":");
+			}
 			int k = st.countTokens();
 			for (int j = 0; j < k; j++) {
 				String sttemp = (String) st.nextElement();
 				if (count == 1) {
 					datetime = sttemp;
 				} else {
-					if ((sttemp.equals("0")) || (sttemp.equals("00")))
+					if (("0".equals(sttemp)) || ("00".equals(sttemp))) {
 						sttemp = "0";
-					else if ((Integer.valueOf(sttemp).intValue()) < 10)
+					} else if ((Integer.valueOf(sttemp).intValue()) < 10) {
 						sttemp = sttemp.replaceAll("0", "");
+					}
 					if (count < 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10)
+						if ((Integer.valueOf(sttemp).intValue()) < 10) {
 							datetime = datetime + "-0" + sttemp;
-						else
+						} else {
 							datetime = datetime + "-" + sttemp;
+						}
 					}
 					if (count == 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10)
+						if ((Integer.valueOf(sttemp).intValue()) < 10) {
 							datetime = datetime + " 0" + sttemp;
-						else
+						} else {
 							datetime = datetime + " " + sttemp;
+						}
 					}
 					if (count > 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10)
+						if ((Integer.valueOf(sttemp).intValue()) < 10) {
 							datetime = datetime + ":0" + sttemp;
-						else
+						} else {
 							datetime = datetime + ":" + sttemp;
+						}
 					}
 				}
 				count++;
@@ -382,8 +387,8 @@ public class DateUtil {
 
 		String nyr = datetime.trim();
 
-		if (nyr.indexOf(" ") > 0) {
-			nyr = nyr.substring(0, nyr.indexOf(" "));
+		if (nyr.indexOf(' ') > 0) {
+			nyr = nyr.substring(0, nyr.indexOf(' '));
 		} else {
 			nyr = nyr.substring(0, nyr.length());
 		}
@@ -396,12 +401,15 @@ public class DateUtil {
 			temp = (String) st.nextElement();
 			// if(!(temp.equals("0")))
 			// temp.replaceAll("0", "");
-			if (i == 0)
+			if (i == 0) {
 				date.setYear(Integer.parseInt(temp) - 1900);
-			if (i == 1)
+			}
+			if (i == 1) {
 				date.setMonth(Integer.parseInt(temp) - 1);
-			if (i == 2)
+			}
+			if (i == 2) {
 				date.setDate(Integer.parseInt(temp));
+			}
 		}
 
 		if (datetime.length() > 10) {
@@ -412,12 +420,15 @@ public class DateUtil {
 				temp = (String) st2.nextElement();
 				// if(!(temp.equals("0")))
 				// temp.replaceAll("0", "");
-				if (i == 0)
+				if (i == 0) {
 					date.setHours(Integer.parseInt(temp));
-				if (i == 1)
+				}
+				if (i == 1) {
 					date.setMinutes(Integer.parseInt(temp));
-				if (i == 2)
+				}
+				if (i == 2) {
 					date.setSeconds(Integer.parseInt(temp));
+				}
 			}
 		}
 		return date;
@@ -474,8 +485,9 @@ public class DateUtil {
 	 * @return
 	 */
 	public static final String getDateTime(Date date) {
-		if (date == null)
+		if (date == null) {
 			return "";
+		}
 		DateFormat ymdhmsFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		return ymdhmsFormat.format(date);
 	}
@@ -488,8 +500,9 @@ public class DateUtil {
 	 * @return
 	 */
 	public static final String getDateTime(Date date, String pattern) {
-		if (date == null)
+		if (date == null) {
 			return "";
+		}
 		DateFormat ymdhmsFormat = new SimpleDateFormat(pattern);
 		return ymdhmsFormat.format(date);
 	}
@@ -775,15 +788,17 @@ public class DateUtil {
 
 	/** ��֤�����Ƿ���Ч����Ч���ڷ�Χ1900-1-1��2099-12-31. */
 	public static boolean isValidDate(String ds) {
-		if (StringUtil.isBlank(ds))
+		if (StringUtil.isBlank(ds)) {
 			return false;
+		}
 		return pattern.matcher(ds).matches();
 	}
 
 	/** ��֤�����Ƿ���Ч����Ч���ڷ�Χ1900-1-1��2099-12-31. */
 	public static boolean isValidDate(Date d) {
-		if (d == null)
+		if (d == null) {
 			return false;
+		}
 		return pattern.matcher(date(d, DEFAULT_DATE_FORMAT)).matches();
 	}
 

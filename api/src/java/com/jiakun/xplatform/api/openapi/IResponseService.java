@@ -12,7 +12,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IResponseService {
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
@@ -29,7 +29,7 @@ public interface IResponseService {
 	List<ResponseStats> getResponseStatsList(ResponseStats responseStats);
 
 	/**
-	 * ��������ӿ���Ӧ��Ϣ
+	 * createResponseStats.
 	 * 
 	 * @param responseStatsList
 	 * @return

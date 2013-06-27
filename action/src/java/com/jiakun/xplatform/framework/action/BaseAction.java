@@ -155,8 +155,7 @@ public class BaseAction extends ActionSupport {
 	 * @return
 	 */
 	public AllUsers getUser() {
-		AllUsers loginUser = (AllUsers) getSession().getAttribute("ACEGI_SECURITY_LAST_LOGINUSER");
-		return loginUser;
+		return (AllUsers) getSession().getAttribute("ACEGI_SECURITY_LAST_LOGINUSER");
 	}
 
 	public String getGmtStart() {

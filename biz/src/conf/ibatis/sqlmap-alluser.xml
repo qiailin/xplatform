@@ -4,7 +4,6 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="alluser">
 	<typeAlias alias="allUsers" type="com.jiakun.xplatform.api.alluser.bo.AllUsers" />
-	<typeAlias alias="userChange" type="com.jiakun.xplatform.api.alluser.bo.UserChange"/>
 	<typeAlias alias="applyUsers" type="com.jiakun.xplatform.api.alluser.bo.ApplyUsers"/>
 	<typeAlias alias="cmsVwSupplier" type="com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier"/>
 	<select id="getAllUserByPassport" parameterClass="java.lang.String"
@@ -265,85 +264,6 @@
 		</dynamic>
 	</select>
 	
-	<select id="getUserChangeList" parameterClass="userChange"
-		resultClass="userChange">
-		<include refid="global.paginationStart" /> 
-	<![CDATA[
-		select e.id,
-			   e.emp_id as userId,
-			   e.emp_code as empCode,
-			   e.emp_name as empName,
-			   e.changetype as changeType,
-			   e.opname as opName,
-			   to_char(e.createtime, 'yyyy-MM-dd HH24:mm:ss') as createTime,
-			   e.sourcs as sourcs,
-			   s.org_name as yorgName,
-			   w.org_name as norgName
-		  from smsuser.b_userchange e, smsuser.b_org s, smsuser.b_org w
-		 where e.yorgid = s.org_id
-		   and e.norgid = w.org_id
-	]]>
-		<dynamic>
-			<isNotEmpty property="empCode" prepend="and">
-			<![CDATA[ e.emp_code like #empCode,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="empName" prepend="and">
-			<![CDATA[ e.emp_name like #empName,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="changeType" prepend="and">
-			<![CDATA[ e.changetype like #changeType,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="beginDate" prepend="and">
-			<![CDATA[ e.createtime >= to_date( #beginDate# ,'yyyy/MM/dd') ]]>
-			</isNotEmpty>
-			<isNotEmpty property="endDate" prepend="and">
-			<![CDATA[ e.createtime < to_date( #endDate# ,'yyyy/MM/dd') + 1 ]]>
-			</isNotEmpty>
-			<isNotEmpty property="norGid" prepend="and">
-			<![CDATA[ e.norgid = #norGid# ]]>
-			</isNotEmpty>
-			<isNotEmpty property="norGids" prepend="and">
-			<![CDATA[ e.norgid in ]]>
-				<iterate property="norGids" open="(" close=")" conjunction=",">#norGids[]#
-				</iterate>
-			</isNotEmpty>
-		</dynamic>
-		<include refid="global.orderBy" />
-		<include refid="global.paginationEnd" /> 
-	</select>
- 
-	<select id="getUserChangeCount" parameterClass="userChange"
-		resultClass="java.lang.Integer">
-	<![CDATA[
-		select count(e.id) from smsuser.b_userchange e where 1 = 1
-	]]>
-		<dynamic>
-			<isNotEmpty property="empCode" prepend="and">
-			<![CDATA[ e.emp_code like #empCode,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="empName" prepend="and">
-			<![CDATA[ e.emp_name like #empName,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="changeType" prepend="and">
-			<![CDATA[ e.changetype like #changeType,handler=wildcard# escape '\' ]]>
-			</isNotEmpty>
-			<isNotEmpty property="beginDate" prepend="and">
-			<![CDATA[ e.createtime >= to_date( #beginDate# ,'yyyy/MM/dd') ]]>
-			</isNotEmpty>
-			<isNotEmpty property="endDate" prepend="and">
-			<![CDATA[ e.createtime < to_date( #endDate# ,'yyyy/MM/dd') + 1 ]]>
-			</isNotEmpty>
-			<isNotEmpty property="norGid" prepend="and">
-			<![CDATA[ e.norgid = #norGid# ]]>
-			</isNotEmpty>
-			<isNotEmpty property="norGids" prepend="and">
-			<![CDATA[ e.norgid in ]]>
-				<iterate property="norGids" open="(" close=")" conjunction=",">#norGids[]#
-				</iterate>
-			</isNotEmpty>
-		</dynamic>
-	</select>
-	
 	<select id="getCheckUserCount" parameterClass="applyUsers"
 		resultClass="java.lang.Integer">
 	<![CDATA[
@@ -445,49 +365,6 @@
 
 	]]>
 	</insert>
-    
-	
-	
-	
-	
-	<insert id="insertUserChange"   parameterClass="userChange">
-		<selectKey resultClass="java.lang.Long" keyProperty="id">
-		      SELECT SMSUSER.B_USERCHANGE_SEQ.NEXTVAL AS id FROM DUAL	
-		</selectKey>
-	<![CDATA[
-		insert into smsuser.B_USERCHANGE (
-		id,
-		emp_id  ,
-		emp_code ,
-		emp_name ,
-		yorgid,
-		norgid,
-		changetype ,
-		opid,
-		opname ,
-		   createtime  ,
-		sourcs   ,
-		   oplogid  
-
-
-		) values (
-		#id#,
-		#userId#,
-		#empCode#,
-		#empName#,
-		#orgId#,
-		#orgId#,
-		#changeType#,
-		#opId#,
-		#opName#,
-		sysdate,
-		#sourcs#,
-		#oploGid#
-		)
-
-	]]>
-	</insert>
-	
 	
 	<insert id="insertApplyUser"   parameterClass="applyUsers">
 		<selectKey resultClass="java.lang.Long" keyProperty="id">

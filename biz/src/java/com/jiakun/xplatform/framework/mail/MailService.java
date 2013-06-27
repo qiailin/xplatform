@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -146,7 +147,7 @@ public class MailService {
 	 * �����ʼ�
 	 */
 	@SuppressWarnings("unused")
-	public HashMap<String, String> send() {
+	public Map<String, String> send() {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("state", "success");
 		String message = "�ʼ����ͳɹ���";

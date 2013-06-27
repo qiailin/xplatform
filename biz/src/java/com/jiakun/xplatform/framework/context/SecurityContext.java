@@ -9,7 +9,7 @@ public class SecurityContext {
 
 	private static final String USER = "USER";
 
-	private static final ThreadLocal<Object> context = new ThreadLocal<Object>() {
+	private static final ThreadLocal<Object> CONTEXT = new ThreadLocal<Object>() {
 		protected Object initialValue() {
 			return new HashMap<Object, Object>();
 		}
@@ -17,7 +17,7 @@ public class SecurityContext {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Map<String, AllUsers> getContext() {
-		return (Map) context.get();
+		return (Map) CONTEXT.get();
 	}
 
 	public static void clear() {

@@ -17,8 +17,8 @@ public class EncryptUtil {
 
 	private static final Logger logger = Logger.getLogger(EncryptUtil.class);
 
-	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5",
-			"6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+	private static final String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
+		"e", "f" };
 
 	public static final String CHARSET_UTF8 = "UTF-8";
 
@@ -33,8 +33,9 @@ public class EncryptUtil {
 
 	private static String byteToHexString(byte b) {
 		int n = b;
-		if (n < 0)
+		if (n < 0) {
 			n = 256 + n;
+		}
 		int d1 = n / 16;
 		int d2 = n % 16;
 
@@ -85,13 +86,11 @@ public class EncryptUtil {
 		return byte2hex(bytes);
 	}
 
-	public static String encryptHMAC(String data, String secret)
-			throws IOException {
+	public static String encryptHMAC(String data, String secret) throws IOException {
 		byte[] bytes = null;
 
 		try {
-			SecretKey secretKey = new SecretKeySpec(
-					secret.getBytes(CHARSET_UTF8), "HmacMD5");
+			SecretKey secretKey = new SecretKeySpec(secret.getBytes(CHARSET_UTF8), "HmacMD5");
 			Mac mac = Mac.getInstance(secretKey.getAlgorithm());
 			mac.init(secretKey);
 			bytes = mac.doFinal(data.getBytes(CHARSET_UTF8));

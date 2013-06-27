@@ -32,8 +32,7 @@ import com.opensymphony.xwork.util.XWorkConverter;
  */
 public class Json2ListConverter extends WebWorkTypeConverter {
 
-	private Logger4jExtend log = Logger4jCollection
-			.getLogger(Json2ListConverter.class);
+	private Logger4jExtend log = Logger4jCollection.getLogger(Json2ListConverter.class);
 
 	// modify by xujiakun yyyy-MM-dd'T'HH:mm:ss'Z' to yyyy-MM-dd'T'HH:mm:ss
 	private static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
@@ -46,17 +45,15 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public Object convertValue(Map context, Object target, Member member,
-			String propertyName, Object value, Class toType) {
+	public Object convertValue(Map context, Object target, Member member, String propertyName, Object value,
+		Class toType) {
 		// ��ȡ�����е�ʵ������
 		if (member instanceof Method) {
-			ParameterizedType type = (ParameterizedType) ((Method) member)
-					.getGenericParameterTypes()[0];
+			ParameterizedType type = (ParameterizedType) ((Method) member).getGenericParameterTypes()[0];
 			Type actualType = type.getActualTypeArguments()[0];
 			genericType = (Class) actualType;
 		}
-		return super.convertValue(context, target, member, propertyName, value,
-				toType);
+		return super.convertValue(context, target, member, propertyName, value, toType);
 	}
 
 	/**
@@ -84,39 +81,31 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 			for (int i = 0; i < array.length(); i++) {
 				Object obj = genericType.newInstance();
 				Map map = toMap(array.getJSONObject(i));
-				PropertyDescriptor[] props = OgnlUtil
-						.getPropertyDescriptors(obj);
+				PropertyDescriptor[] props = OgnlUtil.getPropertyDescriptors(obj);
 				for (PropertyDescriptor desc : props) {
 					if (map.containsKey(desc.getName())) {
 						Object value = null;
 						// ����������
 						// "yyyy-MM-dd'T'HH:mm:ss'Z'"�˸�ʽ����json2.jsת�����Date��ʽ
-						if (java.util.Date.class.isAssignableFrom(desc
-								.getPropertyType())) {
+						if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 							try {
-								value = new SimpleDateFormat(DATE_PATTERN)
-										.parse((String) map.get(desc.getName()));
+								value = new SimpleDateFormat(DATE_PATTERN).parse((String) map.get(desc.getName()));
 							} catch (ParseException e) {
 								log.error(e);
 							}
-						} else if (java.sql.Date.class.isAssignableFrom(desc
-								.getPropertyType())) {
+						} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 							try {
-								value = new java.sql.Date(new SimpleDateFormat(
-										DATE_PATTERN).parse(
-										(String) map.get(desc.getName()))
-										.getTime());
+								value =
+									new java.sql.Date(new SimpleDateFormat(DATE_PATTERN).parse(
+										(String) map.get(desc.getName())).getTime());
 							} catch (ParseException e) {
 								log.error(e);
 							}
 						} else {
-							value = OgnlOps.convertValue(
-									map.get(desc.getName()),
-									desc.getPropertyType());
+							value = OgnlOps.convertValue(map.get(desc.getName()), desc.getPropertyType());
 
 						}
-						desc.getWriteMethod().invoke(obj,
-								new Object[] { value });
+						desc.getWriteMethod().invoke(obj, new Object[] { value });
 					}
 				}
 				list.add(obj);
@@ -140,7 +129,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 	@Override
 	public String convertToString(Map context, Object o) {
 		String json = null;
-		if (o != null && o instanceof List) {
+		if (o instanceof List) {
 			json = new JSONArray((List) o).toString();
 		}
 		return json;
@@ -154,7 +143,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 		while (iter.hasNext()) {
 			String key = (String) iter.next();
 			Object val = object.get(key);
-			map.put(key, val == null || val.toString().equals("") ? null : val);
+			map.put(key, "".equals(val.toString()) ? null : val);
 		}
 		return map;
 	}

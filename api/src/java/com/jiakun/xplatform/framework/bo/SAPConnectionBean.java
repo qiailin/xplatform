@@ -153,8 +153,7 @@ public class SAPConnectionBean {
 				logger.debug("�̳߳���û�п��õĿͻ������ӣ�����ֱ�Ӵ������Ӻ���getSAPClientDirect()");
 				sapclient = this.getSAPClientDirect();
 			} else {
-				logger.debug("����" + SAPConnectionBean.class
-						+ "�еķ���getSAPClientFromPool()���̳߳��л�ȡSAP�ͻ�������");
+				logger.debug("����" + SAPConnectionBean.class + "�еķ���getSAPClientFromPool()���̳߳��л�ȡSAP�ͻ�������");
 				sapclient = JCO.getClient(poolName);
 			}
 		} catch (JCO.Exception e) {
@@ -169,18 +168,18 @@ public class SAPConnectionBean {
 	public JCO.Client getSAPClientDirect() {
 		JCO.Client sapclient = null;
 		try {
-			if ("1".equals(this.byGroup))
+			if ("1".equals(this.byGroup)) {
 				sapclient = JCO.createClient(clientName,// SAP logon client
-						user,// SAP logon user
-						password,// SAP logon password
-						language,// SAP logon language
-						hostName,// Host name of the message server
-						sysnr,// Name of the SAP system
-						group// Name of the group of application servers
-						);
-			else
-				sapclient = JCO.createClient(clientName, user, password,
-						language, hostName, sysnr);
+					user,// SAP logon user
+					password,// SAP logon password
+					language,// SAP logon language
+					hostName,// Host name of the message server
+					sysnr,// Name of the SAP system
+					group// Name of the group of application servers
+					);
+			} else {
+				sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr);
+			}
 			sapclient.connect();
 		} catch (JCO.Exception e) {
 			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
@@ -193,13 +192,13 @@ public class SAPConnectionBean {
 		JCO.Client sapclient = null;
 		try {
 			sapclient = JCO.createClient(clientName,// SAP logon client
-					user,// SAP logon user
-					password,// SAP logon password
-					language,// SAP logon language
-					hostName,// Host name of the message server
-					sysnr,// Name of the SAP system
-					group// Name of the group of application servers
-					);
+				user,// SAP logon user
+				password,// SAP logon password
+				language,// SAP logon language
+				hostName,// Host name of the message server
+				sysnr,// Name of the SAP system
+				group// Name of the group of application servers
+				);
 			sapclient.connect();
 		} catch (JCO.Exception e) {
 			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
@@ -209,33 +208,31 @@ public class SAPConnectionBean {
 
 	public JCO.Function getFunction() {
 		logger.debug("����getFunction����");
-		if (this.funcName == null || this.funcName.equals(""))
+		if (this.funcName == null || this.funcName.equals("")) {
 			return null;
+		}
 		JCO.Function func = null;
 		try {
-			IFunctionTemplate ft = this.getRepository().getFunctionTemplate(
-					funcName);
+			IFunctionTemplate ft = this.getRepository().getFunctionTemplate(funcName);
 			func = ft.getFunction();
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class
-					+ "�ķ���getFunction���?" + e.getMessage(), e);
+			logger.error("����" + SAPConnectionBean.class + "�ķ���getFunction���?" + e.getMessage(), e);
 		}
 		return func;
 	}
 
 	public JCO.Function getFunction(JCO.Client client) {
 		logger.debug("����getFunction(client)����,����SAP�ӿ�" + funcName);
-		if (this.funcName == null || this.funcName.equals(""))
+		if (this.funcName == null || this.funcName.equals("")) {
 			return null;
+		}
 		JCO.Function func = null;
 		try {
-			JCO.Repository repository = new JCO.Repository(this.repositoryName,
-					client);
+			JCO.Repository repository = new JCO.Repository(this.repositoryName, client);
 			IFunctionTemplate ft = repository.getFunctionTemplate(funcName);
 			func = ft.getFunction();
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class
-					+ "�ķ���getFunction���?" + e.getMessage(), e);
+			logger.error("����" + SAPConnectionBean.class + "�ķ���getFunction���?" + e.getMessage(), e);
 		}
 		return func;
 	}
@@ -251,12 +248,10 @@ public class SAPConnectionBean {
 				// δ�ҵ�ָ�������ӳ�������һ�����ӳ�
 				addClientPool();
 			}
-			logger.debug("����" + SAPConnectionBean.class
-					+ "�з���getRepository��ȡSAP����ֿ�");
+			logger.debug("����" + SAPConnectionBean.class + "�з���getRepository��ȡSAP����ֿ�");
 			repository = new JCO.Repository(this.repositoryName, this.poolName);
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class
-					+ "�ķ���getRepository���?" + e.getMessage(), e);
+			logger.error("����" + SAPConnectionBean.class + "�ķ���getRepository���?" + e.getMessage(), e);
 		}
 		return repository;
 	}
@@ -265,8 +260,7 @@ public class SAPConnectionBean {
 	private void addClientPool() {
 		logger.debug("���̳߳�" + this.poolName + "������һ���µ�SAP�ͻ�������");
 		try {
-			JCO.addClientPool(poolName, maximumConnectionCount, clientName,
-					user, password, language, hostName, sysnr);
+			JCO.addClientPool(poolName, maximumConnectionCount, clientName, user, password, language, hostName, sysnr);
 		} catch (JCO.Exception e) {
 			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
 		}

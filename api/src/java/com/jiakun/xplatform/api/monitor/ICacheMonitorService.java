@@ -6,14 +6,14 @@ import com.jiakun.xplatform.api.cache.bo.CacheStats;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * cache���
+ * cacheMonitor.
  * 
  * @author xujiakun
  * 
  */
 public interface ICacheMonitorService {
 
-	static final String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "����ʧ�ܣ�";
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public interface ICacheMonitorService {
 	List<CacheStats> getCacheMonitorList(CacheStats cacheStats);
 
 	/**
-	 * ��������cacheStats��Ϣ
+	 * createCacheMonitor.
 	 * 
 	 * @param cacheStatsList
 	 * @return

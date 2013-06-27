@@ -1,8 +1,17 @@
 package com.jiakun.xplatform.framework.listener;
 
-public class OnlineCounter {
+/**
+ * 
+ * @author
+ * 
+ */
+public final class OnlineCounter {
 
 	private static long online = 0;
+
+	private OnlineCounter() {
+
+	}
 
 	public static long getOnline() {
 		return online;

@@ -1,559 +1,6 @@
 Ext.ns('Ext.plugins.Selector');
 
 /**
- * factory
- * 
- * @param {}
- *            config
- */
-Ext.plugins.FactorySelector = function(config) {
-	var factory = Ext.data.Record.create([{
-				name : 'factory_number',
-				type : 'string'
-			}, {
-				name : 'factory_name',
-				type : 'string'
-			}, {
-				name : 'factory_xx_name',
-				type : 'string'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´¹¤³§±àºÅ»òÃû³Æ²éÑ¯',
-				valueDataIndex : ['factory_number', 'factory_name',
-						'factory_xx_name'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'factory_number'
-									}, factory),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							id : "factory_number",
-							header : "¹¤³§±àºÅ",
-							dataIndex : 'factory_number',
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "¹¤³§Ãû³Æ",
-							dataIndex : 'factory_name',
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}]),
-				viewConfig : {
-					forceFit : true
-				}
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'factory_number',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:35%!important;">{factory_number:htmlEncode}</span><span style="width:60%!important;">{factory_name:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'factory_number'
-							}, factory)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.FactorySelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
- * companyCode
- * 
- * @param {}
- *            config
- */
-Ext.plugins.CompanyCodeSelector = function(config) {
-	var companyCode = Ext.data.Record.create([{
-				name : 'comp_cod',
-				type : 'string'
-			}, {
-				name : 'comp_cod_name',
-				type : 'string'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´¹«Ë¾´úÂë±àºÅ»òÃû³Æ²éÑ¯',
-				valueDataIndex : ['comp_cod', 'comp_cod_name'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'comp_cod'
-									}, companyCode),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							id : "comp_cod",
-							header : "¹«Ë¾´úÂë±àºÅ",
-							dataIndex : 'comp_cod',
-							width : 150,
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "¹«Ë¾Ãû³Æ",
-							dataIndex : 'comp_cod_name',
-							width : 245,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}]),
-				viewConfig : {
-					forceFit : true
-				}
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'comp_cod_name',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:35%!important;">{comp_cod:htmlEncode}</span><span style="width:60%!important;">{comp_cod_name:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'comp_cod'
-							}, companyCode)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.CompanyCodeSelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
- * CompanyByOrgSelector
- * 
- * @param {}
- *            config
- */
-Ext.plugins.CompanyByOrgSelector = function(config) {
-	var companyByOrg = Ext.data.Record.create([{
-				name : 'orgId',
-				type : 'long'
-			}, {
-				name : 'orgName',
-				type : 'string'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´¹«Ë¾Ãû²éÑ¯',
-				valueDataIndex : ['orgId', 'orgName'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'orgId'
-									}, companyByOrg),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							id : "orgId",
-							header : "¹«Ë¾±àºÅ",
-							dataIndex : 'orgId',
-							width : 100,
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "¹«Ë¾Ãû³Æ",
-							dataIndex : 'orgName',
-							width : 200,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}]),
-				viewConfig : {
-					forceFit : true
-				}
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'orgName',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:15%!important;">{orgId:htmlEncode}</span><span style="width:50%!important;">{orgName:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'orgId'
-							}, companyByOrg)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.CompanyByOrgSelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
- * RoleSelector
- * 
- * @param {}
- * 
- */
-Ext.plugins.RoleSelector = function(config) {
-	var role = Ext.data.Record.create([{
-				name : 'roleId',
-				type : 'string'
-			}, {
-				name : 'roleName',
-				type : 'string'
-			}, {
-				name : 'descn',
-				type : 'string'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´½ÇÉ«±àºÅ»ò½ÇÉ«Ãû³Æ»ò½ÇÉ«ÃèÊö',
-				valueDataIndex : ['roleId', 'roleName', 'descn'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'roleId'
-									}, role),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							header : "½ÇÉ«±àºÅ",
-							dataIndex : 'roleId',
-							width : 120,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "½ÇÉ«Ãû³Æ",
-							dataIndex : 'roleName',
-							width : 180,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "½ÇÉ«ÃèÊö",
-							dataIndex : 'descn',
-							width : 100,
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}])
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'roleId',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:35%!important;">{roleId:htmlEncode}</span><span style="width:60%!important;">{roleName:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'roleId'
-							}, role)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.RoleSelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
- * PositionTypeSelector
- * 
- * @param {}
- * 
- */
-Ext.plugins.PositionTypeSelector = function(config) {
-	var positionType = Ext.data.Record.create([{
-				name : 'positionTypeId',
-				type : 'long'
-			}, {
-				name : 'positionTypeName',
-				type : 'string'
-			}, {
-				name : 'companyId',
-				type : 'long'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´¸ÚÎ»Ãû²éÑ¯',
-				valueDataIndex : ['positionTypeId', 'positionTypeName',
-						'companyId'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'positionTypeId'
-									}, positionType),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							header : "¸ÚÎ»ID",
-							dataIndex : 'positionTypeId',
-							width : 120,
-							sortable : false,
-							align : 'center',
-							renderer : function(v, p) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "¸ÚÎ»Ãû³Æ",
-							dataIndex : 'positionTypeName',
-							width : 180,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "¹«Ë¾Id",
-							dataIndex : 'companyId',
-							width : 70,
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}]),
-				viewConfig : {
-					forceFit : true
-				}
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'positionTypeId',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:35%!important;">{positionTypeId:htmlEncode}</span><span style="width:60%!important;">{positionTypeName:htmlEncode}</span><span style="width:60%!important;">{companyId:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'positionTypeId'
-							}, positionType)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.PositionTypeSelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
  * menu
  * 
  * @param {}
@@ -575,7 +22,7 @@ Ext.plugins.MenuSelector = function(config) {
 			}]);
 
 	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´²Ëµ¥±àºÅ»òÃû³Æ²éÑ¯',
+				searchEmptyText : 'ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½Æ²ï¿½Ñ¯',
 				valueDataIndex : ['pid', 'pname', 'id', 'name'],
 				hiddenValue : config.hiddenValue,
 				hiddenField : config.hiddenField,
@@ -597,7 +44,7 @@ Ext.plugins.MenuSelector = function(config) {
 							remoteSort : true
 						}),
 				cm : new Ext.grid.ColumnModel([{
-							header : "¸¸¼¶²Ëµ¥±àºÅ",
+							header : "ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'pid',
 							width : 70,
 							sortable : false,
@@ -606,7 +53,7 @@ Ext.plugins.MenuSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "¸¸¼¶²Ëµ¥Ãû³Æ",
+							header : "ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'pname',
 							width : 130,
 							sortable : false,
@@ -616,7 +63,7 @@ Ext.plugins.MenuSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "²Ëµ¥±àºÅ",
+							header : "ï¿½Ëµï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'id',
 							width : 70,
 							sortable : false,
@@ -625,7 +72,7 @@ Ext.plugins.MenuSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "²Ëµ¥Ãû³Æ",
+							header : "ï¿½Ëµï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'name',
 							width : 130,
 							sortable : false,
@@ -684,150 +131,6 @@ Ext.extend(Ext.plugins.MenuSelector, Ext.util.Observable, {
 		});
 
 /**
- * conpoint
- * 
- * @param {}
- *            config
- */
-Ext.plugins.ConpointSelector = function(config) {
-	var conpoint = Ext.data.Record.create([{
-				name : 'conpointId',
-				type : 'long'
-			}, {
-				name : 'conpointNum',
-				type : 'string'
-			}, {
-				name : 'conpointName',
-				type : 'string'
-			}, {
-				name : 'menuId',
-				type : 'long'
-			}, {
-				name : 'menuName',
-				type : 'string'
-			}]);
-
-	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´È¨ÏÞµãID»ò±àºÅ»òÃû³Æ²éÑ¯',
-				valueDataIndex : ['conpointId', 'conpointNum', 'conpointName',
-						'menuId', 'menuName'],
-				hiddenValue : config.hiddenValue,
-				hiddenField : config.hiddenField,
-				searchable : config.searchable || false,
-				creatable : config.creatable || false,
-				multiable : config.multiable || false,
-				reload : config.reload || false,
-				paginal : true,
-				width : 405,
-				height : 360,
-				submitURL : config.submitURL,
-				params : config.params || {},
-				triggerAction : config.triggerAction || null,
-				store : new Ext.data.Store({
-							url : config.url,
-							reader : new Ext.data.SimpleJsonReader({
-										id : 'conpointId'
-									}, conpoint),
-							remoteSort : true
-						}),
-				cm : new Ext.grid.ColumnModel([{
-							header : "È¨ÏÞµãID",
-							dataIndex : 'conpointId',
-							width : 60,
-							sortable : false,
-							align : 'center',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "È¨ÏÞµã±àºÅ",
-							dataIndex : 'conpointNum',
-							width : 70,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "È¨ÏÞµãÃû³Æ",
-							dataIndex : 'conpointName',
-							width : 80,
-							sortable : false,
-							align : 'left',
-							renderer : function(v) {
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "²Ëµ¥ID",
-							dataIndex : 'menuId',
-							width : 60,
-							sortable : false,
-							align : 'center',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}, {
-							header : "²Ëµ¥Ãû³Æ",
-							dataIndex : 'menuName',
-							width : 80,
-							sortable : false,
-							align : 'left',
-							renderer : function(v, p) {
-								p.attr = 'ext:qtip="' + v + '"';
-								return Ext.util.Format.htmlEncode(v);
-							}
-						}]),
-				viewConfig : {
-					forceFit : true
-				}
-			})];
-
-	if (config.plugins) {
-		if (Ext.isArray(config.plugins)) {
-			p = p.concat(config.plugins);
-		} else {
-			p.push(config.plugins);
-		}
-	}
-
-	this.editor = new Ext.form.ComboBox({
-		listWidth : config.listWidth || undefined,
-		displayField : config.displayField || 'conpointId',
-		triggerAction : 'all',
-		mode : 'local',
-		lazyInit : config.lazyInit || true,
-		shadow : false,
-		editable : config.autocomplete || false,
-		tpl : '<tpl for="."><div class="x-combo-list-item"><span style="width:35%!important;">{conpointId:htmlEncode}</span><span style="width:60%!important;">{conpointNum:htmlEncode}</span></div></tpl>',
-		store : new Ext.data.Store({
-					proxy : new Ext.data.MemoryProxy({}),
-					reader : new Ext.data.SimpleJsonReader({
-								id : 'conpointId'
-							}, conpoint)
-				}),
-		plugins : p,
-		style : config.style
-	});
-
-	if (config.onselect) {
-		this.editor.on('select', config.onselect);
-	}
-
-	if (config.beforeexpand) {
-		this.editor.on('beforeexpand', config.beforeexpand);
-	}
-
-};
-
-Ext.extend(Ext.plugins.ConpointSelector, Ext.util.Observable, {
-			init : function(grid) {
-				// do nothing
-			}
-		});
-
-/**
  * sqlMonitor
  * 
  * @param {}
@@ -846,7 +149,7 @@ Ext.plugins.SqlMonitorSelector = function(config) {
 			}]);
 
 	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´¼à¿Ø¼Æ»®±àºÅ»ò¼à¿Ø±êÌâ²éÑ¯',
+				searchEmptyText : 'ï¿½ï¿½ï¿½ï¿½Ø¼Æ»ï¿½ï¿½ï¿½Å»ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½Ñ¯',
 				valueDataIndex : ['sqlMonitorId', 'sqlMonitorTitle', 'status'],
 				hiddenValue : config.hiddenValue,
 				hiddenField : config.hiddenField,
@@ -868,7 +171,7 @@ Ext.plugins.SqlMonitorSelector = function(config) {
 							remoteSort : true
 						}),
 				cm : new Ext.grid.ColumnModel([{
-							header : "¼à¿Ø¼Æ»®±àºÅ",
+							header : "ï¿½ï¿½Ø¼Æ»ï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'sqlMonitorId',
 							width : 50,
 							sortable : false,
@@ -877,7 +180,7 @@ Ext.plugins.SqlMonitorSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "¼à¿Ø±êÌâ",
+							header : "ï¿½ï¿½Ø±ï¿½ï¿½ï¿½",
 							dataIndex : 'sqlMonitorTitle',
 							width : 100,
 							sortable : false,
@@ -887,17 +190,17 @@ Ext.plugins.SqlMonitorSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "¼à¿Ø¼Æ»®×´Ì¬",
+							header : "ï¿½ï¿½Ø¼Æ»ï¿½×´Ì¬",
 							dataIndex : 'status',
 							width : 50,
 							sortable : false,
 							align : 'center',
 							renderer : function(v) {
 								if (v == 'Y') {
-									return "<p style='color:green'>Õý³£ÔËÐÐ</p>";
+									return "<p style='color:green'>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>";
 								}
 								if (v == 'N') {
-									return "<p style='color:red'>Í£Ö¹ÔËÐÐ</p>";
+									return "<p style='color:red'>Í£Ö¹ï¿½ï¿½ï¿½ï¿½</p>";
 								}
 							}
 						}]),
@@ -971,7 +274,7 @@ Ext.plugins.DBTableSelector = function(config) {
 			}]);
 
 	var p = [new Ext.plugins.ComplexGridCombox({
-				searchEmptyText : '°´±àºÅ»ò±íÃû²éÑ¯',
+				searchEmptyText : 'ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯',
 				valueDataIndex : ['itemId', 'itemValue', 'remark', 'itemState'],
 				hiddenValue : config.hiddenValue,
 				hiddenField : config.hiddenField,
@@ -993,7 +296,7 @@ Ext.plugins.DBTableSelector = function(config) {
 							remoteSort : true
 						}),
 				cm : new Ext.grid.ColumnModel([{
-							header : "±àºÅ",
+							header : "ï¿½ï¿½ï¿½",
 							dataIndex : 'itemId',
 							width : 50,
 							sortable : false,
@@ -1002,7 +305,7 @@ Ext.plugins.DBTableSelector = function(config) {
 								return Ext.util.Format.htmlEncode(v);
 							}
 						}, {
-							header : "±íÃû",
+							header : "ï¿½ï¿½ï¿½ï¿½",
 							dataIndex : 'itemValue',
 							width : 150,
 							sortable : false,
@@ -1029,9 +332,9 @@ Ext.plugins.DBTableSelector = function(config) {
 							align : 'center',
 							renderer : function(v) {
 								if (v == 'U') {
-									return "<p style='color:green'>ÆôÓÃ</p>";
+									return "<p style='color:green'>ï¿½ï¿½ï¿½ï¿½</p>";
 								} else {
-									return "<p style='color:red'>½ûÓÃ</p>";
+									return "<p style='color:red'>ï¿½ï¿½ï¿½ï¿½</p>";
 								}
 							}
 						}]),
