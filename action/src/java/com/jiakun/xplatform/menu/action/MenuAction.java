@@ -27,8 +27,7 @@ public class MenuAction extends BaseAction {
 
 	private static final long serialVersionUID = 7380054609278309516L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MenuAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MenuAction.class);
 
 	private IMenuService menuService;
 
@@ -93,8 +92,7 @@ public class MenuAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "menuList", include = { "id", "pid", "name", "pname",
-			"url", "target", "redirectUrl" }, total = "total")
+	@JsonResult(field = "menuList", include = { "id", "pid", "name", "pname", "url", "target", "redirectUrl" }, total = "total")
 	public String getMenuJsonList() {
 		Menu m = new Menu();
 		m = getSearchInfo(m);
@@ -106,18 +104,15 @@ public class MenuAction extends BaseAction {
 			if (StringUtil.isNotEmpty(pid) && StringUtil.isNotEmpty(pid.trim())) {
 				m.setPid(Long.parseLong(pid.trim()));
 			}
-			if (StringUtil.isNotEmpty(this.getName())
-					&& StringUtil.isNotEmpty(this.getName().trim())) {
+			if (StringUtil.isNotEmpty(this.getName()) && StringUtil.isNotEmpty(this.getName().trim())) {
 				m.setName(this.getName().trim());
 			}
-			if (StringUtil.isNotEmpty(pname)
-					&& StringUtil.isNotEmpty(pname.trim())) {
+			if (StringUtil.isNotEmpty(pname) && StringUtil.isNotEmpty(pname.trim())) {
 				m.setPname(pname.trim());
 			}
 
 		} catch (Exception e) {
-			logger.error("id:" + id + "pid:" + pid + "name:" + this.getName()
-					+ "pname:" + pname, e);
+			logger.error("id:" + id + "pid:" + pid + "name:" + this.getName() + "pname:" + pname, e);
 		}
 
 		total = menuService.getMenuCount(m);
@@ -140,10 +135,8 @@ public class MenuAction extends BaseAction {
 			return false;
 		}
 
-		if (menu.getPid() == null || StringUtil.isEmpty(menu.getName())
-				|| StringUtil.isEmpty(menu.getName().trim())
-				|| StringUtil.isEmpty(menu.getTarget())
-				|| StringUtil.isEmpty(menu.getTarget().trim())) {
+		if (menu.getPid() == null || StringUtil.isEmpty(menu.getName()) || StringUtil.isEmpty(menu.getName().trim())
+			|| StringUtil.isEmpty(menu.getTarget()) || StringUtil.isEmpty(menu.getTarget().trim())) {
 			return false;
 		}
 
@@ -168,8 +161,7 @@ public class MenuAction extends BaseAction {
 
 		if ("y".equals(isRedirect)) {
 			menu.setRedirectUrl(menu.getUrl());
-			menu.setUrl("/" + env.getProperty("appName")
-					+ IMenuService.MENU_REDIRECT_URL);
+			menu.setUrl("/" + env.getProperty("appName") + IMenuService.MENU_REDIRECT_URL);
 		}
 
 		StringResult result = menuService.createMenu(menu);
@@ -210,8 +202,7 @@ public class MenuAction extends BaseAction {
 
 		if ("y".equals(isRedirect)) {
 			menu.setRedirectUrl(menu.getUrl());
-			menu.setUrl("/" + env.getProperty("appName")
-					+ IMenuService.MENU_REDIRECT_URL + menu.getId());
+			menu.setUrl("/" + env.getProperty("appName") + IMenuService.MENU_REDIRECT_URL + menu.getId());
 		}
 
 		StringResult result = menuService.updateMenu(menu);
@@ -266,12 +257,10 @@ public class MenuAction extends BaseAction {
 	 */
 	public String searchSelectedMenu4Role() {
 
-		if (StringUtil.isNotEmpty(roleId)
-				&& StringUtil.isNotEmpty(roleId.trim())) {
+		if (StringUtil.isNotEmpty(roleId) && StringUtil.isNotEmpty(roleId.trim())) {
 
 			try {
-				roleId = new String(roleId.trim().getBytes("ISO8859-1"),
-						"UTF-8");
+				roleId = new String(roleId.trim().getBytes("ISO8859-1"), "UTF-8");
 			} catch (UnsupportedEncodingException e) {
 				logger.error(roleId, e);
 			}
@@ -285,8 +274,7 @@ public class MenuAction extends BaseAction {
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "menuList", include = { "roleMenuId", "id", "pid",
-			"name", "url", "target", "redirectUrl" }, total = "total")
+	@JsonResult(field = "menuList", include = { "roleMenuId", "id", "pid", "name", "url", "target", "redirectUrl" }, total = "total")
 	public String getSelectedMenu4RoleJsonList() {
 		Menu m = new Menu();
 		m = getSearchInfo(m);
@@ -295,18 +283,15 @@ public class MenuAction extends BaseAction {
 			if (StringUtil.isNotEmpty(id) && StringUtil.isNotEmpty(id.trim())) {
 				m.setId(Long.parseLong(id.trim()));
 			}
-			if (StringUtil.isNotEmpty(this.getName())
-					&& StringUtil.isNotEmpty(this.getName().trim())) {
+			if (StringUtil.isNotEmpty(this.getName()) && StringUtil.isNotEmpty(this.getName().trim())) {
 				m.setName(this.getName().trim());
 			}
-			if (StringUtil.isNotEmpty(roleId)
-					&& StringUtil.isNotEmpty(roleId.trim())) {
+			if (StringUtil.isNotEmpty(roleId) && StringUtil.isNotEmpty(roleId.trim())) {
 				m.setRoleId(roleId.trim());
 			}
 
 		} catch (Exception e) {
-			logger.error("id:" + id + "name:" + this.getName() + "roleId"
-					+ roleId, e);
+			logger.error("id:" + id + "name:" + this.getName() + "roleId" + roleId, e);
 		}
 
 		total = menuService.getSelectedMenu4RoleCount(m);
@@ -325,13 +310,11 @@ public class MenuAction extends BaseAction {
 	public String selectMenu4Role() {
 		Menu m = new Menu();
 
-		if (StringUtil.isNotEmpty(menuIds)
-				&& StringUtil.isNotEmpty(menuIds.trim())) {
+		if (StringUtil.isNotEmpty(menuIds) && StringUtil.isNotEmpty(menuIds.trim())) {
 			m.setCodes(menuIds.split(","));
 		}
 
-		if (StringUtil.isNotEmpty(roleId)
-				&& StringUtil.isNotEmpty(roleId.trim())) {
+		if (StringUtil.isNotEmpty(roleId) && StringUtil.isNotEmpty(roleId.trim())) {
 			m.setRoleId(roleId.trim());
 		}
 
@@ -371,7 +354,7 @@ public class MenuAction extends BaseAction {
 		}
 
 		// ����Ч�Ĳ˵�id
-		if (ids == null || ids.size() == 0) {
+		if (ids.size() == 0) {
 			this.setFailMessage(IMenuService.ERROR_INPUT_MESSAGE);
 			return RESULT_MESSAGE;
 		}
@@ -411,8 +394,7 @@ public class MenuAction extends BaseAction {
 			redirectUrl = "/";
 		}
 
-		if (StringUtil.isNotEmpty(redirectUrl)
-				&& StringUtil.contains(redirectUrl, "?")) {
+		if (StringUtil.isNotEmpty(redirectUrl) && StringUtil.contains(redirectUrl, "?")) {
 			return "menuRedirect2";
 		} else {
 			return "menuRedirect1";

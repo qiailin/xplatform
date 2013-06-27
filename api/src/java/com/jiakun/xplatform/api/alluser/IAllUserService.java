@@ -5,7 +5,6 @@ import java.util.List;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
-import com.jiakun.xplatform.api.alluser.bo.UserChange;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 import com.jiakun.xplatform.framework.bo.StringResult;
 
@@ -102,32 +101,7 @@ public interface IAllUserService {
 	 */
 	int searchAllUsersCount(AllUsers alluser);
 
-	/**
-	 * ���������������������������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-
-	int getUserChangeCount(UserChange bUser);
-
-	/**
-	 * ����������������count�����������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	List<UserChange> getUserChangeList(UserChange bUser);
-
 	BooleanResult deleteBImplementByEmpId(Long userId);
-
-	/**
-	 * �������������������������
-	 * 
-	 * @param UserChange
-	 * @return
-	 */
-	StringResult insertUserChange(UserChange bUser);
 
 	/**
 	 * ���������������������������������
