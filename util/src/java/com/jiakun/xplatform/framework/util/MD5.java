@@ -163,8 +163,9 @@ public class MD5 {
 		byte[] block = new byte[64];
 		index = (int) (count[0] >>> 3) & 0x3F;
 		// /* Update number of bits */
-		if ((count[0] += (inputLen << 3)) < (inputLen << 3))
+		if ((count[0] += (inputLen << 3)) < (inputLen << 3)) {
 			count[1]++;
+		}
 		count[1] += (inputLen >>> 29);
 
 		partLen = 64 - index;
@@ -181,10 +182,9 @@ public class MD5 {
 			}
 			index = 0;
 
-		} else
-
+		} else {
 			i = 0;
-
+		}
 		// /* Buffer remaining input */
 		md5Memcpy(buffer, inbuf, index, i, inputLen - i);
 
@@ -221,8 +221,9 @@ public class MD5 {
 	private void md5Memcpy(byte[] output, byte[] input, int outpos, int inpos, int len) {
 		int i;
 
-		for (i = 0; i < len; i++)
+		for (i = 0; i < len; i++) {
 			output[outpos + i] = input[inpos + i];
+		}
 	}
 
 	/*
@@ -335,9 +336,10 @@ public class MD5 {
 	private void Decode(long[] output, byte[] input, int len) {
 		int i, j;
 
-		for (i = 0, j = 0; j < len; i++, j += 4)
+		for (i = 0, j = 0; j < len; i++, j += 4) {
 			output[i] =
 				b2iu(input[j]) | (b2iu(input[j + 1]) << 8) | (b2iu(input[j + 2]) << 16) | (b2iu(input[j + 3]) << 24);
+		}
 
 		return;
 	}
@@ -359,8 +361,7 @@ public class MD5 {
 		char[] ob = new char[2];
 		ob[0] = Digit[(ib >>> 4) & 0X0F];
 		ob[1] = Digit[ib & 0X0F];
-		String s = new String(ob);
-		return s;
+		return new String(ob);
 	}
 
 	public static void main(String[] args) {

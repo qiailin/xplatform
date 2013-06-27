@@ -31,8 +31,7 @@ public class FileUtil {
 		boolean flag = false;
 		OutputStream out = null;
 		try {
-			out = new BufferedOutputStream(new FileOutputStream(path),
-					BUFFER_SIZE);
+			out = new BufferedOutputStream(new FileOutputStream(path), BUFFER_SIZE);
 			out.write(content.getBytes("GBK"));
 			flag = true;
 		} catch (Exception e) {
@@ -64,10 +63,8 @@ public class FileUtil {
 		InputStream in = null;
 		OutputStream out = null;
 		try {
-			in = new BufferedInputStream(new FileInputStream(source),
-					BUFFER_SIZE);
-			out = new BufferedOutputStream(new FileOutputStream(target),
-					BUFFER_SIZE);
+			in = new BufferedInputStream(new FileInputStream(source), BUFFER_SIZE);
+			out = new BufferedOutputStream(new FileOutputStream(target), BUFFER_SIZE);
 
 			byte[] buffer = new byte[BUFFER_SIZE];
 			while (in.read(buffer) > 0) {
@@ -143,7 +140,7 @@ public class FileUtil {
 			return null;
 		}
 
-		return fileName.substring(fileName.lastIndexOf("."));
+		return fileName.substring(fileName.lastIndexOf('.'));
 	}
 
 	/**
@@ -157,10 +154,10 @@ public class FileUtil {
 			return null;
 		}
 
-		if (fileName.lastIndexOf(".") == -1) {
+		if (fileName.lastIndexOf('.') == -1) {
 			return fileName;
 		} else {
-			return fileName.substring(0, fileName.lastIndexOf("."));
+			return fileName.substring(0, fileName.lastIndexOf('.'));
 		}
 	}
 
@@ -175,10 +172,10 @@ public class FileUtil {
 			return null;
 		}
 
-		if (fileName.lastIndexOf(".") == -1) {
+		if (fileName.lastIndexOf('.') == -1) {
 			return "";
 		} else {
-			return fileName.substring(fileName.lastIndexOf(".") + 1);
+			return fileName.substring(fileName.lastIndexOf('.') + 1);
 		}
 	}
 

@@ -17,8 +17,7 @@ public class SplitString {
 		if (ids == null) {
 			return null;
 		}
-		String[] roleIds = ids.split(",");
-		return roleIds;
+		return ids.split(",");
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class SplitString {
 		if (StringUtil.isBlank(key)) {
 			return null;
 		}
-		int index = key.lastIndexOf("_");
+		int index = key.lastIndexOf('_');
 		return key.substring(index + 1);
 	}
 

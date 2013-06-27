@@ -2,7 +2,16 @@ package com.jiakun.xplatform.framework.util;
 
 import com.alibaba.service.dsa.util.DSAKeyPairGenerator;
 
-public class DSAUtil {
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
+public final class DSAUtil {
+
+	private DSAUtil() {
+
+	}
 
 	public static void main(String[] args) {
 		String[] arg0 = new String[2];
