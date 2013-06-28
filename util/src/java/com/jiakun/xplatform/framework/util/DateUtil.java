@@ -158,12 +158,12 @@ public class DateUtil {
 	 */
 	public static Date getLastDayOfLastMonth(int year, int month) {
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, year);// ��
-		cal.set(Calendar.MONTH, month - 1);// �£���ΪCalendar������Ǵ�0��ʼ������Ҫ��1
-		cal.set(Calendar.DATE, 1);// �գ���Ϊһ��
-		// cal.add(Calendar.MONTH, 1);// �·ݼ�һ���õ��¸��µ�һ��
-		cal.add(Calendar.DATE, -1);// ��һ���¼�һΪ�������һ��
-		return cal.getTime();// �����ĩ�Ǽ���
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month - 1);
+		cal.set(Calendar.DATE, 1);
+		// cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.DATE, -1);
+		return cal.getTime();
 	}
 
 	/**
@@ -736,12 +736,12 @@ public class DateUtil {
 	 */
 	public static Date getLastDayOfCurMonth(int year, int month) {
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, year);// ��
-		cal.set(Calendar.MONTH, month);// �£���ΪCalendar������Ǵ�0��ʼ������Ҫ��1
-		cal.set(Calendar.DATE, 1);// �գ���Ϊһ��
-		// cal.add(Calendar.MONTH, 1);// �·ݼ�һ���õ��¸��µ�һ��
-		cal.add(Calendar.DATE, -1);// ��һ���¼�һΪ�������һ��
-		return cal.getTime();// �����ĩ�Ǽ���
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month);
+		cal.set(Calendar.DATE, 1);
+		// cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.DATE, -1);
+		return cal.getTime();
 	}
 
 	/**
@@ -753,12 +753,12 @@ public class DateUtil {
 	 */
 	public static Date getFirstDayOfCurMonth(int year, int month) {
 		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, year);// ��
-		cal.set(Calendar.MONTH, month - 1);// �£���ΪCalendar������Ǵ�0��ʼ������Ҫ��1
-		cal.set(Calendar.DATE, 1);// �գ���Ϊһ��
-		// cal.add(Calendar.MONTH, 1);// �·ݼ�һ���õ��¸��µ�һ��
-		cal.add(Calendar.DATE, 0);// ��һ���¼�һΪ�������һ��
-		return cal.getTime();// �����ĩ�Ǽ���
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month - 1);
+		cal.set(Calendar.DATE, 1);
+		// cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.DATE, 0);
+		return cal.getTime();
 	}
 
 	/** */
@@ -776,7 +776,6 @@ public class DateUtil {
 		return c.getTime();
 	}
 
-	/** */
 	/**
 	 * ȡ��ĳ�������ܵ����һ��
 	 * 

@@ -79,14 +79,7 @@ public class SAPConnectionBean {
 		JCO.Client sapclient = null;
 		try {
 			if ("1".equals(this.byGroup)) {
-				sapclient = JCO.createClient(clientName,// SAP logon client
-					user,// SAP logon user
-					password,// SAP logon password
-					language,// SAP logon language
-					hostName,// Host name of the message server
-					sysnr,// Name of the SAP system
-					group// Name of the group of application servers
-					);
+				sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr, group);
 			} else {
 				sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr);
 			}
@@ -101,14 +94,7 @@ public class SAPConnectionBean {
 	public JCO.Client getSAPClientDirectByGroup() {
 		JCO.Client sapclient = null;
 		try {
-			sapclient = JCO.createClient(clientName,// SAP logon client
-				user,// SAP logon user
-				password,// SAP logon password
-				language,// SAP logon language
-				hostName,// Host name of the message server
-				sysnr,// Name of the SAP system
-				group// Name of the group of application servers
-				);
+			sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr, group);
 			sapclient.connect();
 		} catch (JCO.Exception e) {
 			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
