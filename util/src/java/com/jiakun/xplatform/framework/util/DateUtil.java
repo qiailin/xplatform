@@ -22,7 +22,7 @@ import com.alibaba.common.lang.StringUtil;
  * @author
  * 
  */
-public class DateUtil {
+public final class DateUtil {
 
 	public static final String DEFAULT_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -47,6 +47,10 @@ public class DateUtil {
 	/** ��֤�����ַ���Ч���ڷ�Χ1900-1-1��2099-12-31. */
 	private static final Pattern PATTERN = Pattern
 		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
+
+	private DateUtil() {
+
+	}
 
 	/**
 	 * ��ǰʱ�����days��

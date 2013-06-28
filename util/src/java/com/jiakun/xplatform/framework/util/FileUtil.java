@@ -21,11 +21,15 @@ import com.alibaba.common.lang.StringUtil;
  * @author
  * 
  */
-public class FileUtil {
+public final class FileUtil {
 
 	private static final Logger logger = Logger.getLogger(FileUtil.class);
 
 	private static final int BUFFER_SIZE = 16 * 1024;
+
+	private FileUtil() {
+
+	}
 
 	public static boolean saveFile(String path, String content) {
 		boolean flag = false;

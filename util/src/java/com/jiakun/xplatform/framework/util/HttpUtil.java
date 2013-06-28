@@ -49,7 +49,7 @@ import com.alibaba.common.lang.StringUtil;
  * @author
  * 
  */
-public class HttpUtil {
+public final class HttpUtil {
 
 	private static Logger logger = Logger.getLogger(HttpUtil.class);
 
@@ -57,6 +57,10 @@ public class HttpUtil {
 	private static final String CHARSET_GBK = "GBK";
 	private static final String SSL_DEFAULT_SCHEME = "https";
 	private static final int SSL_DEFAULT_PORT = 443;
+
+	private HttpUtil() {
+
+	}
 
 	/**
 	 * �쳣�Զ��ָ�����, ʹ��HttpRequestRetryHandler�ӿ�ʵ��������쳣�ָ�

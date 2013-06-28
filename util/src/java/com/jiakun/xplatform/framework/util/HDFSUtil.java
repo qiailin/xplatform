@@ -18,14 +18,17 @@ import org.apache.log4j.Logger;
  * HDFS ������
  * 
  */
-public class HDFSUtil {
+public final class HDFSUtil {
 
 	private static Logger logger = Logger.getLogger(HDFSUtil.class);
 
 	private static final int BUFF_SIZE = 4 * 1024;
 
-	public static FileSystem getFileSystem(String ip, int port)
-			throws Exception {
+	private HDFSUtil() {
+
+	}
+
+	public static FileSystem getFileSystem(String ip, int port) throws Exception {
 		FileSystem fs = null;
 
 		try {
@@ -35,8 +38,7 @@ public class HDFSUtil {
 
 			fs = FileSystem.get(config);
 		} catch (Exception e) {
-			logger.error("getFileSystem failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("getFileSystem failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("getFileSystem exception");
 		}
@@ -64,8 +66,7 @@ public class HDFSUtil {
 				throw new Exception("mkdirs error");
 			}
 		} catch (Exception e) {
-			logger.error("create directory " + dir + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("create directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("mkdirs exception");
 		}
@@ -91,8 +92,7 @@ public class HDFSUtil {
 				throw new Exception("rmdirs error");
 			}
 		} catch (Exception e) {
-			logger.error("remove directory " + dir + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("remove directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("rmdirs exception");
 		}
@@ -106,8 +106,7 @@ public class HDFSUtil {
 	 * @param remote
 	 * @throws Exception
 	 */
-	public static void upload(FileSystem fs, String local, String remote)
-			throws Exception {
+	public static void upload(FileSystem fs, String local, String remote) throws Exception {
 		try {
 			Path workDir = fs.getWorkingDirectory();
 			Path dst = new Path(workDir + "/" + remote);
@@ -115,8 +114,7 @@ public class HDFSUtil {
 
 			fs.copyFromLocalFile(false, true, src, dst);
 		} catch (Exception e) {
-			logger.error("upload " + local + " to  " + remote + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("upload " + local + " to  " + remote + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("upload exception");
 		}
@@ -130,16 +128,15 @@ public class HDFSUtil {
 	 * @param remote
 	 * @throws Exception
 	 */
-	public static void download(FileSystem fs, String local, String remote)
-			throws Exception {
+	public static void download(FileSystem fs, String local, String remote) throws Exception {
 		try {
 			Path dst = new Path(remote);
 			Path src = new Path(local);
 
 			fs.copyToLocalFile(false, dst, src);
 		} catch (Exception e) {
-			logger.error("download from " + remote + " to  " + local
-					+ " failed :" + ExceptionUtils.getFullStackTrace(e));
+			logger.error("download from " + remote + " to  " + local + " failed :"
+				+ ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("download exception");
 		}
@@ -153,8 +150,7 @@ public class HDFSUtil {
 	 * @param data
 	 * @throws Exception
 	 */
-	public static void write(FileSystem fs, String path, byte[] bytes)
-			throws Exception {
+	public static void write(FileSystem fs, String path, byte[] bytes) throws Exception {
 		FSDataOutputStream out = null;
 
 		try {
@@ -164,8 +160,7 @@ public class HDFSUtil {
 			out = fs.create(dst);
 			out.write(bytes);
 		} catch (Exception e) {
-			logger.error("write content to " + path + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("write exception");
 		} finally {
@@ -182,8 +177,7 @@ public class HDFSUtil {
 	 * @throws Exception
 	 * 
 	 */
-	public static void write(FileSystem fs, String path, File data)
-			throws Exception {
+	public static void write(FileSystem fs, String path, File data) throws Exception {
 		InputStream in = null;
 		FSDataOutputStream out = null;
 
@@ -196,8 +190,7 @@ public class HDFSUtil {
 
 			IOUtils.copyBytes(in, out, BUFF_SIZE, true);
 		} catch (Exception e) {
-			logger.error("write content to " + path + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("write exception");
 		} finally {
@@ -224,8 +217,7 @@ public class HDFSUtil {
 			in = fs.open(dst);
 			return in.readUTF();
 		} catch (Exception e) {
-			logger.error("read content from " + path + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("read exception");
 		} finally {
@@ -241,8 +233,7 @@ public class HDFSUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static void read(FileSystem fs, String path, OutputStream output)
-			throws Exception {
+	public static void read(FileSystem fs, String path, OutputStream output) throws Exception {
 		FSDataInputStream in = null;
 
 		try {
@@ -253,8 +244,7 @@ public class HDFSUtil {
 
 			IOUtils.copyBytes(in, output, BUFF_SIZE, true);
 		} catch (Exception e) {
-			logger.error("read content from " + path + " failed :"
-					+ ExceptionUtils.getFullStackTrace(e));
+			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
 			throw new Exception("read exception");
 		} finally {
