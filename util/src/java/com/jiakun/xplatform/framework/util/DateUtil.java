@@ -24,24 +24,25 @@ import com.alibaba.common.lang.StringUtil;
  */
 public class DateUtil {
 
+	public static final String DEFAULT_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+
+	public static final String DEFAULT_DATEFULLDATE_FORMAT = "yyyyMMdd";
+
+	public static final String DEFAULT_YEAR_FORMAT = "yyyy";
+
+	public static final String DEFAULT_MONTH_FORMAT = "MM";
+
 	private static final long MILLISECONDS_A_DAY = 24 * 3600 * 1000;
 
 	private static final long MILLISECONDS_A_HOUR = 3600 * 1000;
 
 	private static final long MILLISECONDS_A_SECOND = 1000;
 
-	public static final String DEFAULT_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
-	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
-
 	private static Logger logger = Logger.getLogger(DateUtil.class);
 
 	private static final String DEFAULT_DATEFULLTIME_FORMAT = "yyyyMMddHHmmss";
-
-	public static final String DEFAULT_DATEFULLDATE_FORMAT = "yyyyMMdd";
-
-	public static final String DEFAULT_YEAR_FORMAT = "yyyy";
-	public static final String DEFAULT_MONTH_FORMAT = "MM";
 
 	/** ��֤�����ַ���Ч���ڷ�Χ1900-1-1��2099-12-31. */
 	private static final Pattern PATTERN = Pattern
@@ -663,11 +664,7 @@ public class DateUtil {
 		/*
 		 * �����ȵ��³�����ĩ
 		 */
-		int[][] seasons = { { 2, 4 }, // ����
-			{ 5, 7 }, // �ļ�
-			{ 8, 10 }, // �＾
-			{ 11, 1 } // ����
-			};
+		int[][] seasons = { { 2, 4 }, { 5, 7 }, { 8, 10 }, { 11, 1 } };
 		int cm = calendar.get(Calendar.MONTH) + 1;
 
 		for (int[] im : seasons) {

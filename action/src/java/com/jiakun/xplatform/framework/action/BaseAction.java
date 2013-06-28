@@ -14,18 +14,13 @@ import com.opensymphony.xwork.ActionContext;
 import com.opensymphony.xwork.ActionSupport;
 
 /**
- * BaseAction
+ * BaseAction.
  * 
  * @author xujiakun
  * 
  */
 public class BaseAction extends ActionSupport {
 
-	private static final long serialVersionUID = 7674615559114195895L;
-
-	/**
-	 * ���ص�¼ҳ��
-	 */
 	public static final String LOGIN = "login";
 
 	public static final String LOGOUT = "logout";
@@ -40,29 +35,7 @@ public class BaseAction extends ActionSupport {
 	public static final String JSON = "jsonresult";
 	public static final String RESULT_MESSAGE = "resultMessage";
 
-	protected HttpSession getSession() {
-		return getServletRequest().getSession();
-	}
-
-	/**
-	 * ȡ��HttpServletRequest����.
-	 * 
-	 * @return HttpServletRequest����.
-	 */
-	protected HttpServletRequest getServletRequest() {
-		ActionContext ctx = ActionContext.getContext();
-		return (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
-	}
-
-	/**
-	 * ȡ��HttpServletResponse����.
-	 * 
-	 * @return HttpServletResponse����.
-	 */
-	protected HttpServletResponse getServletResponse() {
-		ActionContext ctx = ActionContext.getContext();
-		return (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
-	}
+	private static final long serialVersionUID = 7674615559114195895L;
 
 	protected String actionName;
 
@@ -75,6 +48,15 @@ public class BaseAction extends ActionSupport {
 	 * ����ʱ��
 	 */
 	protected String gmtEnd;
+
+	protected String hasPermission;
+
+	/**
+	 * ��������
+	 */
+	protected Properties env = new Properties();
+
+	protected String token;
 
 	/**
 	 * �ؼ��
@@ -123,14 +105,29 @@ public class BaseAction extends ActionSupport {
 	 */
 	private int start;
 
-	protected String hasPermission;
+	protected HttpSession getSession() {
+		return getServletRequest().getSession();
+	}
 
 	/**
-	 * ��������
+	 * ȡ��HttpServletRequest����.
+	 * 
+	 * @return HttpServletRequest����.
 	 */
-	protected Properties env = new Properties();
+	protected HttpServletRequest getServletRequest() {
+		ActionContext ctx = ActionContext.getContext();
+		return (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
+	}
 
-	protected String token;
+	/**
+	 * ȡ��HttpServletResponse����.
+	 * 
+	 * @return HttpServletResponse����.
+	 */
+	protected HttpServletResponse getServletResponse() {
+		ActionContext ctx = ActionContext.getContext();
+		return (HttpServletResponse) ctx.get(ServletActionContext.HTTP_RESPONSE);
+	}
 
 	public <T extends SearchInfo> T getSearchInfo(T info) {
 		info.setStart(start);
@@ -150,7 +147,7 @@ public class BaseAction extends ActionSupport {
 	}
 
 	/**
-	 * getUser
+	 * getUser.
 	 * 
 	 * @return
 	 */
