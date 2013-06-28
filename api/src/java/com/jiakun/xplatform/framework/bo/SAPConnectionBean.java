@@ -5,6 +5,11 @@ import com.sap.mw.jco.JCO;
 
 import org.apache.log4j.Logger;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class SAPConnectionBean {
 
 	private static Logger logger = Logger.getLogger(SAPConnectionBean.class);
@@ -34,104 +39,8 @@ public class SAPConnectionBean {
 
 	private String funcName;
 
-	public String getRepositoryName() {
-		return repositoryName;
-	}
-
-	public void setRepositoryName(String repositoryName) {
-		this.repositoryName = repositoryName;
-	}
-
 	public SAPConnectionBean() {
 
-	}
-
-	public String getClientName() {
-		return clientName;
-	}
-
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
-
-	public String getHostName() {
-		return hostName;
-	}
-
-	public void setHostName(String hostName) {
-		this.hostName = hostName;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public int getMaximumConnectionCount() {
-		return maximumConnectionCount;
-	}
-
-	public void setMaximumConnectionCount(int maximumConnectionCount) {
-		this.maximumConnectionCount = maximumConnectionCount;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPoolName() {
-		return poolName;
-	}
-
-	public void setPoolName(String poolName) {
-		this.poolName = poolName;
-	}
-
-	public String getSysnr() {
-		return sysnr;
-	}
-
-	public void setSysnr(String sysnr) {
-		this.sysnr = sysnr;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getFuncName() {
-		return funcName;
-	}
-
-	public void setFuncName(String funcName) {
-		this.funcName = funcName;
-	}
-
-	public String getGroup() {
-		return group;
-	}
-
-	public void setGroup(String group) {
-		this.group = group;
-	}
-
-	public String getByGroup() {
-		return byGroup;
-	}
-
-	public void setByGroup(String byGroup) {
-		this.byGroup = byGroup;
 	}
 
 	// �����ӳ��л�ȡSAP�ͻ�������
@@ -267,4 +176,101 @@ public class SAPConnectionBean {
 		}
 
 	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public int getMaximumConnectionCount() {
+		return maximumConnectionCount;
+	}
+
+	public void setMaximumConnectionCount(int maximumConnectionCount) {
+		this.maximumConnectionCount = maximumConnectionCount;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPoolName() {
+		return poolName;
+	}
+
+	public void setPoolName(String poolName) {
+		this.poolName = poolName;
+	}
+
+	public String getSysnr() {
+		return sysnr;
+	}
+
+	public void setSysnr(String sysnr) {
+		this.sysnr = sysnr;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getFuncName() {
+		return funcName;
+	}
+
+	public void setFuncName(String funcName) {
+		this.funcName = funcName;
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+	public String getByGroup() {
+		return byGroup;
+	}
+
+	public void setByGroup(String byGroup) {
+		this.byGroup = byGroup;
+	}
+
+	public String getRepositoryName() {
+		return repositoryName;
+	}
+
+	public void setRepositoryName(String repositoryName) {
+		this.repositoryName = repositoryName;
+	}
+
 }

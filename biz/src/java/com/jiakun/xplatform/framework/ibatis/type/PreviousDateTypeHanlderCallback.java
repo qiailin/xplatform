@@ -10,14 +10,18 @@ import com.ibatis.sqlmap.client.extensions.ResultGetter;
 import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 import com.jiakun.xplatform.framework.util.DateUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class PreviousDateTypeHanlderCallback implements TypeHandlerCallback {
 
 	public Object getResult(ResultGetter arg0) throws SQLException {
 		return new UnsupportedOperationException();
 	}
 
-	public void setParameter(ParameterSetter setter, Object parameter)
-			throws SQLException {
+	public void setParameter(ParameterSetter setter, Object parameter) throws SQLException {
 
 		Date date = DateUtil.addDays((Date) parameter, -1);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");

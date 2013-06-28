@@ -17,18 +17,19 @@ import com.opensymphony.webwork.WebWorkConstants;
 import com.opensymphony.webwork.config.Configuration;
 import com.opensymphony.webwork.views.velocity.VelocityManager;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class VelocityManagerEx extends VelocityManager {
 
-	private Logger4jExtend log = Logger4jCollection
-			.getLogger(VelocityManagerEx.class);
+	private Logger4jExtend log = Logger4jCollection.getLogger(VelocityManagerEx.class);
 
 	public VelocityManagerEx() {
 		String toolboxLocation = "toolbox.xml";
-		if (Configuration
-				.isSet(WebWorkConstants.WEBWORK_VELOCITY_TOOLBOXLOCATION)) {
-			toolboxLocation = Configuration.get(
-					WebWorkConstants.WEBWORK_VELOCITY_TOOLBOXLOCATION)
-					.toString();
+		if (Configuration.isSet(WebWorkConstants.WEBWORK_VELOCITY_TOOLBOXLOCATION)) {
+			toolboxLocation = Configuration.get(WebWorkConstants.WEBWORK_VELOCITY_TOOLBOXLOCATION).toString();
 		}
 
 		if (toolboxLocation != null) {
@@ -50,8 +51,7 @@ public class VelocityManagerEx extends VelocityManager {
 					}
 				}
 			} catch (Exception ex) {
-				log.error("failed to load configuration file: "
-						+ toolboxLocation, ex);
+				log.error("failed to load configuration file: " + toolboxLocation, ex);
 			}
 		}
 	}

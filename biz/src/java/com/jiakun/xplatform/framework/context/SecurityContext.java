@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class SecurityContext {
 
 	private static final String USER = "USER";

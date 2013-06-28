@@ -1,8 +1,12 @@
-
 package com.jiakun.xplatform.framework.bo;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class ThreadPool implements Serializable {
 
 	private static final long serialVersionUID = 4776405616552648893L;
