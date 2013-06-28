@@ -16,10 +16,14 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.HDFSUtil;
 import com.jiakun.xplatform.framework.util.OidUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class HDFSServiceImpl implements IDFSService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(HDFSServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(HDFSServiceImpl.class);
 
 	private IFileService fileService;
 
@@ -52,8 +56,8 @@ public class HDFSServiceImpl implements IDFSService {
 
 			FileInfo fileInfo = getFileInfo(fileId);
 
-			HDFSUtil.download(fs, localFilePath + "/" + fileInfo.getFileName()
-					+ "." + fileInfo.getSuffix(), fileInfo.getFilePath());
+			HDFSUtil.download(fs, localFilePath + "/" + fileInfo.getFileName() + "." + fileInfo.getSuffix(),
+				fileInfo.getFilePath());
 
 			return true;
 		} catch (Exception e) {
@@ -185,8 +189,7 @@ public class HDFSServiceImpl implements IDFSService {
 	 * @return
 	 * @throws Exception
 	 */
-	private void createFileInfo(String fileId, String fileName, String suffix,
-			Path workDir) throws Exception {
+	private void createFileInfo(String fileId, String fileName, String suffix, Path workDir) throws Exception {
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setFileId(fileId);
 		fileInfo.setFileName(fileName);

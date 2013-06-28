@@ -7,10 +7,14 @@ import com.jiakun.xplatform.cust.dao.ICustDao;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class CustServiceImpl implements ICustService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(CustServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(CustServiceImpl.class);
 
 	private ICustDao custDao;
 
@@ -22,8 +26,7 @@ public class CustServiceImpl implements ICustService {
 				if (custId.split("\\,").length <= 1) {
 					return custDao.getCustomerById(Long.parseLong(custId));
 				} else {
-					return custDao.getCustomerById(Long.parseLong(custId
-							.split("\\,")[0]));
+					return custDao.getCustomerById(Long.parseLong(custId.split("\\,")[0]));
 				}
 			}
 		} catch (Exception e) {

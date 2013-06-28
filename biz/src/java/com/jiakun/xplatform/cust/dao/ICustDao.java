@@ -2,6 +2,11 @@ package com.jiakun.xplatform.cust.dao;
 
 import com.jiakun.xplatform.api.cust.bo.Customer;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface ICustDao {
 
 	/**

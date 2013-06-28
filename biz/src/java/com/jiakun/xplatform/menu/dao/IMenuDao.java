@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.menu.bo.Menu;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IMenuDao {
 
 	/**

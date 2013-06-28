@@ -10,6 +10,11 @@ import java.util.Map;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public final class LogUtil {
 
 	private static final Logger logger = Logger.getLogger(LogUtil.class);

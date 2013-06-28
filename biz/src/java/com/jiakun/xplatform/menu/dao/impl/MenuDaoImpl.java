@@ -8,23 +8,25 @@ import com.jiakun.xplatform.api.menu.bo.Menu;
 import com.jiakun.xplatform.framework.dao.impl.BaseDaoImpl;
 import com.jiakun.xplatform.menu.dao.IMenuDao;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Menu> getMenuTreeList(Menu menu) {
-		return (List<Menu>) getSqlMapClientTemplate().queryForList(
-				"menu.getMenuTreeList", menu);
+		return (List<Menu>) getSqlMapClientTemplate().queryForList("menu.getMenuTreeList", menu);
 	}
 
 	public int getMenuCount(Menu menu) {
-		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"menu.getMenuCount", menu);
+		return (Integer) getSqlMapClientTemplate().queryForObject("menu.getMenuCount", menu);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Menu> getMenuList(Menu menu) {
-		return (List<Menu>) getSqlMapClientTemplate().queryForList(
-				"menu.getMenuList", menu);
+		return (List<Menu>) getSqlMapClientTemplate().queryForList("menu.getMenuList", menu);
 	}
 
 	public Long createMenu(Menu menu) {
@@ -36,8 +38,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 	}
 
 	public Menu getMenuById(Long id) {
-		return (Menu) getSqlMapClientTemplate().queryForObject(
-				"menu.getMenuById", id);
+		return (Menu) getSqlMapClientTemplate().queryForObject("menu.getMenuById", id);
 	}
 
 	public int deleteMenu(Menu menu) {
@@ -45,19 +46,16 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 	}
 
 	public int getSelectedMenu4RoleCount(Menu menu) {
-		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"menu.getSelectedMenu4RoleCount", menu);
+		return (Integer) getSqlMapClientTemplate().queryForObject("menu.getSelectedMenu4RoleCount", menu);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Menu> getSelectedMenu4RoleList(Menu menu) {
-		return (List<Menu>) getSqlMapClientTemplate().queryForList(
-				"menu.getSelectedMenu4RoleList", menu);
+		return (List<Menu>) getSqlMapClientTemplate().queryForList("menu.getSelectedMenu4RoleList", menu);
 	}
 
 	public int deleteSelectedMenu4Role(Menu menu) {
-		return getSqlMapClientTemplate().delete("menu.deleteSelectedMenu4Role",
-				menu);
+		return getSqlMapClientTemplate().delete("menu.deleteSelectedMenu4Role", menu);
 	}
 
 	public boolean checkSelectedMenu4Role(String roleId, Long menuId) {
@@ -65,8 +63,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 		m.put("roleId", roleId);
 		m.put("menuId", menuId);
 
-		int c = (Integer) getSqlMapClientTemplate().queryForObject(
-				"menu.checkSelectedMenu4Role", m);
+		int c = (Integer) getSqlMapClientTemplate().queryForObject("menu.checkSelectedMenu4Role", m);
 
 		return c == 0 ? false : true;
 	}
@@ -76,8 +73,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 		m.put("roleId", roleId);
 		m.put("menuId", menuId);
 
-		return (Long) getSqlMapClientTemplate().insert("menu.selectMenu4Role",
-				m);
+		return (Long) getSqlMapClientTemplate().insert("menu.selectMenu4Role", m);
 	}
 
 	public Long getParentMenuId4Role(String roleId, Long menuId) {
@@ -85,8 +81,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 		m.put("roleId", roleId);
 		m.put("menuId", menuId);
 
-		return (Long) getSqlMapClientTemplate().queryForObject(
-				"menu.getParentMenuId4Role", m);
+		return (Long) getSqlMapClientTemplate().queryForObject("menu.getParentMenuId4Role", m);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -95,8 +90,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 		m.put("roleId", roleId);
 		m.put("menuId", menuId);
 
-		return (List<Long>) getSqlMapClientTemplate().queryForList(
-				"menu.getChildMenuId4Role", m);
+		return (List<Long>) getSqlMapClientTemplate().queryForList("menu.getChildMenuId4Role", m);
 	}
 
 }

@@ -10,10 +10,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DataConfigServiceImpl implements IDataConfigService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataConfigServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataConfigServiceImpl.class);
 
 	private IDataConfigDao dataConfigDao;
 

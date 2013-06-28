@@ -1,7 +1,14 @@
 package com.jiakun.xplatform.framework.mail;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class Mail {
+
 	private String filepath = "";
+
 	private String filename = "";
 
 	public String getFilepath() {

@@ -23,10 +23,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DataServiceImpl implements IDataService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataServiceImpl.class);
 
 	private TransactionTemplate transactionTemplate;
 
@@ -34,8 +38,7 @@ public class DataServiceImpl implements IDataService {
 
 	private IDataLogDao dataLogDao;
 
-	public List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId,
-			String userId) {
+	public List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId) {
 		if (dataLogTotalId == null || StringUtil.isEmpty(userId)) {
 			return null;
 		}
@@ -49,8 +52,7 @@ public class DataServiceImpl implements IDataService {
 		return null;
 	}
 
-	public List<TabColumn> getTabColumnsByConfigId(Long dataConfigId,
-			String userId) {
+	public List<TabColumn> getTabColumnsByConfigId(Long dataConfigId, String userId) {
 		if (dataConfigId == null || StringUtil.isEmpty(userId)) {
 			return null;
 		}
@@ -64,64 +66,60 @@ public class DataServiceImpl implements IDataService {
 		return null;
 	}
 
-	public BooleanResult createDataInfo(final Long dataConfigId,
-			final List<DataInfo> dataInfoList) {
+	public BooleanResult createDataInfo(final Long dataConfigId, final List<DataInfo> dataInfoList) {
 
-		return (BooleanResult) transactionTemplate
-				.execute(new TransactionCallback() {
-					public Object doInTransaction(TransactionStatus status) {
-						BooleanResult res = new BooleanResult();
-						res.setResult(false);
+		return (BooleanResult) transactionTemplate.execute(new TransactionCallback() {
+			public Object doInTransaction(TransactionStatus status) {
+				BooleanResult res = new BooleanResult();
+				res.setResult(false);
 
-						String result = null;
+				String result = null;
 
-						// create dataInfo
-						try {
-							result = dataDao.createDataInfo(dataInfoList);
-						} catch (Exception e) {
-							logger.error(LogUtil.parserBean(dataInfoList), e);
-							status.setRollbackOnly();
-							return res;
-						}
+				// create dataInfo
+				try {
+					result = dataDao.createDataInfo(dataInfoList);
+				} catch (Exception e) {
+					logger.error(LogUtil.parserBean(dataInfoList), e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						String[] results = result.split(",");
+				String[] results = result.split(",");
 
-						DataLogTotal dataLogTotal = new DataLogTotal();
-						dataLogTotal.setDataConfigId(dataConfigId);
+				DataLogTotal dataLogTotal = new DataLogTotal();
+				dataLogTotal.setDataConfigId(dataConfigId);
 
-						// create log total
-						try {
-							dataLogDao.createDataLogTotal(dataLogTotal);
-						} catch (Exception e) {
-							logger.error(LogUtil.parserBean(dataLogTotal), e);
-							status.setRollbackOnly();
-							return res;
-						}
+				// create log total
+				try {
+					dataLogDao.createDataLogTotal(dataLogTotal);
+				} catch (Exception e) {
+					logger.error(LogUtil.parserBean(dataLogTotal), e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						List<DataLogDetail> dataLogDetailList = new ArrayList<DataLogDetail>();
+				List<DataLogDetail> dataLogDetailList = new ArrayList<DataLogDetail>();
 
-						for (String s : results) {
-							DataLogDetail detail = new DataLogDetail();
-							detail.setDataLogTotalId(dataLogTotal
-									.getDataLogTotalId());
-							detail.setDataId(s);
-							dataLogDetailList.add(detail);
-						}
+				for (String s : results) {
+					DataLogDetail detail = new DataLogDetail();
+					detail.setDataLogTotalId(dataLogTotal.getDataLogTotalId());
+					detail.setDataId(s);
+					dataLogDetailList.add(detail);
+				}
 
-						// create log detail
-						try {
-							dataLogDao.createDataLogDetail(dataLogDetailList);
-						} catch (Exception e) {
-							logger.error(LogUtil.parserBean(dataLogDetailList),
-									e);
-							status.setRollbackOnly();
-							return res;
-						}
+				// create log detail
+				try {
+					dataLogDao.createDataLogDetail(dataLogDetailList);
+				} catch (Exception e) {
+					logger.error(LogUtil.parserBean(dataLogDetailList), e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						res.setResult(true);
-						return res;
-					}
-				});
+				res.setResult(true);
+				return res;
+			}
+		});
 	}
 
 	public int getDataPreviewCount(DataLogTotal dataLogTotal) {
@@ -142,8 +140,8 @@ public class DataServiceImpl implements IDataService {
 	 */
 	public List<DataInfo> getDataPreviewList(DataLogTotal dataLogTotal) {
 		try {
-			List<TabColumn> tabColumns = dataDao.getTabColumnsByLogId(
-					dataLogTotal.getDataLogTotalId(), dataLogTotal.getUserId());
+			List<TabColumn> tabColumns =
+				dataDao.getTabColumnsByLogId(dataLogTotal.getDataLogTotalId(), dataLogTotal.getUserId());
 			if (tabColumns == null || tabColumns.size() == 0) {
 				return null;
 			}
@@ -151,8 +149,7 @@ public class DataServiceImpl implements IDataService {
 			dataLogTotal.setTableName(tabColumns.get(0).getTableName());
 			dataLogTotal.setPrimaryKey(tabColumns.get(0).getPrimaryKey());
 
-			List<Map<String, Object>> lists = dataDao
-					.getDataPreviewList(dataLogTotal);
+			List<Map<String, Object>> lists = dataDao.getDataPreviewList(dataLogTotal);
 			if (lists == null || lists.size() == 0) {
 				return null;
 			}
@@ -168,11 +165,8 @@ public class DataServiceImpl implements IDataService {
 				for (TabColumn tabColumn : tabColumns) {
 					Object value = map.get(tabColumn.getColumnName());
 
-					Method method2 = BeanUtils.findMethod(dataInfo.getClass(),
-							"setValue" + (i++), c);
-					method2.invoke(dataInfo,
-							new Object[] { value != null ? value.toString()
-									: "" });
+					Method method2 = BeanUtils.findMethod(dataInfo.getClass(), "setValue" + (i++), c);
+					method2.invoke(dataInfo, new Object[] { value != null ? value.toString() : "" });
 				}
 
 				dataInfoList.add(dataInfo);
@@ -186,57 +180,50 @@ public class DataServiceImpl implements IDataService {
 		return null;
 	}
 
-	public BooleanResult deleteDataInfo(final Long dataLogTotalId,
-			final String userId) {
+	public BooleanResult deleteDataInfo(final Long dataLogTotalId, final String userId) {
 
-		return (BooleanResult) transactionTemplate
-				.execute(new TransactionCallback() {
-					public Object doInTransaction(TransactionStatus status) {
-						BooleanResult res = new BooleanResult();
-						res.setResult(false);
+		return (BooleanResult) transactionTemplate.execute(new TransactionCallback() {
+			public Object doInTransaction(TransactionStatus status) {
+				BooleanResult res = new BooleanResult();
+				res.setResult(false);
 
-						int result = 0;
-						List<TabColumn> tabColumns = null;
+				int result = 0;
+				List<TabColumn> tabColumns = null;
 
-						try {
-							tabColumns = dataDao.getTabColumnsByLogId(
-									dataLogTotalId, userId);
-						} catch (Exception e) {
-							logger.error("dataLogTotalId:" + dataLogTotalId
-									+ "userId:" + userId, e);
-							status.setRollbackOnly();
-							return res;
-						}
+				try {
+					tabColumns = dataDao.getTabColumnsByLogId(dataLogTotalId, userId);
+				} catch (Exception e) {
+					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						// delete dataInfo
-						try {
-							TabColumn tabColumn = tabColumns.get(0);
-							result = dataDao.deleteDataInfo(dataLogTotalId,
-									userId, tabColumn.getTableName(),
-									tabColumn.getPrimaryKey());
-						} catch (Exception e) {
-							logger.error("dataLogTotalId:" + dataLogTotalId
-									+ "userId:" + userId, e);
-							status.setRollbackOnly();
-							return res;
-						}
+				// delete dataInfo
+				try {
+					TabColumn tabColumn = tabColumns.get(0);
+					result =
+						dataDao.deleteDataInfo(dataLogTotalId, userId, tabColumn.getTableName(),
+							tabColumn.getPrimaryKey());
+				} catch (Exception e) {
+					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						// update log total
-						try {
-							dataLogDao.updateDataLogTotal(dataLogTotalId,
-									userId, "D");
-						} catch (Exception e) {
-							logger.error("dataLogTotalId:" + dataLogTotalId
-									+ "userId:" + userId, e);
-							status.setRollbackOnly();
-							return res;
-						}
+				// update log total
+				try {
+					dataLogDao.updateDataLogTotal(dataLogTotalId, userId, "D");
+				} catch (Exception e) {
+					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					status.setRollbackOnly();
+					return res;
+				}
 
-						res.setResult(true);
-						res.setCode(String.valueOf(result));
-						return res;
-					}
-				});
+				res.setResult(true);
+				res.setCode(String.valueOf(result));
+				return res;
+			}
+		});
 	}
 
 	public TransactionTemplate getTransactionTemplate() {

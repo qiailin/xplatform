@@ -12,10 +12,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class FileServiceImpl implements IFileService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(FileServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(FileServiceImpl.class);
 
 	private IMemcachedCacheService memcachedCacheService;
 
@@ -25,9 +29,8 @@ public class FileServiceImpl implements IFileService {
 		FileInfo info = null;
 
 		try {
-			info = (FileInfo) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_FILE_ID
-							+ fileInfo.getFileId());
+			info =
+				(FileInfo) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_FILE_ID + fileInfo.getFileId());
 
 			if (info != null) {
 				if (StringUtil.isNotEmpty(fileInfo.getFlag())) {
@@ -45,8 +48,7 @@ public class FileServiceImpl implements IFileService {
 		try {
 			info = fileDao.getFileInfo(fileInfo);
 
-			memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_FILE_ID
-					+ fileInfo.getFileId(), info);
+			memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_FILE_ID + fileInfo.getFileId(), info);
 		} catch (Exception e1) {
 			logger.error(LogUtil.parserBean(fileInfo), e1);
 		}
@@ -110,8 +112,7 @@ public class FileServiceImpl implements IFileService {
 	private void removeCache(String[] ids) {
 		try {
 			for (String id : ids) {
-				memcachedCacheService
-						.remove(IMemcachedCacheService.CACHE_KEY_FILE_ID + id);
+				memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_FILE_ID + id);
 			}
 		} catch (Exception e) {
 		}
@@ -121,8 +122,7 @@ public class FileServiceImpl implements IFileService {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 

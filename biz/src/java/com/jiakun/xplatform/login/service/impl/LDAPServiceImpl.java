@@ -8,10 +8,14 @@ import com.jiakun.xplatform.api.login.ILDAPService;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class LDAPServiceImpl implements ILDAPService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(LDAPServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(LDAPServiceImpl.class);
 
 	private String ldapHost;
 
@@ -33,8 +37,7 @@ public class LDAPServiceImpl implements ILDAPService {
 		LDAPConnection ld = new LDAPConnection();
 
 		try {
-			ld.connect(3, ldapHost, Integer.parseInt(ldapPort),
-					fullDN + domain, password);
+			ld.connect(3, ldapHost, Integer.parseInt(ldapPort), fullDN + domain, password);
 			flag = true;
 		} catch (LDAPException e) {
 			flag = false;

@@ -5,6 +5,11 @@ import java.util.Map;
 
 import com.jiakun.xplatform.api.monitor.bo.SqlMonitor;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface ISqlMonitorDao {
 
 	/**

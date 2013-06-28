@@ -8,6 +8,11 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.sms.dao.IMessageDao;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class MessageServiceImpl implements IMessageService {
 
 	private Logger4jExtend logger = Logger4jCollection.getLogger(MessageServiceImpl.class);

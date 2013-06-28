@@ -8,14 +8,18 @@ import com.ibatis.sqlmap.client.extensions.ParameterSetter;
 import com.ibatis.sqlmap.client.extensions.ResultGetter;
 import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class DateOnlyTypeHanlderCallback implements TypeHandlerCallback {
 
 	public Object getResult(ResultGetter arg0) throws SQLException {
 		return new UnsupportedOperationException();
 	}
 
-	public void setParameter(ParameterSetter setter, Object parameter)
-			throws SQLException {
+	public void setParameter(ParameterSetter setter, Object parameter) throws SQLException {
 
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		setter.setString(df.format(parameter));

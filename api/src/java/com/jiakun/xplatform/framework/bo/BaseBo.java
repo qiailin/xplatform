@@ -3,6 +3,11 @@ package com.jiakun.xplatform.framework.bo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class BaseBo implements Serializable {
 
 	private static final long serialVersionUID = -3829312471141500962L;

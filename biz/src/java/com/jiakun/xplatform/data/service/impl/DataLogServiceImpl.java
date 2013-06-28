@@ -10,10 +10,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DataLogServiceImpl implements IDataLogService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataLogServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataLogServiceImpl.class);
 
 	private IDataLogDao dataLogDao;
 

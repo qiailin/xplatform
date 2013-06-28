@@ -14,66 +14,60 @@ import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 import com.jiakun.xplatform.data.dao.IDataLogDao;
 import com.jiakun.xplatform.framework.dao.impl.BaseDaoImpl;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DataLogDaoImpl extends BaseDaoImpl implements IDataLogDao {
 
 	public Long createDataLogTotal(DataLogTotal dataLogTotal) {
-		return (Long) getSqlMapClientTemplate().insert(
-				"data.createDataLogTotal", dataLogTotal);
+		return (Long) getSqlMapClientTemplate().insert("data.createDataLogTotal", dataLogTotal);
 	}
 
-	public String createDataLogDetail(
-			final List<DataLogDetail> dataLogDetailList) {
-		return (String) getSqlMapClientTemplate().execute(
-				new SqlMapClientCallback() {
-					StringBuilder sb = new StringBuilder();
+	public String createDataLogDetail(final List<DataLogDetail> dataLogDetailList) {
+		return (String) getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
+			StringBuilder sb = new StringBuilder();
 
-					public Object doInSqlMapClient(SqlMapExecutor executor)
-							throws SQLException {
-						executor.startBatch();
+			public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
+				executor.startBatch();
 
-						for (DataLogDetail s : dataLogDetailList) {
-							if (sb.length() != 0) {
-								sb.append(",");
-							}
-							sb.append(executor.insert(
-									"data.createDataLogDetail", s));
-						}
-						executor.executeBatch();
-
-						return sb.toString();
+				for (DataLogDetail s : dataLogDetailList) {
+					if (sb.length() != 0) {
+						sb.append(",");
 					}
-				});
+					sb.append(executor.insert("data.createDataLogDetail", s));
+				}
+				executor.executeBatch();
+
+				return sb.toString();
+			}
+		});
 	}
 
 	public int getDataLogTotalCount(DataLogTotal dataLogTotal) {
-		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"data.getDataLogTotalCount", dataLogTotal);
+		return (Integer) getSqlMapClientTemplate().queryForObject("data.getDataLogTotalCount", dataLogTotal);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal) {
-		return (List<DataLogTotal>) getSqlMapClientTemplate().queryForList(
-				"data.getDataLogTotalList", dataLogTotal);
+		return (List<DataLogTotal>) getSqlMapClientTemplate().queryForList("data.getDataLogTotalList", dataLogTotal);
 	}
 
 	public int getDBTableCount(DataLogTotal dataLogTotal) {
-		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"data.getDBTableCount", dataLogTotal);
+		return (Integer) getSqlMapClientTemplate().queryForObject("data.getDBTableCount", dataLogTotal);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
-		return (List<CmsTbDict>) getSqlMapClientTemplate().queryForList(
-				"data.getDBTableList", dataLogTotal);
+		return (List<CmsTbDict>) getSqlMapClientTemplate().queryForList("data.getDBTableList", dataLogTotal);
 	}
 
 	public int getDataLogDetailCount(DataLogTotal dataLogTotal) {
-		return (Integer) getSqlMapClientTemplate().queryForObject(
-				"data.getDataLogDetailCount", dataLogTotal);
+		return (Integer) getSqlMapClientTemplate().queryForObject("data.getDataLogDetailCount", dataLogTotal);
 	}
 
-	public int updateDataLogTotal(Long dataLogTotalId, String userId,
-			String flag) {
+	public int updateDataLogTotal(Long dataLogTotalId, String userId, String flag) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("dataLogTotalId", dataLogTotalId);
 		map.put("userId", userId);

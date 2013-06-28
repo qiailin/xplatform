@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.cache.bo.CacheStats;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface ICacheMonitorDao {
 
 	/**
