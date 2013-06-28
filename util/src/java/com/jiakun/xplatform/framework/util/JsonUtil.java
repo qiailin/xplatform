@@ -103,10 +103,11 @@ public class JsonUtil {
 				} else if (Collection.class.isAssignableFrom(desc.getPropertyType())) {
 					Class clz = childMap.get(desc.getName());
 					if (clz.isPrimitive() || CharSequence.class.isAssignableFrom(clz)
-						|| Number.class.isAssignableFrom(clz))
+						|| Number.class.isAssignableFrom(clz)) {
 						value = convertFromStringListSimple(map.get(desc.getName()).toString(), clz);
-					else
+					} else {
 						value = convertFromStringListComplex(map.get(desc.getName()).toString(), clz);
+					}
 				} else {
 
 					if (desc.getPropertyType().isPrimitive()
@@ -116,10 +117,11 @@ public class JsonUtil {
 							value = OgnlOps.convertValue(map.get(desc.getName()), desc.getPropertyType());
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
-							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class)
+							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class) {
 								throw new Exception(desc.getName() + "ӦΪ����!");
-							else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class)
+							} else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class) {
 								throw new Exception(desc.getName() + "ӦΪ����!");
+							}
 						}
 					} else {
 						value = json2Bean(desc.getPropertyType(), map.get(desc.getName()).toString(), null);
@@ -133,9 +135,9 @@ public class JsonUtil {
 	}
 
 	public static boolean validateDate(String date) {
-		if (date == null || date.trim().length() != 10)
+		if (date == null || date.trim().length() != 10) {
 			return false;
-		else {
+		} else {
 			date = date.trim();
 			String[] param = date.split("-");
 			if (param[0].length() != 4) {

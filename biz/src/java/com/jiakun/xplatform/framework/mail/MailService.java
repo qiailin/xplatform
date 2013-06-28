@@ -45,79 +45,9 @@ public class MailService {
 	private String password;
 	private String subject;
 	private String content;
-	private boolean ifAuth; // �������Ƿ�Ҫ�����֤
+	private boolean ifAuth;
 	private String filename = "";
-	private List<Mail> files = new ArrayList<Mail>(); // ���ڱ��淢�͸������ļ���ļ���
-
-	/**
-	 * ����SMTP��������ַ
-	 */
-	public void setSmtpServer(String smtpServer) {
-		this.smtpServer = smtpServer;
-	}
-
-	/**
-	 * ���÷����˵ĵ�ַ
-	 */
-	public void setFrom(String from) {
-		this.from = from;
-	}
-
-	/**
-	 * ������ʾ�����
-	 */
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
-
-	/**
-	 * ���÷������Ƿ���Ҫ�����֤
-	 */
-	public void setIfAuth(boolean ifAuth) {
-		this.ifAuth = ifAuth;
-	}
-
-	/**
-	 * ����E-mail�û���
-	 */
-	public void setUserName(String username) {
-		this.username = username;
-	}
-
-	/**
-	 * ����E-mail����
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	/**
-	 * ���ý�����
-	 */
-	public void setTo(String to) {
-		this.to = to;
-	}
-
-	/**
-	 * ��������
-	 */
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	/**
-	 * ������������
-	 */
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	/**
-	 * �÷��������ռ�������
-	 */
-	public void addAttachfile(Mail mailFile) {
-		files.add(mailFile);
-	}
+	private List<Mail> files = new ArrayList<Mail>();
 
 	/**
 	 * ��ʼ��SMTP��������ַ��������E-mail��ַ���û������롢�����ߡ����⡢����
@@ -246,4 +176,75 @@ public class MailService {
 		map.put("message", message);
 		return map;
 	}
+
+	/**
+	 * ����SMTP��������ַ
+	 */
+	public void setSmtpServer(String smtpServer) {
+		this.smtpServer = smtpServer;
+	}
+
+	/**
+	 * ���÷����˵ĵ�ַ
+	 */
+	public void setFrom(String from) {
+		this.from = from;
+	}
+
+	/**
+	 * ������ʾ�����
+	 */
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	/**
+	 * ���÷������Ƿ���Ҫ�����֤
+	 */
+	public void setIfAuth(boolean ifAuth) {
+		this.ifAuth = ifAuth;
+	}
+
+	/**
+	 * ����E-mail�û���
+	 */
+	public void setUserName(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * ����E-mail����
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * ���ý�����
+	 */
+	public void setTo(String to) {
+		this.to = to;
+	}
+
+	/**
+	 * ��������
+	 */
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	/**
+	 * ������������
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	/**
+	 * �÷��������ռ�������
+	 */
+	public void addAttachfile(Mail mailFile) {
+		files.add(mailFile);
+	}
+
 }

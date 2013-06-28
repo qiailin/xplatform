@@ -10,14 +10,14 @@ import java.io.Serializable;
 public class ThreadPool implements Serializable {
 
 	private static final long serialVersionUID = 4776405616552648893L;
-	private int corePoolSize; // ���غ����߳���
+	private int corePoolSize;
 	private int maximumPoolSize;
-	private int poolSize; // ���еĵ�ǰ�߳���
+	private int poolSize;
 	private int largestPoolSize;
 	private long completedTaskCount;
-	private int activeCount; // ��������ִ������Ľ����߳���
-	private long taskCount; // ������ƻ�ִ�еĽ�����������
-	private int queueCount; // �ȴ��������
+	private int activeCount;
+	private long taskCount;
+	private int queueCount;
 
 	public int getQueueCount() {
 		return queueCount;

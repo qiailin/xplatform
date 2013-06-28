@@ -14,11 +14,11 @@ import com.jiakun.xplatform.framework.annotation.Decode;
  */
 public class SearchInfo implements Serializable {
 
-	private static final long serialVersionUID = 235499309845516885L;
-
 	public static final String DIR_DESC = "DESC";
 
 	public static final String DIR_ASC = "ASC";
+
+	private static final long serialVersionUID = 235499309845516885L;
 
 	/**
 	 * ��ʼʱ��
