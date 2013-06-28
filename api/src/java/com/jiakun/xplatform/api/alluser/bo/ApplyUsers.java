@@ -5,7 +5,7 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * SMSUSER.APPLYUSERS
+ * SMSUSER.APPLYUSERS.
  * 
  * @author xujiakun
  * 
@@ -16,124 +16,52 @@ public class ApplyUsers extends SearchInfo {
 
 	private Long id;
 
-	/**
-	 * �û�id
-	 */
 	private String userCode;
 
-	/**
-	 * ����
-	 */
 	private String pwd;
 
-	/**
-	 * �û�����
-	 */
 	private String userName;
 
-	/**
-	 * ��ʾ��
-	 */
 	private String userShowName;
 
-	/**
-	 * ��ʾ��
-	 */
 	private String workPhone;
 
-	/**
-	 * �칫����
-	 */
 	private String workFax;
 
-	/**
-	 * �ֻ�
-	 */
 	private String mobilePhone;
 
-	/**
-	 * լ��
-	 */
 	private String homePhone;
 
-	/**
-	 * ��ַ
-	 */
 	private String address;
 
-	/**
-	 * �����ַ
-	 */
 	private String mailAddress;
 
-	/**
-	 * �Ա�M��FŮ��
-	 */
 	private String sex;
 
-	/**
-	 * �Ƿ�ͨ���䣨1��ͨ0����ͨ��
-	 */
 	private String haveMail;
 
-	/**
-	 * ��֯id
-	 */
 	private Long organiseId;
 
-	/**
-	 * ������id
-	 */
 	private Long squserId;
 
-	/**
-	 * ����������
-	 */
 	private String squserShowName;
 
-	/**
-	 * �������(Fδ���T�����D�˻�)
-	 */
 	private String hrsh;
 
-	/**
-	 * ��Ϣ�����(Fδ���T�����D�˻�)
-	 */
 	private String infosh;
 
-	/**
-	 * ��ע
-	 */
 	private String remark;
 
-	/**
-	 *  ��ְλID
-	 */
 	private String stationId;
 
-	/**
-	 * ����ʱ��
-	 */
 	private Date createTime;
 
-	/**
-	 * �ܾ�ԭ��
-	 */
 	private String jjReason;
 
-	/**
-	 * �޸�ʱ��
-	 */
 	private Date lastModify;
 
-	/**
-	 * ���֤����
-	 */
 	private String empIdCard;
 
-	/**
-	 * ��ʼ��������
-	 */
 	private String empStartDate;
 
 	private String beginDate;
@@ -142,8 +70,8 @@ public class ApplyUsers extends SearchInfo {
 
 	private String[] orgIds;
 
-	private  String orgStr;
-	
+	private String orgStr;
+
 	public Long getId() {
 		return id;
 	}

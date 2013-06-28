@@ -11,9 +11,7 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.Interceptor;
 
 /**
- * Ȩ����֤������
- * 
- * ���û���δ��¼������ת����¼ҳ��
+ * AuthencationInterceptor.
  * 
  * @author xujiakun
  * 

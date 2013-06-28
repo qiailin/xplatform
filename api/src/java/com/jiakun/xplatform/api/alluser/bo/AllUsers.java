@@ -5,7 +5,7 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �Ñ���Ϣ����
+ * user.
  * 
  * @author xujiakun
  * 
@@ -19,34 +19,34 @@ public class AllUsers extends SearchInfo {
 	private String passWd;
 
 	/**
-	 * emp_name
+	 * emp_name.
 	 */
 	private String userName;
 
 	/**
-	 * emp_showname ��ʾ��
+	 * emp_showname.
 	 */
 	private String userShowName;
 
 	/**
-	 * EMP_STATE ��Ա״̬
+	 * EMP_STATE.
 	 */
 	private String userState;
 
 	private String custType;
 
 	/**
-	 * emp_code ��Ա��OA�ϵ�ID
+	 * emp_code.
 	 */
 	private String loginId;
 
 	/**
-	 * emp_mobile_phone ��Ա�ֻ���� / ��ԭͨѶ¼��ʹ��bus_mobilephone��Ϊ�ֻ���� �˹���һ���ֶ�
+	 * emp_mobile_phone.
 	 */
 	private String mobile;
 
 	/**
-	 * emp_shortmsgbook �ֻ���Ŷ���
+	 * emp_shortmsgbook.
 	 */
 	private String empShortmsgbook;
 
@@ -55,17 +55,15 @@ public class AllUsers extends SearchInfo {
 	private Long chargeId;
 
 	/**
-	 * emp_phone ��Ա�绰����
+	 * emp_phone.
 	 */
 	private String phone;
+
 	/**
-	 * bus_mobilephone �����ֻ����
+	 * bus_mobilephone.
 	 */
 	private String busMobilephone;
 
-	/**
-	 * �Ƿ��ܲ���Ա 0:��;1:��
-	 */
 	private String hqSign;
 
 	private String kunnrSign;
@@ -79,61 +77,59 @@ public class AllUsers extends SearchInfo {
 	private String orgName;
 
 	/**
-	 * emp_id_card ������Ա���֤����
+	 * emp_id_card.
 	 */
 	private String idCard;
 
 	/**
-	 * emp_workfax ����
+	 * emp_workfax.
 	 */
 	private String workFax;
 
 	/**
-	 * emp_homephone
+	 * emp_homephone.
 	 */
 	private String homePhone;
 
 	/**
-	 * emp_start_date ��ʼʱ��
+	 * emp_start_date.
 	 */
 	private String startDate;
 
 	/**
-	 * emp_address ��ַ
+	 * emp_address.
 	 */
 	private String address;
 
 	/**
-	 * emp_email �����ʼ�
+	 * emp_email.
 	 */
 	private String email;
 
 	/**
-	 * emp_sex ��Ա�Ա�
+	 * emp_sex.
 	 */
 	private String sex;
 
 	/**
-	 * pos_name
+	 * pos_name.
 	 */
 	private String posName;
-	/**
-	 * ְλID
-	 */
+
 	private String posId;
 
 	/**
-	 * havemail �Ƿ�ͨ���䣨0��1�ǣ�
+	 * havemail.
 	 */
 	private String haveMail;
 
 	/**
-	 * emp_remark ��ע
+	 * emp_remark.
 	 */
 	private String remark;
 
 	/**
-	 * position_type_name
+	 * position_type_name.
 	 */
 	private String positionTypeName;
 
@@ -143,9 +139,6 @@ public class AllUsers extends SearchInfo {
 
 	private String orgStr;
 
-	/**
-	 * �Ȳ��ڲ���Ӧ�̱��
-	 */
 	private String supplierNumber;
 
 	private String questionLinkId;
