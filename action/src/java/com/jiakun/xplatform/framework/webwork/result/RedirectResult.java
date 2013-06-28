@@ -10,6 +10,11 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.config.entities.ActionConfig;
 import com.opensymphony.xwork.config.entities.ResultConfig;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class RedirectResult extends ServletRedirectResult {
 
 	private static final long serialVersionUID = 2474958981537264314L;
@@ -19,8 +24,7 @@ public class RedirectResult extends ServletRedirectResult {
 		location = conditionalParse(location, invocation);
 
 		ActionConfig actionConfig = invocation.getProxy().getConfig();
-		ResultConfig resultConfig = (ResultConfig) actionConfig.getResults()
-				.get(invocation.getResultCode());
+		ResultConfig resultConfig = (ResultConfig) actionConfig.getResults().get(invocation.getResultCode());
 		Map resultConfigParams = resultConfig.getParams();
 
 		Map requestParameters = new HashMap();
@@ -28,17 +32,14 @@ public class RedirectResult extends ServletRedirectResult {
 			Map.Entry e = (Map.Entry) i.next();
 
 			if (!DEFAULT_PARAM.equals(e.getKey())) {
-				requestParameters.put(
-						e.getKey().toString(),
-						e.getValue() == null ? "" : conditionalParse(e
-								.getValue().toString(), invocation));
+				requestParameters.put(e.getKey().toString(),
+					e.getValue() == null ? "" : conditionalParse(e.getValue().toString(), invocation));
 			}
 		}
 
 		if (requestParameters.size() > 0) {
 			StringBuffer tmpLocation = new StringBuffer(location);
-			UrlHelper
-					.buildParametersString(requestParameters, tmpLocation, "&");
+			UrlHelper.buildParametersString(requestParameters, tmpLocation, "&");
 
 			location = tmpLocation.toString();
 		}

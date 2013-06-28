@@ -16,10 +16,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.DateUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MemcachedCacheServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MemcachedCacheServiceImpl.class);
 
 	private MemcachedClient memcachedClient;
 
@@ -79,8 +83,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return replace(key, value, IMemcachedCacheService.DEFAULT_EXP);
 	}
 
-	public Object replace(String key, Object value, Date expiry)
-			throws Exception {
+	public Object replace(String key, Object value, Date expiry) throws Exception {
 		if (expiry == null) {
 			return replace(key, value);
 		}
@@ -205,8 +208,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 
 		List<CacheStats> cacheStatsList = new ArrayList<CacheStats>();
 
-		for (Map.Entry<InetSocketAddress, Map<String, String>> m : maps
-				.entrySet()) {
+		for (Map.Entry<InetSocketAddress, Map<String, String>> m : maps.entrySet()) {
 			CacheStats cacheStats = new CacheStats();
 
 			InetSocketAddress address = m.getKey();
@@ -239,8 +241,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			cacheStats.setReclaimed(map.get("reclaimed"));
 			cacheStats.setBytesWritten(map.get("bytes_written"));
 			cacheStats.setHashPowerLevel(map.get("hash_power_level"));
-			cacheStats
-					.setConnectionStructures(map.get("connection_structures"));
+			cacheStats.setConnectionStructures(map.get("connection_structures"));
 			cacheStats.setCasHits(map.get("cas_hits"));
 			cacheStats.setDeleteMisses(map.get("delete_misses"));
 			cacheStats.setTotalConnections(map.get("total_connections"));
@@ -272,8 +273,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return cacheStatsList;
 	}
 
-	private Map<InetSocketAddress, Map<String, String>> getStatsDetail()
-			throws Exception {
+	private Map<InetSocketAddress, Map<String, String>> getStatsDetail() throws Exception {
 		try {
 			return memcachedClient.getStats();
 		} catch (MemcachedException e) {

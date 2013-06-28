@@ -10,10 +10,15 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.monitor.dao.ICacheMonitorDao;
 
+/**
+ * cache monitor service
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class CacheMonitorServiceImpl implements ICacheMonitorService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(CacheMonitorServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(CacheMonitorServiceImpl.class);
 
 	private ICacheMonitorDao cacheMonitorDao;
 

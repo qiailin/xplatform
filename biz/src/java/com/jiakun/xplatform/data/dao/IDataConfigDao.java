@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.data.bo.DataConfig;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IDataConfigDao {
 
 	/**

@@ -10,6 +10,11 @@ import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
 import com.jiakun.xplatform.framework.dao.impl.BaseDaoImpl;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class AllUserDaoImpl extends BaseDaoImpl implements IAllUserDao {
 
 	public AllUsers getAllUserByPassport(String passport) {

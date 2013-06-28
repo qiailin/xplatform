@@ -17,6 +17,11 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.common.lang.StringUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class DateUtil {
 
 	private static final long MILLISECONDS_A_DAY = 24 * 3600 * 1000;

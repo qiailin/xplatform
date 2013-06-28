@@ -2,6 +2,11 @@ package com.jiakun.xplatform.framework.hessian;
 
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DSAHessianProxyFactoryBean extends HessianProxyFactoryBean {
 
 	private DSAHessianProxyFactory dsaHessianProxyFactory;
@@ -17,8 +22,7 @@ public class DSAHessianProxyFactoryBean extends HessianProxyFactoryBean {
 		return dsaHessianProxyFactory;
 	}
 
-	public void setDsaHessianProxyFactory(
-			DSAHessianProxyFactory dsaHessianProxyFactory) {
+	public void setDsaHessianProxyFactory(DSAHessianProxyFactory dsaHessianProxyFactory) {
 		this.dsaHessianProxyFactory = dsaHessianProxyFactory;
 	}
 

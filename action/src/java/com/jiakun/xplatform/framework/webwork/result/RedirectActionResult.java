@@ -15,10 +15,16 @@ import com.opensymphony.webwork.views.util.UrlHelper;
 import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.config.entities.ResultConfig;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class RedirectActionResult extends ServletRedirectResult {
 
-	private static final long serialVersionUID = 5419860595625790964L;
 	public static final String DEFAULT_PARAM = "actionName";
+
+	private static final long serialVersionUID = 5419860595625790964L;
 
 	protected String application;
 	protected String namespace;
@@ -26,9 +32,8 @@ public class RedirectActionResult extends ServletRedirectResult {
 	protected String method = "execute";
 
 	@SuppressWarnings("rawtypes")
-	protected List prohibitedResultParam = Arrays.asList(new String[] {
-			DEFAULT_PARAM, "application", "namespace", "method", "encode",
-			"parse", "location", "prependServletContext" });
+	protected List prohibitedResultParam = Arrays.asList(new String[] { DEFAULT_PARAM, "application", "namespace",
+		"method", "encode", "parse", "location", "prependServletContext" });
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void execute(ActionInvocation invocation) throws Exception {
@@ -45,26 +50,22 @@ public class RedirectActionResult extends ServletRedirectResult {
 		}
 
 		Map requestParameters = new HashMap();
-		ResultConfig resultConfig = (ResultConfig) invocation.getProxy()
-				.getConfig().getResults().get(invocation.getResultCode());
+		ResultConfig resultConfig =
+			(ResultConfig) invocation.getProxy().getConfig().getResults().get(invocation.getResultCode());
 		Map resultConfigParams = resultConfig.getParams();
 
 		// 2012-2-10 modify by xujiakun add EncodeUtil.url
 		for (Iterator i = resultConfigParams.entrySet().iterator(); i.hasNext();) {
 			Map.Entry e = (Map.Entry) i.next();
 			if (!prohibitedResultParam.contains(e.getKey())) {
-				requestParameters.put(
-						e.getKey().toString(),
-						e.getValue() == null ? "" : EncodeUtil
-								.url(conditionalParse(e.getValue().toString(),
-										invocation)));
+				requestParameters.put(e.getKey().toString(),
+					e.getValue() == null ? "" : EncodeUtil.url(conditionalParse(e.getValue().toString(), invocation)));
 			}
 		}
 
 		ActionMapper mapper = ActionMapperFactory.getMapper();
-		StringBuffer tmpLocation = new StringBuffer(
-				mapper.getUriFromActionMapping(new ActionMapping(actionName,
-						namespace, method, null)));
+		StringBuffer tmpLocation =
+			new StringBuffer(mapper.getUriFromActionMapping(new ActionMapping(actionName, namespace, method, null)));
 		UrlHelper.buildParametersString(requestParameters, tmpLocation, "&");
 
 		if (application != null) {

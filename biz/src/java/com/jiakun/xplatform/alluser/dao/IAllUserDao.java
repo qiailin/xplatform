@@ -6,6 +6,11 @@ import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.alluser.bo.ApplyUsers;
 import com.jiakun.xplatform.api.alluser.bo.CmsVwSupplier;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IAllUserDao {
 
 	/**

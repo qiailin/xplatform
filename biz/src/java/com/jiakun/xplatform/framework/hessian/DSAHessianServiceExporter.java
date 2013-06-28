@@ -16,10 +16,14 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.ClientUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class DSAHessianServiceExporter extends HessianServiceExporter {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DSAHessianServiceExporter.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DSAHessianServiceExporter.class);
 
 	private IDSAService dsaService;
 
@@ -43,16 +47,15 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 	 */
 	private String keyPairName;
 
-	public void handleRequest(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+		IOException {
 
 		// 1.��������������IP��ַ����Ҫ���пͻ���IP��ַ��֤
 		if (StringUtil.isNotBlank(allowedClients)) {
 			// String clientIP = getClientIPAddress(request);
 			String clientIP = ClientUtil.getIpAddr(request);
 			if (!isAllowedClient(clientIP)) {
-				logger.error("hessian authentication error:" + clientIP
-						+ " not in allowedList " + allowedClients);
+				logger.error("hessian authentication error:" + clientIP + " not in allowedList " + allowedClients);
 				return;
 			}
 		}
@@ -92,20 +95,15 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 			}
 			try {
 				// 4.2 ��֤ǩ���Ƿ�һ��
-				boolean isRight = dsaService.check(secureKey + "|" + timestamp,
-						signature, keyPairName);
+				boolean isRight = dsaService.check(secureKey + "|" + timestamp, signature, keyPairName);
 				if (!isRight) {
 					logger.error("hessian authentication error:signatures not match!");
 					return;
 				}
 			} catch (NoSuchKeyPairException ne) {
-				logger.error(
-						"error in DSAHessianServiceExporter.handleRequest,no such key"
-								+ keyPairName, ne);
+				logger.error("error in DSAHessianServiceExporter.handleRequest,no such key" + keyPairName, ne);
 			} catch (DSAException de) {
-				logger.error(
-						"error in DSAHessianServiceExporter.handleRequest,DSA sign error",
-						de);
+				logger.error("error in DSAHessianServiceExporter.handleRequest,DSA sign error", de);
 			}
 
 		}

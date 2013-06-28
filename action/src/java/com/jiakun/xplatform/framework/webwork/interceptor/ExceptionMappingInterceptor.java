@@ -6,8 +6,12 @@ import java.util.Set;
 
 import org.apache.commons.logging.Log;
 
-public class ExceptionMappingInterceptor extends
-		com.opensymphony.xwork.interceptor.ExceptionMappingInterceptor {
+/**
+ * 
+ * @author
+ * 
+ */
+public class ExceptionMappingInterceptor extends com.opensymphony.xwork.interceptor.ExceptionMappingInterceptor {
 
 	private static final long serialVersionUID = -3070785537755358876L;
 

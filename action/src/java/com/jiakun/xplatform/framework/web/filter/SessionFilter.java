@@ -31,6 +31,11 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.PropertiesUtil;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class SessionFilter implements Filter {
 
 	private Logger4jExtend logger = Logger4jCollection.getLogger(SessionFilter.class);

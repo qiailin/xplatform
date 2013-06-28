@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.monitor.bo.MonitorLog;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IMonitorLogDao {
 
 	/**

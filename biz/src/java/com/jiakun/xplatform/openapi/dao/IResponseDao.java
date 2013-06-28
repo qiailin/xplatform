@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IResponseDao {
 
 	/**

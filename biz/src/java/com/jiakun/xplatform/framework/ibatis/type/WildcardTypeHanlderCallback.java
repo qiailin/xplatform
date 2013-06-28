@@ -7,14 +7,18 @@ import com.ibatis.sqlmap.client.extensions.ParameterSetter;
 import com.ibatis.sqlmap.client.extensions.ResultGetter;
 import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class WildcardTypeHanlderCallback implements TypeHandlerCallback {
 
 	public Object getResult(ResultGetter arg0) throws SQLException {
 		return new UnsupportedOperationException();
 	}
 
-	public void setParameter(ParameterSetter setter, Object obj)
-			throws SQLException {
+	public void setParameter(ParameterSetter setter, Object obj) throws SQLException {
 
 		String parameter = (String) obj;
 

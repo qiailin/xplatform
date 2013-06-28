@@ -23,6 +23,11 @@ import jxl.write.WriteException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class ExcelUtil {
 
 	private static Logger logger = Logger.getLogger(ExcelUtil.class);

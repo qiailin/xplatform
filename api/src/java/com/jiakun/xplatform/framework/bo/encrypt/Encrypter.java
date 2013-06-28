@@ -20,6 +20,11 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.common.lang.ArrayUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class Encrypter {
 	private static final Logger log = Logger.getLogger(Encrypter.class);
 	private static byte[] salt = { (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32, (byte) 0x56, (byte) 0x35,

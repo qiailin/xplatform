@@ -44,6 +44,11 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.common.lang.StringUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class HttpUtil {
 
 	private static Logger logger = Logger.getLogger(HttpUtil.class);

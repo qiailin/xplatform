@@ -7,6 +7,11 @@ import com.jiakun.xplatform.api.data.bo.DataInfo;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
 import com.jiakun.xplatform.api.data.bo.TabColumn;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IDataDao {
 
 	/**
@@ -47,7 +52,6 @@ public interface IDataDao {
 	 * @param primaryKey
 	 * @return
 	 */
-	int deleteDataInfo(Long dataLogTotalId, String userId, String tableName,
-			String primaryKey);
+	int deleteDataInfo(Long dataLogTotalId, String userId, String tableName, String primaryKey);
 
 }

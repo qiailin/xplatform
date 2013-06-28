@@ -11,10 +11,14 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.monitor.dao.IMonitorLogDao;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class MonitorLogServiceImpl implements IMonitorLogService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MonitorLogServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MonitorLogServiceImpl.class);
 
 	private IMonitorLogDao monitorLogDao;
 

@@ -8,6 +8,11 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import com.alibaba.common.lang.StringUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class MapUtil {
 
 	private static final Object[] EMPTY_ARRAY = {};
@@ -39,10 +44,8 @@ public class MapUtil {
 				Class[] pts = methods[i].getParameterTypes();
 				Class rt = methods[i].getReturnType();
 
-				if (methodName.startsWith("get") && pts.length == 0
-						&& !Void.class.equals(rt)) {
-					String propName = Character.toLowerCase(methodName
-							.charAt(3)) + methodName.substring(4);
+				if (methodName.startsWith("get") && pts.length == 0 && !Void.class.equals(rt)) {
+					String propName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
 					if ("class".equals(propName)) {
 						continue;
 					}
@@ -94,8 +97,7 @@ public class MapUtil {
 				String methodName = methods[i].getName();
 
 				if (methodName.startsWith("set")) {
-					String propName = Character.toLowerCase(methodName
-							.charAt(3)) + methodName.substring(4);
+					String propName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
 					String key = withoutPrefix ? propName : prefix + propName;
 
 					Object value = map.get(key);

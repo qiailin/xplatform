@@ -5,6 +5,11 @@ import java.text.DecimalFormat;
 
 import com.alibaba.common.lang.StringUtil;
 
+/**
+ * 
+ * @author
+ * 
+ */
 public class FormatUtil {
 
 	public static boolean isEmpty(String str) {

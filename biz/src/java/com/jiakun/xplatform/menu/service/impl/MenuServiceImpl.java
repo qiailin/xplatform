@@ -15,10 +15,14 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.menu.dao.IMenuDao;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public class MenuServiceImpl implements IMenuService {
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MenuServiceImpl.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MenuServiceImpl.class);
 
 	private IMenuDao menuDao;
 
@@ -151,46 +155,41 @@ public class MenuServiceImpl implements IMenuService {
 					continue;
 				}
 
-				Object o = transactionTemplate
-						.execute(new TransactionCallback() {
-							public Object doInTransaction(TransactionStatus ts) {
-								Long roleMenuId;
-								// 1st ������ɫ�˵�
-								try {
-									roleMenuId = menuDao.selectMenu4Role(
-											roleId, menuId);
-								} catch (Exception e) {
-									logger.error("roleId:" + roleId + "menuId:"
-											+ menuId, e);
-									ts.setRollbackOnly();
-									return null;
+				Object o = transactionTemplate.execute(new TransactionCallback() {
+					public Object doInTransaction(TransactionStatus ts) {
+						Long roleMenuId;
+						// 1st ������ɫ�˵�
+						try {
+							roleMenuId = menuDao.selectMenu4Role(roleId, menuId);
+						} catch (Exception e) {
+							logger.error("roleId:" + roleId + "menuId:" + menuId, e);
+							ts.setRollbackOnly();
+							return null;
+						}
+
+						// 2nd ������ɫ�˵�����һ���˵� pid == -1
+						Long id = menuId;
+						do {
+							try {
+								id = menuDao.getParentMenuId4Role(roleId, id);
+
+								if (id == null) {
+									break;
 								}
 
-								// 2nd ������ɫ�˵�����һ���˵� pid == -1
-								Long id = menuId;
-								do {
-									try {
-										id = menuDao.getParentMenuId4Role(
-												roleId, id);
-
-										if (id == null) {
-											break;
-										}
-
-										menuDao.selectMenu4Role(roleId, id);
-									} catch (Exception e) {
-										logger.error("roleId:" + roleId + "id:"
-												+ id, e);
-										ts.setRollbackOnly();
-										return null;
-									}
-
-								} while (id != null);
-
-								// ���ؽ�ɫ�˵�id
-								return roleMenuId;
+								menuDao.selectMenu4Role(roleId, id);
+							} catch (Exception e) {
+								logger.error("roleId:" + roleId + "id:" + id, e);
+								ts.setRollbackOnly();
+								return null;
 							}
-						});
+
+						} while (id != null);
+
+						// ���ؽ�ɫ�˵�id
+						return roleMenuId;
+					}
+				});
 
 				if (o != null) {
 					if (ids.length() != 0) {

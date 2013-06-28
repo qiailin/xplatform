@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.file.bo.FileInfo;
 
+/**
+ * 
+ * @author jiakunxu
+ * 
+ */
 public interface IFileDao {
 
 	/**
