@@ -580,7 +580,7 @@ public final class Base64 {
 					}
 				}
 			} else {
-				return null;
+				return new byte[0];
 			}
 		}
 
@@ -611,9 +611,9 @@ public final class Base64 {
 
 		// end catch
 		bytes = decode(bytes, 0, bytes.length);
-		if (bytes == null) {
-			return null;
-		}
+		// if (bytes == null) {
+		// return new byte[0];
+		// }
 
 		// Check to see if it's gzip-compressed
 		// GZIP Magic Two-Byte Number: 0x8b1f (35615)

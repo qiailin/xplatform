@@ -36,7 +36,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			response.setCode(IOpenapiService.ERROR);
 			response.setMsg(IOpenapiService.ERROR_MSG_PARAMS);
 
-			return response(IOpenapiService.ERROR_MSG_PARAMS, startTime, response);
+			return response(memcachedCacheService, IOpenapiService.ERROR_MSG_PARAMS, startTime, response);
 		}
 
 		String method = null;
@@ -52,7 +52,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			response.setCode(IOpenapiService.ERROR);
 			response.setMsg(IOpenapiService.ERROR_MSG_METHOD);
 
-			return response(IOpenapiService.ERROR_MSG_METHOD, startTime, response);
+			return response(memcachedCacheService, IOpenapiService.ERROR_MSG_METHOD, startTime, response);
 		}
 
 		// ��� method�жϽӿ�
@@ -85,7 +85,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			}
 			response.setAllUser(user);
 
-			return response(method, startTime, response);
+			return response(memcachedCacheService, method, startTime, response);
 
 		}
 
@@ -101,7 +101,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private String response(String methodName, Long startTime, Object obj) {
+	private String response(IMemcachedCacheService memcachedCacheService, String methodName, Long startTime, Object obj) {
 		try {
 			ResponseStats responseStats = new ResponseStats();
 			responseStats.setMethodName(methodName);

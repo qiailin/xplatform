@@ -1,12 +1,16 @@
 package com.jiakun.xplatform.api.data.bo;
 
+import com.jiakun.xplatform.framework.bo.SearchInfo;
+
 /**
  * ����������� ֵ
  * 
  * @author xujiakun
  * 
  */
-public class DataInfo {
+public class DataInfo extends SearchInfo {
+
+	private static final long serialVersionUID = -1605490384458631663L;
 
 	private String tableName;
 

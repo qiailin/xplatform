@@ -32,27 +32,25 @@ public class VelocityManagerEx extends VelocityManager {
 			toolboxLocation = Configuration.get(WebWorkConstants.WEBWORK_VELOCITY_TOOLBOXLOCATION).toString();
 		}
 
-		if (toolboxLocation != null) {
-			XMLToolboxManager mgr = new XMLToolboxManager();
+		XMLToolboxManager mgr = new XMLToolboxManager();
 
-			try {
-				File config = ResourceUtils.getFile(toolboxLocation);
-				if (config != null) {
-					InputStream in = new FileInputStream(config);
+		try {
+			File config = ResourceUtils.getFile(toolboxLocation);
+			if (config != null) {
+				InputStream in = new FileInputStream(config);
+				try {
+					mgr.load(in);
+					toolboxManager = mgr;
+				} finally {
 					try {
-						mgr.load(in);
-						toolboxManager = mgr;
-					} finally {
-						try {
-							in.close();
-						} catch (IOException e) {
-							log.warn("failed to close file: " + toolboxLocation);
-						}
+						in.close();
+					} catch (IOException e) {
+						log.warn("failed to close file: " + toolboxLocation);
 					}
 				}
-			} catch (Exception ex) {
-				log.error("failed to load configuration file: " + toolboxLocation, ex);
 			}
+		} catch (Exception ex) {
+			log.error("failed to load configuration file: " + toolboxLocation, ex);
 		}
 	}
 

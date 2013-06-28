@@ -114,7 +114,6 @@ public class SessionFilter implements Filter {
 
 		map = null;
 		session = null;
-		requestSessionId = null;
 	}
 
 	public void init(FilterConfig config) throws ServletException {

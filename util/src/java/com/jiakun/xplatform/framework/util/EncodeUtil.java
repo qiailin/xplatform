@@ -19,11 +19,11 @@ import com.alibaba.common.lang.StringUtil;
 public class EncodeUtil {
 
 	public static final String APP_ENCODING = "GBK";
-	
+
 	public static final String DB_ENCODING = "GBK";
 
 	/** Ԥ����ͼƬ��ʽ. */
-	public static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
+	static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
 
 	/**
 	 * �����ݿ���ַ��������ַ�Ĵ洢�ֽ���
@@ -51,7 +51,7 @@ public class EncodeUtil {
 				throw new IllegalStateException(e);
 			}
 		} else {
-			return null;
+			return new byte[0];
 		}
 	}
 
@@ -256,7 +256,7 @@ public class EncodeUtil {
 			return null;
 		}
 		String[] attrs = sipUsername.split("@");
-		if (attrs == null || attrs.length != 2) {
+		if (attrs.length != 2) {
 			return null;
 		}
 		Map<String, String> result = new HashMap<String, String>();

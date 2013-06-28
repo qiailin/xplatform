@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author xujiakun
  * 
  */
-public class StringArrayResult extends BaseResult implements Serializable {
+public class StringArrayResult extends BaseResult {
 
 	private static final long serialVersionUID = -8687183805950110367L;
 

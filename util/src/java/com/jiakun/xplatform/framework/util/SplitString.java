@@ -20,7 +20,7 @@ public class SplitString {
 	 */
 	public static String[] getRoleIds(String ids) {
 		if (ids == null) {
-			return null;
+			return new String[0];
 		}
 		return ids.split(",");
 	}

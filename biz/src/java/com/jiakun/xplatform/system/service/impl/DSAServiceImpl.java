@@ -117,55 +117,50 @@ public class DSAServiceImpl implements IDSAService {
 		dsa = new DSA();
 		List<KeyInfoElement> keyInfoList = getKeyInformation();
 
-		if (keyInfoList != null) {
-			String pubKeyFileName = null;
-			String priKeyFileName = null;
-			String keyPairName = null;
+		String pubKeyFileName = null;
+		String priKeyFileName = null;
+		String keyPairName = null;
 
-			// ��������ÿ�� keyPairName ��Ӧ�Ĺ�˽Կ��ֻ���ȡһ��
-			Set<String> keys = new HashSet<String>();
+		// ��������ÿ�� keyPairName ��Ӧ�Ĺ�˽Կ��ֻ���ȡһ��
+		Set<String> keys = new HashSet<String>();
 
-			for (Iterator i = keyInfoList.iterator(); i.hasNext();) {
-				KeyInfoElement keyInfoElement = (KeyInfoElement) i.next();
+		for (Iterator i = keyInfoList.iterator(); i.hasNext();) {
+			KeyInfoElement keyInfoElement = (KeyInfoElement) i.next();
 
-				keyPairName = keyInfoElement.getKeyPairName();
-				pubKeyFileName = keyInfoElement.getPubKeyFileName();
-				priKeyFileName = keyInfoElement.getPriKeyFileName();
+			keyPairName = keyInfoElement.getKeyPairName();
+			pubKeyFileName = keyInfoElement.getPubKeyFileName();
+			priKeyFileName = keyInfoElement.getPriKeyFileName();
 
-				if (StringUtil.isNotEmpty(keyPairName) && !keys.contains(keyPairName)) {
-					keys.add(keyPairName);
-					logger.debug("Reading DSA key pair: name=" + keyPairName);
+			if (StringUtil.isNotEmpty(keyPairName) && !keys.contains(keyPairName)) {
+				keys.add(keyPairName);
+				logger.debug("Reading DSA key pair: name=" + keyPairName);
 
-					if (pubKeyFileName != null) {
-						logger.debug("public key file: " + pubKeyFileName);
+				if (pubKeyFileName != null) {
+					logger.debug("public key file: " + pubKeyFileName);
+				}
+
+				if (priKeyFileName != null) {
+					logger.debug("private key file: " + priKeyFileName);
+				}
+
+				if (pubKeyFileName != null) {
+					try {
+						dsa.setPublicKey(keyPairName, this.getClass().getResourceAsStream(pubKeyFileName));
+					} catch (DSAException e) {
+						throw new ServiceInitializationException("Failed to read public key file: " + pubKeyFileName, e);
+					} catch (IOException e) {
+						throw new ServiceInitializationException("Failed to read public key file: " + pubKeyFileName, e);
 					}
+				}
 
-					if (priKeyFileName != null) {
-						logger.debug("private key file: " + priKeyFileName);
-					}
-
-					if (pubKeyFileName != null) {
-						try {
-							dsa.setPublicKey(keyPairName, this.getClass().getResourceAsStream(pubKeyFileName));
-						} catch (DSAException e) {
-							throw new ServiceInitializationException("Failed to read public key file: "
-								+ pubKeyFileName, e);
-						} catch (IOException e) {
-							throw new ServiceInitializationException("Failed to read public key file: "
-								+ pubKeyFileName, e);
-						}
-					}
-
-					if (priKeyFileName != null) {
-						try {
-							dsa.setPrivateKey(keyPairName, this.getClass().getResourceAsStream(priKeyFileName));
-						} catch (DSAException e) {
-							throw new ServiceInitializationException("Failed to read private key file: "
-								+ priKeyFileName, e);
-						} catch (IOException e) {
-							throw new ServiceInitializationException("Failed to read public key file: "
-								+ pubKeyFileName, e);
-						}
+				if (priKeyFileName != null) {
+					try {
+						dsa.setPrivateKey(keyPairName, this.getClass().getResourceAsStream(priKeyFileName));
+					} catch (DSAException e) {
+						throw new ServiceInitializationException("Failed to read private key file: " + priKeyFileName,
+							e);
+					} catch (IOException e) {
+						throw new ServiceInitializationException("Failed to read public key file: " + pubKeyFileName, e);
 					}
 				}
 			}

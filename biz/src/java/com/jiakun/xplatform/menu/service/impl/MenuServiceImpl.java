@@ -184,7 +184,7 @@ public class MenuServiceImpl implements IMenuService {
 								return null;
 							}
 
-						} while (id != null);
+						} while (true);
 
 						// ���ؽ�ɫ�˵�id
 						return roleMenuId;

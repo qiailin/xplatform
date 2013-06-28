@@ -33,24 +33,25 @@ public class SqlMonitorTask {
 	 * ÿ15����job
 	 */
 	public void sqlMonitorAt15() {
-		sqlMonitorAtX(ISqlMonitorService.MONITOR_FREQ_15);
+		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_15);
 	}
 
 	/**
 	 * ÿ30����job
 	 */
 	public void sqlMonitorAt30() {
-		sqlMonitorAtX(ISqlMonitorService.MONITOR_FREQ_30);
+		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_30);
 	}
 
 	/**
 	 * ÿ60����job
 	 */
 	public void sqlMonitorAt60() {
-		sqlMonitorAtX(ISqlMonitorService.MONITOR_FREQ_60);
+		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_60);
 	}
 
-	private void sqlMonitorAtX(int freq) {
+	private void sqlMonitorAtX(ISqlMonitorService sqlMonitorService, IMessageService messageService,
+		IMonitorLogService monitorLogService, int freq) {
 		SqlMonitor sqlMonitor = new SqlMonitor();
 		sqlMonitor.setFreq(freq);
 		sqlMonitor.setStatus(ISqlMonitorService.MONITOR_STATUS_Y);

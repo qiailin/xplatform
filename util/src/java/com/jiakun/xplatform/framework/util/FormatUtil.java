@@ -115,12 +115,9 @@ public class FormatUtil {
 
 		StringBuffer t = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {
-			if (s.substring(i, i + 1).equals(s.substring(i, i + 1).toLowerCase())) {
-				t.append(s.substring(i, i + 1).toUpperCase());
-			} else {
-				t.append(s.substring(i, i + 1).toUpperCase());
-			}
+			t.append(s.substring(i, i + 1).toUpperCase());
 		}
+
 		return t.toString();
 	}
 }

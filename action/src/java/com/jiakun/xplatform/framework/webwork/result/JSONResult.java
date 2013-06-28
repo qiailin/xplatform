@@ -79,12 +79,12 @@ public class JSONResult implements Result, WebWorkStatics {
 			Field field = action.getClass().getDeclaredField(result.field());
 			field.setAccessible(true);
 			Object obj = transToJSONObject(field.getType(), field.get(action), result);
-			if (obj != null) {
-				if (String.class.isAssignableFrom(obj.getClass())) {
-					obj = JSONObject.quote((String) obj);
-				}
-				json.append(obj);
+
+			if (String.class.isAssignableFrom(obj.getClass())) {
+				obj = JSONObject.quote((String) obj);
 			}
+			json.append(obj);
+
 			String fieldName = result.total();
 
 			if (!"".equals(fieldName)) {

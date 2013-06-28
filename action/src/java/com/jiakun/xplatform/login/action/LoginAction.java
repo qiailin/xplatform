@@ -24,8 +24,7 @@ public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 7498561926934442624L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(LoginAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(LoginAction.class);
 
 	private ICAService caService;
 
@@ -91,7 +90,7 @@ public class LoginAction extends BaseAction {
 
 		// ��֤ʧ��
 		if (ICAService.RESULT_FAILED.equals(result.getResultCode())
-				|| ICAService.RESULT_ERROR.equals(result.getResultCode())) {
+			|| ICAService.RESULT_ERROR.equals(result.getResultCode())) {
 			this.setFailMessage(result.getMessage());
 			return "incorrect";
 		}
@@ -100,13 +99,11 @@ public class LoginAction extends BaseAction {
 		// 1 or Y or U ����
 		AllUsers loginUser = result.getAllUser();
 
-		if (("1".equals(loginUser.getUserState())
-				|| "Y".equals(loginUser.getUserState()) || "U".equals(loginUser
-				.getUserState()))) {
+		if (("1".equals(loginUser.getUserState()) || "Y".equals(loginUser.getUserState()) || "U".equals(loginUser
+			.getUserState()))) {
 			HttpSession session = this.getSession();
 
-			session.setAttribute("ACEGI_SECURITY_LAST_USERNAME",
-					loginUser.getLoginId());
+			session.setAttribute("ACEGI_SECURITY_LAST_USERNAME", loginUser.getLoginId());
 			session.setAttribute("ACEGI_SECURITY_LAST_LOGINUSER", loginUser);
 
 			// if (validate) {
@@ -146,12 +143,10 @@ public class LoginAction extends BaseAction {
 				response.addCookie(cookie);
 			}
 
-			loginUser = null;
 			result = null;
 
 			return SUCCESS;
 		} else {
-			loginUser = null;
 			result = null;
 
 			return LOGIN;
@@ -169,14 +164,12 @@ public class LoginAction extends BaseAction {
 		}
 
 		try {
-			IEnterpriseSession enterpriseSession = (IEnterpriseSession) session
-					.getAttribute("EnterpriseSession");
+			IEnterpriseSession enterpriseSession = (IEnterpriseSession) session.getAttribute("EnterpriseSession");
 			if (enterpriseSession != null) {
 				enterpriseSession.logoff();
 			}
 
-			enterpriseSession = (IEnterpriseSession) session
-					.getAttribute("Bo4EnterpriseSession");
+			enterpriseSession = (IEnterpriseSession) session.getAttribute("Bo4EnterpriseSession");
 			if (enterpriseSession != null) {
 				enterpriseSession.logoff();
 			}
@@ -237,12 +230,10 @@ public class LoginAction extends BaseAction {
 
 	public String forgetPasswd() {
 
-		if (StringUtil.isNotEmpty(passport)
-				&& StringUtil.isNotEmpty(passport.trim())) {
+		if (StringUtil.isNotEmpty(passport) && StringUtil.isNotEmpty(passport.trim())) {
 
 			try {
-				passport = new String(passport.trim().getBytes("ISO8859-1"),
-						"UTF-8");
+				passport = new String(passport.trim().getBytes("ISO8859-1"), "UTF-8");
 			} catch (Exception e) {
 				logger.error(passport, e);
 			}
@@ -335,8 +326,7 @@ public class LoginAction extends BaseAction {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 

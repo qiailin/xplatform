@@ -104,10 +104,10 @@ public class MapUtil {
 					if (value != null) {
 						Class[] pts = methods[i].getParameterTypes();
 						if (pts.length == 1) {
-							Class cls = pts[0];
-							if (cls.isArray()) {
-								cls = cls.getComponentType();
-							}
+							// Class cls = pts[0];
+							// if (cls.isArray()) {
+							// cls = cls.getComponentType();
+							// }
 
 							m.put(propName, value);
 						}
