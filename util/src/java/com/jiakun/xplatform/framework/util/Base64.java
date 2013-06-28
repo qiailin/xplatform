@@ -491,9 +491,7 @@ public final class Base64 {
 
 			destination[destOffset] = (byte) (outBuff >>> 16);
 			return 1;
-		}
-		// Example: DkL=
-		else if (source[srcOffset + 3] == EQUALS_SIGN) {
+		} else if (source[srcOffset + 3] == EQUALS_SIGN) {
 			// Two ways to do the same thing. Don't know which way I like best.
 			// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 ) >>> 6
 			// )
@@ -506,9 +504,7 @@ public final class Base64 {
 			destination[destOffset] = (byte) (outBuff >>> 16);
 			destination[destOffset + 1] = (byte) (outBuff >>> 8);
 			return 2;
-		}
-		// Example: DkLE
-		else {
+		} else {
 			try {
 				// Two ways to do the same thing. Don't know which way I like
 				// best.
@@ -609,8 +605,7 @@ public final class Base64 {
 
 		try {
 			bytes = s.getBytes(PREFERRED_ENCODING);
-		} // end try
-		catch (java.io.UnsupportedEncodingException uee) {
+		} catch (java.io.UnsupportedEncodingException uee) {
 			bytes = s.getBytes();
 		}
 
