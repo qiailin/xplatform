@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.data.IDataLogService;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
-import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 import com.jiakun.xplatform.data.dao.IDataLogDao;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
@@ -51,15 +50,15 @@ public class DataLogServiceImpl implements IDataLogService {
 		return 0;
 	}
 
-	public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
-		try {
-			return dataLogDao.getDBTableList(dataLogTotal);
-		} catch (Exception e) {
-			logger.error(LogUtil.parserBean(dataLogTotal), e);
-		}
-
-		return null;
-	}
+	// public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
+	// try {
+	// return dataLogDao.getDBTableList(dataLogTotal);
+	// } catch (Exception e) {
+	// logger.error(LogUtil.parserBean(dataLogTotal), e);
+	// }
+	//
+	// return null;
+	// }
 
 	public IDataLogDao getDataLogDao() {
 		return dataLogDao;

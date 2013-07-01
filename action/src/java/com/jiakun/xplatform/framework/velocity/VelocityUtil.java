@@ -18,10 +18,14 @@ import com.opensymphony.webwork.views.velocity.VelocityManager;
  * @author
  * 
  */
-public class VelocityUtil {
+public final class VelocityUtil {
 
 	private static final String DEFAULT_INPUT_ENCODING = "GBK";
 	private static final String DEFAULT_OUTPUT_ENCODING = "GBK";
+
+	private VelocityUtil() {
+
+	}
 
 	/**
 	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�

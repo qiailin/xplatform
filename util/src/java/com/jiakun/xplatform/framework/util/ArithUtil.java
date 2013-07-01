@@ -1,23 +1,21 @@
 package com.jiakun.xplatform.framework.util;
 
-/*
- * �����Ҫ��ȷ����,��Ҫ��String������BigDecimal����
- */
 import java.math.BigDecimal;
 
 /**
- * ����Java�ļ����Ͳ��ܹ���ȷ�ĶԸ�����������㣬 ����������ṩ�� ȷ�ĸ��������㣬�����Ӽ��˳���������롣
+ * 
+ * @author
+ * 
  */
 public final class ArithUtil {
-	// Ĭ�ϳ����㾫��
+
 	private static final int DEF_DIV_SCALE = 10;
 
-	// ����಻��ʵ��
 	private ArithUtil() {
 	}
 
 	/**
-	 * �ṩ��ȷ�ļӷ����㡣
+	 * add.
 	 * 
 	 * @param v1
 	 *            ������
@@ -33,7 +31,7 @@ public final class ArithUtil {
 	}
 
 	/**
-	 * �ṩ��ȷ�ļ������㡣
+	 * sub.
 	 * 
 	 * @param v1
 	 *            ������
@@ -49,7 +47,7 @@ public final class ArithUtil {
 	}
 
 	/**
-	 * �ṩ��ȷ�ĳ˷����㡣
+	 * mul.
 	 * 
 	 * @param v1
 	 *            ������
@@ -65,7 +63,7 @@ public final class ArithUtil {
 	}
 
 	/**
-	 * �ṩ����ԣ���ȷ�ĳ����㣬�����������ʱ����ȷ�� С����Ժ�10λ���Ժ�������������롣
+	 * div.
 	 * 
 	 * @param v1
 	 *            ������
@@ -78,7 +76,7 @@ public final class ArithUtil {
 	}
 
 	/**
-	 * �ṩ����ԣ���ȷ�ĳ����㡣�����������ʱ����scale����ָ �����ȣ��Ժ�������������롣
+	 * div.
 	 * 
 	 * @param v1
 	 *            ������

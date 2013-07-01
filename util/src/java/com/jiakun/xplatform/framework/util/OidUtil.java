@@ -7,11 +7,16 @@ import java.util.UUID;
  * 
  * @author ��ս
  */
-public class OidUtil {
+public final class OidUtil {
 	/* ������� */
 	private static char[] x36s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
 	/* ������ */
 	private static short len = 20;
+
+	private OidUtil() {
+
+	}
 
 	public static String newId() {
 		char[] chs = new char[len];
@@ -44,4 +49,5 @@ public class OidUtil {
 
 		return new String(chs);
 	}
+
 }

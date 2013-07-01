@@ -11,7 +11,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.monitor.dao.ICacheMonitorDao;
 
 /**
- * cache monitor service
+ * cache monitor service.
  * 
  * @author jiakunxu
  * 

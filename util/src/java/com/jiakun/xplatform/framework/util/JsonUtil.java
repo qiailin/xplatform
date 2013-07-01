@@ -30,10 +30,14 @@ import com.opensymphony.xwork.util.OgnlUtil;
  * 
  */
 
-public class JsonUtil {
+public final class JsonUtil {
 
 	// private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 	private static Log log = LogFactory.getLog(JsonUtil.class);
+
+	private JsonUtil() {
+
+	}
 
 	/**
 	 * ��json�ַ�ת��javabean

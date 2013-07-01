@@ -22,8 +22,7 @@ public class CacheMonitorAction extends BaseAction {
 
 	private static final long serialVersionUID = -8143747833864798568L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(CacheMonitorAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(CacheMonitorAction.class);
 
 	private IMemcachedCacheService memcachedCacheService;
 
@@ -42,7 +41,6 @@ public class CacheMonitorAction extends BaseAction {
 	private String port;
 
 	/**
-	 * ��ѯcache״̬
 	 * 
 	 * @return
 	 */
@@ -51,7 +49,6 @@ public class CacheMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ��ѯsql���
 	 * 
 	 * @return
 	 */
@@ -69,7 +66,6 @@ public class CacheMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ����cache
 	 * 
 	 * @return
 	 */
@@ -82,16 +78,13 @@ public class CacheMonitorAction extends BaseAction {
 		try {
 			if ("get".equals(operate)) {
 				Object object = memcachedCacheService.get(key);
-				this.setSuccessMessage(JsonUtil.bean2Json(object.getClass(),
-						object));
+				this.setSuccessMessage(JsonUtil.bean2Json(object.getClass(), object));
 			} else if ("remove".equals(operate)) {
 				Object object = memcachedCacheService.remove(key);
-				this.setSuccessMessage(JsonUtil.bean2Json(object.getClass(),
-						object));
+				this.setSuccessMessage(JsonUtil.bean2Json(object.getClass(), object));
 			} else if ("flushAll".equals(operate)) {
 				String[] keys = key.split(":");
-				InetSocketAddress address = new InetSocketAddress(keys[0],
-						Integer.parseInt(keys[1]));
+				InetSocketAddress address = new InetSocketAddress(keys[0], Integer.parseInt(keys[1]));
 				memcachedCacheService.flushAll(address);
 				this.setSuccessMessage(SUCCESS);
 			}
@@ -104,7 +97,6 @@ public class CacheMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ��ѯcache��ʷ��¼
 	 * 
 	 * @return
 	 */
@@ -138,8 +130,7 @@ public class CacheMonitorAction extends BaseAction {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 

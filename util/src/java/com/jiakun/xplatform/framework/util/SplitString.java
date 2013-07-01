@@ -10,10 +10,13 @@ import com.alibaba.common.lang.StringUtil;
  * @author
  * 
  */
-public class SplitString {
+public final class SplitString {
+
+	private SplitString() {
+
+	}
 
 	/**
-	 * �����û����ɫ֧�֣�ƥ����� age��1,2,3
 	 * 
 	 * @param ids
 	 * @return
@@ -26,7 +29,6 @@ public class SplitString {
 	}
 
 	/**
-	 * �����ַ�
 	 * 
 	 * @param roleIds
 	 * @return
@@ -59,7 +61,6 @@ public class SplitString {
 	}
 
 	/**
-	 * �����������Ʋ���
 	 * 
 	 * @param ctrl
 	 * @return
@@ -78,4 +79,5 @@ public class SplitString {
 		}
 		return paraMap;
 	}
+	
 }

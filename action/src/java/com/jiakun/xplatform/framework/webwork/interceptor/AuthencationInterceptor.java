@@ -51,7 +51,7 @@ public class AuthencationInterceptor implements Interceptor {
 	}
 
 	/**
-	 * ������ǰ����actionName
+	 * actionName.
 	 * 
 	 * @return
 	 */

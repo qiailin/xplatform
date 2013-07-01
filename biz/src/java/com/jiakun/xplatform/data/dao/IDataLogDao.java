@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.jiakun.xplatform.api.data.bo.DataLogDetail;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
-import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 
 /**
  * 
@@ -57,7 +56,7 @@ public interface IDataLogDao {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
+	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
 
 	/**
 	 * 

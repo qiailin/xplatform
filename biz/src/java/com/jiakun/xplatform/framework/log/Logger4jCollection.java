@@ -8,9 +8,13 @@ import java.util.Map;
  * @author jiakunxu
  * 
  */
-public class Logger4jCollection {
+public final class Logger4jCollection {
 
 	private static Map<String, Logger4jExtend> map = new HashMap<String, Logger4jExtend>();
+
+	private Logger4jCollection() {
+
+	}
 
 	@SuppressWarnings("rawtypes")
 	public static Logger4jExtend getLogger(Class clazz) {

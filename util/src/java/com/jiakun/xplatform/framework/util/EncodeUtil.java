@@ -16,7 +16,7 @@ import com.alibaba.common.lang.StringUtil;
  * @author jacky.chenb
  * 
  */
-public class EncodeUtil {
+public final class EncodeUtil {
 
 	public static final String APP_ENCODING = "GBK";
 
@@ -24,6 +24,10 @@ public class EncodeUtil {
 
 	/** Ԥ����ͼƬ��ʽ. */
 	static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
+
+	private EncodeUtil() {
+
+	}
 
 	/**
 	 * �����ݿ���ַ��������ַ�Ĵ洢�ֽ���

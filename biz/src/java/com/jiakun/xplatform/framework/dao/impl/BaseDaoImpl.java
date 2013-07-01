@@ -16,7 +16,7 @@ public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 	private static final String PFIX = ",";
 
 	/**
-	 * sql������namespace
+	 * namespace.
 	 */
 	protected String namespace;
 
@@ -25,7 +25,7 @@ public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 	}
 
 	/**
-	 * ��list��valueƴװΪ value1��value2��value3 ��ʽ
+	 * listToString.
 	 * 
 	 * @param list
 	 * @return

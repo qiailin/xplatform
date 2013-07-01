@@ -3,7 +3,6 @@ package com.jiakun.xplatform.api.data;
 import java.util.List;
 
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
-import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 
 /**
  * ��ݲ�����־�ӿ�
@@ -41,6 +40,6 @@ public interface IDataLogService {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
+	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
 
 }

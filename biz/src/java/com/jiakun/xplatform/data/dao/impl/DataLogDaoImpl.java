@@ -10,7 +10,6 @@ import org.springframework.orm.ibatis.SqlMapClientCallback;
 import com.ibatis.sqlmap.client.SqlMapExecutor;
 import com.jiakun.xplatform.api.data.bo.DataLogDetail;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
-import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 import com.jiakun.xplatform.data.dao.IDataLogDao;
 import com.jiakun.xplatform.framework.dao.impl.BaseDaoImpl;
 
@@ -59,10 +58,10 @@ public class DataLogDaoImpl extends BaseDaoImpl implements IDataLogDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
-		return (List<CmsTbDict>) getSqlMapClientTemplate().queryForList("data.getDBTableList", dataLogTotal);
-	}
-
+	// public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
+	// return (List<CmsTbDict>) getSqlMapClientTemplate().queryForList("data.getDBTableList",
+	// dataLogTotal);
+	// }
 	public int getDataLogDetailCount(DataLogTotal dataLogTotal) {
 		return (Integer) getSqlMapClientTemplate().queryForObject("data.getDataLogDetailCount", dataLogTotal);
 	}

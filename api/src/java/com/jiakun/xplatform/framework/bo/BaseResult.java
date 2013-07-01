@@ -3,7 +3,7 @@ package com.jiakun.xplatform.framework.bo;
 import java.io.Serializable;
 
 /**
- * ���ؽ�����
+ * BaseResult.
  * 
  * @author xujiakun
  * 
@@ -15,17 +15,16 @@ public class BaseResult implements Serializable {
 	private String code;
 
 	/**
-	 * ���ص����쳣�������Ϣ
 	 * 
-	 * @return the code
+	 * @return code
 	 */
 	public String getCode() {
 		return code;
 	}
 
 	/**
+	 * 
 	 * @param code
-	 *            the code to set
 	 */
 	public void setCode(String code) {
 		this.code = code;

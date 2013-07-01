@@ -6,7 +6,6 @@ import com.alibaba.common.lang.StringUtil;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 import com.jiakun.xplatform.api.data.IDataLogService;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
-import com.jiakun.xplatform.api.dict.bo.CmsTbDict;
 import com.jiakun.xplatform.framework.action.BaseAction;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
@@ -22,8 +21,7 @@ public class DataLogAction extends BaseAction {
 
 	private static final long serialVersionUID = 4838230867135058512L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(DataLogAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(DataLogAction.class);
 
 	private IDataLogService dataLogService;
 
@@ -33,15 +31,14 @@ public class DataLogAction extends BaseAction {
 
 	private String dataConfigId;
 
-	private List<CmsTbDict> cmsTbDictList;
+	// private List<CmsTbDict> cmsTbDictList;
 
 	/**
 	 * ��ѯ��ǰ�����������ù��table
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemValue",
-			"itemState", "remark" }, total = "total")
+	@JsonResult(field = "cmsTbDictList", include = { "itemId", "itemValue", "itemState", "remark" }, total = "total")
 	public String getDBTableJsonList() {
 		AllUsers users = this.getUser();
 
@@ -51,7 +48,7 @@ public class DataLogAction extends BaseAction {
 
 		total = dataLogService.getDBTableCount(s);
 		if (total != 0) {
-			cmsTbDictList = dataLogService.getDBTableList(s);
+			// cmsTbDictList = dataLogService.getDBTableList(s);
 		}
 
 		return JSON;
@@ -66,9 +63,8 @@ public class DataLogAction extends BaseAction {
 		return "searchDataLog";
 	}
 
-	@JsonResult(field = "dataLogTotalList", include = { "dataLogTotalId",
-			"dataConfigId", "tableName", "createDate", "flag", "modifyDate",
-			"total" }, total = "total")
+	@JsonResult(field = "dataLogTotalList", include = { "dataLogTotalId", "dataConfigId", "tableName", "createDate",
+		"flag", "modifyDate", "total" }, total = "total")
 	public String getDataLogJsonList() {
 		DataLogTotal s = new DataLogTotal();
 		s = getSearchInfo(s);
@@ -120,14 +116,6 @@ public class DataLogAction extends BaseAction {
 
 	public void setDataConfigId(String dataConfigId) {
 		this.dataConfigId = dataConfigId;
-	}
-
-	public List<CmsTbDict> getCmsTbDictList() {
-		return cmsTbDictList;
-	}
-
-	public void setCmsTbDictList(List<CmsTbDict> cmsTbDictList) {
-		this.cmsTbDictList = cmsTbDictList;
 	}
 
 }

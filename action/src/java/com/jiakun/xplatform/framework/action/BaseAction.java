@@ -39,70 +39,34 @@ public class BaseAction extends ActionSupport {
 
 	protected String actionName;
 
-	/**
-	 * ��ʼʱ��
-	 */
 	protected String gmtStart;
 
-	/**
-	 * ����ʱ��
-	 */
 	protected String gmtEnd;
 
 	protected String hasPermission;
 
-	/**
-	 * ��������
-	 */
 	protected Properties env = new Properties();
 
 	protected String token;
 
-	/**
-	 * �ؼ��
-	 */
 	@Decode
 	private String name;
 
-	/**
-	 * ���
-	 */
 	private String code;
 
-	/**
-	 * ����������ֶΣ������ֶζ���
-	 */
 	@Decode
 	private String search;
 
-	/**
-	 * ������Ϣ
-	 */
 	private String failMessage;
 
-	/**
-	 * �ɹ���Ϣ
-	 */
 	private String successMessage;
 
-	/**
-	 * ÿҳ��ʾ��¼��
-	 */
 	private int limit = 10;
 
-	/**
-	 * �����ֶ�
-	 */
 	private String sort;
 
-	/**
-	 * ��������
-	 */
 	private String dir;
 
-	/**
-	 * ��ǰ��¼�±꣬��0��ʼ
-	 */
 	private int start;
 
 	protected HttpSession getSession() {
