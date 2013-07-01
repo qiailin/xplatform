@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
  * @author
  * 
  */
-public class EncryptUtil {
+public final class EncryptUtil {
 
 	public static final String CHARSET_UTF8 = "UTF-8";
 
@@ -26,6 +26,10 @@ public class EncryptUtil {
 
 	private static final String[] HEX_DIGITS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
 		"e", "f" };
+
+	private EncryptUtil() {
+
+	}
 
 	public static String byteArrayToHexString(byte[] b) {
 		StringBuffer resultSb = new StringBuffer();

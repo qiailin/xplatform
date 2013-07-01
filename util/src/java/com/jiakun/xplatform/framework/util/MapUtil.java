@@ -13,9 +13,13 @@ import com.alibaba.common.lang.StringUtil;
  * @author
  * 
  */
-public class MapUtil {
+public final class MapUtil {
 
 	private static final Object[] EMPTY_ARRAY = {};
+
+	private MapUtil() {
+
+	}
 
 	/**
 	 * ��һ��beanת����map
