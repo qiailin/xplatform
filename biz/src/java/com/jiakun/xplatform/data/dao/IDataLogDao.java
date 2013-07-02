@@ -13,7 +13,6 @@ import com.jiakun.xplatform.api.data.bo.DataLogTotal;
 public interface IDataLogDao {
 
 	/**
-	 * �����ܱ�
 	 * 
 	 * @param dataLogTotalList
 	 * @return
@@ -21,7 +20,6 @@ public interface IDataLogDao {
 	Long createDataLogTotal(DataLogTotal dataLogTotal);
 
 	/**
-	 * ������ϸ
 	 * 
 	 * @param dataLogDetailList
 	 * @return
@@ -43,7 +41,6 @@ public interface IDataLogDao {
 	List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal);
 
 	/**
-	 * ��ȡ��ǰ���������Ӧtable
 	 * 
 	 * @param dataLogTotal
 	 * @return

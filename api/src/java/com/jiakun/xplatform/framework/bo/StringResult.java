@@ -1,7 +1,5 @@
 package com.jiakun.xplatform.framework.bo;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author xujiakun

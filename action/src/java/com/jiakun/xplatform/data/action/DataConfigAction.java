@@ -17,7 +17,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * data����Ȩ������
+ * dataConfig.
  * 
  * @author xujiakun
  * 
@@ -47,7 +47,6 @@ public class DataConfigAction extends BaseAction {
 	private String userIds;
 
 	/**
-	 * ��תҳ��
 	 * 
 	 * @return
 	 */
@@ -56,7 +55,6 @@ public class DataConfigAction extends BaseAction {
 	}
 
 	/**
-	 * ��ѯDataConfig
 	 * 
 	 * @return
 	 */
@@ -87,7 +85,6 @@ public class DataConfigAction extends BaseAction {
 	}
 
 	/**
-	 * ��ת��Ȩ����
 	 * 
 	 * @return
 	 */
@@ -96,7 +93,6 @@ public class DataConfigAction extends BaseAction {
 	}
 
 	/**
-	 * ������Ȩ
 	 * 
 	 * @return
 	 */
@@ -137,7 +133,6 @@ public class DataConfigAction extends BaseAction {
 	}
 
 	/**
-	 * ȡ����Ȩ
 	 * 
 	 * @return
 	 */
@@ -168,7 +163,7 @@ public class DataConfigAction extends BaseAction {
 		dataConfig.setCodes(l);
 		BooleanResult result = dataConfigService.updateDataConfig(dataConfig);
 
-		if ((result.getResult())) {
+		if (result.getResult()) {
 			this.setSuccessMessage("�ɹ�����" + result.getCode() + "��������Ա");
 		} else {
 			this.setFailMessage(result.getCode());

@@ -45,7 +45,6 @@ public interface IAllUserService {
 	AllUsers getAllUserByPassport(String passport);
 
 	/**
-	 * ���������������������������������
 	 * 
 	 * @param orgId
 	 * @return
@@ -53,7 +52,6 @@ public interface IAllUserService {
 	List<AllUsers> getAllUsersByOrgId(String orgId);
 
 	/**
-	 * ����������������
 	 * 
 	 * @param userIds
 	 * @return
@@ -61,7 +59,6 @@ public interface IAllUserService {
 	List<AllUsers> getAllUsersByIds(List<String> userIds);
 
 	/**
-	 * ��������������������
 	 * 
 	 * @param allUsers
 	 * @return
@@ -69,7 +66,6 @@ public interface IAllUserService {
 	BooleanResult updateAllUser(AllUsers allUsers);
 
 	/**
-	 * ����������������info
 	 * 
 	 * @param allUsers
 	 * @return
@@ -78,7 +74,6 @@ public interface IAllUserService {
 	BooleanResult modifyAllUserInfo(AllUsers allUsers);
 
 	/**
-	 * ��������������������������������������������������������
 	 * 
 	 * @param userId
 	 * @return
@@ -86,7 +81,6 @@ public interface IAllUserService {
 	AllUsers getAllUser(String userId);
 
 	/**
-	 * ��������������������������������������������
 	 * 
 	 * @param AllUsers
 	 * @return
@@ -94,7 +88,6 @@ public interface IAllUserService {
 	List<AllUsers> searchAllUsers(AllUsers alluser);
 
 	/**
-	 * ����������������count����������������������������
 	 * 
 	 * @param AllUsers
 	 * @return
@@ -104,7 +97,6 @@ public interface IAllUserService {
 	BooleanResult deleteBImplementByEmpId(Long userId);
 
 	/**
-	 * ���������������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
@@ -112,7 +104,6 @@ public interface IAllUserService {
 	int getCheckUserCount(ApplyUsers applyUsers);
 
 	/**
-	 * ���������������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
@@ -120,7 +111,6 @@ public interface IAllUserService {
 	List<ApplyUsers> getCheckUserList(ApplyUsers applyUsers);
 
 	/**
-	 * �������������������������
 	 * 
 	 * @param applyUsers
 	 * @return
@@ -128,7 +118,6 @@ public interface IAllUserService {
 	AllUsers getCheckUserDetail(ApplyUsers applyUsers);
 
 	/**
-	 * ��������������������
 	 * 
 	 * @param AllUsers
 	 * @return
@@ -136,7 +125,6 @@ public interface IAllUserService {
 	BooleanResult modifyUserPsw(AllUsers user);
 
 	/**
-	 * ��ApplyUsers
 	 * 
 	 * @param applyUsers
 	 * @return
@@ -144,7 +132,6 @@ public interface IAllUserService {
 	StringResult insertApplyUser(ApplyUsers applyUsers);
 
 	/**
-	 * ����������������������������������������
 	 * 
 	 * @param supplier
 	 * @return
@@ -152,7 +139,6 @@ public interface IAllUserService {
 	String getsuppliername(CmsVwSupplier supplier);
 
 	/**
-	 * ������������������������������������������
 	 * 
 	 * @return
 	 */
@@ -161,7 +147,6 @@ public interface IAllUserService {
 	int getSupplierCount(CmsVwSupplier supplier);
 
 	/**
-	 * �������������������������������������
 	 * 
 	 * @param ���������loginId
 	 * @return

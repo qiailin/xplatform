@@ -5,7 +5,6 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �����־
  * 
  * @author xujiakun
  * 
@@ -16,25 +15,15 @@ public class MonitorLog extends SearchInfo {
 
 	private Long monitorLogId;
 
-	/**
-	 * �������
-	 */
 	private Long monitorId;
 
-	
 	private Date createDate;
 	private Date modifyDate;
-	
+
 	private String sqlMonitorTitle;
 
-	/**
-	 * ��ؽ��
-	 */
 	private int monitorResult;
 
-	/**
-	 * ��ֵ
-	 */
 	private int threshold;
 
 	public Long getMonitorLogId() {
@@ -92,5 +81,5 @@ public class MonitorLog extends SearchInfo {
 	public void setSqlMonitorTitle(String sqlMonitorTitle) {
 		this.sqlMonitorTitle = sqlMonitorTitle;
 	}
-	
+
 }

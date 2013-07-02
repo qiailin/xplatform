@@ -18,9 +18,13 @@ import com.alibaba.common.lang.StringUtil;
  * 
  * @author xiaodan.daixd
  */
-public class ClientUtil {
+public final class ClientUtil {
 
 	static Logger logger = Logger.getLogger(ClientUtil.class);
+
+	private ClientUtil() {
+
+	}
 
 	/**
 	 * ��ȡ�ͻ���IP��ַ

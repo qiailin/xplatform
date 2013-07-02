@@ -494,7 +494,7 @@ public final class DateUtil {
 	 * @param date
 	 * @return
 	 */
-	public static final String getDateTime(Date date) {
+	public static String getDateTime(Date date) {
 		if (date == null) {
 			return "";
 		}
@@ -509,7 +509,7 @@ public final class DateUtil {
 	 * @param pattern
 	 * @return
 	 */
-	public static final String getDateTime(Date date, String pattern) {
+	public static String getDateTime(Date date, String pattern) {
 		if (date == null) {
 			return "";
 		}

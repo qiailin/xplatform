@@ -33,38 +33,38 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	int CACHE_KEY_MENU_TREE_DEFAULT_EXP = 12 * 60 * 60;
 
 	/**
-	 * open api
+	 * open api.
 	 */
 	String CACHE_KEY_OPEN_API = "key_open_api";
 
 	int CACHE_KEY_OPEN_API_DEFAULT_EXP = 0;
 
 	/**
-	 * log monitor
+	 * log monitor.
 	 */
 	String CACHE_KEY_LOG_MONITOR = "key_log_monitor";
 
 	int CACHE_KEY_LOG_MONITOR_DEFAULT_EXP = 0;
 
 	/**
-	 * bo parameter
+	 * bo parameter.
 	 */
 	String CACHE_KEY_BO_PARAMETER = "key_bo_parameter_";
 
 	int CACHE_KEY_BO_PARAMETER_DEFAULT_EXP = 0;
 
 	/**
-	 * sso token
+	 * sso token.
 	 */
 	int CACHE_KEY_SSO_TOKEN_DEFAULT_EXP = 60;
 
 	/**
-	 * session
+	 * session.
 	 */
 	int CACHE_KEY_SESSION_DEFAULT_EXP = 2 * 60 * 60;
 
 	/**
-	 * session
+	 * session.
 	 */
 	int CACHE_KEY_SESSION_EXP = 3 * 60;
 

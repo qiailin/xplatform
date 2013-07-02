@@ -74,8 +74,8 @@ public class LoginAction extends BaseAction {
 		// 1 or Y or U ����
 		AllUsers loginUser = result.getAllUser();
 
-		if (("1".equals(loginUser.getUserState()) || "Y".equals(loginUser.getUserState()) || "U".equals(loginUser
-			.getUserState()))) {
+		if ("1".equals(loginUser.getUserState()) || "Y".equals(loginUser.getUserState())
+			|| "U".equals(loginUser.getUserState())) {
 			HttpSession session = this.getSession();
 
 			session.setAttribute("ACEGI_SECURITY_LAST_USERNAME", loginUser.getLoginId());
