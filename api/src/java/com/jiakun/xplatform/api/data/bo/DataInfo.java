@@ -3,7 +3,6 @@ package com.jiakun.xplatform.api.data.bo;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * ����������� ֵ
  * 
  * @author xujiakun
  * 

@@ -76,9 +76,7 @@ public class LogMonitorTask {
 		content.append("</table>");
 
 		if (list != null && list.size() != 0) {
-			@SuppressWarnings("unused")
-			Map<String, String> map =
-				new MailService(smtpServer, from, "monitor", to, "xplatform��̨������־", content.toString()).send();
+			new MailService(smtpServer, from, "monitor", to, "xplatform��̨������־", content.toString()).send();
 		}
 	}
 

@@ -5,7 +5,6 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * ��ݲ�������
  * 
  * @author xujiakun
  * 
@@ -20,9 +19,6 @@ public class DataConfig extends SearchInfo {
 
 	private String userName;
 
-	/**
-	 * �ֵ�id
-	 */
 	private Long itemId;
 
 	private String tableName;
@@ -30,7 +26,7 @@ public class DataConfig extends SearchInfo {
 	private String sequenceValue;
 
 	/**
-	 * file ״̬ - U:��Ч; D:ɾ��;
+	 * U or D.
 	 */
 	private String flag;
 
