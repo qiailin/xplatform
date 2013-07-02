@@ -12,12 +12,12 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.Result;
 
 /**
- * JSON with Padding Result
+ * JSON with Padding Result.
  * 
  * @author tingjia.chentj
  * 
  */
-public abstract class JSONPResult implements Result, WebWorkStatics {
+public abstract class AbstractJSONPResult implements Result, WebWorkStatics {
 
 	private static final long serialVersionUID = -7892028541361553348L;
 

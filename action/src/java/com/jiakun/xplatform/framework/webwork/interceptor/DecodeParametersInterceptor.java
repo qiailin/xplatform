@@ -50,7 +50,7 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 		setEncoded("XMLHttpRequest".equalsIgnoreCase(ServletActionContext.getRequest().getHeader("x-requested-with")));
 	}
 
-	private static final PropertyAccessor getObjectAccessor() {
+	private static PropertyAccessor getObjectAccessor() {
 		// ������ǰ�����Ҫ�Ƚ���URLDecode
 		return new ObjectPropertyAccessor() {
 			@SuppressWarnings("rawtypes")

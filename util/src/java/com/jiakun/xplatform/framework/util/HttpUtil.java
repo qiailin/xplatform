@@ -58,10 +58,6 @@ public final class HttpUtil {
 	private static final String SSL_DEFAULT_SCHEME = "https";
 	private static final int SSL_DEFAULT_PORT = 443;
 
-	private HttpUtil() {
-
-	}
-
 	/**
 	 * �쳣�Զ��ָ�����, ʹ��HttpRequestRetryHandler�ӿ�ʵ��������쳣�ָ�
 	 */
@@ -109,6 +105,10 @@ public final class HttpUtil {
 			}
 		}
 	};
+
+	private HttpUtil() {
+
+	}
 
 	/**
 	 * Get��ʽ�ύ,URL�а��ѯ����, ��ʽ��http://www.g.cn?search=p&name=s.....

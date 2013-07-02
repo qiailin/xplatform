@@ -10,7 +10,7 @@ import com.jiakun.xplatform.api.alluser.bo.AllUsers;
  * @author
  * 
  */
-public class SecurityContext {
+public final class SecurityContext {
 
 	private static final String USER = "USER";
 
@@ -19,6 +19,10 @@ public class SecurityContext {
 			return new HashMap<Object, Object>();
 		}
 	};
+
+	private SecurityContext() {
+
+	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Map<String, AllUsers> getContext() {

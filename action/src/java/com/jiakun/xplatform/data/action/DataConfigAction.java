@@ -168,7 +168,7 @@ public class DataConfigAction extends BaseAction {
 		dataConfig.setCodes(l);
 		BooleanResult result = dataConfigService.updateDataConfig(dataConfig);
 
-		if ((result.getResult())) {
+		if (result.getResult()) {
 			this.setSuccessMessage("�ɹ�����" + result.getCode() + "��������Ա");
 		} else {
 			this.setFailMessage(result.getCode());
