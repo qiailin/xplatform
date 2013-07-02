@@ -64,7 +64,7 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 								|| getDeclaredField(target.getClass(), (String) oname)
 									.isAnnotationPresent(Decode.class);
 						if (decode) {
-							String[] tmp = (value == null ? new String[0] : (String[]) value);
+							String[] tmp = value == null ? new String[0] : (String[]) value;
 							for (int i = 0, len = tmp.length; i < len; i++) {
 								if (tmp[i] != null) {
 									tmp[i] = URLDecoder.decode(tmp[i], "UTF-8");
