@@ -363,11 +363,10 @@ public class DataManageAction extends BaseAction {
 
 	public String deleteDataInfo() {
 		AllUsers users = this.getUser();
-		BooleanResult reult = new BooleanResult();
 
 		if (StringUtil.isNotEmpty(dataLogTotalId)) {
 			try {
-				reult = dataService.deleteDataInfo(Long.parseLong(dataLogTotalId), users.getUserId());
+				BooleanResult reult = dataService.deleteDataInfo(Long.parseLong(dataLogTotalId), users.getUserId());
 				if (reult.getResult()) {
 					return RESULT_MESSAGE;
 				}
