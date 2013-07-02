@@ -6,16 +6,16 @@
 <sqlMap namespace="global">
 
 	<sql id="paginationStart">
-		<![CDATA[ select * from (select row_.*, rownum rownum_ from ( ]]>
+	<![CDATA[ select * from (select row_.*, rownum rownum_ from ( ]]>
 	</sql>
 
 	<sql id="paginationEnd">
-		<![CDATA[ ) row_ where rownum < #end#) where rownum_ >= #start# ]]>
+	<![CDATA[ ) row_ where rownum < #end#) where rownum_ >= #start# ]]>
 	</sql>
 
 	<sql id="orderBy">
 		<isNotEmpty property="sort">
-			<![CDATA[ ORDER BY $sort$ $dir$ ]]>
+		<![CDATA[ ORDER BY $sort$ $dir$ ]]>
 		</isNotEmpty>
 	</sql>
 
