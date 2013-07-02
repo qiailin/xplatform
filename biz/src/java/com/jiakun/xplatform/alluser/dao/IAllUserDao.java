@@ -49,7 +49,6 @@ public interface IAllUserDao {
 	AllUsers getAllUser(String userId);
 
 	/**
-	 * ��ѯ��Ա����ҵ�ܹ���
 	 * 
 	 * @param AllUsers
 	 * @return
@@ -57,7 +56,6 @@ public interface IAllUserDao {
 	List<AllUsers> searchAllUsers(AllUsers alluser);
 
 	/**
-	 * ��ѯ��Աcount����ҵ�ܹ���
 	 * 
 	 * @param AllUsers
 	 * @return
@@ -69,7 +67,6 @@ public interface IAllUserDao {
 	int deleteBImplementByEmpId(Long userId);
 
 	/**
-	 * ��ȡ�����Ա��Ϣ
 	 * 
 	 * @param applyUsers
 	 * @return
@@ -77,7 +74,6 @@ public interface IAllUserDao {
 	int getCheckUserCount(ApplyUsers applyUsers);
 
 	/**
-	 * ��ȡ�����Ա��Ϣ
 	 * 
 	 * @param applyUsers
 	 * @return

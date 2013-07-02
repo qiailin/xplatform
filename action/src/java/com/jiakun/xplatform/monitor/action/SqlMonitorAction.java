@@ -12,7 +12,7 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * sql���
+ * SqlMonitor.
  * 
  * @author xujiakun
  * 
@@ -21,8 +21,7 @@ public class SqlMonitorAction extends BaseAction {
 
 	private static final long serialVersionUID = 6178781065747143791L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(SqlMonitorAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(SqlMonitorAction.class);
 
 	private ISqlMonitorService sqlMonitorService;
 
@@ -41,7 +40,6 @@ public class SqlMonitorAction extends BaseAction {
 	private String log;
 
 	/**
-	 * ��ѯsql���
 	 * 
 	 * @return
 	 */
@@ -50,28 +48,23 @@ public class SqlMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ��ѯsql���
 	 * 
 	 * @return
 	 */
-	@JsonResult(field = "sqlMonitorList", include = { "sqlMonitorId",
-			"sqlMonitorTitle", "createDate", "freq", "threshold", "log",
-			"status" }, total = "total")
+	@JsonResult(field = "sqlMonitorList", include = { "sqlMonitorId", "sqlMonitorTitle", "createDate", "freq",
+		"threshold", "log", "status" }, total = "total")
 	public String getSqlMonitorJsonList() {
 		SqlMonitor s = new SqlMonitor();
 		s = getSearchInfo(s);
 
 		try {
-			if (StringUtil.isNotEmpty(sqlMonitorId)
-					&& StringUtil.isNotEmpty(sqlMonitorId.trim())) {
+			if (StringUtil.isNotEmpty(sqlMonitorId) && StringUtil.isNotEmpty(sqlMonitorId.trim())) {
 				s.setSqlMonitorId(Long.parseLong(sqlMonitorId.trim()));
 			}
-			if (StringUtil.isNotEmpty(sqlMonitorTitle)
-					&& StringUtil.isNotEmpty(sqlMonitorTitle.trim())) {
+			if (StringUtil.isNotEmpty(sqlMonitorTitle) && StringUtil.isNotEmpty(sqlMonitorTitle.trim())) {
 				s.setSqlMonitorTitle(sqlMonitorTitle.trim());
 			}
-			if (StringUtil.isNotEmpty(status)
-					&& StringUtil.isNotEmpty(status.trim())) {
+			if (StringUtil.isNotEmpty(status) && StringUtil.isNotEmpty(status.trim())) {
 				s.setStatus(status.trim());
 			}
 			if (StringUtil.isNotEmpty(log) && StringUtil.isNotEmpty(log.trim())) {
@@ -90,7 +83,7 @@ public class SqlMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * validate
+	 * validate.
 	 * 
 	 * @param sqlMonitor
 	 * @return
@@ -105,7 +98,6 @@ public class SqlMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ��ת��SQL��ش���ҳ��
 	 * 
 	 * @return
 	 */
@@ -114,7 +106,6 @@ public class SqlMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * ����sql���
 	 * 
 	 * @return
 	 */
@@ -135,17 +126,14 @@ public class SqlMonitorAction extends BaseAction {
 	}
 
 	/**
-	 * �޸�/��ѯsql�����Ϣ
 	 * 
 	 * @return
 	 */
 	public String updateSqlMonitorPrepare() {
 
-		if (StringUtil.isNotEmpty(sqlMonitorId4del)
-				&& StringUtil.isNotEmpty(sqlMonitorId4del.trim())) {
+		if (StringUtil.isNotEmpty(sqlMonitorId4del) && StringUtil.isNotEmpty(sqlMonitorId4del.trim())) {
 			try {
-				sqlMonitor = sqlMonitorService.getSqlMonitorById(Long
-						.parseLong(sqlMonitorId4del));
+				sqlMonitor = sqlMonitorService.getSqlMonitorById(Long.parseLong(sqlMonitorId4del));
 				return UPDATE_PREPARE;
 			} catch (Exception e) {
 				logger.error(sqlMonitorId4del, e);

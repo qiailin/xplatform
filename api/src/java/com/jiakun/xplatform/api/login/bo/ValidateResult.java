@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.jiakun.xplatform.api.alluser.bo.AllUsers;
 
 /**
- * ��֤��½�󷵻���Ϣ
+ * ValidateResult.
  * 
  * @author xujiakun
  * 

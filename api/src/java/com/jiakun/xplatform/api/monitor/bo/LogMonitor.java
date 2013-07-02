@@ -5,7 +5,6 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * ��־��ط���
  * 
  * @author xujiakun
  * 
@@ -26,14 +25,8 @@ public class LogMonitor extends SearchInfo {
 
 	private String e;
 
-	/**
-	 * log��¼ʱ��
-	 */
 	private String logDate;
 
-	/**
-	 * д����ݿ�ʱ��
-	 */
 	private Date createDate;
 
 	public Long getLogMonitorId() {

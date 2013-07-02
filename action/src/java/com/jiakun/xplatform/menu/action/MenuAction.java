@@ -18,7 +18,7 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * Menu
+ * Menu.
  * 
  * @author xujiakun
  * 
@@ -41,57 +41,29 @@ public class MenuAction extends BaseAction {
 
 	private Menu menu;
 
-	/**
-	 * �Ƿ����ڿ�project��ת��ַ
-	 */
 	private String isRedirect;
 
-	/**
-	 * �ϼ��˵����
-	 */
 	@Decode
 	private String pname;
 
-	/**
-	 * �˵����
-	 */
 	@Decode
 	private String name;
 
-	/**
-	 * ��ɫid
-	 */
 	@Decode
 	private String roleId;
 
 	private String menuIds;
 
-	/**
-	 * �˵�id
-	 */
 	private String node;
 
-	/**
-	 * �˵���ת��ַ
-	 */
 	private String redirectUrl;
 
 	private ICAService caService;
 
-	/**
-	 * ��ѯ�˵�
-	 * 
-	 * @return
-	 */
 	public String searchMenu() {
 		return "searchMenu";
 	}
 
-	/**
-	 * �˵�����
-	 * 
-	 * @return
-	 */
 	@JsonResult(field = "menuList", include = { "id", "pid", "name", "pname", "url", "target", "redirectUrl" }, total = "total")
 	public String getMenuJsonList() {
 		Menu m = new Menu();
@@ -124,7 +96,7 @@ public class MenuAction extends BaseAction {
 	}
 
 	/**
-	 * validate
+	 * validate.
 	 * 
 	 * @param menu
 	 * @return
@@ -147,11 +119,6 @@ public class MenuAction extends BaseAction {
 		return CREATE_PREPARE;
 	}
 
-	/**
-	 * �����˵�
-	 * 
-	 * @return
-	 */
 	public String createMenu() {
 
 		if (!validate(menu)) {
@@ -173,11 +140,6 @@ public class MenuAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	/**
-	 * �޸�/��ѯ�˵���Ϣ
-	 * 
-	 * @return
-	 */
 	public String updateMenuPrepare() {
 
 		if (StringUtil.isNotEmpty(id) && StringUtil.isNotEmpty(id.trim())) {
@@ -250,11 +212,6 @@ public class MenuAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	/**
-	 * ��ѯ��ɫ�˵�
-	 * 
-	 * @return
-	 */
 	public String searchSelectedMenu4Role() {
 
 		if (StringUtil.isNotEmpty(roleId) && StringUtil.isNotEmpty(roleId.trim())) {
@@ -269,11 +226,6 @@ public class MenuAction extends BaseAction {
 		return "searchSelectedMenu4Role";
 	}
 
-	/**
-	 * ��ɫ�˵�����
-	 * 
-	 * @return
-	 */
 	@JsonResult(field = "menuList", include = { "roleMenuId", "id", "pid", "name", "url", "target", "redirectUrl" }, total = "total")
 	public String getSelectedMenu4RoleJsonList() {
 		Menu m = new Menu();
@@ -302,11 +254,6 @@ public class MenuAction extends BaseAction {
 		return JSON;
 	}
 
-	/**
-	 * ������ɫ�˵�
-	 * 
-	 * @return
-	 */
 	public String selectMenu4Role() {
 		Menu m = new Menu();
 
@@ -331,11 +278,6 @@ public class MenuAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	/**
-	 * ɾ���ɫ�˵�
-	 * 
-	 * @return
-	 */
 	public String deleteSelectedMenu4Role() {
 
 		Menu me = new Menu();
@@ -372,11 +314,6 @@ public class MenuAction extends BaseAction {
 		return RESULT_MESSAGE;
 	}
 
-	/**
-	 * ��ϵͳ�˵���ת
-	 * 
-	 * @return
-	 */
 	public String redirectMenu() {
 		if (StringUtil.isNotEmpty(node) && StringUtil.isNotEmpty(node.trim())) {
 			try {
@@ -402,7 +339,7 @@ public class MenuAction extends BaseAction {
 	}
 
 	/**
-	 * ���token
+	 * generateToken.
 	 * 
 	 * @param redirectUrl
 	 */

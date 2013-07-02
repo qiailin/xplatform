@@ -5,7 +5,7 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * sql���
+ * SqlMonitor.
  * 
  * @author xujiakun
  * 
@@ -16,58 +16,29 @@ public class SqlMonitor extends SearchInfo {
 
 	private Long sqlMonitorId;
 
-	/**
-	 * ��Ҫ��ص�sql ������ count
-	 */
 	private String sql;
 
-	/**
-	 * ��ص�sql����ֵ ���ڱ���log
-	 */
 	private String sqlDetail;
 
-	/**
-	 * ���Ƶ��
-	 */
 	private int freq;
 
-	/**
-	 * ��ֵ
-	 */
 	private int threshold;
 
-	/**
-	 * �ʼ����� ����ʼ���ַ �� ; �ָ�
-	 */
 	private String emailAlarm;
 
-	/**
-	 * ���ű���
-	 */
 	private String smsAlarm;
 
-	/**
-	 * �Ƿ���Ҫ��¼��־ Y or N
-	 */
 	private String log;
-	
-	/**
-	 * ��������
-	 */
+
 	private Date createDate;
-	/**
-	 * �޸�����
-	 */
+
 	private Date modifyDate;
 
 	/**
-	 * ���״̬ Y ��Ч; N ��Ч
+	 * Y or N.
 	 */
 	private String status;
 
-	/**
-	 * ��ر���
-	 */
 	private String sqlMonitorTitle;
 
 	public Long getSqlMonitorId() {
@@ -165,5 +136,5 @@ public class SqlMonitor extends SearchInfo {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+
 }

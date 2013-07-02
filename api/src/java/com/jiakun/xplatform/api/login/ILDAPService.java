@@ -1,7 +1,6 @@
 package com.jiakun.xplatform.api.login;
 
 /**
- * ��
  * 
  * @author xujiakun
  * 
@@ -9,7 +8,6 @@ package com.jiakun.xplatform.api.login;
 public interface ILDAPService {
 
 	/**
-	 * ����֤
 	 * 
 	 * @param fullDN
 	 * @param password

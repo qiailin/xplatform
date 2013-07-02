@@ -5,7 +5,6 @@ import java.util.List;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �˵�ʵ��
  * 
  * @author xujiakun
  * 
@@ -14,24 +13,12 @@ public class Menu extends SearchInfo {
 
 	private static final long serialVersionUID = -3155216126617302268L;
 
-	/**
-	 * �˵�id
-	 */
 	private Long id;
 
-	/**
-	 * �˵����
-	 */
 	private String name;
 
-	/**
-	 * �����˵�id
-	 */
 	private Long pid;
 
-	/**
-	 * �����˵����
-	 */
 	private String pname;
 
 	private String url;
@@ -42,39 +29,18 @@ public class Menu extends SearchInfo {
 
 	private String userId;
 
-	/**
-	 * �Ƿ�Ϊ�����̲˵�
-	 */
 	private String isKuunrMenu;
 
-	/**
-	 * �Ƿ�Ϊ���´��˵�
-	 */
 	private String isOfficeMenu;
 
-	/**
-	 * �Ƿ�Ϊˮվ�˵�
-	 */
 	private String isClientMenu;
 
-	/**
-	 * �Ƿ�Ϊ�ͻ��˵�
-	 */
 	private String isCustMenu;
 
-	/**
-	 * ��project��ת��ַ
-	 */
 	private String redirectUrl;
 
-	/**
-	 * ��ɫid
-	 */
 	private String roleId;
 
-	/**
-	 * ��ɫ�˵�id
-	 */
 	private Long roleMenuId;
 
 	private List<Long> ids;

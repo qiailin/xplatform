@@ -12,7 +12,6 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * �����־
  * 
  * @author xujiakun
  * 
@@ -21,8 +20,7 @@ public class MonitorLogAction extends BaseAction {
 
 	private static final long serialVersionUID = 5116348289768021026L;
 
-	private Logger4jExtend logger = Logger4jCollection
-			.getLogger(MonitorLogAction.class);
+	private Logger4jExtend logger = Logger4jCollection.getLogger(MonitorLogAction.class);
 
 	private IMonitorLogService monitorLogService;
 
@@ -32,30 +30,18 @@ public class MonitorLogAction extends BaseAction {
 	@Decode
 	private String monitorId;
 
-	/**
-	 * ��ѯ�����־
-	 * 
-	 * @return
-	 */
 	public String searchMonitorLog() {
 		return "searchMonitorLog";
 	}
 
-	/**
-	 * ��ѯsql���
-	 * 
-	 * @return
-	 */
-	@JsonResult(field = "monitorLogList", include = { "monitorLogId",
-			"monitorId", "createDate", "monitorResult", "threshold",
-			"sqlMonitorTitle" }, total = "total")
+	@JsonResult(field = "monitorLogList", include = { "monitorLogId", "monitorId", "createDate", "monitorResult",
+		"threshold", "sqlMonitorTitle" }, total = "total")
 	public String getMonitorLogJsonList() {
 		MonitorLog s = new MonitorLog();
 		s = getSearchInfo(s);
 
 		try {
-			if (StringUtil.isNotEmpty(monitorId)
-					&& StringUtil.isNotEmpty(monitorId.trim())) {
+			if (StringUtil.isNotEmpty(monitorId) && StringUtil.isNotEmpty(monitorId.trim())) {
 				s.setMonitorId(Long.valueOf(monitorId.trim()));
 			} else {
 				s.setMonitorId(0L);

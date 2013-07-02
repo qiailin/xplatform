@@ -93,7 +93,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 	}
 
 	/**
-	 * ͳһ����������json����¼�ӿ�����
+	 * response.
 	 * 
 	 * @param methodName
 	 * @param startTime

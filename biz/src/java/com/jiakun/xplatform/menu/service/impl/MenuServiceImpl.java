@@ -237,7 +237,6 @@ public class MenuServiceImpl implements IMenuService {
 	}
 
 	/**
-	 * ȡ��ɾ��˵�ΪparentId�����Խ�ɫ�˵�
 	 * 
 	 * @param roleId
 	 * @param ids

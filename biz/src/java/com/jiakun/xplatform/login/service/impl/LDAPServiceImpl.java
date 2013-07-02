@@ -21,9 +21,6 @@ public class LDAPServiceImpl implements ILDAPService {
 
 	private String ldapPort;
 
-	/**
-	 * ��¼��
-	 */
 	private String domain;
 
 	public boolean authenticate(String fullDN, String password) {
