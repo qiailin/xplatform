@@ -34,7 +34,7 @@ import com.jiakun.xplatform.framework.util.JsonUtil;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * ��ݹ��� excel�������
+ * import data by excel.
  * 
  * @author xujiakun
  * 
@@ -61,9 +61,6 @@ public class DataManageAction extends BaseAction {
 
 	private String listJson;
 
-	/**
-	 * ����ģ��
-	 */
 	public String exportDataTemplate() {
 		AllUsers users = this.getUser();
 
@@ -138,9 +135,6 @@ public class DataManageAction extends BaseAction {
 		}
 	}
 
-	/**
-	 * ����ģ��
-	 */
 	public void importData() {
 		PrintWriter out = null;
 		AllUsers users = this.getUser();
@@ -318,11 +312,6 @@ public class DataManageAction extends BaseAction {
 		}
 	}
 
-	/**
-	 * Ԥ�����
-	 * 
-	 * @return
-	 */
 	public String searchDataPreview() {
 		AllUsers users = this.getUser();
 		if (StringUtil.isNotEmpty(dataLogTotalId)) {
@@ -372,11 +361,6 @@ public class DataManageAction extends BaseAction {
 		return JSON;
 	}
 
-	/**
-	 * ɾ���ѵ������
-	 * 
-	 * @return
-	 */
 	public String deleteDataInfo() {
 		AllUsers users = this.getUser();
 		BooleanResult reult = new BooleanResult();

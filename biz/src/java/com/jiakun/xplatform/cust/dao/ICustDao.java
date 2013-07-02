@@ -10,7 +10,7 @@ import com.jiakun.xplatform.api.cust.bo.Customer;
 public interface ICustDao {
 
 	/**
-	 * cms.cms_api_pack.fn_watersta
+	 * cms.cms_api_pack.fn_watersta.
 	 * 
 	 * @param userId
 	 * @return
@@ -18,7 +18,7 @@ public interface ICustDao {
 	String getFnWatersta(String userId);
 
 	/**
-	 * ���custId���Customer��Ϣ
+	 * getCustomerById.
 	 * 
 	 * @param custId
 	 * @return

@@ -5,7 +5,6 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * ��ݲ�����־
  * 
  * @author xujiakun
  * 
@@ -16,9 +15,6 @@ public class DataLogTotal extends SearchInfo {
 
 	private Long dataLogTotalId;
 
-	/**
-	 * ��ݲ�������id
-	 */
 	private Long dataConfigId;
 
 	private String userName;
@@ -32,15 +28,12 @@ public class DataLogTotal extends SearchInfo {
 	private String primaryKey;
 
 	/**
-	 * file ״̬ - U:��Ч; D:ɾ��;
+	 * U or D.
 	 */
 	private String flag;
 
 	private Date modifyDate;
 
-	/**
-	 * ��ϸ����
-	 */
 	private int total;
 
 	public Long getDataLogTotalId() {

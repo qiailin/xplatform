@@ -3,7 +3,6 @@ package com.jiakun.xplatform.api.data.bo;
 import java.util.Date;
 
 /**
- * ��ݲ�����ϸ��־
  * 
  * @author xujiakun
  * 
@@ -15,7 +14,7 @@ public class DataLogDetail {
 	private Long dataLogTotalId;
 
 	/**
-	 * table sequence
+	 * table sequence.
 	 */
 	private String dataId;
 
