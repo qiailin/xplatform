@@ -31,9 +31,8 @@ public class LogMonitorAction extends BaseAction {
 		return "searchLogMonitor";
 	}
 
-	@JsonResult(field = "logMonitorList", include = { "logMonitorId",
-			"className", "methodName", "lineNumber", "message", "e", "logDate",
-			"createDate" }, total = "total")
+	@JsonResult(field = "logMonitorList", include = { "logMonitorId", "className", "methodName", "lineNumber",
+		"message", "e", "logDate", "createDate" }, total = "total")
 	public String getLogMonitorJsonList() {
 		LogMonitor c = new LogMonitor();
 		c = getSearchInfo(c);
