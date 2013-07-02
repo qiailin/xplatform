@@ -1,7 +1,6 @@
 package com.jiakun.xplatform.monitor.task;
 
 import java.util.List;
-import java.util.Map;
 
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.monitor.ILogMonitorService;
