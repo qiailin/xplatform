@@ -6,7 +6,6 @@ import com.jiakun.xplatform.api.monitor.bo.MonitorLog;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
 
 /**
- * �O�����I�ӿ�
  * 
  * @author xujiakun
  * 
@@ -28,7 +27,6 @@ public interface IMonitorLogService {
 	List<MonitorLog> getMonitorLogList(MonitorLog monitorLog);
 
 	/**
-	 * ���������־
 	 * 
 	 * @param monitorLog
 	 * @return

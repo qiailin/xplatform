@@ -3,7 +3,7 @@ package com.jiakun.xplatform.api.tree.bo;
 import java.io.Serializable;
 
 /**
- * Tree4Ext
+ * Tree4Ext.
  * 
  * @author xujiakun
  * 
@@ -23,7 +23,6 @@ public class Tree4Ajax implements Serializable {
 	private String hrefTarget;
 
 	private Boolean leaf;
-	
 
 	public String getId() {
 		return id;
@@ -72,6 +71,5 @@ public class Tree4Ajax implements Serializable {
 	public void setLeaf(Boolean leaf) {
 		this.leaf = leaf;
 	}
-
 
 }

@@ -30,21 +30,21 @@ public class SqlMonitorTask {
 	private String from;
 
 	/**
-	 * ÿ15����job
+	 * 15.
 	 */
 	public void sqlMonitorAt15() {
 		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_15);
 	}
 
 	/**
-	 * ÿ30����job
+	 * 30.
 	 */
 	public void sqlMonitorAt30() {
 		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_30);
 	}
 
 	/**
-	 * ÿ60����job
+	 * 60.
 	 */
 	public void sqlMonitorAt60() {
 		sqlMonitorAtX(sqlMonitorService, messageService, monitorLogService, ISqlMonitorService.MONITOR_FREQ_60);

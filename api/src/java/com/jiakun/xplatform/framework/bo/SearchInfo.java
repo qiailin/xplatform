@@ -7,7 +7,7 @@ import com.alibaba.common.lang.StringUtil;
 import com.jiakun.xplatform.framework.annotation.Decode;
 
 /**
- * SearchInfo
+ * SearchInfo.
  * 
  * @author xujiakun
  * 
@@ -20,72 +20,33 @@ public class SearchInfo implements Serializable {
 
 	private static final long serialVersionUID = 235499309845516885L;
 
-	/**
-	 * ��ʼʱ��
-	 */
 	private String gmtStart;
 
-	/**
-	 * ����ʱ��
-	 */
 	private String gmtEnd;
 
-	/**
-	 * �ؼ��
-	 */
 	private String name;
 
-	/**
-	 * ���
-	 */
 	private String code;
 
 	private String[] codes;
 
-	/**
-	 * ����ʹ�õ�����ֵ�������ֶ�
-	 */
 	@Decode
 	private String search;
 
-	/**
-	 * ÿҳ��ʾ��¼��
-	 */
 	private int limit = 10;
 
-	/**
-	 * ��ǰ��¼�±꣬��0��ʼ
-	 */
 	private int start;
 
-	/**
-	 * �����ֶ�
-	 */
 	private String sort;
 
-	/**
-	 * ��������
-	 */
 	private String dir;
 
-	/**
-	 * ��������
-	 */
 	private String filter;
 
-	/**
-	 * �������
-	 */
 	private String order;
 
-	/**
-	 * ���ؽ������
-	 */
 	private long totalRows;
 
-	/**
-	 * ���ؽ��
-	 */
 	@SuppressWarnings("rawtypes")
 	private List resultList;
 

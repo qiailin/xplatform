@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 public @interface Token {
 
 	/**
-	 * ��ʾά��token�����ͣ�create���½�token��check�����token
+	 * 
 	 */
 	String type();
 }

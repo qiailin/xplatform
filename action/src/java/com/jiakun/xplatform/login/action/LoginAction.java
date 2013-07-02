@@ -28,31 +28,16 @@ public class LoginAction extends BaseAction {
 
 	private ICAService caService;
 
-	/**
-	 * ��¼�˺�
-	 */
 	private String passport;
 
-	/**
-	 * ��¼����
-	 */
 	private String password;
 
 	private boolean validate;
 
-	/**
-	 * ����
-	 */
 	private String domain;
 
-	/**
-	 * ������� �����
-	 */
 	private int eventCount;
 
-	/**
-	 * ������� �����
-	 */
 	private String eventSummary;
 
 	private String fchCookieKey;
@@ -63,20 +48,10 @@ public class LoginAction extends BaseAction {
 
 	private IMemcachedCacheService memcachedCacheService;
 
-	/**
-	 * ��ҳ
-	 * 
-	 * @return
-	 */
 	public String index() {
 		return SUCCESS;
 	}
 
-	/**
-	 * ��¼��֤
-	 * 
-	 * @return
-	 */
 	public String login() {
 
 		ValidateResult result = null;
@@ -193,29 +168,16 @@ public class LoginAction extends BaseAction {
 		return LOGOUT;
 	}
 
-	/**
-	 * ��ʱʹ��
-	 */
 	private void initToken() {
 		// ��ʼ��
 		token = caService.generateToken(this.getUser());
 	}
 
-	/**
-	 * ��¼�ɹ�����ת��ҳ
-	 * 
-	 * @return
-	 */
 	public String homePage() {
 		initToken();
 		return "homePage";
 	}
 
-	/**
-	 * ҳ��headMenu ���������Ϣ
-	 * 
-	 * @return
-	 */
 	public String headMenu() {
 
 		AllUsers user = getUser();

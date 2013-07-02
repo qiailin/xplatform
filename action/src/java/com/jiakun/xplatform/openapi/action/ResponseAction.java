@@ -9,7 +9,6 @@ import com.jiakun.xplatform.framework.action.BaseAction;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * �ӿ���Ӧ
  * 
  * @author xujiakun
  * 
@@ -26,23 +25,17 @@ public class ResponseAction extends BaseAction {
 
 	private String methodName;
 
-	/**
-	 * ��ѯ�ӿ���Ӧ
-	 * 
-	 * @return
-	 */
 	public String searchResponseStats() {
 		return "searchResponseStats";
 	}
 
-	@JsonResult(field = "responseStatsList", include = { "responseStatsId",
-			"methodName", "startTime", "endTime", "createDate" }, total = "total")
+	@JsonResult(field = "responseStatsList", include = { "responseStatsId", "methodName", "startTime", "endTime",
+		"createDate" }, total = "total")
 	public String getResponseStatsJsonList() {
 		ResponseStats c = new ResponseStats();
 		c = getSearchInfo(c);
 
-		if (StringUtil.isNotEmpty(methodName)
-				&& StringUtil.isNotEmpty(methodName.trim())) {
+		if (StringUtil.isNotEmpty(methodName) && StringUtil.isNotEmpty(methodName.trim())) {
 			c.setMethodName(methodName.trim());
 		}
 

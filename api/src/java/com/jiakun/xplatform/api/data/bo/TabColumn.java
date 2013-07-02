@@ -1,7 +1,7 @@
 package com.jiakun.xplatform.api.data.bo;
 
 /**
- * table columns all_tab_columns
+ * table columns all_tab_columns.
  * 
  * @author xujiakun
  * 

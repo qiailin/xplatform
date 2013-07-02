@@ -12,7 +12,6 @@ import com.jiakun.xplatform.api.menu.bo.Menu;
 public interface IMenuDao {
 
 	/**
-	 * �˵���
 	 * 
 	 * @param menu
 	 * @return
@@ -92,7 +91,6 @@ public interface IMenuDao {
 	boolean checkSelectedMenu4Role(String roleId, Long menuId);
 
 	/**
-	 * ������ɫ�˵�
 	 * 
 	 * @param roleId
 	 * @param menuId
@@ -101,7 +99,6 @@ public interface IMenuDao {
 	Long selectMenu4Role(String roleId, Long menuId);
 
 	/**
-	 * ��ݲ˵�menuId ��ȡ������ɫ�˵�menuId
 	 * 
 	 * @param roleId
 	 * @param menuId
@@ -110,7 +107,6 @@ public interface IMenuDao {
 	Long getParentMenuId4Role(String roleId, Long menuId);
 
 	/**
-	 * ��ݲ˵�menuId ��ȡ�Ӽ���ɫ�˵�menuId
 	 * 
 	 * @param roleId
 	 * @param menuId

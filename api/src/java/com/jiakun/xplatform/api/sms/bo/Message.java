@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Message
+ * Message.
  * 
  */
 public class Message implements Serializable {
@@ -19,9 +19,6 @@ public class Message implements Serializable {
 
 	private String smsType;
 
-	/**
-	 * ����ʱ��
-	 */
 	private Date sendTime;
 
 	private Long sendFlag;

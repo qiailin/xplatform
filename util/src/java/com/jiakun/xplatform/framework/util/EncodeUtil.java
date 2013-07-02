@@ -212,7 +212,7 @@ public final class EncodeUtil {
 				tmp = str.substring(i, i + 1);
 				rtStr.append(tmp);
 
-				cLen += (tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1);
+				cLen += tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1;
 
 				if (cLen >= iLen) {
 					break;
@@ -246,7 +246,7 @@ public final class EncodeUtil {
 		try {
 			for (int i = 0; i < s.length(); i++) {
 				String tmp = s.substring(i, i + 1);
-				len += (tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1);
+				len += tmp.getBytes(APP_ENCODING).length == 2 ? 2 : 1;
 			}
 		} catch (Exception e) {
 			return len;

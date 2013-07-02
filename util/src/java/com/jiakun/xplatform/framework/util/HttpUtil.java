@@ -82,7 +82,7 @@ public final class HttpUtil {
 				return false;
 			}
 			HttpRequest request = (HttpRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
-			boolean idempotent = (request instanceof HttpEntityEnclosingRequest);
+			boolean idempotent = request instanceof HttpEntityEnclosingRequest;
 			if (!idempotent) {
 				// Retry if the request is considered idempotent
 				return true;
@@ -154,7 +154,7 @@ public final class HttpUtil {
 		}
 		List<NameValuePair> qparams = getParamsList(params);
 		if (qparams != null && qparams.size() > 0) {
-			charset = (charset == null ? CHARSET_GBK : charset);
+			charset = charset == null ? CHARSET_GBK : charset;
 			String formatParams = URLEncodedUtils.format(qparams, charset);
 			url =
 				(url.indexOf("?")) < 0 ? (url + "?" + formatParams)

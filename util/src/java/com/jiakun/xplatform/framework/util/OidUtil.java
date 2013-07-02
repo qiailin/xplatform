@@ -3,9 +3,9 @@ package com.jiakun.xplatform.framework.util;
 import java.util.UUID;
 
 /**
- * Ψһ��ʶ������(20λ)
  * 
- * @author ��ս
+ * @author
+ * 
  */
 public final class OidUtil {
 	/* ������� */

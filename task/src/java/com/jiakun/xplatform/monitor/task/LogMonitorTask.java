@@ -40,9 +40,6 @@ public class LogMonitorTask {
 		}
 	}
 
-	/**
-	 * �����־ �����ʼ�
-	 */
 	public void logMonitor2SendEmail() {
 
 		List<LogMonitor> list = logMonitorService.getLogMonitorList4SendEmail();

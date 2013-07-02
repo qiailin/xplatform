@@ -7,7 +7,6 @@ import com.jiakun.xplatform.api.openapi.IResponseService;
 import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
 
 /**
- * �ӿ���Ӧ���
  * 
  * @author xujiakun
  * 
@@ -22,10 +21,8 @@ public class ResponseMonitorTask {
 	public void responseMonitor() {
 		List<ResponseStats> list = null;
 		try {
-			list = (List<ResponseStats>) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
-			memcachedCacheService
-					.remove(IMemcachedCacheService.CACHE_KEY_OPEN_API);
+			list = (List<ResponseStats>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
+			memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_OPEN_API);
 		} catch (Exception e) {
 		}
 
@@ -38,8 +35,7 @@ public class ResponseMonitorTask {
 		return memcachedCacheService;
 	}
 
-	public void setMemcachedCacheService(
-			IMemcachedCacheService memcachedCacheService) {
+	public void setMemcachedCacheService(IMemcachedCacheService memcachedCacheService) {
 		this.memcachedCacheService = memcachedCacheService;
 	}
 

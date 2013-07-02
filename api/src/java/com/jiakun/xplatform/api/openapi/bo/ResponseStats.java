@@ -5,7 +5,6 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �ӿڵ���ͳ��
  * 
  * @author xujiakun
  * 
@@ -16,19 +15,10 @@ public class ResponseStats extends SearchInfo {
 
 	private Long responseStatsId;
 
-	/**
-	 * �ӿ����
-	 */
 	private String methodName;
 
-	/**
-	 * �ӿڵ��ÿ�ʼʱ��
-	 */
 	private Long startTime;
 
-	/**
-	 * �ӿڵ��ý���ʱ��
-	 */
 	private Long endTime;
 
 	private Date createDate;

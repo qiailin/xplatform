@@ -148,21 +148,21 @@ public final class Base64 {
 
 		switch (numSigBytes) {
 			case 3:
-				destination[destOffset] = ALPHABET[(inBuff >>> 18)];
+				destination[destOffset] = ALPHABET[inBuff >>> 18];
 				destination[destOffset + 1] = ALPHABET[(inBuff >>> 12) & 0x3f];
 				destination[destOffset + 2] = ALPHABET[(inBuff >>> 6) & 0x3f];
 				destination[destOffset + 3] = ALPHABET[(inBuff) & 0x3f];
 				return destination;
 
 			case 2:
-				destination[destOffset] = ALPHABET[(inBuff >>> 18)];
+				destination[destOffset] = ALPHABET[inBuff >>> 18];
 				destination[destOffset + 1] = ALPHABET[(inBuff >>> 12) & 0x3f];
 				destination[destOffset + 2] = ALPHABET[(inBuff >>> 6) & 0x3f];
 				destination[destOffset + 3] = EQUALS_SIGN;
 				return destination;
 
 			case 1:
-				destination[destOffset] = ALPHABET[(inBuff >>> 18)];
+				destination[destOffset] = ALPHABET[inBuff >>> 18];
 				destination[destOffset + 1] = ALPHABET[(inBuff >>> 12) & 0x3f];
 				destination[destOffset + 2] = EQUALS_SIGN;
 				destination[destOffset + 3] = EQUALS_SIGN;
@@ -224,8 +224,8 @@ public final class Base64 {
 		java.util.zip.GZIPOutputStream gzos = null;
 
 		// Isolate options
-		int gzip = (options & GZIP);
-		int dontBreakLines = (options & DONT_BREAK_LINES);
+		int gzip = options & GZIP;
+		int dontBreakLines = options & DONT_BREAK_LINES;
 
 		try {
 			// ObjectOutputStream -> (GZIP) -> Base64 -> ByteArrayOutputStream
@@ -371,8 +371,8 @@ public final class Base64 {
 	 */
 	public static String encodeBytes(byte[] source, int off, int len, int options) {
 		// Isolate options
-		int dontBreakLines = (options & DONT_BREAK_LINES);
-		int gzip = (options & GZIP);
+		int dontBreakLines = options & DONT_BREAK_LINES;
+		int gzip = options & GZIP;
 
 		// Compress?
 		if (gzip == GZIP) {
