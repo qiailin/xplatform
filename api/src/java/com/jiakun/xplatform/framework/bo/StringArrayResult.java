@@ -1,5 +1,7 @@
 package com.jiakun.xplatform.framework.bo;
 
+import java.util.Arrays;
+
 /**
  * 
  * @author xujiakun
@@ -23,7 +25,9 @@ public class StringArrayResult extends BaseResult {
 	 *            the result to set
 	 */
 	public void setResult(String[] result) {
-		this.result = result;
+		if (result != null) {
+			this.result = Arrays.copyOf(result, result.length);
+		}
 	}
 
 }

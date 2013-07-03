@@ -77,12 +77,9 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 		}
 
 		// 3.��������˹���ʱ�䣬��Ҫ�ж������Ƿ����
-		if (timeout > 0) {
-			// �ж������Ƿ����
-			if (isRequestExpired(timestamp)) {
-				logger.error("hessian authentication error:request is expired!");
-				return;
-			}
+		if (timeout > 0 && isRequestExpired(timestamp)) {
+			logger.error("hessian authentication error:request is expired!");
+			return;
 		}
 
 		// 4. ������������ƣ���Ҫ����ǩ��У��
@@ -115,11 +112,19 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 	}
 
 	private boolean isAllowedClient(String clientIP) {
-		return true;
+		if (StringUtil.isNotEmpty(clientIP)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	private boolean isRequestExpired(long timestamp) {
-		return true;
+		if (timestamp > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public IDSAService getDsaService() {

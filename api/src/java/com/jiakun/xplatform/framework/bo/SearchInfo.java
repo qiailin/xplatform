@@ -1,6 +1,7 @@
 package com.jiakun.xplatform.framework.bo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import com.alibaba.common.lang.StringUtil;
@@ -141,7 +142,9 @@ public class SearchInfo implements Serializable {
 	}
 
 	public void setCodes(String[] codes) {
-		this.codes = codes;
+		if (codes != null) {
+			this.codes = Arrays.copyOf(codes, codes.length);
+		}
 	}
 
 	public String getSearch() {

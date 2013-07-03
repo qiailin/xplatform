@@ -5,7 +5,7 @@ import java.util.List;
 import com.jiakun.xplatform.api.data.bo.DataLogTotal;
 
 /**
- * ��ݲ�����־�ӿ�
+ * dataLog.
  * 
  * @author xujiakun
  * 
@@ -27,7 +27,6 @@ public interface IDataLogService {
 	List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal);
 
 	/**
-	 * ��ȡ��ǰ���������Ӧtable
 	 * 
 	 * @param dataLogTotal
 	 * @return

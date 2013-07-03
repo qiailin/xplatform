@@ -1,5 +1,6 @@
 package com.jiakun.xplatform.api.alluser.bo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import com.jiakun.xplatform.framework.bo.SearchInfo;
@@ -358,7 +359,9 @@ public class AllUsers extends SearchInfo {
 	}
 
 	public void setOrgIds(String[] orgIds) {
-		this.orgIds = orgIds;
+		if (orgIds != null) {
+			this.orgIds = Arrays.copyOf(orgIds, orgIds.length);
+		}
 	}
 
 	public String getBusMobilephone() {
