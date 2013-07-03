@@ -142,7 +142,7 @@ public class MenuServiceImpl implements IMenuService {
 
 		try {
 			final String roleId = menu.getRoleId();
-			StringBuffer ids = new StringBuffer();
+			StringBuilder ids = new StringBuilder();
 
 			// ����ѡ��Ĳ˵� ��֤ÿһ���˵��������ǿ�����Ч�ģ���ɫ��Ӧ�Ĳ˵���������
 			for (String code : menu.getCodes()) {

@@ -112,19 +112,11 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 	}
 
 	private boolean isAllowedClient(String clientIP) {
-		if (StringUtil.isNotEmpty(clientIP)) {
-			return true;
-		} else {
-			return false;
-		}
+		return StringUtil.isNotEmpty(clientIP);
 	}
 
 	private boolean isRequestExpired(long timestamp) {
-		if (timestamp > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return timestamp > 0;
 	}
 
 	public IDSAService getDsaService() {

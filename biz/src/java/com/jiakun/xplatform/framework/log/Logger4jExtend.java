@@ -112,7 +112,7 @@ public class Logger4jExtend {
 			logMonitor.setMessage(message.toString());
 		}
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		if (throwableStrRep != null) {
 			for (String t : throwableStrRep) {

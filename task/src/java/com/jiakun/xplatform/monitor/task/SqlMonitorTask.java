@@ -67,7 +67,7 @@ public class SqlMonitorTask {
 				// ��ѯ��Ҫ��ص�sql�б�
 				List<SqlMonitor> list = sqlMonitorService.getSqlMonitorList(sqlMonitor);
 
-				StringBuffer content = new StringBuffer();
+				StringBuilder content = new StringBuilder();
 
 				for (SqlMonitor s : list) {
 					content.delete(0, content.length());

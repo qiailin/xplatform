@@ -183,7 +183,7 @@ public class DataConfigAction extends BaseAction {
 
 			if (users != null && users.size() > 0) {
 				listJson = JsonUtil.bean2Json(users.getClass(), users);
-				StringBuffer temp = new StringBuffer();
+				StringBuilder temp = new StringBuilder();
 				temp.append(listJson);
 				temp.insert(0, "{values:");
 				temp.append(",total:");

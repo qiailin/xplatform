@@ -32,7 +32,7 @@ public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 	 */
 	@SuppressWarnings({ "unused", "rawtypes" })
 	private String listToString(List list) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		if (list != null) {
 			int i = 0;
 			for (Object id : list) {

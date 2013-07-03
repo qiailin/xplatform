@@ -47,7 +47,7 @@ public class LogMonitorTask {
 
 		List<LogMonitor> list = logMonitorService.getLogMonitorList4SendEmail();
 
-		StringBuffer content = new StringBuffer();
+		StringBuilder content = new StringBuilder();
 		content.append("<table border=1><tr>");
 		content.append("<td>ID</td>");
 		content.append("<td>class Name</td>");
