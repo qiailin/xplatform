@@ -17,6 +17,8 @@ import com.jiakun.xplatform.framework.util.LogUtil;
  */
 public class DataConfigServiceImpl implements IDataConfigService {
 
+	private static final long serialVersionUID = 1524641975609461043L;
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(DataConfigServiceImpl.class);
 
 	private IDataConfigDao dataConfigDao;
