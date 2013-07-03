@@ -3,7 +3,7 @@ package com.jiakun.xplatform.api.cust.bo;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �ͻ�
+ * customer.
  * 
  * @author xujiakun
  * 

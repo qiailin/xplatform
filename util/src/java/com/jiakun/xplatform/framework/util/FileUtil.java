@@ -16,9 +16,9 @@ import org.apache.log4j.Logger;
 import com.alibaba.common.lang.StringUtil;
 
 /**
- * File ������
+ * File Util.
  * 
- * @author
+ * @author xujiakun
  * 
  */
 public final class FileUtil {

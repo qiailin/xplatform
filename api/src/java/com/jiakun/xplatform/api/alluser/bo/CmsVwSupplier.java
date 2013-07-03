@@ -3,7 +3,8 @@ package com.jiakun.xplatform.api.alluser.bo;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * �T���Ȳ���������Ϣ
+ * 
+ * @author
  * 
  */
 public class CmsVwSupplier extends SearchInfo {

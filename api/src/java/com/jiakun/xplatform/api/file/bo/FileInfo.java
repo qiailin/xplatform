@@ -13,9 +13,6 @@ public class FileInfo extends SearchInfo {
 
 	private static final long serialVersionUID = 6240425668306639391L;
 
-	/**
-	 * file Ψһ���
-	 */
 	private String fileId;
 
 	private String fileName;
@@ -26,12 +23,12 @@ public class FileInfo extends SearchInfo {
 	private String suffix;
 
 	/**
-	 * hdfs ����·��
+	 * hdfs path.
 	 */
 	private String filePath;
 
 	/**
-	 * file ״̬ - U:��Ч; D:ɾ��;
+	 * U or D.
 	 */
 	private String flag;
 

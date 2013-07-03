@@ -23,7 +23,7 @@ public interface IDataDao {
 	List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId);
 
 	/**
-	 * ��ȡ���ֶ���Ϣ
+	 * getTabColumnsByConfigId.
 	 * 
 	 * @param dataConfigId
 	 * @param userId

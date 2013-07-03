@@ -14,19 +14,19 @@ import com.jiakun.xplatform.api.cache.bo.CacheStats;
 public interface IMemcachedCacheService extends ICacheService<String, Object> {
 
 	/**
-	 * ȱʡcache����ʱ��
+	 * default_exp_time.
 	 */
 	int DEFAULT_EXP = 24 * 60 * 60;
 
 	/**
-	 * oa������ҳ
+	 * key_news.
 	 */
 	String CACHE_KEY_NEWS = "key_news";
 
 	int CACHE_KEY_NEWS_DEFAULT_EXP = 0;
 
 	/**
-	 * �˵���
+	 * key_menu_tree_userId.
 	 */
 	String CACHE_KEY_MENU_TREE = "key_menu_tree_";
 
@@ -69,14 +69,14 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	int CACHE_KEY_SESSION_EXP = 3 * 60;
 
 	/**
-	 * file id
+	 * file id.
 	 */
 	String CACHE_KEY_FILE_ID = "key_file_id_";
 
 	int CACHE_KEY_FILE_ID_DEFAULT_EXP = 1 * 60 * 60;
 
 	/**
-	 * key���Ӧ����һ����������ʵ������inc������
+	 * incr.
 	 * 
 	 * @param key
 	 * @param inc
@@ -86,7 +86,7 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	long incr(String key, int inc) throws Exception;
 
 	/**
-	 * key���Ӧ����һ����������ʵ������inc������
+	 * incr.
 	 * 
 	 * @param key
 	 * @param inc
@@ -96,7 +96,7 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	long incr(String key, long inc) throws Exception;
 
 	/**
-	 * key���Ӧ����һ����������ʵ�ּ���decr������
+	 * decr.
 	 * 
 	 * @param key
 	 * @param decr
@@ -106,7 +106,7 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	long decr(String key, int decr) throws Exception;
 
 	/**
-	 * key���Ӧ����һ����������ʵ�ּ���decr������
+	 * decr.
 	 * 
 	 * @param key
 	 * @param decr
@@ -123,7 +123,7 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	void flushAll(InetSocketAddress address) throws Exception;
 
 	/**
-	 * ����cache״̬
+	 * cache stats.
 	 * 
 	 * @return
 	 * @throws Exception

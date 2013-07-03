@@ -12,9 +12,9 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.webwork.annotations.JsonResult;
 
 /**
- * ��ݲ�����־
+ * DataLogAction.
  * 
- * @author xujiakun
+ * @author jiakunxu
  * 
  */
 public class DataLogAction extends BaseAction {
@@ -34,7 +34,7 @@ public class DataLogAction extends BaseAction {
 	// private List<CmsTbDict> cmsTbDictList;
 
 	/**
-	 * ��ѯ��ǰ�����������ù��table
+	 * getDBTableJsonList.
 	 * 
 	 * @return
 	 */
@@ -54,11 +54,6 @@ public class DataLogAction extends BaseAction {
 		return JSON;
 	}
 
-	/**
-	 * ��תҳ��
-	 * 
-	 * @return
-	 */
 	public String searchDataLog() {
 		return "searchDataLog";
 	}

@@ -101,7 +101,7 @@ public interface IAllUserDao {
 	Long insertApplyUser(ApplyUsers applyUsers);
 
 	/**
-	 * дb_salesinfo
+	 * insertAllUser.
 	 * 
 	 * @param allUsers
 	 * @return

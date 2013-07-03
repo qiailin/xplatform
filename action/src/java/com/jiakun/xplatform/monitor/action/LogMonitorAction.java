@@ -22,11 +22,6 @@ public class LogMonitorAction extends BaseAction {
 
 	private List<LogMonitor> logMonitorList;
 
-	/**
-	 * ��ѯlog
-	 * 
-	 * @return
-	 */
 	public String searchLogMonitor() {
 		return "searchLogMonitor";
 	}
