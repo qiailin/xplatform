@@ -43,6 +43,8 @@ public class DataManageAction extends BaseAction {
 
 	private static final long serialVersionUID = 7511837191810578359L;
 
+	private static final String BR = "</br>";
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(DataManageAction.class);
 
 	private IDataService dataService;
@@ -225,7 +227,7 @@ public class DataManageAction extends BaseAction {
 					if (StringUtil.isEmpty(value)) {
 						if ("N".equals(tabColumn.getNullable())) {
 							if (sb.length() > 0) {
-								sb.append("</br>");
+								sb.append(BR);
 							}
 							sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
 								.append("����Ϊ��");
@@ -235,7 +237,7 @@ public class DataManageAction extends BaseAction {
 						if ("DATE".equals(tabColumn.getDataType())) {
 							if (DateUtil.getDateTime(value) == null) {
 								if (sb.length() > 0) {
-									sb.append("</br>");
+									sb.append(BR);
 								}
 								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
 									.append("������yyyy-MM-dd��ʽ");
@@ -249,7 +251,7 @@ public class DataManageAction extends BaseAction {
 								int length = tabColumn.getDataLength();
 								if (value.length() > length) {
 									if (sb.length() > 0) {
-										sb.append("</br>");
+										sb.append(BR);
 									}
 									sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
 										.append("�ֶγ��ȳ���").append(length);
@@ -257,7 +259,7 @@ public class DataManageAction extends BaseAction {
 							} catch (Exception e) {
 								logger.error("value:" + value, e);
 								if (sb.length() > 0) {
-									sb.append("</br>");
+									sb.append(BR);
 								}
 								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
 									.append("���������ָ�ʽ");
@@ -267,7 +269,7 @@ public class DataManageAction extends BaseAction {
 							int length = tabColumn.getDataLength();
 							if (value.length() * 2 > length) {
 								if (sb.length() > 0) {
-									sb.append("</br>");
+									sb.append(BR);
 								}
 								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
 									.append("�ֶγ��ȳ���").append(length);

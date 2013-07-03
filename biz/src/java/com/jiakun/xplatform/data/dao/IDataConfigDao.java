@@ -26,7 +26,7 @@ public interface IDataConfigDao {
 	List<DataConfig> getDataConfigList(DataConfig dataConfig);
 
 	/**
-	 * ��������data����
+	 * createDataConfig.
 	 * 
 	 * @param dataConfigList
 	 * @return
@@ -34,7 +34,7 @@ public interface IDataConfigDao {
 	String createDataConfig(List<DataConfig> dataConfigList);
 
 	/**
-	 * ����data����
+	 * updateDataConfig.
 	 * 
 	 * @param dataConfig
 	 * @return

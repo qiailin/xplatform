@@ -15,6 +15,10 @@ import com.jiakun.xplatform.framework.util.DateUtil;
  */
 public class LogMonitorTask {
 
+	private static final String TD_BEGIN = "<td>";
+
+	private static final String TD_END = "</td>";
+
 	private IMemcachedCacheService memcachedCacheService;
 
 	private ILogMonitorService logMonitorService;
@@ -58,16 +62,16 @@ public class LogMonitorTask {
 		if (list != null && list.size() != 0) {
 			for (LogMonitor monitor : list) {
 				content.append("<tr>");
-				content.append("<td>").append(monitor.getLogMonitorId()).append("</td>");
-				content.append("<td>").append(monitor.getClassName()).append("</td>");
-				content.append("<td>").append(monitor.getMethodName()).append("</td>");
-				content.append("<td>").append(monitor.getLineNumber()).append("</td>");
-				content.append("<td>").append(monitor.getMessage()).append("</td>");
-				content.append("<td>").append(monitor.getE()).append("</td>");
-				content.append("<td>").append(monitor.getLogDate()).append("</td>");
-				content.append("<td>")
+				content.append(TD_BEGIN).append(monitor.getLogMonitorId()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getClassName()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getMethodName()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getLineNumber()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getMessage()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getE()).append(TD_END);
+				content.append(TD_BEGIN).append(monitor.getLogDate()).append(TD_END);
+				content.append(TD_BEGIN)
 					.append(DateUtil.datetime(monitor.getCreateDate(), DateUtil.DEFAULT_DATETIME_FORMAT))
-					.append("</td>");
+					.append(TD_END);
 				content.append("</tr>");
 			}
 		}

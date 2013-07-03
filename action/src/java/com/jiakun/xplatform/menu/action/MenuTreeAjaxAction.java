@@ -67,13 +67,11 @@ public class MenuTreeAjaxAction extends BaseAction {
 
 			menu = null;
 
-			if ("1".equals(node)) {
-				if (o == null || o.size() == 0) {
-					try {
-						memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_MENU_TREE + alluser.getUserId()
-							+ "_" + node, menuList, IMemcachedCacheService.CACHE_KEY_MENU_TREE_DEFAULT_EXP);
-					} catch (Exception e) {
-					}
+			if ("1".equals(node) && (o == null || o.size() == 0)) {
+				try {
+					memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_MENU_TREE + alluser.getUserId() + "_"
+						+ node, menuList, IMemcachedCacheService.CACHE_KEY_MENU_TREE_DEFAULT_EXP);
+				} catch (Exception e) {
 				}
 			}
 		}

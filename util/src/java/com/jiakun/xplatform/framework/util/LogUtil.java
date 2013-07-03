@@ -24,7 +24,7 @@ public final class LogUtil {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static String parserBean(Object obj) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		try {
 			if (obj == null) {
 				return "null";
@@ -83,7 +83,7 @@ public final class LogUtil {
 				sb.append('"').append(DateUtil.datetime((Date) c.getTime(), DateUtil.DEFAULT_DATETIME_FORMAT))
 					.append('"');
 			} else {
-				sb.append(obj.getClass().getName() + ":");
+				sb.append(obj.getClass().getName()).append(":");
 				sb.append("{");
 				Map<String, Object> map = PropertyUtils.describe(obj);
 				for (Iterator<String> iter = map.keySet().iterator(); iter.hasNext();) {
@@ -117,13 +117,13 @@ public final class LogUtil {
 				sb.append('}');
 			}
 		} catch (IllegalAccessException e) {
-			logger.error("", e);
+			logger.error("IllegalAccessException:", e);
 		} catch (InvocationTargetException e) {
-			logger.error("", e);
+			logger.error("InvocationTargetException:", e);
 		} catch (NoSuchMethodException e) {
-			logger.error("", e);
+			logger.error("NoSuchMethodException：", e);
 		} catch (Exception e) {
-			logger.error("", e);
+			logger.error("Exception:", e);
 		}
 		return sb.toString();
 	}

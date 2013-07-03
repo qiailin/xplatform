@@ -82,7 +82,6 @@ public interface IMenuDao {
 	int deleteSelectedMenu4Role(Menu menu);
 
 	/**
-	 * ��֤��ɫ+�˵��Ƿ��Ѿ�����; true: ����
 	 * 
 	 * @param roleId
 	 * @param menuId

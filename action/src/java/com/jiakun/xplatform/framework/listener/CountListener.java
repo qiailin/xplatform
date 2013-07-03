@@ -11,7 +11,7 @@ public class CountListener implements HttpSessionListener {
 	// private CountService countService;
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
 	 * @see javax.servlet.http.HttpSessionListener#sessionCreated(javax.servlet.http.HttpSessionEvent)
 	 */
@@ -22,7 +22,7 @@ public class CountListener implements HttpSessionListener {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
 	 * @see javax.servlet.http.HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent)
 	 */

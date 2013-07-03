@@ -33,7 +33,7 @@ public class ExcelUtil {
 	private static Logger logger = Logger.getLogger(ExcelUtil.class);
 
 	/**
-	 * createExcelWithTemplate
+	 * createExcelWithTemplate.
 	 * 
 	 * @param inputStream
 	 * @param os

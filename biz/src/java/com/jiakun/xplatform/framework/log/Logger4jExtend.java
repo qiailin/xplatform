@@ -25,7 +25,7 @@ import com.jiakun.xplatform.framework.util.DateUtil;
 import com.jiakun.xplatform.framework.util.PropertiesUtil;
 
 /**
- * Logger4jExtend
+ * Logger4jExtend.
  * 
  * @author xujiakun
  * 
@@ -73,9 +73,7 @@ public class Logger4jExtend {
 		logger.error(message);
 
 		try {
-			LoggingEvent event = new LoggingEvent(
-					Logger4jExtend.class.getName(), logger, Level.ERROR,
-					message, null);
+			LoggingEvent event = new LoggingEvent(Logger4jExtend.class.getName(), logger, Level.ERROR, message, null);
 
 			recordLogMonitor(message, event.getLocationInformation());
 
@@ -88,12 +86,9 @@ public class Logger4jExtend {
 		logger.error(message, e);
 
 		try {
-			LoggingEvent event = new LoggingEvent(
-					Logger4jExtend.class.getName(), logger, Level.ERROR,
-					message, e);
+			LoggingEvent event = new LoggingEvent(Logger4jExtend.class.getName(), logger, Level.ERROR, message, e);
 
-			recordLogMonitor(message, event.getLocationInformation(),
-					event.getThrowableStrRep());
+			recordLogMonitor(message, event.getLocationInformation(), event.getThrowableStrRep());
 
 		} catch (Exception ee) {
 			logger.error("��־��¼ʧ��", ee);
@@ -104,8 +99,7 @@ public class Logger4jExtend {
 		recordLogMonitor(message, locationInfo, null);
 	}
 
-	private void recordLogMonitor(Object message, LocationInfo locationInfo,
-			String[] throwableStrRep) {
+	private void recordLogMonitor(Object message, LocationInfo locationInfo, String[] throwableStrRep) {
 		LogMonitor logMonitor = new LogMonitor();
 		logMonitor.setClassName(locationInfo.getClassName());
 		logMonitor.setMethodName(locationInfo.getMethodName());
@@ -137,8 +131,8 @@ public class Logger4jExtend {
 
 		try {
 			@SuppressWarnings("unchecked")
-			List<LogMonitor> list = (List<LogMonitor>) memcachedCacheService
-					.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
+			List<LogMonitor> list =
+				(List<LogMonitor>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
 
 			// ��ʼ��cache
 			if (list == null || list.size() == 0) {
@@ -147,9 +141,8 @@ public class Logger4jExtend {
 
 			list.add(logMonitor);
 
-			memcachedCacheService.set(
-					IMemcachedCacheService.CACHE_KEY_LOG_MONITOR, list,
-					IMemcachedCacheService.CACHE_KEY_LOG_MONITOR_DEFAULT_EXP);
+			memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR, list,
+				IMemcachedCacheService.CACHE_KEY_LOG_MONITOR_DEFAULT_EXP);
 
 		} catch (Exception e) {
 			logger.error(e);
@@ -158,12 +151,10 @@ public class Logger4jExtend {
 
 	static {
 		try {
-			Properties proobj = PropertiesUtil
-					.loadProperties("../env.properties");
+			Properties proobj = PropertiesUtil.loadProperties("../env.properties");
 
-			MemcachedClientBuilder builder = new XMemcachedClientBuilder(
-					AddrUtil.getAddresses((String) proobj
-							.get("xmemcached.memcached.servers")));
+			MemcachedClientBuilder builder =
+				new XMemcachedClientBuilder(AddrUtil.getAddresses((String) proobj.get("xmemcached.memcached.servers")));
 
 			builder.setConnectionPoolSize(2);
 			builder.setCommandFactory(new BinaryCommandFactory());

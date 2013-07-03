@@ -166,7 +166,7 @@ public class HDFSServiceImpl implements IDFSService {
 	}
 
 	/**
-	 * ��ȡfile��Ϣ
+	 * getFileInfo.
 	 * 
 	 * @param fileId
 	 * @return
@@ -180,7 +180,7 @@ public class HDFSServiceImpl implements IDFSService {
 	}
 
 	/**
-	 * ����file��Ϣ
+	 * createFileInfo.
 	 * 
 	 * @param fileId
 	 * @param fileName

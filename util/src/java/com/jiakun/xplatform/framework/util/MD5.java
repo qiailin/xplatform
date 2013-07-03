@@ -1,19 +1,14 @@
-/************************************************
- * MD5 �㷨��Java Bean
- * 
- * @author:Topcat Tuppin
- *                Last Modified:10,Mar,2001
- *************************************************/
 package com.jiakun.xplatform.framework.util;
 
 import java.lang.reflect.Array;
 
 import org.apache.log4j.Logger;
 
-/*************************************************
- * md5 ��ʵ����RSA Data Security, Inc.���ύ��IETF ��RFC1321�е�MD5 message-digest
- * �㷨��
- *************************************************/
+/**
+ * 
+ * @author
+ * 
+ */
 public class MD5 {
 
 	/*
