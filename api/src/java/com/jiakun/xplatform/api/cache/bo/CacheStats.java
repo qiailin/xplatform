@@ -102,7 +102,7 @@ public class CacheStats extends SearchInfo {
 	private String hashIsExpanding;
 
 	/**
-	 * memcached�������������ȡ���ܵ��ֽ���
+	 * memcached服务器从网络读取的总的字节数.
 	 */
 	private String bytesRead;
 
