@@ -112,7 +112,7 @@ public class CacheStats extends SearchInfo {
 	private String currConnections;
 
 	/**
-	 * ��ʾ��ȡ���ʧ�ܵĴ���
+	 * 表示获取数据失败的次数.
 	 */
 	private String getMisses;
 
