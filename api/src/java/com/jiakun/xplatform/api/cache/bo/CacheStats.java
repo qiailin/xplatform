@@ -131,7 +131,7 @@ public class CacheStats extends SearchInfo {
 	private String hashPowerLevel;
 
 	/**
-	 * ��ʾ��memcached������������ǰʱ�䣬����������������ӽṹ������
+	 * 表示从memcached服务启动到当前时间，被服务器分配的连接结构的数量.
 	 */
 	private String connectionStructures;
 
