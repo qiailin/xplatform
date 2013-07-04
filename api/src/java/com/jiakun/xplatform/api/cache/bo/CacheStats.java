@@ -83,7 +83,7 @@ public class CacheStats extends SearchInfo {
 	private String time;
 
 	/**
-	 * Number of keys that have been incremented and found present
+	 * Number of keys that have been incremented and found present.
 	 */
 	private String incrHits;
 
