@@ -68,7 +68,7 @@ public class CacheStats extends SearchInfo {
 	private String evictions;
 
 	/**
-	 * memcached����İ汾
+	 * memcached组件的版本.
 	 */
 	private String version;
 
