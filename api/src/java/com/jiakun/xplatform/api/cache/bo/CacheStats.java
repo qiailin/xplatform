@@ -95,14 +95,14 @@ public class CacheStats extends SearchInfo {
 	private String expiredUnfetched;
 
 	/**
-	 * memcached���񻺴�����ʹ�õ�����ֽ���
+	 * memcached服务缓存允许使用的最大字节数.
 	 */
 	private String limitMaxbytes;
 
 	private String hashIsExpanding;
 
 	/**
-	 * memcached�������������ȡ���ܵ��ֽ���
+	 * memcached服务器从网络读取的总的字节数.
 	 */
 	private String bytesRead;
 
