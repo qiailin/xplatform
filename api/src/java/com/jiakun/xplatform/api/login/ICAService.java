@@ -17,11 +17,11 @@ public interface ICAService {
 
 	String INCORRECT_NULL = "用户名或密码不能为空！";
 
-	String INCORRECT_LOGINID = "���û���ϵͳ�в����ڣ�";
+	String INCORRECT_LOGINID = "该用户在系统中不存在！";
 
-	String INCORRECT_LOGIN = "�û�����������벻��ȷ��";
+	String INCORRECT_LOGIN = "用户名或密码输入不正确！";
 
-	String INCORRECT_TOKEN = "token��֤ʧ�ܣ�";
+	String INCORRECT_TOKEN = "token验证失败！";
 
 	/**
 	 * validateUser.
