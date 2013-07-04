@@ -22,7 +22,9 @@ public final class EncodeUtil {
 
 	public static final String DB_ENCODING = "GBK";
 
-	/** Ԥ����ͼƬ��ʽ. */
+	/**
+	 * 预定义图片格式
+	 */
 	static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
 
 	private EncodeUtil() {
@@ -30,7 +32,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * �����ݿ���ַ��������ַ�Ĵ洢�ֽ���
+	 * 根据数据库的字符集计算出该字符串的存储字节数.
 	 */
 	public static int getDBLength(String str) {
 		if (str == null) {
@@ -45,7 +47,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ���Ӧ�õ��ַ��ַ�ת�����ֽ�����
+	 * 根据应用的字符集将字符串转化成字节数组.
 	 */
 	public static byte[] toBytes(String str) {
 		if (str != null) {
@@ -60,7 +62,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ���Ӧ�õ��ַ��ֽ�����ת�����ַ�
+	 * 根据应用的字符集将字节数组转化成字符串.
 	 */
 	public static String toString(byte[] bytes) {
 		if (bytes != null) {
@@ -75,7 +77,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ���Ӧ�õ��ַ���ַ����URL����
+	 * 根据应用的字符集对字符串进行URL编码.
 	 */
 	public static String url(Object obj) {
 		if (obj == null) {
@@ -90,7 +92,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ���Ӧ�õ��ַ���ַ�URL����ת������
+	 * 根据应用的字符集对字符串URL编码转化中文.
 	 * 
 	 * @param obj
 	 * @return
@@ -108,8 +110,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * �Ե���˫����е������ַ����Ԥ���?��ֹjavascript�������?
-	 * ������ű�����ʱ������Ԥ���?���磺 <script> var s =
+	 * 对单、双引号中的特殊字符进行预处理，防止javascript解析出错。 当输出脚本变量时，必须预处理。例如： <script> var s =
 	 * "<%= EncodeUtil.script(value) %>"; </script>
 	 */
 	public static String javascript(Object obj) {
@@ -121,9 +122,8 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * �������ַ�<>"&�Ƚ���Ԥ���?��ֹHTML�������?
-	 * �����input��area��Ԫ�ص�value����ʱ������Ԥ���?���磺 <input name="foo"
-	 * value="<%= EncodeUtil.html(value) %>">
+	 * 对特殊字符<>"&等进行预处理，防止HTML解析出错。 当输出input、area等元素的value属性时，必须预处理。例如： <input
+	 * name="foo" value="<%= EncodeUtil.html(value) %>">
 	 */
 	public static String html(Object obj) {
 		if (obj == null) {
@@ -134,8 +134,8 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * �������ַ�<>"&�Ƚ���Ԥ���?��ֹXML�������? �����XML������ֵʱ������Ԥ���?���磺
-	 * <node attribute="<%= EncodeUtil.xml(value) %>" />
+	 * 对特殊字符<>"&等进行预处理，防止XML解析出错。 当输出XML的属性值时，必须预处理。例如： <node
+	 * attribute="<%= EncodeUtil.xml(value) %>" />
 	 */
 	public static String xml(Object obj) {
 		if (obj == null) {
@@ -146,8 +146,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ���û��ı���������ʾϰ����ʾ��html��:brԪ�ء��س��Ϳո������⴦��,����ת����������磺
-	 * "11\r\n\r\n22<br>
+	 * 对用户文本按常规显示习惯显示在html中:br元素、回车和空格作特殊处理,其余转义输出。例如： "11\r\n\r\n22<br>
 	 * <br>
 	 * ss<br />
 	 * d t"--->"11<br/>
@@ -173,12 +172,12 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ��ȡ���ַ�
+	 * 截取子字符串
 	 * 
 	 * @param str
-	 *            ָ�����ַ�
+	 *            ָ指定的字符串
 	 * @param iLen
-	 *            ��ȡ����
+	 *            截取长度
 	 * @return substr
 	 */
 	public static String substr(String str, int iLen) {
@@ -186,14 +185,14 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * 1. ��ȡ���ַ� 2. ���ַ� + ... + title��ʾ
+	 * 1. 截取子字符串 2. 子字符串 + ... + title提示
 	 * 
 	 * @param str
-	 *            ָ�����ַ�
+	 *            指定的字符串
 	 * @param iLen
-	 *            ��ȡ����
+	 *            截取长度
 	 * @param showTitle
-	 *            �Ƿ����title��ʾ��true����ʾ��false������ʾ��Ĭ��false
+	 *            是否添加title提示。true：显示、false：不显示，默认false
 	 * @return substr
 	 */
 	public static String substr(String str, int iLen, boolean showTitle) {
@@ -231,7 +230,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * ��ȡ�ַ���ֽڳ��ȣ�����Ϊ2���ֽڣ���ĸ����Ϊ1���ֽ�.
+	 * 获取字符串的字节长度，汉字为2个字节，字母数字为1个字节.
 	 * 
 	 * @param s
 	 * @return
@@ -269,7 +268,12 @@ public final class EncodeUtil {
 		return result;
 	}
 
-	/** У���ַ��Ƿ��ǺϷ���ͼƬ��ַ. */
+	/**
+	 * 校验字符串是否是合法的图片地址.
+	 * 
+	 * @param iconUrl
+	 * @return
+	 */
 	public static boolean isIconUrl(String iconUrl) {
 		if (StringUtil.isBlank(iconUrl)) {
 			return false;

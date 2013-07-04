@@ -74,7 +74,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * �����ݵõ���ݽ���ַ��ʽ�����Ϊ����Ȼ���ظ�ֵ��
+	 * 根据数据得到数据金额字符串格式（如果为负依然返回负值）
 	 * 
 	 * @param amount
 	 * @return
@@ -87,7 +87,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * ����ַ�õ���ݽ���ַ��ʽ�����Ϊ����Ȼ���ظ�ֵ��
+	 * 根据字符串得到数据金额字符串格式（如果为负依然返回负值）
 	 * 
 	 * @param amount
 	 * @return
@@ -97,10 +97,10 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * �������ݵõ�����ַ��ʽ�����Ϊ��,���أ�.������
+	 * 根据数据得到金额字符串格式（如果为负,返回０.００）
 	 * 
 	 * @param amount
-	 * @return��if(amount==null||amount<=0):0.00;else 220.00
+	 * @return if(amount==null||amount<=0):0.00;else 220.00
 	 */
 	public static String getAmountFormatStr(BigDecimal amount) {
 		if (amount == null || amount.signum() != 1) {
@@ -110,7 +110,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * �ַ��Сдת��
+	 * 字符串大小写转换
 	 */
 	public static String lowerToUpper(String s) {
 		if (StringUtil.isEmpty(s)) {

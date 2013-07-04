@@ -15,7 +15,7 @@ import org.apache.hadoop.io.IOUtils;
 import org.apache.log4j.Logger;
 
 /***
- * HDFS ������
+ * HDFS Util.
  * 
  */
 public final class HDFSUtil {
@@ -47,7 +47,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * ����Ŀ¼�͸�Ŀ¼
+	 * 创建目录和父目录.
 	 * 
 	 * @param fs
 	 * @param dirName
@@ -73,7 +73,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * ɾ��Ŀ¼����Ŀ¼
+	 * 删除目录和子目录.
 	 * 
 	 * @param fs
 	 * @param dirName
@@ -99,7 +99,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * �ϴ�Ŀ¼���ļ�
+	 * 上传目录或文件.
 	 * 
 	 * @param fs
 	 * @param local
@@ -121,7 +121,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * ����Ŀ¼���ļ�
+	 * 下载目录或文件.
 	 * 
 	 * @param fs
 	 * @param local
@@ -143,7 +143,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * д�ļ�
+	 * 写文件.
 	 * 
 	 * @param fs
 	 * @param path
@@ -169,7 +169,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * д�ļ�
+	 * 写文件.
 	 * 
 	 * @param fs
 	 * @param path
@@ -200,7 +200,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * ���ļ�
+	 * 读文件.
 	 * 
 	 * @param fs
 	 * @param path
@@ -226,7 +226,7 @@ public final class HDFSUtil {
 	}
 
 	/**
-	 * ���ļ�
+	 * 读文件.
 	 * 
 	 * @param fs
 	 * @param path

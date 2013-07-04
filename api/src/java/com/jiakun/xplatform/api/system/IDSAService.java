@@ -4,7 +4,7 @@ import com.alibaba.service.ServiceInitializationException;
 import com.alibaba.service.dsa.DSAException;
 
 /**
- * DSA
+ * DSA加密簽名接口
  * 
  * @author xujiakun
  * 
@@ -12,57 +12,57 @@ import com.alibaba.service.dsa.DSAException;
 public interface IDSAService {
 
 	/**
-	 * ��ָ���ַ����ǩ��
+	 * 对指定字符串进行签名.
 	 * 
 	 * @param content
-	 *            Ҫǩ����ַ�
+	 *            要签名的字符串
 	 * @param keyPairName
 	 *            key pair
 	 * 
-	 * @return base64�����ǩ��
+	 * @return base64编码的签名
 	 */
 	String sign(String content, String keyPairName) throws DSAException;
 
 	/**
-	 * ��ָ���ַ����ǩ��
+	 * 对指定字符串进行签名.
 	 * 
 	 * @param content
-	 *            Ҫǩ����ַ�
+	 *            要签名的字符串
 	 * @param keyPairName
 	 *            key pair
 	 * @param charset
-	 *            �ַ�ı����ַ�
+	 *            字符串的编码字符集
 	 * 
-	 * @return base64�����ǩ��
+	 * @return base64编码的签名
 	 */
 	String sign(String content, String keyPairName, String charset) throws DSAException;
 
 	/**
-	 * ����content��ǩ��
+	 * 检验content的签名.
 	 * 
 	 * @param content
-	 *            Ҫ���������
+	 *            要检验的内容
 	 * @param signature
-	 *            ǩ��
+	 *            签名
 	 * @param keyPairName
 	 *            key pair
 	 * 
-	 * @return ���ǩ����ȷ���򷵻�<code>true</code>
+	 * @return 如果签名正确，则返回<code>true</code>
 	 */
 	boolean check(String content, String signature, String keyPairName) throws DSAException;
 
 	/**
-	 * ����content��ǩ��
+	 * 检验content的签名.
 	 * 
 	 * @param content
-	 *            Ҫ���������
+	 *            要检验的内容
 	 * @param signature
-	 *            ǩ��
+	 *            签名
 	 * @param keyPairName
 	 *            key pair
-	 * @param �ַ�ı����ַ�
+	 * @param 字符串的编码字符集
 	 * 
-	 * @return ���ǩ����ȷ���򷵻�<code>true</code>
+	 * @return 如果签名正确，则返回<code>true</code>
 	 */
 	boolean check(String content, String signature, String keyPairName, String charset) throws DSAException;
 
