@@ -107,12 +107,12 @@ public class CacheStats extends SearchInfo {
 	private String bytesRead;
 
 	/**
-	 * ��ʾ��ǰϵͳ�򿪵�������
+	 * 表示当前系统打开的连接数.
 	 */
 	private String currConnections;
 
 	/**
-	 * ��ʾ��ȡ���ʧ�ܵĴ���
+	 * 表示获取数据失败的次数.
 	 */
 	private String getMisses;
 
@@ -124,7 +124,7 @@ public class CacheStats extends SearchInfo {
 	private String reclaimed;
 
 	/**
-	 * memcached���������͵�������ܵ��ֽ���
+	 * memcached服务器发送到网络的总的字节数.
 	 */
 	private String bytesWritten;
 
