@@ -17,7 +17,7 @@ public class CacheStats extends SearchInfo {
 	private Long cacheStatsId;
 
 	/**
-	 * key
+	 * key.
 	 */
 	private String address;
 
