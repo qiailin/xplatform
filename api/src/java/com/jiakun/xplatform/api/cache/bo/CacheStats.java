@@ -156,7 +156,7 @@ public class CacheStats extends SearchInfo {
 	private String rusageUser;
 
 	/**
-	 * The ��flush_all�� command clears the whole cache and shouldn��t be used
+	 * The “flush_all” command clears the whole cache and shouldn’t be used
 	 * during normal operation
 	 */
 	private String cmdFlush;
