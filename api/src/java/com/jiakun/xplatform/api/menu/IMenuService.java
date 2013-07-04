@@ -18,9 +18,9 @@ public interface IMenuService {
 
 	String ERROR_MESSAGE = "操作失败！";
 
-	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "操作失败，输入有误！";
 
-	String ERROR_NULL_MESSAGE = "����ʧ�ܣ������Ѳ����ڣ�";
+	String ERROR_NULL_MESSAGE = "操作失败，单据已不存在！";
 
 	String MENU_REDIRECT_URL = "/menu/menuAction!redirectMenu.htm?node=";
 
