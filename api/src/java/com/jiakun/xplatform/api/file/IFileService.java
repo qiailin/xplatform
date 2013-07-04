@@ -16,9 +16,9 @@ public interface IFileService {
 
 	String FILE_FLAG_DELETED = "D";
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
-	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "操作失败，输入有误！";
 
 	/**
 	 * getFileInfo.
