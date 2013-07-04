@@ -13,7 +13,7 @@ import java.util.Date;
 public interface ICacheService<K, V> {
 
 	/**
-	 * ���������������������
+	 * 保存数据.
 	 * 
 	 * @param key
 	 * @param value
@@ -23,29 +23,29 @@ public interface ICacheService<K, V> {
 	V add(K key, V value) throws Exception;
 
 	/**
-	 * �������������������������������������������
+	 * 保存有有效期的数据.
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��������������
+	 * @param 有效期
 	 * @return
 	 * @throws Exception
 	 */
 	V add(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * �������������������������������������������
+	 * 保存有有效期的数据
 	 * 
 	 * @param key
 	 * @param value
-	 * @param �������������������������������
+	 * @param 数据超时的秒数
 	 * @return
 	 * @throws Exception
 	 */
 	V add(K key, V value, int exp) throws Exception;
 
 	/**
-	 * ���������������������
+	 * 保存数据
 	 * 
 	 * @param key
 	 * @param value
@@ -55,30 +55,29 @@ public interface ICacheService<K, V> {
 	V set(K key, V value) throws Exception;
 
 	/**
-	 * �������������������������������������������
+	 * 保存有有效期的数据
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��������������
+	 * @param 有效期
 	 * @return
 	 * @throws Exception
 	 */
 	V set(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * �������������������������������������������
+	 * 保存有有效期的数据
 	 * 
 	 * @param key
 	 * @param value
-	 * @param �������������������������������
+	 * @param 数据超时的秒数
 	 * @return
 	 * @throws Exception
 	 */
 	V set(K key, V value, int exp) throws Exception;
 
 	/**
-	 * ���������������������,��������������key���������������������������
-	 * memcache��������������������������������
+	 * 保存数据,前提是key必须存在于memcache中，否则保存不成功.
 	 * 
 	 * @param key
 	 * @param value
@@ -88,31 +87,29 @@ public interface ICacheService<K, V> {
 	V replace(K key, V value) throws Exception;
 
 	/**
-	 * �����������������������������������������������������������key�����������
-	 * ����������������memcache��������������������������������
+	 * 保存有有效期的数据，前提是key必须存在于memcache中，否则保存不成功.
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��������������
+	 * @param 有效期
 	 * @return
 	 * @throws Exception
 	 */
 	V replace(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * �����������������������������������������������������������key�����������
-	 * ����������������memcache��������������������������������
+	 * 保存有有效期的数据，前提是key必须存在于memcache中，否则保存不成功.
 	 * 
 	 * @param key
 	 * @param value
-	 * @param ��������������
+	 * @param 有效期
 	 * @return
 	 * @throws Exception
 	 */
 	V replace(K key, V value, int exp) throws Exception;
 
 	/**
-	 * �����������������������������
+	 * 获取缓存数据.
 	 * 
 	 * @param key
 	 * @return
@@ -121,7 +118,7 @@ public interface ICacheService<K, V> {
 	V get(K key) throws Exception;
 
 	/**
-	 * �����������������������������
+	 * 移出缓存数据.
 	 * 
 	 * @param key
 	 * @return
