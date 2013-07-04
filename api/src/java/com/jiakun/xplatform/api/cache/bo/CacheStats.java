@@ -78,7 +78,7 @@ public class CacheStats extends SearchInfo {
 	private String pointerSize;
 
 	/**
-	 * memcached��������������ǰϵͳ��ʱ�䣬��λ����
+	 * memcached服务器所在主机当前系统的时间，单位是秒.
 	 */
 	private String time;
 
