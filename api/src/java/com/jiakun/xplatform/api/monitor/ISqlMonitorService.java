@@ -28,7 +28,7 @@ public interface ISqlMonitorService {
 
 	String MONITOR_STATUS_Y = "Y";
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
 	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
 
