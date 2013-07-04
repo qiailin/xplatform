@@ -4,7 +4,7 @@ import com.alibaba.service.ServiceInitializationException;
 import com.alibaba.service.dsa.DSAException;
 
 /**
- * DSA���ܺ���ӿ�
+ * DSA
  * 
  * @author xujiakun
  * 
