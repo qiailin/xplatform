@@ -58,7 +58,7 @@ public class CacheStats extends SearchInfo {
 	private String listenDisabledNum;
 
 	/**
-	 * Number of failed authentication tries of clients
+	 * Number of failed authentication tries of clients.
 	 */
 	private String authErrors;
 
