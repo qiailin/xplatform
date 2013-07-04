@@ -88,7 +88,7 @@ public class CacheStats extends SearchInfo {
 	private String incrHits;
 
 	/**
-	 * ������Ĺ����̵߳�������
+	 * 被请求的工作线程的总数量.
 	 */
 	private String threads;
 
