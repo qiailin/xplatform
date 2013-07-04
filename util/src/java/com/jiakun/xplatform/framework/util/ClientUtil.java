@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 import com.alibaba.common.lang.StringUtil;
 
 /**
- * ��ȡ����ͻ�����Ϣ������
+ * 获取请求客户端信息工具类
  * 
  * @author xiaodan.daixd
  */
@@ -27,7 +27,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * ��ȡ�ͻ���IP��ַ
+	 * 获取客户端IP地址
 	 * 
 	 * @param request
 	 * @return ip
@@ -50,7 +50,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * �����������ܰ�ȫ�� ������� param1=abc&param2=cde;
+	 * 解析参数性能安全的 参数规则 param1=abc&param2=cde;
 	 * 
 	 * @param ctrl
 	 * @return map
@@ -72,7 +72,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * ��ȡ��������
+	 * 获取请求域名
 	 * 
 	 * @param request
 	 * @return
@@ -94,10 +94,10 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * IP����ʽ�����ָ�ʽ���ַ�
+	 * IP串格式成数字格式的字符串
 	 * 
 	 * @param ip
-	 * @return String 12λ���ֵ��ַ�. �쳣�������"-1"
+	 * @return String 12位数字的字符串. 异常情况返回"-1"
 	 */
 	public static double ip2number(String ip) {
 		double ipString = 0.0;
@@ -139,7 +139,7 @@ public final class ClientUtil {
 			url = new String(url.getBytes("GBK"), "ISO8859_1");
 			response.sendRedirect(url);
 		} catch (UnsupportedEncodingException e) {
-			logger.error("�ַ�ת������" + e);
+			logger.error("字符转换错误！" + e);
 		}
 	}
 }

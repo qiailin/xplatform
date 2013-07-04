@@ -44,7 +44,10 @@ public final class DateUtil {
 
 	private static final String DEFAULT_DATEFULLTIME_FORMAT = "yyyyMMddHHmmss";
 
-	/** ��֤�����ַ���Ч���ڷ�Χ1900-1-1��2099-12-31. */
+	/**
+	 * 验证日期字符串，有效日期范围1900-1-1到2099-12-31.
+	 * 
+	 */
 	private static final Pattern PATTERN = Pattern
 		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
 
@@ -53,7 +56,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ǰʱ�����days��
+	 * 当前时间加上days天.
 	 */
 	public static Date addDays(Date date, int days) {
 		Calendar cal = Calendar.getInstance();
@@ -77,7 +80,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ǰʱ�����days��
+	 * 当前时间加上days月.
 	 */
 	public static Date addMonths(Date date, int months) {
 		Calendar cal = Calendar.getInstance();
@@ -87,7 +90,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ��ǰ�µ��������
+	 * 获取当前月的最大日期.
 	 * 
 	 * @return
 	 */
@@ -98,7 +101,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ��ǰ���
+	 * 获取当前年份.
 	 * 
 	 * @return
 	 */
@@ -108,7 +111,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ��ǰ��
+	 * 获取当前月.
 	 * 
 	 * @return
 	 */
@@ -118,7 +121,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ��ǰ�µ���С����
+	 * 获取当前月的最小日期.
 	 * 
 	 * @return
 	 */
@@ -129,7 +132,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡָ���µ���Сʱ��
+	 * 获取指定月的最小时间.
 	 * 
 	 * @param date
 	 * @return
@@ -142,7 +145,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡָ���µ����ʱ��
+	 * 获取指定月的最大时间.
 	 * 
 	 * @param date
 	 * @return
@@ -155,7 +158,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ȡ��ĳ�µĵ����һ��
+	 * 取得某月的的最后一天.
 	 * 
 	 * @param year
 	 * @param month
@@ -172,7 +175,11 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ǰʱ�����years��
+	 * 当前时间加上years年.
+	 * 
+	 * @param date
+	 * @param years
+	 * @return
 	 */
 	public static Date addYears(Date date, int years) {
 		Calendar cal = Calendar.getInstance();
@@ -182,7 +189,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ָ����ʽ������ʱ���ַ�
+	 * 获得指定格式的日期时间字符串.
 	 * 
 	 * @param date
 	 * @param format
@@ -194,7 +201,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ָ����ʽ������ʱ���ַ�
+	 * 获得指定格式的日期时间字符串.
 	 * 
 	 * @param date
 	 * @param format
@@ -206,9 +213,9 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ָ����ʽ������ʱ���ַ�
+	 * 获得指定格式的日期时间字符串.
 	 * 
-	 * @param �����ַ�
+	 * @param 日期字符串
 	 * @param format
 	 * @return
 	 */
@@ -218,7 +225,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ָ����ʽ�ĵ�ǰ�����ַ�
+	 * 获得指定格式的当前日期字符串.
 	 * 
 	 * @param date
 	 * @param format
@@ -233,7 +240,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ָ����ʽ�ĵ�ǰ�����ַ�
+	 * 获得指定格式的当前日期字符串.
 	 * 
 	 * @param dateStr
 	 * @param format
@@ -245,7 +252,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���"yyyy-MM-dd"��ʽ�ĵ�ǰ�����ַ�
+	 * 获得"yyyy-MM-dd"格式的当前日期字符串.
 	 * 
 	 * @param date
 	 * @return
@@ -255,7 +262,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���"yyyy-MM-dd HH:mm:ss"��ʽ�ĵ�ǰ����ʱ���ַ�
+	 * 获得"yyyy-MM-dd HH:mm:ss"格式的当前日期时间字符串.
 	 * 
 	 * @param date
 	 * @return
@@ -265,7 +272,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���"yyyyMMddHHmmss"��ʽ�ĵ�ǰ����ʱ���ַ�
+	 * 获得"yyyyMMddHHmmss"格式的当前日期时间字符串.
 	 * 
 	 * @param date
 	 * @return
@@ -275,11 +282,11 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��õ�ǰ����ʱ���ַ�
+	 * 获得当前日期时间字符串.
 	 * 
 	 * @param format
-	 *            ���ڸ�ʽ
-	 * @return ����ʱ���ַ�
+	 *            日期格式
+	 * @return 日期时间字符串
 	 */
 	public static String getNowDatetimeStr(String format) {
 		Calendar cal = Calendar.getInstance();
@@ -287,14 +294,14 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ֻȡ��ǰʱ������ڲ��֣�Сʱ���֡�����ֶι���
+	 * ֻ只取当前时间的日期部分，小时、分、秒等字段归零.
 	 */
 	public static Date dateOnly(Date date) {
 		return new Date(date.getTime() / MILLISECONDS_A_DAY);
 	}
 
 	/**
-	 * ֻȡ��ǰʱ������ڲ��֣�Сʱ���֡�����ֶι���
+	 * ֻ只取当前时间的日期部分，小时、分、秒等字段归零.
 	 */
 	public static Date dateOnlyExt(Date date) {
 		Calendar cal = Calendar.getInstance();
@@ -306,18 +313,18 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ֻȡ��ǰʱ������ڲ��֣�Сʱ���֡�����ֶι���
+	 * ֻ只取当前时间的日期部分，小时、分、秒等字段归零.
 	 */
 	public static Date dateMinTime(Date date) {
 		return dateOnlyExt(date);
 	}
 
 	/**
-	 * ������2007-2-2 7:1:8��ʱ�䴮��Ϊ��׼��2007-02-02 07:01:08
+	 * 把类似2007-2-2 7:1:8的时间串变为标准的2007-02-02 07:01:08.
 	 * 
 	 * @param dateTimeStr
-	 *            δУ������ֵ
-	 * @return ���ڶ���
+	 *            未校正日期值
+	 * @return 日期对象
 	 */
 	public static String getStandDateTimeStr(String dateTimeStr) {
 		if (dateTimeStr == null || "".equals(dateTimeStr)) {
@@ -383,11 +390,11 @@ public final class DateUtil {
 	}
 
 	/**
-	 * �ѱ�׼��2007-02-02 07:01:08��ʽת�������ڶ���
+	 * 把标准的2007-02-02 07:01:08格式转换成日期对象.
 	 * 
 	 * @param datetime
-	 *            ����,��׼��2007-02-02 07:01:08��ʽ
-	 * @return ���ڶ���
+	 *            日期,标准的2007-02-02 07:01:08格式
+	 * @return 日期对象
 	 */
 	@SuppressWarnings("deprecation")
 	public static Date getDateFromStr(String datetime) {
@@ -445,12 +452,12 @@ public final class DateUtil {
 	}
 
 	/**
-	 * �������������������
+	 * 返回两个日期相差天数.
 	 * 
 	 * @param startDate
-	 *            ��ʼ���ڶ���
+	 *            起始日期对象
 	 * @param endDate
-	 *            ��ֹ���ڶ���
+	 *            截止日期对象
 	 * @return
 	 */
 	public static int getQuot(Date startDate, Date endDate) {
@@ -461,14 +468,14 @@ public final class DateUtil {
 	}
 
 	/**
-	 * �������������������
+	 * 返回两个日期相差天数.
 	 * 
 	 * @param startDateStr
-	 *            ��ʼ�����ַ�
+	 *            起始日期字符串
 	 * @param endDateStr
-	 *            ��ֹ���ַ�
+	 *            截止期字符串
 	 * @param format
-	 *            ʱ���ʽ
+	 *            时间格式
 	 * @return
 	 */
 	public static int getQuot(String startDateStr, String endDateStr, String format) {
@@ -481,15 +488,13 @@ public final class DateUtil {
 			quot = date1.getTime() - date2.getTime();
 			quot = quot / MILLISECONDS_A_DAY;
 		} catch (ParseException e) {
-			logger.error("��ȡ����������������쳣: ", e);
+			logger.error("获取两个日期相差天数异常: ", e);
 		}
 		return (int) quot;
 	}
 
 	/**
-	 * ���������ַ�"yyyy-MM-dd HH:mm" ��ʽ��
-	 * 
-	 * @author chun.fengch
+	 * 返回日期字符串："yyyy-MM-dd HH:mm" 格式.
 	 * 
 	 * @param date
 	 * @return
@@ -503,7 +508,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * �����ʽ����ʱ����ַ�
+	 * 按给定格式返回时间的字符串.
 	 * 
 	 * @param date
 	 * @param pattern
@@ -518,7 +523,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ����������������Сʱ
+	 * 返回两个日期相差的小时.
 	 * 
 	 * @param startDateStr
 	 * @param endDateStr
@@ -533,7 +538,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ������������������
+	 * 返回两个日期相差的秒.
 	 * 
 	 * @param startDateStr
 	 * @param endDateStr
@@ -548,7 +553,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ַ�ת��Ϊ������ ��ʽΪ: yyyy-MM-dd
+	 * 将字符串转换为日期型 格式为: yyyy-MM-dd.
 	 * 
 	 * @param dateTime
 	 * @return
@@ -571,7 +576,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ���ַ�ת��Ϊ������ ��ʽΪ: yyyy-MM-dd
+	 * 将字符串转换为日期型 格式为: yyyy-MM-dd.
 	 * 
 	 * @param dateTime
 	 * @return
@@ -591,7 +596,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ȡ��ǰ��ʱ�������ҳ���ϱ�֤URLΨһ����ֹ����
+	 * 取当前的时间戳，在页面上保证URL唯一，防止缓存.
 	 * 
 	 * @return
 	 */
@@ -600,7 +605,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * �ж��Ƿ��ڲ������ڵ����ֵ����Сֵ֮��
+	 * 判断是否在参数日期的最大值和最小值之间.
 	 * 
 	 * @param date
 	 * @return
@@ -622,10 +627,10 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ����/����/�����ȵ��³�����ĩ.
+	 * 获取本月/上月/本季度的月初和月末.
 	 * 
 	 * @param monthRange
-	 *            ȡֵ��Χ{cm:���£�pm:���£�sm:������}
+	 *            取值范围{cm:本月，pm:上月，sm:本季度}
 	 * @return Map{firstDay:yyyy-MM-dd, lastDay:yyyy-MM-dd}
 	 */
 	public static Map<String, String> getFLDayMap(String monthRange) {
@@ -633,10 +638,10 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡ����/����/�����ȵ��³�����ĩ.
+	 * 获取本月/上月/本季度的月初和月末.
 	 * 
 	 * @param monthRange
-	 *            ȡֵ��Χ{cm:���£�pm:���£�sm:������}
+	 *            取值范围{cm:本月，pm:上月，sm:本季度}
 	 * @param pattern
 	 * @return Map{firstDay:yyyy-MM-dd, lastDay:yyyy-MM-dd}
 	 */
@@ -666,7 +671,7 @@ public final class DateUtil {
 		}
 
 		/*
-		 * �����ȵ��³�����ĩ
+		 * 本季度的月初和月末
 		 */
 		int[][] seasons = { { 2, 4 }, { 5, 7 }, { 8, 10 }, { 11, 1 } };
 		int cm = calendar.get(Calendar.MONTH) + 1;
@@ -689,27 +694,27 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡĳ���ڵ�����ַ�
+	 * 获取某日期的年份字符串.
 	 * 
 	 * @param date
-	 * @return �ַ����͵����
+	 * @return 字符串类型的年份
 	 */
 	public static String getYearString(Date date) {
 		return DateUtil.date(date, DEFAULT_YEAR_FORMAT);
 	}
 
 	/**
-	 * ��ȡĳ���ڵ��������
+	 * 获取某日期的年份数字.
 	 * 
 	 * @param date
-	 * @return �������͵����
+	 * @return 数字类型的年份
 	 */
 	public static int getYearInteger(Date date) {
 		return Integer.parseInt(DateUtil.date(date, DEFAULT_YEAR_FORMAT));
 	}
 
 	/**
-	 * ��ȡĳ���ڵ��·��ַ�
+	 * 获取某日期的月份字符串.
 	 * 
 	 * @param date
 	 * @return
@@ -719,17 +724,17 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ��ȡĳ���ڵ��·�����
+	 * 获取某日期的月份数字.
 	 * 
 	 * @param date
-	 * @return �������͵��·�
+	 * @return 数字类型的月份
 	 */
 	public static int getMonthInteger(Date date) {
 		return Integer.parseInt(DateUtil.date(date, DEFAULT_MONTH_FORMAT));
 	}
 
 	/**
-	 * ȡ�õ�ǰ�µĵ����һ��
+	 * 取得当前月的的最后一天.
 	 * 
 	 * @param year
 	 * @param month
@@ -746,7 +751,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ȡ�õ�ǰ�µĵĵ�һ��
+	 * 取得当前月的的第一天.
 	 * 
 	 * @param year
 	 * @param month
@@ -762,9 +767,8 @@ public final class DateUtil {
 		return cal.getTime();
 	}
 
-	/** */
 	/**
-	 * ȡ��ĳ�������ܵĵ�һ��
+	 * 取得某天所在周的第一天.
 	 * 
 	 * @param date
 	 * @return
@@ -778,7 +782,7 @@ public final class DateUtil {
 	}
 
 	/**
-	 * ȡ��ĳ�������ܵ����һ��
+	 * 取得某天所在周的最后一天.
 	 * 
 	 * @param date
 	 * @return
@@ -791,7 +795,12 @@ public final class DateUtil {
 		return c.getTime();
 	}
 
-	/** ��֤�����Ƿ���Ч����Ч���ڷ�Χ1900-1-1��2099-12-31. */
+	/**
+	 * 验证日期是否有效，有效日期范围1900-1-1到2099-12-31.
+	 * 
+	 * @param ds
+	 * @return
+	 */
 	public static boolean isValidDate(String ds) {
 		if (StringUtil.isBlank(ds)) {
 			return false;
@@ -799,7 +808,12 @@ public final class DateUtil {
 		return PATTERN.matcher(ds).matches();
 	}
 
-	/** ��֤�����Ƿ���Ч����Ч���ڷ�Χ1900-1-1��2099-12-31. */
+	/**
+	 * 验证日期是否有效，有效日期范围1900-1-1到2099-12-31.
+	 * 
+	 * @param d
+	 * @return
+	 */
 	public static boolean isValidDate(Date d) {
 		if (d == null) {
 			return false;
