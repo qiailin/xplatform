@@ -52,8 +52,8 @@ public class CacheStats extends SearchInfo {
 	private String cmdTouch;
 
 	/**
-	 * Number of denied connection attempts because memcached reached it��s
-	 * configured connection limit (��-c�� command line argument)
+	 * Number of denied connection attempts because memcached reached it’s
+	 * configured connection limit (“-c” command line argument)
 	 */
 	private String listenDisabledNum;
 
