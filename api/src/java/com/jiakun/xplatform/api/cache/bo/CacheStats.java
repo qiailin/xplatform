@@ -164,7 +164,7 @@ public class CacheStats extends SearchInfo {
 	private String libevent;
 
 	/**
-	 * memcached�������������ǰ����ʱ�䣬��λ����
+	 * memcached服务从启动到当前所经过的时间，单位是秒.
 	 */
 	private String uptime;
 
@@ -173,23 +173,23 @@ public class CacheStats extends SearchInfo {
 	private String touchHits;
 
 	/**
-	 * The ��cas�� command is some kind of Memcached��s way to avoid locking. ��cas��
+	 * The “cas” command is some kind of Memcached’s way to avoid locking. “cas”
 	 * calls with bad identifier are counted in this stats key
 	 */
 	private String casBadval;
 
 	/**
-	 * memcached�����̵Ľ��ID
+	 * memcached服务进程的进程ID.
 	 */
 	private String pid;
 
 	/**
-	 * ��ʾ��ȡ��ݳɹ��Ĵ���
+	 * 表示获取数据成功的次数.
 	 */
 	private String getHits;
 
 	/**
-	 * ��ʾ��ǰ�����д�ŵ����л�������������������Ŀǰ�Ѿ��ӻ�����ɾ��Ķ���
+	 * 表示当前缓存中存放的所有缓存对象的数量。不包括目前已经从缓存中删除的对象.
 	 */
 	private String currItems;
 
@@ -206,17 +206,17 @@ public class CacheStats extends SearchInfo {
 	private String evictedUnfetched;
 
 	/**
-	 * �ۻ��ȡ��ݵ�����
+	 * 累积获取数据的数量.
 	 */
 	private String cmdGet;
 
 	/**
-	 * �ۻ����ݵ�����
+	 * 累积保存数据的数量.
 	 */
 	private String cmdSet;
 
 	/**
-	 * Number of authentication commands processed by the server �C if you use
+	 * Number of authentication commands processed by the server – if you use
 	 * authentication within your installation. The default is IP (routing)
 	 * level security which speeds up the actual Memcached usage by removing the
 	 * authentication requirement
@@ -224,7 +224,7 @@ public class CacheStats extends SearchInfo {
 	private String authCmds;
 
 	/**
-	 * Number of failed ��incr�� commands (see incr_hits)
+	 * Number of failed “incr” commands (see incr_hits)
 	 */
 	private String incrMisses;
 
