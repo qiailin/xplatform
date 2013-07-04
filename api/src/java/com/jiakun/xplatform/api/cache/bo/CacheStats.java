@@ -28,7 +28,7 @@ public class CacheStats extends SearchInfo {
 	private String port;
 
 	/**
-	 * Number of keys that have been deleted and found present
+	 * Number of keys that have been deleted and found present.
 	 */
 	private String deleteHits;
 
