@@ -12,7 +12,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IResponseService {
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
 	/**
 	 * 
