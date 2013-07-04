@@ -22,7 +22,7 @@ public final class MapUtil {
 	}
 
 	/**
-	 * ��һ��beanת����map
+	 * 将一个bean转换成map
 	 * 
 	 * @param map
 	 * @param bean
@@ -34,8 +34,13 @@ public final class MapUtil {
 	}
 
 	/**
-	 * ����prefix=detail.��bean����һ������name����map�н���һ���
-	 * key=detail.name��valueΪbean��name����ֵ��
+	 * 假设prefix=detail.，bean带有一个属性name，则map中将有一个项：
+	 * key=detail.name，value为bean的name属性.
+	 * 
+	 * @param map
+	 * @param bean
+	 * @param prefix
+	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Map populateMap(Map map, Object bean, String prefix) {
@@ -70,7 +75,7 @@ public final class MapUtil {
 	}
 
 	/**
-	 * ��mapת����bean
+	 * 将map转换成bean.
 	 * 
 	 * @param bean
 	 * @param map
@@ -87,8 +92,13 @@ public final class MapUtil {
 	}
 
 	/**
-	 * ����prefix=detail.����map�д���һ��keyΪdetail.name��
-	 * ��bean.setName�����ã�����ֵΪ��key��Ӧ��value��
+	 * 假设prefix=detail.，若map中带有一个key为detail.name，
+	 * 则bean.setName被调用，参数值为该key对应的value.
+	 * 
+	 * @param bean
+	 * @param map
+	 * @param prefix
+	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Object populateBean(Object bean, Map map, String prefix) {
