@@ -54,13 +54,13 @@ public final class FileUtil {
 	}
 
 	/**
-	 * �ļ����Ϊ
+	 * 文件另存为.
 	 * 
 	 * @param source
-	 *            Դ�ļ�
+	 *            源文件
 	 * @param target
-	 *            Ŀ���ļ�
-	 * @return �����Ƿ�ɹ�
+	 *            目标文件
+	 * @return 保存是否成功
 	 */
 	public static boolean saveAsFile(File source, File target) {
 		boolean flag = false;
@@ -134,7 +134,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * ��ȡ�ļ������� (.txt)
+	 * 获取文件类型名 (.txt)
 	 * 
 	 * @param fileName
 	 * @return
@@ -148,7 +148,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * ��ȡ�ļ���
+	 * 获取文件名
 	 * 
 	 * @param fileName
 	 * @return
@@ -166,7 +166,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * ��ȡ�ļ������� (txt)
+	 * 获取文件类型名 (txt)
 	 * 
 	 * @param fileName
 	 * @return

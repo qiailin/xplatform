@@ -44,7 +44,7 @@ public class ExcelUtil {
 	public void createExcelWithTemplate(InputStream inputStream, OutputStream os, List<String> props, List dataList) {
 		Workbook tBook = null;
 		WritableWorkbook wbook = null;
-		// ��������������������������������������������getter
+		// 需要导出的属性名getter
 		List<String> getterList = new ArrayList<String>();
 
 		try {
@@ -73,7 +73,7 @@ public class ExcelUtil {
 					row++;
 				}
 			}
-			// ���������������������
+			// 输出内容
 			wbook.write();
 		} catch (Exception e) {
 			logger.error(LogUtil.parserBean(props) + LogUtil.parserBean(dataList), e);
@@ -96,7 +96,7 @@ public class ExcelUtil {
 	}
 
 	/**
-	 * �������������������&������������.
+	 * 添加单元格&内容.
 	 * 
 	 * @param ws
 	 * @param cel
@@ -144,7 +144,7 @@ public class ExcelUtil {
 		} else if (clazz2 == BigDecimal.class) {
 			NumberFormat nf = new NumberFormat("0.00");
 			WritableCellFormat wcf = new WritableCellFormat(nf);
-			wcf.setFont(new WritableFont(WritableFont.createFont("������������"), 9));
+			wcf.setFont(new WritableFont(WritableFont.createFont("宋体"), 9));
 			Number cr = new Number(cel, row, ((BigDecimal) valObj).doubleValue(), wcf);
 			ws.addCell(cr);
 			return;

@@ -59,12 +59,12 @@ public final class HttpUtil {
 	private static final int SSL_DEFAULT_PORT = 443;
 
 	/**
-	 * �쳣�Զ��ָ�����, ʹ��HttpRequestRetryHandler�ӿ�ʵ��������쳣�ָ�
+	 * 异常自动恢复处理, 使用HttpRequestRetryHandler接口实现请求的异常恢复
 	 */
 	private static HttpRequestRetryHandler requestRetryHandler = new HttpRequestRetryHandler() {
-		// �Զ���Ļָ�����
+		// 自定义的恢复策略
 		public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
-			// ���ûָ����ԣ��ڷ����쳣ʱ���Զ�����3��
+			// 设置恢复策略，在发生异常时候将自动重试3次
 			if (executionCount >= 3) {
 				// Do not retry if over max retry count
 				return false;
@@ -88,11 +88,10 @@ public final class HttpUtil {
 	};
 
 	/**
-	 * ʹ��ResponseHandler�ӿڴ�����Ӧ��HttpClientʹ��ResponseHandler���Զ��������ӵ��ͷ
-	 * ţ�����˶����ӵ��ͷŹ���
+	 * 使用ResponseHandler接口处理响应，HttpClient使用ResponseHandler会自动管理连接的释放，解决了对连接的释放管理.
 	 */
 	private static ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
-		// �Զ�����Ӧ����
+		// 自定义响应处理
 		public String handleResponse(HttpResponse response) throws IOException {
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
@@ -111,11 +110,11 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Get��ʽ�ύ,URL�а��ѯ����, ��ʽ��http://www.g.cn?search=p&name=s.....
+	 * Get方式提交,URL中包含查询参数, 格式：http://www.g.cn?search=p&name=s.....
 	 * 
 	 * @param url
-	 *            �ύ��ַ
-	 * @return ��Ӧ��Ϣ
+	 *            提交地址
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String get(String url) throws Exception {
@@ -123,13 +122,13 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Get��ʽ�ύ,URL�в����ѯ����, ��ʽ��http://www.g.cn
+	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn
 	 * 
 	 * @param url
-	 *            �ύ��ַ
+	 *            提交地址
 	 * @param params
-	 *            ��ѯ����, ��/ֵ��
-	 * @return ��Ӧ��Ϣ
+	 *            查询参数集, 键/值对
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String get(String url, Map<String, String> params) throws Exception {
@@ -137,15 +136,15 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Get��ʽ�ύ,URL�в����ѯ����, ��ʽ��http://www.g.cn
+	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn
 	 * 
 	 * @param url
-	 *            �ύ��ַ
+	 *            提交地址
 	 * @param params
-	 *            ��ѯ����, ��/ֵ��
+	 *            查询参数集, 键/值对
 	 * @param charset
-	 *            �����ύ���뼯
-	 * @return ��Ӧ��Ϣ
+	 *            参数提交编码集
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String get(String url, Map<String, String> params, String charset) throws Exception {
@@ -167,9 +166,9 @@ public final class HttpUtil {
 		try {
 			responseStr = httpclient.execute(hg, responseHandler);
 		} catch (ClientProtocolException e) {
-			throw new Exception("�ͻ�������Э�����", e);
+			throw new Exception("客户端连接协议错误", e);
 		} catch (IOException e) {
-			throw new Exception("IO�����쳣", e);
+			throw new Exception("IO操作异常", e);
 		} finally {
 			abortConnection(hg, httpclient);
 		}
@@ -178,13 +177,13 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post��ʽ�ύ,URL�в����ύ����, ��ʽ��http://www.g.cn
+	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn
 	 * 
 	 * @param url
-	 *            �ύ��ַ
+	 *            提交地址
 	 * @param params
-	 *            �ύ����, ��/ֵ��
-	 * @return ��Ӧ��Ϣ
+	 *            提交参数集, 键/值对
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String post(String url, Map<String, String> params) throws Exception {
@@ -192,22 +191,22 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post��ʽ�ύ,URL�в����ύ����, ��ʽ��http://www.g.cn
+	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn
 	 * 
 	 * @param url
-	 *            �ύ��ַ
+	 *            提交地址
 	 * @param params
-	 *            �ύ����, ��/ֵ��
+	 *            提交参数集, 键/值对
 	 * @param charset
-	 *            �����ύ���뼯
-	 * @return ��Ӧ��Ϣ
+	 *            参数提交编码集
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String post(String url, Map<String, String> params, String charset) throws Exception {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
-		// ����HttpClientʵ��
+		// 创建HttpClient实例
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		UrlEncodedFormEntity formEntity = null;
 		try {
@@ -217,18 +216,18 @@ public final class HttpUtil {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
-			throw new Exception("��֧�ֵı��뼯", e);
+			throw new Exception("不支持的编码集", e);
 		}
 		HttpPost hp = new HttpPost(url);
 		hp.setEntity(formEntity);
-		// �������󣬵õ���Ӧ
+		// 发送请求，得到响应
 		String responseStr = null;
 		try {
 			responseStr = httpclient.execute(hp, responseHandler);
 		} catch (ClientProtocolException e) {
-			throw new Exception("�ͻ�������Э�����", e);
+			throw new Exception("客户端连接协议错误", e);
 		} catch (IOException e) {
-			throw new Exception("IO�����쳣", e);
+			throw new Exception("IO操作异常", e);
 		} finally {
 			abortConnection(hp, httpclient);
 		}
@@ -237,23 +236,23 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post��ʽ�ύ,����URL�а�Ĳ���,���SSL˫������֤����֤
+	 * Post方式提交,忽略URL中包含的参数,解决SSL双向数字证书认证
 	 * 
 	 * @param url
-	 *            �ύ��ַ
+	 *            提交地址
 	 * @param params
-	 *            �ύ����, ��/ֵ��
+	 *            提交参数集, 键/值对
 	 * @param charset
-	 *            ������뼯
+	 *            参数编码集
 	 * @param keystoreUrl
-	 *            ��Կ�洢��·��
+	 *            密钥存储库路径
 	 * @param keystorePassword
-	 *            ��Կ�洢���������
+	 *            密钥存储库访问密码
 	 * @param truststoreUrl
-	 *            ���δ洢���·��
+	 *            信任存储库绝路径
 	 * @param truststorePassword
-	 *            ���δ洢���������, ��Ϊnull
-	 * @return ��Ӧ��Ϣ
+	 *            信任存储库访问密码, 可为null
+	 * @return 响应消息
 	 * @throws Exception
 	 */
 	public static String post(String url, Map<String, String> params, String charset, final URL keystoreUrl,
@@ -270,7 +269,7 @@ public final class HttpUtil {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
-			throw new Exception("��֧�ֵı��뼯", e);
+			throw new Exception("不支持的编码集", e);
 		}
 		HttpPost hp = null;
 		String responseStr = null;
@@ -285,19 +284,19 @@ public final class HttpUtil {
 			hp.setEntity(formEntity);
 			responseStr = httpclient.execute(hp, responseHandler);
 		} catch (NoSuchAlgorithmException e) {
-			throw new Exception("ָ���ļ����㷨������", e);
+			throw new Exception("指定的加密算法不可用", e);
 		} catch (KeyStoreException e) {
-			throw new Exception("keytore�����쳣", e);
+			throw new Exception("keytore解析异常", e);
 		} catch (CertificateException e) {
-			throw new Exception("����֤����ڻ�����쳣", e);
+			throw new Exception("信任证书过期或解析异常", e);
 		} catch (FileNotFoundException e) {
-			throw new Exception("keystore�ļ�������", e);
+			throw new Exception("keystore文件不存在", e);
 		} catch (IOException e) {
-			throw new Exception("I/O����ʧ�ܻ��ж� ", e);
+			throw new Exception("I/O操作失败或中断", e);
 		} catch (UnrecoverableKeyException e) {
-			throw new Exception("keystore�е���Կ�޷��ָ��쳣", e);
+			throw new Exception("keystore中的密钥无法恢复异常", e);
 		} catch (KeyManagementException e) {
-			throw new Exception("������Կ����Ĳ����쳣", e);
+			throw new Exception("处理密钥管理的操作异常", e);
 		} finally {
 			abortConnection(hp, httpclient);
 		}
@@ -306,16 +305,16 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * ��ȡDefaultHttpClientʵ��
+	 * 获取DefaultHttpClient实例
 	 * 
 	 * @param charset
-	 *            ������뼯, �ɿ�
-	 * @return DefaultHttpClient ����
+	 *            参数编码集, 可空
+	 * @return DefaultHttpClient 对象
 	 */
 	private static DefaultHttpClient getDefaultHttpClient(final String charset) {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-		// ģ������������һЩ����������ֻ������������ʵ�����
+		// 模拟浏览器，解决一些服务器程序只允许浏览器访问的问题
 		httpclient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,
 			"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)");
 		httpclient.getParams().setParameter(CoreProtocolPNames.USE_EXPECT_CONTINUE, Boolean.FALSE);
@@ -327,12 +326,12 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * �ͷ�HttpClient����
+	 * 释放HttpClient连接
 	 * 
 	 * @param hrb
-	 *            �������
+	 *            请求对象
 	 * @param httpclient
-	 *            client����
+	 *            client对象
 	 */
 	private static void abortConnection(final HttpRequestBase hrb, final HttpClient httpclient) {
 		if (hrb != null) {
@@ -344,13 +343,13 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * �Ӹ��·���м��ش� KeyStore
+	 * 从给定的路径中加载此 KeyStore
 	 * 
 	 * @param url
-	 *            keystore URL·��
+	 *            keystore URL路径
 	 * @param password
-	 *            keystore������Կ
-	 * @return keystore ����
+	 *            keystore访问密钥
+	 * @return keystore 对象
 	 */
 	private static KeyStore createKeyStore(final URL url, final String password) throws KeyStoreException,
 		NoSuchAlgorithmException, CertificateException, IOException {
@@ -373,11 +372,11 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * ������ļ�/ֵ�Բ���ת��ΪNameValuePair����
+	 * 将传入的键/值对参数转换为NameValuePair参数集
 	 * 
 	 * @param paramsMap
-	 *            ����, ��/ֵ��
-	 * @return NameValuePair����
+	 *            参数集, 键/值对
+	 * @return NameValuePair参数集
 	 */
 	private static List<NameValuePair> getParamsList(Map<String, String> paramsMap) {
 		if (paramsMap == null || paramsMap.size() == 0) {
@@ -398,7 +397,7 @@ public final class HttpUtil {
 		params.put("password", "123");
 		for (int i = 0; i < 10; i++) {
 			try {
-				HttpUtil.post("http://ims.jiakun.com.cn:8191/xplatform/router/rest", params);
+				HttpUtil.post("http://ims.jiakun.com.cn/xplatform/router/rest", params);
 			} catch (Exception e) {
 				logger.error(e);
 			}
