@@ -107,7 +107,7 @@ public class CacheStats extends SearchInfo {
 	private String bytesRead;
 
 	/**
-	 * ��ʾ��ǰϵͳ�򿪵�������
+	 * 表示当前系统打开的连接数.
 	 */
 	private String currConnections;
 
