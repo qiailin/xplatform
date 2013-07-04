@@ -73,7 +73,7 @@ public class CacheStats extends SearchInfo {
 	private String version;
 
 	/**
-	 * �����������������ϵͳ��ָ���С��һ��Ϊ32��64
+	 * 服务器所在主机操作系统的指针大小，一般为32或64.
 	 */
 	private String pointerSize;
 
