@@ -5,7 +5,7 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * cache��B����
+ * cache狀態對象.
  * 
  * @author xujiakun
  * 
@@ -33,7 +33,7 @@ public class CacheStats extends SearchInfo {
 	private String deleteHits;
 
 	/**
-	 * ��ʾϵͳ�洢���������ʹ�õĴ洢�ռ䣬��λΪ�ֽ�
+	 * 表示系统存储缓存对象所使用的存储空间，单位为字节.
 	 */
 	private String bytes;
 
