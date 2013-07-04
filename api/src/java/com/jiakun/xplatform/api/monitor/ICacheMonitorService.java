@@ -13,7 +13,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface ICacheMonitorService {
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
 	/**
 	 * 
