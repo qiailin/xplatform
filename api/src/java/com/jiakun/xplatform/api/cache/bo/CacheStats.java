@@ -5,7 +5,7 @@ import java.util.Date;
 import com.jiakun.xplatform.framework.bo.SearchInfo;
 
 /**
- * cache��B����
+ * cache狀態對象.
  * 
  * @author xujiakun
  * 
@@ -33,12 +33,12 @@ public class CacheStats extends SearchInfo {
 	private String deleteHits;
 
 	/**
-	 * ��ʾϵͳ�洢���������ʹ�õĴ洢�ռ䣬��λΪ�ֽ�
+	 * 表示系统存储缓存对象所使用的存储空间，单位为字节.
 	 */
 	private String bytes;
 
 	/**
-	 * ��ʾ��memcached������������ǰʱ�䣬ϵͳ�洢������ж��������������Ŀǰ�Ѿ��ӻ�����ɾ��Ķ���
+	 * 表示从memcached服务启动到当前时间，系统存储过的所有对象的数量，包括目前已经从缓存中删除的对象.
 	 */
 	private String totalItems;
 
