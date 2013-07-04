@@ -53,7 +53,7 @@ public class CacheStats extends SearchInfo {
 
 	/**
 	 * Number of denied connection attempts because memcached reached it’s
-	 * configured connection limit (“-c” command line argument)
+	 * configured connection limit (“-c” command line argument).
 	 */
 	private String listenDisabledNum;
 
