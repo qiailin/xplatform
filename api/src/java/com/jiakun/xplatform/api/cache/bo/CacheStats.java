@@ -146,7 +146,7 @@ public class CacheStats extends SearchInfo {
 	private String deleteMisses;
 
 	/**
-	 * ��ʾ��memcached������������ǰʱ�䣬ϵͳ�򿪹�����ӵ�����
+	 * 表示从memcached服务启动到当前时间，系统打开过的连接的总数
 	 */
 	private String totalConnections;
 
