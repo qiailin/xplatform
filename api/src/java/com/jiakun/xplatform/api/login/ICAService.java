@@ -15,7 +15,7 @@ public interface ICAService {
 
 	String RESULT_ERROR = "2";
 
-	String INCORRECT_NULL = "�û�������벻��Ϊ�գ�";
+	String INCORRECT_NULL = "用户名或密码不能为空！";
 
 	String INCORRECT_LOGINID = "���û���ϵͳ�в����ڣ�";
 
