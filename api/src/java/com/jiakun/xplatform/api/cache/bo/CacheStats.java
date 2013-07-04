@@ -63,7 +63,7 @@ public class CacheStats extends SearchInfo {
 	private String authErrors;
 
 	/**
-	 * Ϊ�˸��µ������Ŀ�ͷſռ䣬�ӻ����Ƴ�Ļ���������Ŀ�����糬����Сʱ���LRU�㷨�Ƴ�Ķ����Լ����ڵĶ���
+	 * 为了给新的数据项目释放空间，从缓存移除的缓存对象的数目。比如超过缓存大小时根据LRU算法移除的对象，以及过期的对象
 	 */
 	private String evictions;
 
