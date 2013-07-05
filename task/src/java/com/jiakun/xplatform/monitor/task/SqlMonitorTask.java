@@ -64,7 +64,7 @@ public class SqlMonitorTask {
 			while (start < count) {
 				sqlMonitor.setStart(start);
 
-				// ��ѯ��Ҫ��ص�sql�б�
+				// 查询需要监控的sql列表
 				List<SqlMonitor> list = sqlMonitorService.getSqlMonitorList(sqlMonitor);
 
 				StringBuilder content = new StringBuilder();
