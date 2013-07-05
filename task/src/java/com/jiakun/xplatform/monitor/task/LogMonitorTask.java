@@ -79,7 +79,7 @@ public class LogMonitorTask {
 		content.append("</table>");
 
 		if (list != null && list.size() != 0) {
-			new MailService(smtpServer, from, "monitor", to, "xplatform��̨������־", content.toString()).send();
+			new MailService(smtpServer, from, "monitor", to, "xplatform log", content.toString()).send();
 		}
 	}
 
