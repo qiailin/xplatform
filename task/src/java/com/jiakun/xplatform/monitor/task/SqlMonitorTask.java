@@ -75,17 +75,17 @@ public class SqlMonitorTask {
 					// 执行监控sql
 					int re = sqlMonitorService.execMonitorSql(s.getSql());
 
-					// ����ֵ
+					// 超过阀值
 					if (re > s.getThreshold()) {
 						String emailAlarm = s.getEmailAlarm();
-						// �����ʼ�����
+						// 发送邮件提醒
 						if (StringUtil.isNotEmpty(emailAlarm)) {
 
-							// ��ȡ���sql��ϸ��Ϣ ֻ����ǰ10��
+							// 读取监控sql详细信息 只返回前10条
 							List<Map<String, Object>> detailList =
 								sqlMonitorService.execMonitorSqlDetail(s.getSqlDetail());
 
-							// ���� detailList
+							// 处理 detailList
 							for (Map<String, Object> map : detailList) {
 								for (String o : map.keySet()) {
 									content.append(o).append(":").append(map.get(o)).append(";");
@@ -93,7 +93,7 @@ public class SqlMonitorTask {
 								content.append("<br />");
 							}
 
-							// �����ʼ�
+							// 发送邮件
 							@SuppressWarnings("unused")
 							Map<String, String> map =
 								new MailService(smtpServer, from, "monitor", emailAlarm, s.getSqlMonitorTitle(),
@@ -101,7 +101,7 @@ public class SqlMonitorTask {
 						}
 
 						String smsAlarm = s.getSmsAlarm();
-						// ���Ͷ�������
+						// 发送短信提醒
 						if (StringUtil.isNotEmpty(smsAlarm)) {
 							Message message = new Message();
 							message.setMobile(smsAlarm);
@@ -113,7 +113,7 @@ public class SqlMonitorTask {
 						}
 					}
 
-					// ��¼��־
+					// 记录日志־
 					if (ISqlMonitorService.MONITOR_LOG_Y.equals(s.getLog())) {
 						MonitorLog monitorLog = new MonitorLog();
 						monitorLog.setMonitorId(s.getSqlMonitorId());
