@@ -72,7 +72,7 @@ public class SqlMonitorTask {
 				for (SqlMonitor s : list) {
 					content.delete(0, content.length());
 
-					// ִ�м��sql
+					// 执行监控sql
 					int re = sqlMonitorService.execMonitorSql(s.getSql());
 
 					// ����ֵ
