@@ -20,7 +20,6 @@ public class DateTimeTypeHanlderCallback implements TypeHandlerCallback {
 	}
 
 	public void setParameter(ParameterSetter setter, Object parameter) throws SQLException {
-
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		setter.setString(df.format(parameter));
 	}
