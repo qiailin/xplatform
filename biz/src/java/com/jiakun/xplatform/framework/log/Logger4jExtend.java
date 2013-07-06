@@ -78,7 +78,7 @@ public class Logger4jExtend {
 			recordLogMonitor(message, event.getLocationInformation());
 
 		} catch (Exception e) {
-			logger.error("��־��¼ʧ��", e);
+			logger.error("日志记录失败", e);
 		}
 	}
 
@@ -91,7 +91,7 @@ public class Logger4jExtend {
 			recordLogMonitor(message, event.getLocationInformation(), event.getThrowableStrRep());
 
 		} catch (Exception ee) {
-			logger.error("��־��¼ʧ��", ee);
+			logger.error("日志记录失败", ee);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class Logger4jExtend {
 		logMonitor.setMethodName(locationInfo.getMethodName());
 		logMonitor.setLineNumber(locationInfo.getLineNumber());
 
-		// ������ֶ���Ҫ��ȡ
+		// 如果超级长字段需要截取
 		if (message.toString().length() >= 3500) {
 			logMonitor.setMessage(message.toString().substring(0, 3500));
 		} else {
@@ -120,7 +120,7 @@ public class Logger4jExtend {
 			}
 		}
 
-		// ������ֶ���Ҫ��ȡ
+		// 如果超级长字段需要截取
 		if (sb.length() >= 3500) {
 			logMonitor.setE(sb.substring(0, 3500));
 		} else {
@@ -134,7 +134,7 @@ public class Logger4jExtend {
 			List<LogMonitor> list =
 				(List<LogMonitor>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
 
-			// ��ʼ��cache
+			// 初始化cache
 			if (list == null || list.size() == 0) {
 				list = new ArrayList<LogMonitor>();
 			}

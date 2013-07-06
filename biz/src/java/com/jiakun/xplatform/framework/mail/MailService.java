@@ -36,7 +36,7 @@ public class MailService {
 
 	private Logger4jExtend logger = Logger4jCollection.getLogger(MailService.class);
 
-	// ���巢���ˡ��ռ��ˡ�SMTP���������û������롢���⡢���ݵ�
+	// 定义发件人、收件人、SMTP服务器、用户名、密码、主题、内容等
 	private String displayName;
 	private String to;
 	private String from;
@@ -50,7 +50,7 @@ public class MailService {
 	private List<Mail> files = new ArrayList<Mail>();
 
 	/**
-	 * ��ʼ��SMTP��������ַ��������E-mail��ַ���û������롢�����ߡ����⡢����
+	 * 初始化SMTP服务器地址、发送者E-mail地址、用户名、密码、接收者、主题、内容
 	 */
 	public MailService(String smtpServer, String from, String displayName, String username, String password, String to,
 		String subject, String content) {
@@ -66,7 +66,7 @@ public class MailService {
 	}
 
 	/**
-	 * ��ʼ��SMTP��������ַ��������E-mail��ַ�������ߡ����⡢����
+	 * 初始化SMTP服务器地址、发送者E-mail地址、接收者、主题、内容
 	 */
 	public MailService(String smtpServer, String from, String displayName, String to, String subject, String content) {
 		this.smtpServer = smtpServer;
@@ -79,18 +79,18 @@ public class MailService {
 	}
 
 	/**
-	 * �����ʼ�
+	 * 发送邮件
 	 */
 	@SuppressWarnings("unused")
 	public Map<String, String> send() {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("state", "success");
-		String message = "�ʼ����ͳɹ���";
+		String message = "邮件发送成功！";
 		Session session = null;
 		Properties props = System.getProperties();
 		props.put("mail.smtp.host", smtpServer);
 
-		// ��������Ҫ�����֤
+		// 服务器需要身份认证
 		if (ifAuth) {
 			props.put("mail.smtp.auth", "true");
 			SmtpAuth smtpAuth = new SmtpAuth(username, password);
@@ -112,7 +112,7 @@ public class MailService {
 			} catch (UnsupportedEncodingException e) {
 				logger.error(LogUtil.parserBean(fromAddress), e);
 			}
-			// ����ռ���
+			// 多个收件人
 			String[] toArray = to.split(";");
 			InternetAddress[] toAdd = new InternetAddress[toArray.length];
 			for (int i = 0; i < toArray.length; i++) {
@@ -132,29 +132,29 @@ public class MailService {
 			MimeBodyPart mbp = new MimeBodyPart();
 			mbp.setContent(content, "text/html;charset=GBK");
 			mp.addBodyPart(mbp);
-			// �и���
+			// 有附件
 			if (!files.isEmpty()) {
 				for (Mail file : files) {
 					mbp = new MimeBodyPart();
-					// �õ����Դ
+					// 得到数据源
 					FileDataSource fds = new FileDataSource(file.getFilepath());
-					// �õ��������?����BodyPart
+					// 得到附件本身并至入BodyPart
 					mbp.setDataHandler(new DataHandler(fds));
 					try {
 						filename = MimeUtility.encodeText(file.getFilename(), "gb2312", "B");
 					} catch (UnsupportedEncodingException e) {
 						logger.error(LogUtil.parserBean(file), e);
 					}
-					// �õ��ļ���ͬ������BodyPart
+					// 得到文件名同样至入BodyPart
 					mbp.setFileName(filename);
 					mp.addBodyPart(mbp);
 				}
 			}
-			// Multipart���뵽�ż�
+			// Multipart加入到信件
 			msg.setContent(mp);
-			// �����ż�ͷ�ķ�������
+			// 设置信件头的发送日期
 			msg.setSentDate(new Date());
-			// �����ż�
+			// 发送信件
 			msg.saveChanges();
 			trans = session.getTransport("smtp");
 			trans.connect(smtpServer, username, password);
@@ -163,10 +163,10 @@ public class MailService {
 
 		} catch (AuthenticationFailedException e) {
 			map.put("state", "failed");
-			message = "�ʼ�����ʧ�ܣ�����ԭ��\n" + "�����֤����!";
+			message = "邮件发送失败！错误原因：\n" + "身份验证错误!";
 			logger.error(LogUtil.parserBean(msg), e);
 		} catch (MessagingException e) {
-			message = "�ʼ�����ʧ�ܣ�����ԭ��\n" + e.getMessage();
+			message = "邮件发送失败！错误原因：\n" + e.getMessage();
 			map.put("state", "failed");
 			Exception ex = null;
 			if ((ex = e.getNextException()) != null) {
@@ -178,70 +178,70 @@ public class MailService {
 	}
 
 	/**
-	 * ����SMTP��������ַ
+	 * 设置SMTP服务器地址
 	 */
 	public void setSmtpServer(String smtpServer) {
 		this.smtpServer = smtpServer;
 	}
 
 	/**
-	 * ���÷����˵ĵ�ַ
+	 * 设置发件人的地址
 	 */
 	public void setFrom(String from) {
 		this.from = from;
 	}
 
 	/**
-	 * ������ʾ�����
+	 * 设置显示的名称
 	 */
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
 
 	/**
-	 * ���÷������Ƿ���Ҫ�����֤
+	 * 设置服务器是否需要身份认证
 	 */
 	public void setIfAuth(boolean ifAuth) {
 		this.ifAuth = ifAuth;
 	}
 
 	/**
-	 * ����E-mail�û���
+	 * 设置E-mail用户名
 	 */
 	public void setUserName(String username) {
 		this.username = username;
 	}
 
 	/**
-	 * ����E-mail����
+	 * 设置E-mail密码
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * ���ý�����
+	 * 设置接收者
 	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 
 	/**
-	 * ��������
+	 * 设置主题
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
 	/**
-	 * ������������
+	 * 设置主体内容
 	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
 	/**
-	 * �÷��������ռ�������
+	 * 该方法用于收集附件名
 	 */
 	public void addAttachfile(Mail mailFile) {
 		files.add(mailFile);
