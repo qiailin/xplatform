@@ -97,7 +97,7 @@ public class FileServiceImpl implements IFileService {
 			int result = fileDao.deleteFile(fileInfo);
 			res.setResult(true);
 			res.setCode(String.valueOf(result));
-			// ���cache
+			// clear cache
 			removeCache(fileInfo.getCodes());
 			return res;
 		} catch (Exception e) {
