@@ -21,4 +21,5 @@ public class SmtpAuth extends Authenticator {
 	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
 		return new javax.mail.PasswordAuthentication(username, password);
 	}
+
 }
