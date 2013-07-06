@@ -22,7 +22,6 @@ public class PreviousDateTypeHanlderCallback implements TypeHandlerCallback {
 	}
 
 	public void setParameter(ParameterSetter setter, Object parameter) throws SQLException {
-
 		Date date = DateUtil.addDays((Date) parameter, -1);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		setter.setString(df.format(date));

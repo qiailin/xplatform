@@ -19,7 +19,6 @@ public class WildcardTypeHanlderCallback implements TypeHandlerCallback {
 	}
 
 	public void setParameter(ParameterSetter setter, Object obj) throws SQLException {
-
 		String parameter = (String) obj;
 
 		if (StringUtil.isBlank(parameter)) {
