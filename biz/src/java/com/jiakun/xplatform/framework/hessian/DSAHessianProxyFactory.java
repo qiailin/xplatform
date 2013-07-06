@@ -27,7 +27,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 	private String keyPairName;
 
 	/**
-	 * �̶��ļ����ַ�
+	 * 固定的加密字符串
 	 */
 	private String secureKey;
 
@@ -38,9 +38,9 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append(baseUrl);
 
-		// ���ʱ���
+		// 生成时间戳
 		long timestamp = System.currentTimeMillis();
-		// ��ɷ���ǩ��
+		// 生成方法签名
 		try {
 			signature = dsaService.sign(secureKey + "|" + Long.toString(timestamp), keyPairName);
 		} catch (NoSuchKeyPairException ne) {
@@ -72,7 +72,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 			}
 		}
 
-		// �����Զ����content-type
+		// 设置自定义的content-type
 		conn.setRequestProperty("Content-Type", "application/octet-stream");
 
 		return conn;

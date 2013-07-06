@@ -28,29 +28,29 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 	private IDSAService dsaService;
 
 	/**
-	 * �������ʱ��
+	 * 请求过期时间
 	 */
 	private long timeout;
 
 	/**
-	 * ����ԭ��
+	 * 令牌原文
 	 */
 	private String secureKey;
 
 	/**
-	 * ������ʵĿͻ���
+	 * 允许访问的客户端
 	 */
 	private String allowedClients;
 
 	/**
-	 * ��Կ���
+	 * 密钥名称
 	 */
 	private String keyPairName;
 
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException,
 		IOException {
 
-		// 1.��������������IP��ַ����Ҫ���пͻ���IP��ַ��֤
+		// 1.如果设置了允许的IP地址，需要进行客户端IP地址验证
 		if (StringUtil.isNotBlank(allowedClients)) {
 			// String clientIP = getClientIPAddress(request);
 			String clientIP = ClientUtil.getIpAddr(request);
@@ -60,7 +60,7 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 			}
 		}
 
-		// 2.������������ƻ��߹���ʱ�䣬��Ҫ�ж�ʱ���ʽ�Ƿ�Ϸ�
+		// 2.如果设置了令牌或者过期时间，需要判断时间格式是否合法
 		String strTimestamp = request.getParameter("time");
 		long timestamp = 0;
 		if (timeout > 0 || StringUtil.isNotBlank(secureKey)) {
@@ -76,22 +76,22 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 			}
 		}
 
-		// 3.��������˹���ʱ�䣬��Ҫ�ж������Ƿ����
+		// 3.如果设置了过期时间，需要判断请求是否过期
 		if (timeout > 0 && isRequestExpired(timestamp)) {
 			logger.error("hessian authentication error:request is expired!");
 			return;
 		}
 
-		// 4. ������������ƣ���Ҫ����ǩ��У��
+		// 4. 如果设置了令牌，需要进行签名校验
 		if (StringUtil.isNotBlank(secureKey)) {
-			// 4.1 �õ�ǩ��
+			// 4.1 得到签名
 			String signature = request.getParameter("sign");
 			if (signature == null) {
 				logger.error("hessian authentication error:signatures not exist!");
 				return;
 			}
 			try {
-				// 4.2 ��֤ǩ���Ƿ�һ��
+				// 4.2 验证签名是否一致
 				boolean isRight = dsaService.check(secureKey + "|" + timestamp, signature, keyPairName);
 				if (!isRight) {
 					logger.error("hessian authentication error:signatures not match!");
@@ -105,7 +105,7 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 
 		}
 
-		// 5. ����hessian content-type
+		// 5. 设置hessian content-type
 		response.setContentType("application/octet-stream");
 
 		super.handleRequest(request, response);

@@ -30,14 +30,14 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 public class DSAServiceImpl implements IDSAService {
 
 	/**
-	 * �����ļ���
+	 * 配置文件名
 	 */
 	private static final String KEY_CONFIG_FILE = "dsaConfig.xml";
 
 	private static final String CONF_SUB_DIR = "/dsa/";
 
 	/**
-	 * �������ļ��еĽڵ��ʶ
+	 * 在配置文件中的节点标识
 	 */
 	private static final String KEY_TOKEN_TEXT = "key";
 
@@ -52,7 +52,7 @@ public class DSAServiceImpl implements IDSAService {
 	private DSA dsa;
 
 	/**
-	 * ��������ļ���ȡ��˽Կ��Ϣ�б�
+	 * 根据配置文件获取公私钥信息列表
 	 * 
 	 * @return
 	 */
@@ -107,10 +107,10 @@ public class DSAServiceImpl implements IDSAService {
 	}
 
 	/**
-	 * ��ʼ��service��
+	 * 初始化service.
 	 * 
 	 * @throws ServiceInitializationException
-	 *             ����ʼ��ʧ��
+	 *             如果初始化失败
 	 */
 	@SuppressWarnings("rawtypes")
 	public void init() throws ServiceInitializationException {
@@ -121,7 +121,7 @@ public class DSAServiceImpl implements IDSAService {
 		String priKeyFileName = null;
 		String keyPairName = null;
 
-		// ��������ÿ�� keyPairName ��Ӧ�Ĺ�˽Կ��ֻ���ȡһ��
+		// 用来控制每个 keyPairName 对应的公私钥对只会读取一次
 		Set<String> keys = new HashSet<String>();
 
 		for (Iterator i = keyInfoList.iterator(); i.hasNext();) {
