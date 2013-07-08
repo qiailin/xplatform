@@ -116,7 +116,7 @@ Ext.onReady(function() {
 
 			store = new Ext.data.Store({
 						url : appUrl
-								+ '/data/dataManageAction!getDataPreviewJsonList.jspa',
+								+ '/data/dataManageAction!getDataPreviewJsonList.htm',
 						reader : new Ext.data.SimpleJsonReader({
 									id : 'value1'
 								}, Item),
@@ -408,14 +408,15 @@ function ok() {
 
 function del() {
 	Ext.Msg.confirm("提示", "确认删除本次导入的所有数据？", function(button) {
-		if (button == 'yes') {
-			createShadeDiv();
-			var form = window.document.forms[0];
-			form.action = appUrl + "/data/dataManageAction!deleteDataInfo.jspa";
-			form.target = "hideFrame";
-			form.submit();
-		}
-	});
+				if (button == 'yes') {
+					createShadeDiv();
+					var form = window.document.forms[0];
+					form.action = appUrl
+							+ "/data/dataManageAction!deleteDataInfo.htm";
+					form.target = "hideFrame";
+					form.submit();
+				}
+			});
 }
 
 function promgtMsg() {

@@ -124,7 +124,7 @@ function createAuthorize() {
 			});
 	var form = window.document.forms[0];
 	$('#userIds').val(ids);
-	form.action = appUrl + '/data/dataConfigAction!createAuthorize.jspa';
+	form.action = appUrl + '/data/dataConfigAction!createAuthorize.htm';
 	form.target = "hideFrame";
 	form.submit();
 }

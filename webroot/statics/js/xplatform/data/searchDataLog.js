@@ -4,7 +4,7 @@ Ext.onReady(function() {
 
 			var dbTable = new Ext.plugins.DBTableSelector({
 						url : appUrl
-								+ '/data/dataLogAction!getDBTableJsonList.jspa',
+								+ '/data/dataLogAction!getDBTableJsonList.htm',
 						triggerAction : 'power',
 						searchable : true,
 						displayField : 'itemValue',
@@ -40,7 +40,7 @@ Ext.onReady(function() {
 
 			store = new Ext.data.Store({
 						url : appUrl
-								+ '/data/dataLogAction!getDataLogJsonList.jspa',
+								+ '/data/dataLogAction!getDataLogJsonList.htm',
 						reader : new Ext.data.SimpleJsonReader({
 									id : 'dataLogId'
 								}, Item),
@@ -167,7 +167,7 @@ function searchDataPreview(id) {
 	window
 			.open(
 					appUrl
-							+ "/data/dataManageAction!searchDataPreview.jspa?dataLogTotalId="
+							+ "/data/dataManageAction!searchDataPreview.htm?dataLogTotalId="
 							+ id, "winSub", "left=" + WLeft + ",top=" + WTop
 							+ ",width=" + WWidth + ",height=" + WHeight
 							+ ",toolbar=no,rolebar=no,scrollbars=yes");
@@ -196,7 +196,7 @@ function exportDataTemplate() {
 	}
 
 	var form = window.document.forms[0];
-	form.action = "dataManageAction!exportDataTemplate.jspa";
+	form.action = "dataManageAction!exportDataTemplate.htm";
 	form.target = "hideFrame";
 	form.submit();
 }
@@ -236,7 +236,7 @@ function importData() {
 					if (button == 'yes') {
 						if (fp.getForm().isValid()) {
 							fp.getForm().submit({
-										url : 'dataManageAction!importData.jspa',
+										url : 'dataManageAction!importData.htm',
 										params : {
 											dataConfigId : $('#itemId').val()
 										},

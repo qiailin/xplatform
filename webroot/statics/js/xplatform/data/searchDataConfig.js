@@ -22,7 +22,7 @@ Ext.onReady(function() {
 
 	var dbTable = new Ext.plugins.DBTableSelector({
 		url : appUrl
-				+ '/dict/dictAction!getDictJsonList.jspa?dictTypeValue=db_table',
+				+ '/dict/dictAction!getDictJsonList.htm?dictTypeValue=db_table',
 		triggerAction : 'power',
 		searchable : true,
 		displayField : 'itemValue',
@@ -61,7 +61,7 @@ Ext.onReady(function() {
 
 	store = new Ext.data.Store({
 				url : appUrl
-						+ '/data/dataConfigAction!getDataConfigJsonList.jspa',
+						+ '/data/dataConfigAction!getDataConfigJsonList.htm',
 				reader : new Ext.data.SimpleJsonReader({
 							id : 'dataConfigId'
 						}, Item),
@@ -209,7 +209,7 @@ function add() {
 	window
 			.open(
 					appUrl
-							+ "/data/dataConfigAction!createAuthorizePrepare.jspa?itemId="
+							+ "/data/dataConfigAction!createAuthorizePrepare.htm?itemId="
 							+ itemId, "winSub2", "left=" + WLeft + ",top="
 							+ WTop + ",width=" + WWidth + ",height=" + WHeight
 							+ ",toolbar=no,rolebar=no,scrollbars=yes");
@@ -242,7 +242,7 @@ function del() {
 							.encode(params);
 					var form = window.document.forms[0];
 					form.action = appUrl
-							+ "/data/dataConfigAction!cancelAuthorize.jspa";
+							+ "/data/dataConfigAction!cancelAuthorize.htm";
 					form.target = "hideFrame";
 					form.submit();
 				}
