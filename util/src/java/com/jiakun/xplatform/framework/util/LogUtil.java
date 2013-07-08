@@ -87,9 +87,10 @@ public final class LogUtil {
 				sb.append(obj.getClass().getName()).append(":");
 				sb.append("{");
 				Map<String, Object> map = PropertyUtils.describe(obj);
-				for (Iterator<String> iter = map.keySet().iterator(); iter.hasNext();) {
-					String element = iter.next();
-					Object value = map.get(element);
+
+				for (Map.Entry<String, Object> entry : map.entrySet()) {
+					String element = entry.getKey();
+					Object value = entry.getValue();
 					if (value == null) {
 						sb.append("\"" + element + "\":").append('"').append("null").append('"').append(',');
 					} else if (value instanceof String || (value instanceof StringBuffer)) {
@@ -112,6 +113,7 @@ public final class LogUtil {
 						sb.append("\"" + element + "\":").append(":\"" + value + "\"").append(',');
 					}
 				}
+
 				if (sb.charAt(sb.length() - 1) == ',') {
 					sb.deleteCharAt(sb.length() - 1);
 				}
