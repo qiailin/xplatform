@@ -1,6 +1,5 @@
 package com.jiakun.xplatform.api.data;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.jiakun.xplatform.api.data.bo.DataConfig;
@@ -12,7 +11,7 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  * @author xujiakun
  * 
  */
-public interface IDataConfigService extends Serializable {
+public interface IDataConfigService {
 
 	String ERROR_MESSAGE = "����ʧ�ܣ�";
 

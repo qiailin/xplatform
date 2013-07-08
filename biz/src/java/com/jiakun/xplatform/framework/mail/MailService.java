@@ -168,8 +168,8 @@ public class MailService {
 		} catch (MessagingException e) {
 			message = "邮件发送失败！错误原因：\n" + e.getMessage();
 			map.put("state", "failed");
-			Exception ex = null;
-			if ((ex = e.getNextException()) != null) {
+			Exception ex = e.getNextException();
+			if (ex != null) {
 				logger.error(LogUtil.parserBean(msg), e);
 			}
 		}
