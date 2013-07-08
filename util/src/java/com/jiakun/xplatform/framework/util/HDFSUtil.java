@@ -32,7 +32,7 @@ public final class HDFSUtil {
 		FileSystem fs = null;
 
 		try {
-			String url = "hdfs://" + ip + ":" + String.valueOf(port);
+			String url = "hdfs://" + ip + ":" + port;
 			Configuration config = new Configuration();
 			config.set("fs.default.name", url);
 

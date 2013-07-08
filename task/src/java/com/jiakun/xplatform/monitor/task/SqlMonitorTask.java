@@ -19,6 +19,8 @@ import com.jiakun.xplatform.framework.mail.MailService;
  */
 public class SqlMonitorTask {
 
+	private static final int LIMIT = 10;
+
 	private ISqlMonitorService sqlMonitorService;
 
 	private IMonitorLogService monitorLogService;
@@ -60,7 +62,7 @@ public class SqlMonitorTask {
 
 		if (count > 0) {
 			int start = 0;
-			int limit = 10;
+			int limit = LIMIT;
 			while (start < count) {
 				sqlMonitor.setStart(start);
 
