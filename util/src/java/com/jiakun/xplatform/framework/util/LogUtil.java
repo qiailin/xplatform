@@ -60,13 +60,14 @@ public final class LogUtil {
 				sb.append("]");
 			} else if (obj instanceof Map) {
 				sb.append('{');
-				Map map = (Map) obj;
-				Iterator keys = map.keySet().iterator();
-				while (keys.hasNext()) {
-					Object key = keys.next();
-					Object v = map.get(key);
+				Map<Object, Object> map = (Map) obj;
+
+				for (Map.Entry<Object, Object> entry : map.entrySet()) {
+					Object key = entry.getKey();
+					Object v = entry.getValue();
 					sb.append('"').append(key.toString()).append("\":").append(parserBean(v)).append(',');
 				}
+
 				if (sb.charAt(sb.length() - 1) == ',') {
 					sb.deleteCharAt(sb.length() - 1);
 				}
