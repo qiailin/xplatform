@@ -9,7 +9,7 @@
 Ext.ns('Ext.plugins.HeaderAligning');
 
 /**
- * ÁĞÍ·¶ÔÆë¸ñÊ½ÉèÖÃ
+ * åˆ—å¤´å¯¹é½æ ¼å¼è®¾ç½®
  * 
  * @alias Ext.plugins.HeaderAligning
  * @author Tingjia Chen tingjia.chentj@alibaba-inc.com
@@ -154,7 +154,7 @@ Ext.extend(Ext.data.SimpleJsonReader, Ext.data.JsonReader, {
 
 Ext.ns('Ext.ux.plugins.CheckBoxMemory');
 /**
- * ÎªCheckboxSelectionModelÔö¼Ó±£³Ö×´Ì¬µÄ¹¦ÄÜ
+ * ä¸ºCheckboxSelectionModelå¢åŠ ä¿æŒçŠ¶æ€çš„åŠŸèƒ½
  * 
  * @alias Ext.plugins.GridHotKey
  * @author Zhijun Yuan zhijun.yuanzj@alibaba-inc.com
@@ -261,22 +261,22 @@ Ext.ns('Ext.ux.grid.PowerSearchGridPanel');
  */
 Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 	/**
-	 * @cfg {Boolean} multiable ÊÇ·ñÖ§³Ö¶àÑ¡
+	 * @cfg {Boolean} multiable æ˜¯å¦æ”¯æŒå¤šé€‰
 	 */
 	multiable : true,
 
 	/**
-	 * @cfg {Boolean} searchable ÊÇ·ñÖ§³Ö²éÕÒ
+	 * @cfg {Boolean} searchable æ˜¯å¦æ”¯æŒæŸ¥æ‰¾
 	 */
 	searchable : true,
 
 	/**
-	 * @cfg {Boolean} creatable ÊÇ·ñÖ§³Ö¿ìËÙĞÂ½¨
+	 * @cfg {Boolean} creatable æ˜¯å¦æ”¯æŒå¿«é€Ÿæ–°å»º
 	 */
 	creatable : true,
 
 	/**
-	 * @cfg {Boolean} paginal ÊÇ·ñÖ§³Ö·ÖÒ³ÏÔÊ¾
+	 * @cfg {Boolean} paginal æ˜¯å¦æ”¯æŒåˆ†é¡µæ˜¾ç¤º
 	 */
 	paginal : true,
 
@@ -338,7 +338,7 @@ Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 
 		this.tbar = [];
 		if (this.searchable) {
-			this.tbar.push('²éÕÒ: ');
+			this.tbar.push('æŸ¥æ‰¾: ');
 			this.searchField = new Ext.ux.grid.SearchField({
 						pageSize : this.pageSize,
 						paginal : this.paginal,
@@ -351,7 +351,7 @@ Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 		this.tbar.push('->');
 		if (this.multiable) {
 			this.tbar.push({
-						text : 'Ñ¡¶¨',
+						text : 'é€‰å®š',
 						iconCls : 'btn_icon_select',
 						handler : function() {
 							if (this.totalSelection.items.length > 0) {
@@ -367,7 +367,7 @@ Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 		}
 		if (this.creatable) {
 			this.tbar.push({
-				text : 'ĞÂ½¨',
+				text : 'æ–°å»º',
 				iconCls : 'btn_icon_add',
 				handler : function() {
 					this.fireEvent("showadd", this);
@@ -389,8 +389,8 @@ Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 						pageSize : this.pageSize,
 						store : this.store,
 						displayInfo : true,
-						displayMsg : '¹² {2} Ìõ¼ÇÂ¼',
-						emptyMsg : "Ã»ÓĞÕÒµ½¼ÇÂ¼£¡"
+						displayMsg : 'å…± {2} æ¡è®°å½•',
+						emptyMsg : "æ²¡æœ‰æ‰¾åˆ°è®°å½•ï¼"
 					});
 		}
 
@@ -430,7 +430,7 @@ Ext.ux.grid.PowerSearchGridPanel = Ext.extend(Ext.grid.GridPanel, {
 	// private
 	initEvents : function() {
 		Ext.ux.grid.PowerSearchGridPanel.superclass.initEvents.call(this);
-		// µ¥Ñ¡Ê±µ¥»÷Ñ¡ÖĞ£¯¶àÑ¡Ê±Ë«»÷Ñ¡ÖĞ
+		// å•é€‰æ—¶å•å‡»é€‰ä¸­ï¼å¤šé€‰æ—¶åŒå‡»é€‰ä¸­
 		if (this.multiable) {
 			this.on('rowdblclick', function(g, i, e) {
 						if (this.totalSelection.items.length > 0) {
@@ -485,7 +485,7 @@ Ext.ux.grid.SearchField = Ext.extend(Ext.form.TwinTriggerField, {
 			hasSearch : false,
 			paramName : 'search',
 
-			// Çå³ı²éÕÒÌõ¼ş²¢»Ö¸´ÁĞ±íµ½³õÊ¼½á¹û
+			// æ¸…é™¤æŸ¥æ‰¾æ¡ä»¶å¹¶æ¢å¤åˆ—è¡¨åˆ°åˆå§‹ç»“æœ
 			onTrigger1Click : function() {
 				if (this.hasSearch) {
 					delete this.store.baseParams[this.paramName];
@@ -503,7 +503,7 @@ Ext.ux.grid.SearchField = Ext.extend(Ext.form.TwinTriggerField, {
 				}
 			},
 
-			// ²éÕÒ°´Å¥ÏìÓ¦
+			// æŸ¥æ‰¾æŒ‰é’®å“åº”
 			onTrigger2Click : function() {
 				var v = this.getRawValue();
 				if (v.length < 1) {
@@ -709,7 +709,7 @@ Ext.ux.PowerSelectBase = function(config){
 									promptMsg = config.deletePromptMsg;
 								}
 							}else{
-								promptMsg = "È·¶¨É¾µô´Ë¼ÇÂ¼Âğ£¿";
+								promptMsg = "ç¡®å®šåˆ æ‰æ­¤è®°å½•å—ï¼Ÿ";
 							}
 							if(window.confirm(promptMsg)){
 								Ext.Ajax.request({
@@ -724,7 +724,7 @@ Ext.ux.PowerSelectBase = function(config){
 								   	(config.dparams)(grid,r,row,col) : {} ) : {}
 								});
 							}
-// Ext.MessageBox.confirm('È·ÈÏÉ¾³ı', 'Are you sure you want to do that?',
+// Ext.MessageBox.confirm('ç¡®è®¤åˆ é™¤', 'Are you sure you want to do that?',
 // function(btn){
 // if(btn=='ok'){
 // Ext.Ajax.request({
@@ -767,7 +767,7 @@ Ext.ux.PowerSelectBase = function(config){
 			            this.powerCollapse();
 					}, this);
 					
-					// "ĞŞ¸Ä"Ò³ÃæÊ±³õÊ¼»¯ÏÂÀ­¿òµÄÖµ
+					// "ä¿®æ”¹"é¡µé¢æ—¶åˆå§‹åŒ–ä¸‹æ‹‰æ¡†çš„å€¼
 					this.grid.store.on('load', function(){
 						for( var key in config.hiddenValue ) {
 							var i = this.grid.store.findBy(function(r){
@@ -783,7 +783,7 @@ Ext.ux.PowerSelectBase = function(config){
 										if( f ) f.set({value:r.get(k)});
 									} else {
 										this.record.set(k, v); // TODO fix
-																// ¿ÉÄÜthis.record»á²»´æÔÚ
+																// å¯èƒ½this.recordä¼šä¸å­˜åœ¨
 									}
 								}
 								this.initValue();
@@ -887,7 +887,7 @@ Ext.ux.PowerSelectBase = function(config){
 					}
 				});
 				this.cw  = new Ext.Window({
-					title : 'ĞÂ½¨',
+					title : 'æ–°å»º',
 					width : config.formWidth||400,
 					shadow: false,
 					hideParent: true,
@@ -896,7 +896,7 @@ Ext.ux.PowerSelectBase = function(config){
 					defaults: { bodyStyle: 'padding:15px' },
 					items : [form, {xtype:'tbtext', text: String.format(tpl, '&#160;')}],
 					buttons: [{
-						text: '±£´æ',
+						text: 'ä¿å­˜',
 						scope: this,	// combo
 						handler: function(btn, e){
 							var fm = this.cw.items.itemAt(0).getForm();
@@ -920,17 +920,17 @@ Ext.ux.PowerSelectBase = function(config){
 								   	success: function(r, p) {
 								   		var result = Ext.decode(r.responseText);
 										if( result) {
-											// ±£´æ³É¹¦
+											// ä¿å­˜æˆåŠŸ
 											if(result.type == '1' ){
 												this.reloadGrid();
 												this.cw.hide();
 												tip.innerHTML = String.format(tpl, '&#160;');
 											}else{
-												var msg = result && result.message || '±£´æÊ§°Ü!';
+												var msg = result && result.message || 'ä¿å­˜å¤±è´¥!';
 												tip.innerHTML = String.format(tpl, msg);											
 											}
 										} else {
-											var msg = result && result.message || '±£´æÊ§°Ü!';
+											var msg = result && result.message || 'ä¿å­˜å¤±è´¥!';
 											tip.innerHTML = String.format(tpl, msg);
 										}
 										btn.setDisabled(false);
@@ -938,7 +938,7 @@ Ext.ux.PowerSelectBase = function(config){
 								});
 							}
 						}}, {
-						text: '¹Ø±Õ',
+						text: 'å…³é—­',
 						scope: this,	// combo
 						handler: function(){
 							this.cw.hide();
@@ -981,7 +981,7 @@ Ext.ux.PowerSelectBase = function(config){
 					}
 				});
 				this.uw  = new Ext.Window({
-					title : 'ĞÂ½¨',
+					title : 'æ–°å»º',
 					width : config.formWidth||this.grid.width,
 					shadow: false,
 					hideParent: true,
@@ -990,7 +990,7 @@ Ext.ux.PowerSelectBase = function(config){
 					defaults: { bodyStyle: 'padding:15px' },
 					items : [form, {xtype:'tbtext', text: String.format(tpl, '&#160;')}],
 					buttons: [{
-						text: '±£´æ',
+						text: 'ä¿å­˜',
 						scope: this,	// combo
 						handler: function(btn, e){
 							var fm = this.uw.items.itemAt(0).getForm();
@@ -1014,17 +1014,17 @@ Ext.ux.PowerSelectBase = function(config){
 								   	success: function(r, p) {
 								   		var result = Ext.decode(r.responseText);
 										if( result) {
-											// ±£´æ³É¹¦
+											// ä¿å­˜æˆåŠŸ
 											if(result.type == '1' ){
 												this.reloadGrid();
 												this.uw.hide();
 												tip.innerHTML = String.format(tpl, '&#160;');
 											}else{
-												var msg = result && result.message || '±£´æÊ§°Ü!';
+												var msg = result && result.message || 'ä¿å­˜å¤±è´¥!';
 												tip.innerHTML = String.format(tpl, msg);											
 											}
 										} else {
-											var msg = result && result.message || '±£´æÊ§°Ü!';
+											var msg = result && result.message || 'ä¿å­˜å¤±è´¥!';
 											tip.innerHTML = String.format(tpl, msg);
 										}
 										btn.setDisabled(false);
@@ -1032,7 +1032,7 @@ Ext.ux.PowerSelectBase = function(config){
 								});
 							}
 						}}, {
-						text: '¹Ø±Õ',
+						text: 'å…³é—­',
 						scope: this,	// combo
 						handler: function(){
 							this.uw.hide();
@@ -1088,7 +1088,7 @@ Ext.ux.PowerSelectBase = function(config){
 Ext.ns('Ext.plugins.ComplexGridCombox');
 
 /**
- * ÔÚÁĞ±íÖĞ¼ÓÈë¿ÆÄ¿Ñ¡ÔñÁĞ
+ * åœ¨åˆ—è¡¨ä¸­åŠ å…¥ç§‘ç›®é€‰æ‹©åˆ—
  * 
  * @alias Ext.plugins.ComplexGridCombox
  * @author Tingjia Chen tingjia.chentj@alibaba-inc.com
@@ -1220,7 +1220,7 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 					}
 				} : Ext.emptyFn;
 			})(this.config), combo).createInterceptor((function(config){
-				// "ĞŞ¸Ä"Ò³ÃæÊ±³õÊ¼»¯ÏÂÀ­¿òµÄÖµ
+				// "ä¿®æ”¹"é¡µé¢æ—¶åˆå§‹åŒ–ä¸‹æ‹‰æ¡†çš„å€¼
 				return function(){
 					if(config.hiddenValue){
 						this.store.on('load', function(){
@@ -1238,7 +1238,7 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 											if( f ) f.set({value:r.get(k)});
 										} else {
 											this.record.set(k, v); // TODO fix
-																	// ¿ÉÄÜthis.record»á²»´æÔÚ
+																	// å¯èƒ½this.recordä¼šä¸å­˜åœ¨
 										}
 									}
 									this.initValue();
@@ -1254,7 +1254,7 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 					if(!this.list&&this.store){
 						if(config.autocomplete){
 							this.store.load();
-							// ÊµÏÖautocompleteµÄ¶à×Ö¶ÎÖ§³Ö
+							// å®ç°autocompleteçš„å¤šå­—æ®µæ”¯æŒ
 							this.store.createFilterFn = (function(scope, method, field) {
 								return function() {
 									var fn = [];
@@ -1310,7 +1310,7 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 			doQuery: combo.doQuery.createSequence((function(config) {
 				return function(q) {
 		        	if( this.el.dom.value == '' || this.el.dom.value === null ) {
-						// µ±ÎŞÖµÊ±Çå³ıÆäËüÏà¹Ø×Ö¶ÎÖµ
+						// å½“æ— å€¼æ—¶æ¸…é™¤å…¶å®ƒç›¸å…³å­—æ®µå€¼
 						if( (q === undefined || q === null || q == '') ) {
 							this.clearValue();
 							for( var j = 0, l = config.valueDataIndex.length; j < l; j++ ) {
@@ -1322,7 +1322,7 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 									if (this.record) { // add
 										if(this.record.get(k) != undefined) {
 											// this.record.set(k, ''); //
-											// set»áÖØĞÂrender£¬µ¼ÖÂcellÊ§È¥½¹µã£¿
+											// setä¼šé‡æ–°renderï¼Œå¯¼è‡´cellå¤±å»ç„¦ç‚¹ï¼Ÿ
 											this.record.data[k] = '';
 										}
 									}
@@ -1402,8 +1402,8 @@ Ext.extend(Ext.plugins.ComplexGridCombox, Ext.util.Observable, {
 			onSelect: combo.onSelect.createInterceptor((function(config){
 				return function(record, index) {
 					if(this.fireEvent('beforeselect', this, record, index) !== false){
-						// TODO ÔİÎ´¿¼ÂÇ¶àÑ¡Çé¿ö
-						// Ê¹ÓÃÖµÁĞÀ´±£´æÑ¡¶¨µÄ½á¹û
+						// TODO æš‚æœªè€ƒè™‘å¤šé€‰æƒ…å†µ
+						// ä½¿ç”¨å€¼åˆ—æ¥ä¿å­˜é€‰å®šçš„ç»“æœ
 						for( var j = 0, l = config.valueDataIndex.length; j < l; j++ ) {
 							var v = (config.formatValue || function(r, field){
 					        	if( r.length ) {
@@ -1733,7 +1733,7 @@ Ext.ns('Ext.ux.form');
 
 Ext.DateTimePicker = Ext.extend(Ext.DatePicker, {
 			timeFormat : 'g:i:s A',
-			timeLabel : 'Ê±¼ä',
+			timeLabel : 'æ—¶é—´',
 			timeWidth : 100,
 			initComponent : function() {
 				Ext.DateTimePicker.superclass.initComponent.call(this);
