@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.log4j.Logger;
+
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.cache.bo.CacheStats;
-import com.jiakun.xplatform.framework.log.Logger4jCollection;
-import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.DateUtil;
 
 /**
@@ -23,7 +23,7 @@ import com.jiakun.xplatform.framework.util.DateUtil;
  */
 public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 
-	private Logger4jExtend logger = Logger4jCollection.getLogger(MemcachedCacheServiceImpl.class);
+	private Logger logger = Logger.getLogger(MemcachedCacheServiceImpl.class);
 
 	private MemcachedClient memcachedClient;
 

@@ -156,8 +156,8 @@ public final class HttpUtil {
 			charset = charset == null ? CHARSET_GBK : charset;
 			String formatParams = URLEncodedUtils.format(qparams, charset);
 			url =
-				(url.indexOf("?")) < 0 ? (url + "?" + formatParams)
-					: (url.substring(0, url.indexOf("?") + 1) + formatParams);
+				(url.indexOf('?')) < 0 ? (url + "?" + formatParams)
+					: (url.substring(0, url.indexOf('?') + 1) + formatParams);
 		}
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		HttpGet hg = new HttpGet(url);
