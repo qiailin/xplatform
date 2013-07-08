@@ -161,7 +161,7 @@ public final class HttpUtil {
 		}
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		HttpGet hg = new HttpGet(url);
-		// �������󣬵õ���Ӧ
+
 		String responseStr = null;
 		try {
 			responseStr = httpclient.execute(hg, responseHandler);
