@@ -116,7 +116,7 @@ Ext.onReady(function() {
 
 			store = new Ext.data.Store({
 						url : appUrl
-								+ '/data/dataManageAction!getDataPreviewJsonList.htm',
+								+ '/data/dataManageAction!getDataPreviewJsonList.jspa',
 						reader : new Ext.data.SimpleJsonReader({
 									id : 'value1'
 								}, Item),
@@ -391,8 +391,8 @@ Ext.onReady(function() {
 									pageSize : pageSize,
 									store : store,
 									displayInfo : true,
-									displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-									emptyMsg : "û���ҵ���¼��"
+									displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+									emptyMsg : "没有找到记录！"
 								})
 					});
 
@@ -407,11 +407,11 @@ function ok() {
 }
 
 function del() {
-	Ext.Msg.confirm("��ʾ", "ȷ��ɾ��ε����������ݣ�", function(button) {
+	Ext.Msg.confirm("提示", "确认删除本次导入的所有数据？", function(button) {
 		if (button == 'yes') {
 			createShadeDiv();
 			var form = window.document.forms[0];
-			form.action = appUrl + "/data/dataManageAction!deleteDataInfo.htm";
+			form.action = appUrl + "/data/dataManageAction!deleteDataInfo.jspa";
 			form.target = "hideFrame";
 			form.submit();
 		}
@@ -424,7 +424,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -436,8 +436,8 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
-					msg : "�����ɹ�",
+					title : '信息',
+					msg : "操作成功",
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
 						if (btn == 'ok') {

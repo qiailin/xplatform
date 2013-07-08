@@ -4,7 +4,7 @@ Ext.onReady(function() {
 
 	var flagStore = new Ext.data.SimpleStore({
 				fields : ['itemId', 'itemName'],
-				data : [['', '����״̬'], ['U', '����'], ['D', '����']]
+				data : [['', '所有状态'], ['U', '启用'], ['D', '禁用']]
 			});
 
 	flag = new Ext.form.ComboBox({
@@ -22,7 +22,7 @@ Ext.onReady(function() {
 
 	var dbTable = new Ext.plugins.DBTableSelector({
 		url : appUrl
-				+ '/dict/dictAction!getDictJsonList.htm?dictTypeValue=db_table',
+				+ '/dict/dictAction!getDictJsonList.jspa?dictTypeValue=db_table',
 		triggerAction : 'power',
 		searchable : true,
 		displayField : 'itemValue',
@@ -61,7 +61,7 @@ Ext.onReady(function() {
 
 	store = new Ext.data.Store({
 				url : appUrl
-						+ '/data/dataConfigAction!getDataConfigJsonList.htm',
+						+ '/data/dataConfigAction!getDataConfigJsonList.jspa',
 				reader : new Ext.data.SimpleJsonReader({
 							id : 'dataConfigId'
 						}, Item),
@@ -71,13 +71,13 @@ Ext.onReady(function() {
 	var sm = new Ext.grid.CheckboxSelectionModel();
 
 	var cm = new Ext.grid.ColumnModel([sm, {
-				header : "���ñ��",
+				header : "配置编号",
 				dataIndex : 'dataConfigId',
 				width : 70,
 				sortable : true,
 				align : 'center'
 			}, {
-				header : "����",
+				header : "表名",
 				dataIndex : 'tableName',
 				width : 120,
 				sortable : false,
@@ -107,7 +107,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "������",
+				header : "操作人",
 				dataIndex : 'userName',
 				width : 80,
 				sortable : false,
@@ -117,20 +117,20 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "״̬",
+				header : "状态",
 				dataIndex : 'flag',
 				width : 50,
 				sortable : false,
 				align : 'center',
 				renderer : function(v, p) {
 					if ('U' == v) {
-						return "<p style='color:green'>����</p>";
+						return "<p style='color:green'>启用</p>";
 					} else {
-						return "<p style='color:red'>����</p>";
+						return "<p style='color:red'>禁用</p>";
 					}
 				}
 			}, {
-				header : "����ʱ��",
+				header : "创建时间",
 				dataIndex : 'createDate',
 				width : 100,
 				sortable : false,
@@ -141,7 +141,7 @@ Ext.onReady(function() {
 					return v;
 				}
 			}, {
-				header : "�޸�ʱ��",
+				header : "修改时间",
 				dataIndex : 'modifyDate',
 				width : 100,
 				sortable : false,
@@ -171,8 +171,8 @@ Ext.onReady(function() {
 							pageSize : pageSize,
 							store : store,
 							displayInfo : true,
-							displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-							emptyMsg : "û���ҵ���¼��"
+							displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+							emptyMsg : "没有找到记录！"
 						})
 			});
 
@@ -197,7 +197,7 @@ function search() {
 
 function add() {
 	if ($('#itemId').val() == '') {
-		warn('��ѡ��������Ա��Ӧ����');
+		warn('请选择新增人员对应表名');
 		return;
 	}
 
@@ -209,7 +209,7 @@ function add() {
 	window
 			.open(
 					appUrl
-							+ "/data/dataConfigAction!createAuthorizePrepare.htm?itemId="
+							+ "/data/dataConfigAction!createAuthorizePrepare.jspa?itemId="
 							+ itemId, "winSub2", "left=" + WLeft + ",top="
 							+ WTop + ",width=" + WWidth + ",height=" + WHeight
 							+ ",toolbar=no,rolebar=no,scrollbars=yes");
@@ -217,14 +217,14 @@ function add() {
 }
 
 function del() {
-	Ext.Msg.confirm("��ʾ", "ȷ������ȡ����Ȩ��", function(button) {
+	Ext.Msg.confirm("提示", "确认批量取消授权？", function(button) {
 				if (button == 'yes') {
 					createShadeDiv();
 					var rows = grid.getSelectionModel().getSelections();
 					if (rows == "") {
 						Ext.Msg.show({
-									title : '��ʾ',
-									msg : '�빴ѡҪɾ������',
+									title : '提示',
+									msg : '请勾选要删除的数据',
 									buttons : Ext.Msg.OK,
 									icon : Ext.Msg.ERROR
 								});
@@ -242,7 +242,7 @@ function del() {
 							.encode(params);
 					var form = window.document.forms[0];
 					form.action = appUrl
-							+ "/data/dataConfigAction!cancelAuthorize.htm";
+							+ "/data/dataConfigAction!cancelAuthorize.jspa";
 					form.target = "hideFrame";
 					form.submit();
 				}
@@ -255,7 +255,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -267,7 +267,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -283,7 +283,7 @@ function promgtMsg() {
 
 function warn(msg) {
 	Ext.Msg.show({
-				title : '����',
+				title : '警告',
 				msg : msg,
 				buttons : Ext.Msg.OK,
 				icon : Ext.Msg.WARNING

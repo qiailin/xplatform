@@ -4,7 +4,7 @@ Ext.onReady(function() {
 
 			var dbTable = new Ext.plugins.DBTableSelector({
 						url : appUrl
-								+ '/data/dataLogAction!getDBTableJsonList.htm',
+								+ '/data/dataLogAction!getDBTableJsonList.jspa',
 						triggerAction : 'power',
 						searchable : true,
 						displayField : 'itemValue',
@@ -40,7 +40,7 @@ Ext.onReady(function() {
 
 			store = new Ext.data.Store({
 						url : appUrl
-								+ '/data/dataLogAction!getDataLogJsonList.htm',
+								+ '/data/dataLogAction!getDataLogJsonList.jspa',
 						reader : new Ext.data.SimpleJsonReader({
 									id : 'dataLogId'
 								}, Item),
@@ -48,19 +48,19 @@ Ext.onReady(function() {
 					});
 
 			var cm = new Ext.grid.ColumnModel([{
-						header : "��־���",
+						header : "日志编号",
 						dataIndex : 'dataLogTotalId',
 						width : 70,
 						sortable : true,
 						align : 'center'
 					}, {
-						header : "���ñ��",
+						header : "配置编号",
 						dataIndex : 'dataConfigId',
 						width : 70,
 						sortable : false,
 						align : 'center'
 					}, {
-						header : "����",
+						header : "表名",
 						dataIndex : 'tableName',
 						width : 150,
 						sortable : false,
@@ -70,20 +70,20 @@ Ext.onReady(function() {
 							return Ext.util.Format.htmlEncode(v);
 						}
 					}, {
-						header : "״̬",
+						header : "状态",
 						dataIndex : 'flag',
 						width : 50,
 						sortable : false,
 						align : 'center',
 						renderer : function(v, p) {
 							if ('U' == v) {
-								return "<p style='color:green'>��Ч</p>";
+								return "<p style='color:green'>有效</p>";
 							} else {
-								return "<p style='color:red'>ɾ��</p>";
+								return "<p style='color:red'>删除</p>";
 							}
 						}
 					}, {
-						header : "�������",
+						header : "数据总数",
 						dataIndex : 'total',
 						width : 70,
 						sortable : false,
@@ -93,7 +93,7 @@ Ext.onReady(function() {
 							return Ext.util.Format.htmlEncode(v);
 						}
 					}, {
-						header : "����ʱ��",
+						header : "创建时间",
 						dataIndex : 'createDate',
 						width : 100,
 						sortable : false,
@@ -104,7 +104,7 @@ Ext.onReady(function() {
 							return v;
 						}
 					}, {
-						header : "�޸�ʱ��",
+						header : "修改时间",
 						dataIndex : 'modifyDate',
 						width : 100,
 						sortable : false,
@@ -115,18 +115,18 @@ Ext.onReady(function() {
 							return v;
 						}
 					}, {
-						header : "����",
+						header : "操作",
 						width : 70,
 						sortable : false,
 						align : 'center',
 						renderer : function(value, cellmeta, record, rowIndex,
 								columnIndex, store) {
 							if (record.get('flag') == 'D') {
-								return "�����Ԥ��";
+								return "无数据预览";
 							} else {
 								return "<a href=javascript:searchDataPreview('"
 										+ record.get('dataLogTotalId')
-										+ "') >���Ԥ�� </a>";
+										+ "') >数据预览 </a>";
 							}
 						}
 					}]);
@@ -148,8 +148,8 @@ Ext.onReady(function() {
 									pageSize : pageSize,
 									store : store,
 									displayInfo : true,
-									displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-									emptyMsg : "û���ҵ���¼��"
+									displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+									emptyMsg : "没有找到记录！"
 								})
 					});
 
@@ -167,7 +167,7 @@ function searchDataPreview(id) {
 	window
 			.open(
 					appUrl
-							+ "/data/dataManageAction!searchDataPreview.htm?dataLogTotalId="
+							+ "/data/dataManageAction!searchDataPreview.jspa?dataLogTotalId="
 							+ id, "winSub", "left=" + WLeft + ",top=" + WTop
 							+ ",width=" + WWidth + ",height=" + WHeight
 							+ ",toolbar=no,rolebar=no,scrollbars=yes");
@@ -175,7 +175,7 @@ function searchDataPreview(id) {
 
 function search() {
 	if ($('#itemId').val() == '') {
-		warn('��ѡ���ѯ����');
+		warn('请选择查询表名');
 		return;
 	}
 
@@ -191,19 +191,19 @@ function search() {
 
 function exportDataTemplate() {
 	if ($('#itemId').val() == '') {
-		warn('��ѡ�������');
+		warn('请选择导入表名');
 		return;
 	}
 
 	var form = window.document.forms[0];
-	form.action = "dataManageAction!exportDataTemplate.htm";
+	form.action = "dataManageAction!exportDataTemplate.jspa";
 	form.target = "hideFrame";
 	form.submit();
 }
 
 function importData() {
 	if ($('#itemId').val() == '') {
-		warn('��ѡ���ѯ����');
+		warn('请选择查询表名');
 		return;
 	}
 
@@ -224,27 +224,27 @@ function importData() {
 		items : [{
 					xtype : 'fileuploadfield',
 					id : 'form-file',
-					emptyText : '��ѡ��excel�ļ�',
-					fieldLabel : '�ļ�',
+					emptyText : '请选择excel文件',
+					fieldLabel : '文件',
 					name : 'upload',
-					buttonText : '���'
+					buttonText : '浏览'
 				}],
 		buttons : [{
-			text : '����',
+			text : '保存',
 			handler : function() {
-				Ext.Msg.confirm("��ʾ", "ȷ���ύ��", function(button) {
+				Ext.Msg.confirm("提示", "确定提交？", function(button) {
 					if (button == 'yes') {
 						if (fp.getForm().isValid()) {
 							fp.getForm().submit({
-										url : 'dataManageAction!importData.htm',
+										url : 'dataManageAction!importData.jspa',
 										params : {
 											dataConfigId : $('#itemId').val()
 										},
-										waitMsg : '�����ύ�ļ�...',
+										waitMsg : '正在提交文件...',
 										success : function(form, action) {
 											try {
 												Ext.Msg.show({
-															title : '��Ϣ',
+															title : '信息',
 															msg : action.result.msg,
 															buttons : Ext.Msg.OK,
 															fn : function(btn) {
@@ -261,7 +261,7 @@ function importData() {
 										},
 										failure : function(form, action) {
 											Ext.Msg.show({
-														title : '��Ϣ',
+														title : '信息',
 														msg : action.result.msg,
 														buttons : Ext.Msg.OK,
 														icon : Ext.Msg.ERROR
@@ -273,12 +273,12 @@ function importData() {
 				});
 			}
 		}, {
-			text : '����',
+			text : '重置',
 			handler : function() {
 				fp.getForm().reset();
 			}
 		}, {
-			text : 'ȡ��',
+			text : '取消',
 			handler : function() {
 				win.close();
 				Ext.getBody().unmask();
@@ -287,7 +287,7 @@ function importData() {
 	});
 
 	var win = new Ext.Window({
-				title : "�ļ��ϴ�",
+				title : "文件上传",
 				width : 300,
 				items : [fp],
 				listeners : {
@@ -307,7 +307,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -319,7 +319,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -335,7 +335,7 @@ function promgtMsg() {
 
 function warn(msg) {
 	Ext.Msg.show({
-				title : '����',
+				title : '警告',
 				msg : msg,
 				buttons : Ext.Msg.OK,
 				icon : Ext.Msg.WARNING

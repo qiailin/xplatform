@@ -51,7 +51,7 @@ Ext.onReady(function() {
 												store : store,
 												displayField : 'userName',
 												valueField : 'userId',
-												legend : 'δ��Ȩ'
+												legend : '未授权'
 
 											}, {
 												width : 100,
@@ -59,15 +59,15 @@ Ext.onReady(function() {
 												store : authorizestore,
 												displayField : 'userName',
 												valueField : 'userId',
-												legend : '����Ȩ'
+												legend : '待授权'
 
 											}]
 								}],
 						buttons : [{
-							text : '����',
+							text : '保存',
 							handler : function() {
 								if (isForm.getForm().isValid()) {
-									Ext.Msg.confirm("���", "ȷ����Ȩ��",
+									Ext.Msg.confirm("添加", "确定授权？",
 											function(bn) {
 												if (bn == 'yes') {
 													createAuthorize();
@@ -89,7 +89,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -101,8 +101,8 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
-					msg : "�����ɹ���",
+					title : '信息',
+					msg : "操作成功！",
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
 						if (btn == 'ok') {
@@ -124,7 +124,7 @@ function createAuthorize() {
 			});
 	var form = window.document.forms[0];
 	$('#userIds').val(ids);
-	form.action = appUrl + '/data/dataConfigAction!createAuthorize.htm';
+	form.action = appUrl + '/data/dataConfigAction!createAuthorize.jspa';
 	form.target = "hideFrame";
 	form.submit();
 }
