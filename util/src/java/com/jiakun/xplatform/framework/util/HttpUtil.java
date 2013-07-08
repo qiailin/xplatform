@@ -57,6 +57,7 @@ public final class HttpUtil {
 	private static final String CHARSET_GBK = "GBK";
 	private static final String SSL_DEFAULT_SCHEME = "https";
 	private static final int SSL_DEFAULT_PORT = 443;
+	private static final int EXECUTION_COUNT = 3;
 
 	/**
 	 * 异常自动恢复处理, 使用HttpRequestRetryHandler接口实现请求的异常恢复
@@ -65,7 +66,7 @@ public final class HttpUtil {
 		// 自定义的恢复策略
 		public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
 			// 设置恢复策略，在发生异常时候将自动重试3次
-			if (executionCount >= 3) {
+			if (executionCount >= EXECUTION_COUNT) {
 				// Do not retry if over max retry count
 				return false;
 			}
@@ -395,12 +396,10 @@ public final class HttpUtil {
 		params.put("method", "xplatform.user.login");
 		params.put("passport", "123");
 		params.put("password", "123");
-		for (int i = 0; i < 10; i++) {
-			try {
-				HttpUtil.post("http://ims.jiakun.com.cn/xplatform/router/rest", params);
-			} catch (Exception e) {
-				logger.error(e);
-			}
+		try {
+			HttpUtil.post("http://ims.jiakun.com.cn/xplatform/router/rest", params);
+		} catch (Exception e) {
+			logger.error(e);
 		}
 	}
 }

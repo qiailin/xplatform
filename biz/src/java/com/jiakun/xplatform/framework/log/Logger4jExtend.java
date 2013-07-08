@@ -32,6 +32,8 @@ import com.jiakun.xplatform.framework.util.PropertiesUtil;
  */
 public class Logger4jExtend {
 
+	private static final int LENGTH = 3500;
+
 	private static MemcachedCacheServiceImpl memcachedCacheService;
 
 	private Logger logger;
@@ -106,8 +108,8 @@ public class Logger4jExtend {
 		logMonitor.setLineNumber(locationInfo.getLineNumber());
 
 		// 如果超级长字段需要截取
-		if (message.toString().length() >= 3500) {
-			logMonitor.setMessage(message.toString().substring(0, 3500));
+		if (message.toString().length() >= LENGTH) {
+			logMonitor.setMessage(message.toString().substring(0, LENGTH));
 		} else {
 			logMonitor.setMessage(message.toString());
 		}
@@ -121,8 +123,8 @@ public class Logger4jExtend {
 		}
 
 		// 如果超级长字段需要截取
-		if (sb.length() >= 3500) {
-			logMonitor.setE(sb.substring(0, 3500));
+		if (sb.length() >= LENGTH) {
+			logMonitor.setE(sb.substring(0, LENGTH));
 		} else {
 			logMonitor.setE(sb.toString());
 		}
