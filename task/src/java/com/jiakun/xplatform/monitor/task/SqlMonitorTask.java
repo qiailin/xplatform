@@ -87,8 +87,8 @@ public class SqlMonitorTask {
 
 							// 处理 detailList
 							for (Map<String, Object> map : detailList) {
-								for (String o : map.keySet()) {
-									content.append(o).append(":").append(map.get(o)).append(";");
+								for (Map.Entry<String, Object> entry : map.entrySet()) {
+									content.append(entry.getKey()).append(":").append(entry.getValue()).append(";");
 								}
 								content.append("<br />");
 							}
