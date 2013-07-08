@@ -29,6 +29,8 @@ public class FileAction extends BaseAction {
 
 	private static final long serialVersionUID = 6285367046945881121L;
 
+	private static final int BYTE = 4 * 1024;
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(FileAction.class);
 
 	private IFileService fileService;
@@ -91,7 +93,7 @@ public class FileAction extends BaseAction {
 				boolean result = dfsService.fetchFile(fileId, out);
 
 				if (result) {
-					out.write(4 * 1024);
+					out.write(BYTE);
 					out.flush();
 				}
 			} catch (Exception e) {
