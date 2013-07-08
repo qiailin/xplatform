@@ -12,8 +12,8 @@ import org.apache.log4j.Logger;
 public class MD5 {
 
 	/*
-	 * ������ЩS11-S44ʵ������һ��4*4�ľ�����ԭʼ��Cʵ��������#define ʵ�ֵģ�
-	 * ���������ʵ�ֳ�Ϊstatic final�Ǳ�ʾ��ֻ����������ͬһ����̿ռ��ڵĶ�� Instance�乲��
+	 * 下面这些S11-S44实际上是一个4*4的矩阵，在原始的C实现中是用#define 实现的， 这里把它们实现成为static
+	 * final是表示了只读，切能在同一个进程空间内的多个 Instance间共享
 	 */
 	static final int S11 = 7;
 	static final int S12 = 12;
@@ -41,7 +41,7 @@ public class MD5 {
 	private static final Logger logger = Logger.getLogger(MD5.class);
 
 	/*
-	 * ����������Ա��MD5���������õ���3��������ݣ���ԭʼ��Cʵ���� �����嵽MD5_CTX�ṹ��
+	 * 下面的三个成员是MD5计算过程中用到的3个核心数据，在原始的C实现中 被定义到MD5_CTX结构中
 	 */
 	// state (ABCD)
 	private long[] state = new long[4];
@@ -53,19 +53,19 @@ public class MD5 {
 	private byte[] buffer = new byte[64];
 
 	/*
-	 * digest,������һ�μ������2�����ڲ���ʾ����ʾ128bit��MD5ֵ.
+	 * digest,是最新一次计算结果的2进制内部表示，表示128bit的MD5值.
 	 */
 	private byte[] digest = new byte[16];
 
-	// ����MD5�����ı�׼���캯��JavaBeanҪ����һ��public�Ĳ���û�в���Ĺ��캯��
+	// 这是MD5这个类的标准构造函数，JavaBean要求有一个public的并且没有参数的构造函数
 	public MD5() {
 		md5Init();
 		return;
 	}
 
 	/*
-	 * getMD5ofStr����MD5����Ҫ�Ĺ�����������ڲ���������Ҫ����MD5�任���ַ�
-	 * ���ص��Ǳ任��Ľ���������Ǵӹ�����ԱdigestHexStrȡ�õģ�
+	 * getMD5ofStr是类MD5最主要的公共方法，入口参数是你想要进行MD5变换的字符串
+	 * 返回的是变换完的结果，这个结果是从公共成员digestHexStr取得的．
 	 */
 	public String getMD5ofStr(String inbuf) {
 		md5Init();
@@ -79,7 +79,7 @@ public class MD5 {
 		return digestHexStr.toString();
 	}
 
-	/* md5Init��һ����ʼ�������ʼ�����ı�����װ���׼�Ļ��� */
+	/* md5Init是一个初始化函数，初始化核心变量，装入标准的幻数 */
 	private void md5Init() {
 		count[0] = 0L;
 		count[1] = 0L;
@@ -94,9 +94,8 @@ public class MD5 {
 	}
 
 	/*
-	 * F, G, H ,I ��4�����MD5������ԭʼ��MD5��Cʵ���У�����������
-	 * �򵥵�λ���㣬���ܳ���Ч�ʵĿ��ǰ�����ʵ�ֳ��˺꣬��java�У����ǰ�����
-	 * ����ʵ�ֳ���private���������ֱ�����ԭ��C�еġ�
+	 * F, G, H ,I 是4个基本的MD5函数，在原始的MD5的C实现中，由于它们是
+	 * 简单的位运算，可能出于效率的考虑把它们实现成了宏，在java中，我们把它们 　　实现成了private方法，名字保持了原来C中的。
 	 */
 
 	private long f(long x, long y, long z) {
@@ -118,8 +117,8 @@ public class MD5 {
 	}
 
 	/*
-	 * FF,GG,HH��II������F,G,H,I���н�һ���任 FF, GG, HH, and II transformations
-	 * for rounds 1, 2, 3, and 4. Rotation is separate from addition to prevent
+	 * FF,GG,HH和II将调用F,G,H,I进行近一步变换 FF, GG, HH, and II transformations for
+	 * rounds 1, 2, 3, and 4. Rotation is separate from addition to prevent
 	 * recomputation.
 	 */
 
@@ -152,8 +151,8 @@ public class MD5 {
 	}
 
 	/*
-	 * md5Update��MD5���������̣�inbuf��Ҫ�任���ֽڴ���inputlen�ǳ��ȣ����
-	 * ������getMD5ofStr���ã�����֮ǰ��Ҫ����md5init����˰�����Ƴ�private��
+	 * md5Update是MD5的主计算过程，inbuf是要变换的字节串，inputlen是长度，这个
+	 * 函数由getMD5ofStr调用，调用之前需要调用md5init，因此把它设计成private的
 	 */
 	private void md5Update(byte[] inbuf, int inputLen) {
 
@@ -192,7 +191,7 @@ public class MD5 {
 	}
 
 	/*
-	 * md5Final�������д������
+	 * md5Final整理和填写输出结果
 	 */
 	private void md5Final() {
 		byte[] bits = new byte[8];
@@ -216,8 +215,8 @@ public class MD5 {
 	}
 
 	/*
-	 * md5Memcpy��һ���ڲ�ʹ�õ�byte����Ŀ鿽�������input��inpos��ʼ��len���ȵ�
-	 * ���������� �ֽڿ�����output��outposλ�ÿ�ʼ
+	 * md5Memcpy是一个内部使用的byte数组的块拷贝函数，从input的inpos开始把len长度的 　　　　　
+	 * 字节拷贝到output的outpos位置开始
 	 */
 
 	private void md5Memcpy(byte[] output, byte[] input, int outpos, int inpos, int len) {
@@ -229,7 +228,7 @@ public class MD5 {
 	}
 
 	/*
-	 * md5Transform��MD5���ı任������md5Update���ã�block�Ƿֿ��ԭʼ�ֽ�
+	 * md5Transform是MD5核心变换程序，有md5Update调用，block是分块的原始字节
 	 */
 	private void md5Transform(byte[] block) {
 		long a = state[0];
@@ -385,8 +384,7 @@ public class MD5 {
 	}
 
 	/*
-	 * Encode��long���鰴˳����byte���飬��Ϊjava��long������64bit�ģ�
-	 * ֻ���32bit������ӦԭʼCʵ�ֵ���;
+	 * Encode把long数组按顺序拆成byte数组，因为java的long类型是64bit的， 只拆低32bit，以适应原始C实现的用途
 	 */
 	private void encode(byte[] output, long[] input, int len) {
 		int i;
@@ -401,8 +399,8 @@ public class MD5 {
 	}
 
 	/*
-	 * Decode��byte���鰴˳��ϳɳ�long���飬��Ϊjava��long������64bit�ģ�
-	 * ֻ�ϳɵ�32bit����32bit���㣬����ӦԭʼCʵ�ֵ���;
+	 * Decode把byte数组按顺序合成成long数组，因为java的long类型是64bit的，
+	 * 只合成低32bit，高32bit清零，以适应原始C实现的用途
 	 */
 	private void decode(long[] output, byte[] input, int len) {
 		int i;
@@ -417,16 +415,15 @@ public class MD5 {
 	}
 
 	/*
-	 * b2iu����д��һ����byte���ղ�������ŵ�ԭ��ģ���λ��������Ϊjavaû��unsigned����
+	 * b2iu是我写的一个把byte按照不考虑正负号的原则的＂升位＂程序，因为java没有unsigned运算
 	 */
 	public static long b2iu(byte b) {
 		return b < 0 ? b & 0x7F + 128 : b;
 	}
 
 	/*
-	 * byteHEX()��������һ��byte���͵���ת����ʮ����Ƶ�ASCII��ʾ��
-	 * ����Ϊjava�е�byte��toString�޷�ʵ����һ�㣬������û��C�����е�
-	 * sprintf(outbuf,"%02X",ib)
+	 * byteHEX()，用来把一个byte类型的数转换成十六进制的ASCII表示，
+	 * 　因为java中的byte的toString无法实现这一点，我们又没有C语言中的 sprintf(outbuf,"%02X",ib)
 	 */
 	public static String byteHEX(byte ib) {
 		char[] digit = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
