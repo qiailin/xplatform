@@ -55,7 +55,7 @@ public class AuthencationInterceptor implements Interceptor {
 		String actionName = null;
 		// ��ȡ��ǰapplicationContex
 		ActionContext ctx = ActionContext.getContext();
-		// Map map = ctx.getSession();
+		// Map map = ctx.getSession()
 		// ���õ�ǰ�����URL
 		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		StringBuffer url = request.getRequestURL();

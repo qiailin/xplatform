@@ -159,7 +159,7 @@ public class HDFSServiceImpl implements IDFSService {
 	private FileInfo getFileInfo(String fileId) {
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setFileId(fileId);
-		// 查询所有类型文件 fileInfo.setFlag(IFileService.FILE_FLAG_USED);
+		// fileInfo.setFlag(IFileService.FILE_FLAG_USED)
 
 		return fileService.getFileInfo(fileInfo);
 	}

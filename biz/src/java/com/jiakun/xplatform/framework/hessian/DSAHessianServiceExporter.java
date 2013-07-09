@@ -52,7 +52,7 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 
 		// 1.如果设置了允许的IP地址，需要进行客户端IP地址验证
 		if (StringUtil.isNotBlank(allowedClients)) {
-			// String clientIP = getClientIPAddress(request);
+			// String clientIP = getClientIPAddress(request)
 			String clientIP = ClientUtil.getIpAddr(request);
 			if (!isAllowedClient(clientIP)) {
 				logger.error("hessian authentication error:" + clientIP + " not in allowedList " + allowedClients);

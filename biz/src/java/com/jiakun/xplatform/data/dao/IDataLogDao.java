@@ -47,7 +47,7 @@ public interface IDataLogDao {
 	 */
 	int getDBTableCount(DataLogTotal dataLogTotal);
 
-	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
+	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal)
 
 	/**
 	 * 

@@ -39,6 +39,6 @@ public interface IDataLogService {
 	 * @param dataLogTotal
 	 * @return
 	 */
-	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal);
+	// List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal)
 
 }

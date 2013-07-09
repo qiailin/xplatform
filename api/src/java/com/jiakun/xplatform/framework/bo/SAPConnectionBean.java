@@ -69,7 +69,7 @@ public class SAPConnectionBean {
 		} catch (JCO.Exception e) {
 			throw new JCO.Exception(1, "t", e.getMessage());
 			// logger.error("����" + SAPConnectionBean.class
-			// + "�ķ���getSAPClientFromPool���?" + e.getMessage());
+			// + "�ķ���getSAPClientFromPool���?" + e.getMessage())
 		}
 		return sapclient;
 	}

@@ -53,7 +53,7 @@ public final class HttpUtil {
 
 	private static Logger logger = Logger.getLogger(HttpUtil.class);
 
-	// private static final String CHARSET_UTF8 = "UTF-8";
+	// private static final String CHARSET_UTF8 = "UTF-8"
 	private static final String CHARSET_GBK = "GBK";
 	private static final String SSL_DEFAULT_SCHEME = "https";
 	private static final int SSL_DEFAULT_PORT = 443;
