@@ -15,6 +15,8 @@ import com.jiakun.xplatform.framework.log.Logger4jExtend;
  */
 public class LDAPServiceImpl implements ILDAPService {
 
+	private static final int VERSION = 3;
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(LDAPServiceImpl.class);
 
 	private String ldapHost;
@@ -34,7 +36,7 @@ public class LDAPServiceImpl implements ILDAPService {
 		LDAPConnection ld = new LDAPConnection();
 
 		try {
-			ld.connect(3, ldapHost, Integer.parseInt(ldapPort), fullDN + domain, password);
+			ld.connect(VERSION, ldapHost, Integer.parseInt(ldapPort), fullDN + domain, password);
 			flag = true;
 		} catch (LDAPException e) {
 			flag = false;

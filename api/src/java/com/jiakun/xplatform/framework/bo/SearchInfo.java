@@ -21,6 +21,8 @@ public class SearchInfo implements Serializable {
 
 	private static final long serialVersionUID = 235499309845516885L;
 
+	private static final int LIMIT = 10;
+
 	private String gmtStart;
 
 	private String gmtEnd;
@@ -34,7 +36,7 @@ public class SearchInfo implements Serializable {
 	@Decode
 	private String search;
 
-	private int limit = 10;
+	private int limit = LIMIT;
 
 	private int start;
 

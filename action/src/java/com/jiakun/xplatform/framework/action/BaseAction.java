@@ -37,6 +37,8 @@ public class BaseAction extends ActionSupport {
 
 	private static final long serialVersionUID = 7674615559114195895L;
 
+	private static final int LIMIT = 10;
+
 	protected String actionName;
 
 	protected String gmtStart;
@@ -61,7 +63,7 @@ public class BaseAction extends ActionSupport {
 
 	private String successMessage;
 
-	private int limit = 10;
+	private int limit = LIMIT;
 
 	private String sort;
 

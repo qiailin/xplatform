@@ -32,6 +32,8 @@ public class ExcelUtil {
 
 	private static Logger logger = Logger.getLogger(ExcelUtil.class);
 
+	private static final int PS = 9;
+
 	/**
 	 * createExcelWithTemplate.
 	 * 
@@ -144,7 +146,7 @@ public class ExcelUtil {
 		} else if (clazz2 == BigDecimal.class) {
 			NumberFormat nf = new NumberFormat("0.00");
 			WritableCellFormat wcf = new WritableCellFormat(nf);
-			wcf.setFont(new WritableFont(WritableFont.createFont("宋体"), 9));
+			wcf.setFont(new WritableFont(WritableFont.createFont("宋体"), PS));
 			Number cr = new Number(cel, row, ((BigDecimal) valObj).doubleValue(), wcf);
 			ws.addCell(cr);
 			return;
