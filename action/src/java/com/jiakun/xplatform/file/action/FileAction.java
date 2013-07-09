@@ -86,7 +86,7 @@ public class FileAction extends BaseAction {
 				response.reset();
 				response.setContentType("application/x-msdownload");
 				response.setHeader("Content-Disposition", "attachment; filename=\""
-					+ new String(dfsService.getFileName(fileId).getBytes("GBK"), ("ISO8859-1")) + "\"");
+					+ new String(dfsService.getFileName(fileId).getBytes("GBK"), "ISO8859-1") + "\"");
 
 				out = response.getOutputStream();
 

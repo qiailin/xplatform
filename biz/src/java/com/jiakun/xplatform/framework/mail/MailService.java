@@ -50,7 +50,7 @@ public class MailService {
 	private List<Mail> files = new ArrayList<Mail>();
 
 	/**
-	 * 初始化SMTP服务器地址、发送者E-mail地址、用户名、密码、接收者、主题、内容
+	 * 初始化SMTP服务器地址、发送者E-mail地址、用户名、密码、接收者、主题、内容.
 	 */
 	public MailService(String smtpServer, String from, String displayName, String username, String password, String to,
 		String subject, String content) {
@@ -66,7 +66,7 @@ public class MailService {
 	}
 
 	/**
-	 * 初始化SMTP服务器地址、发送者E-mail地址、接收者、主题、内容
+	 * 初始化SMTP服务器地址、发送者E-mail地址、接收者、主题、内容.
 	 */
 	public MailService(String smtpServer, String from, String displayName, String to, String subject, String content) {
 		this.smtpServer = smtpServer;
@@ -79,9 +79,8 @@ public class MailService {
 	}
 
 	/**
-	 * 发送邮件
+	 * 发送邮件.
 	 */
-	@SuppressWarnings("unused")
 	public Map<String, String> send() {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("state", "success");
@@ -178,70 +177,70 @@ public class MailService {
 	}
 
 	/**
-	 * 设置SMTP服务器地址
+	 * 设置SMTP服务器地址.
 	 */
 	public void setSmtpServer(String smtpServer) {
 		this.smtpServer = smtpServer;
 	}
 
 	/**
-	 * 设置发件人的地址
+	 * 设置发件人的地址.
 	 */
 	public void setFrom(String from) {
 		this.from = from;
 	}
 
 	/**
-	 * 设置显示的名称
+	 * 设置显示的名称.
 	 */
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
 
 	/**
-	 * 设置服务器是否需要身份认证
+	 * 设置服务器是否需要身份认证.
 	 */
 	public void setIfAuth(boolean ifAuth) {
 		this.ifAuth = ifAuth;
 	}
 
 	/**
-	 * 设置E-mail用户名
+	 * 设置E-mail用户名.
 	 */
 	public void setUserName(String username) {
 		this.username = username;
 	}
 
 	/**
-	 * 设置E-mail密码
+	 * 设置E-mail密码.
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * 设置接收者
+	 * 设置接收者.
 	 */
 	public void setTo(String to) {
 		this.to = to;
 	}
 
 	/**
-	 * 设置主题
+	 * 设置主题.
 	 */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
 	/**
-	 * 设置主体内容
+	 * 设置主体内容.
 	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
 	/**
-	 * 该方法用于收集附件名
+	 * 该方法用于收集附件名.
 	 */
 	public void addAttachfile(Mail mailFile) {
 		files.add(mailFile);

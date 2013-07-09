@@ -151,7 +151,7 @@ public final class Base64 {
 				destination[destOffset] = ALPHABET[inBuff >>> 18];
 				destination[destOffset + 1] = ALPHABET[(inBuff >>> 12) & 0x3f];
 				destination[destOffset + 2] = ALPHABET[(inBuff >>> 6) & 0x3f];
-				destination[destOffset + 3] = ALPHABET[(inBuff) & 0x3f];
+				destination[destOffset + 3] = ALPHABET[inBuff & 0x3f];
 				return destination;
 
 			case 2:
@@ -422,8 +422,7 @@ public final class Base64 {
 			boolean breakLines = dontBreakLines == 0;
 
 			int len43 = (len * 4) / 3;
-			byte[] outBuff =
-				new byte[(len43) + (((len % 3) > 0) ? 4 : 0) + (breakLines ? (len43 / MAX_LINE_LENGTH) : 0)];
+			byte[] outBuff = new byte[len43 + (((len % 3) > 0) ? 4 : 0) + (breakLines ? (len43 / MAX_LINE_LENGTH) : 0)];
 			int d = 0;
 			int e = 0;
 			int len2 = len - 2;
@@ -516,7 +515,7 @@ public final class Base64 {
 
 				destination[destOffset] = (byte) (outBuff >> 16);
 				destination[destOffset + 1] = (byte) (outBuff >> 8);
-				destination[destOffset + 2] = (byte) (outBuff);
+				destination[destOffset + 2] = (byte) outBuff;
 
 				return 3;
 			} catch (Exception e) {

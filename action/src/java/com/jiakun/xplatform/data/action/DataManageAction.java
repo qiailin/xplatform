@@ -101,11 +101,9 @@ public class DataManageAction extends BaseAction {
 						.openStream();
 				HttpServletResponse response = this.getServletResponse();
 				response.setContentType("application/x-download");
-				response.setHeader(
-					"Content-Disposition",
-					"attachment; filename=\""
-						+ new String(("���ģ��(" + tabColumnList.get(0).getTableName() + ")").getBytes("GBK"),
-							("ISO8859-1")) + ".xls\"");
+				response.setHeader("Content-Disposition", "attachment; filename=\""
+					+ new String(("���ģ��(" + tabColumnList.get(0).getTableName() + ")").getBytes("GBK"), "ISO8859-1")
+					+ ".xls\"");
 				outputStream = response.getOutputStream();
 				util.createExcelWithTemplate(inputStream, outputStream, props, dataInfos);
 				outputStream.flush();
