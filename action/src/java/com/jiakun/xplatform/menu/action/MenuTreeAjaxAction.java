@@ -94,7 +94,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 			} else {
 				tree.setLeaf(Boolean.TRUE);
 			}
-			// tree.setCls("folder");
+			// tree.setCls("folder")
 			treeList.add(tree);
 		}
 

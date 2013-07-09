@@ -169,7 +169,6 @@ public final class DateUtil {
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month - 1);
 		cal.set(Calendar.DATE, 1);
-		// cal.add(Calendar.MONTH, 1);
 		cal.add(Calendar.DATE, -1);
 		return cal.getTime();
 	}
@@ -416,8 +415,6 @@ public final class DateUtil {
 		int count = st.countTokens();
 		for (int i = 0; i < count; i++) {
 			temp = (String) st.nextElement();
-			// if(!(temp.equals("0")))
-			// temp.replaceAll("0", "");
 			if (i == 0) {
 				date.setYear(Integer.parseInt(temp) - 1900);
 			}
@@ -435,8 +432,6 @@ public final class DateUtil {
 			count = st2.countTokens();
 			for (int i = 0; i < count; i++) {
 				temp = (String) st2.nextElement();
-				// if(!(temp.equals("0")))
-				// temp.replaceAll("0", "");
 				if (i == 0) {
 					date.setHours(Integer.parseInt(temp));
 				}
@@ -745,7 +740,6 @@ public final class DateUtil {
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month);
 		cal.set(Calendar.DATE, 1);
-		// cal.add(Calendar.MONTH, 1);
 		cal.add(Calendar.DATE, -1);
 		return cal.getTime();
 	}
@@ -762,7 +756,6 @@ public final class DateUtil {
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month - 1);
 		cal.set(Calendar.DATE, 1);
-		// cal.add(Calendar.MONTH, 1);
 		cal.add(Calendar.DATE, 0);
 		return cal.getTime();
 	}

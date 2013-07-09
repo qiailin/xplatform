@@ -127,7 +127,6 @@ public class SessionFilter implements Filter {
 			builder.setCommandFactory(new BinaryCommandFactory());
 			builder.setSessionLocator(new KetamaMemcachedSessionLocator());
 			builder.setTranscoder(new SerializingTranscoder());
-			// builder.setBufferAllocator(new SimpleBufferAllocator());
 
 			MemcachedClient client = builder.build();
 

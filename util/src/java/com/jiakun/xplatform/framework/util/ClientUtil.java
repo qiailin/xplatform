@@ -62,7 +62,6 @@ public final class ClientUtil {
 			for (Object p : params) {
 				String[] keyValues = p.toString().split("=");
 				if (keyValues.length > 2) {
-					// logger.error("parse ctrlParams failed! {"+ctrl+"}");
 					return paraMap;
 				}
 				paraMap.put(keyValues[0], keyValues[1]);

@@ -22,8 +22,6 @@ public class AuthencationInterceptor implements Interceptor {
 
 	private static final String LOGIN = "login";
 
-	// private static final String AUTHORIZATION_ERROR = "authorization_error";
-
 	public void init() {
 	}
 
@@ -45,8 +43,6 @@ public class AuthencationInterceptor implements Interceptor {
 		getRequestParam();
 
 		return invocation.invoke();
-
-		// return AUTHORIZATION_ERROR;
 
 	}
 
