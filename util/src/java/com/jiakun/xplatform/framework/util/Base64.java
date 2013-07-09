@@ -133,7 +133,7 @@ public final class Base64 {
 		// 1 2 3
 		// 01234567890123456789012345678901 Bit position
 		// --------000000001111111122222222 Array position from threeBytes
-		// --------| || || || | Six bit groups to index ALPHABET
+		// Six bit groups to index ALPHABET
 		// >>18 >>12 >> 6 >> 0 Right shift necessary
 		// 0x3f 0x3f 0x3f Additional AND
 		// Create buffer with zero-padding if there are only one or two
@@ -484,8 +484,7 @@ public final class Base64 {
 		if (source[srcOffset + 2] == EQUALS_SIGN) {
 			// Two ways to do the same thing. Don't know which way I like best.
 			// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 ) >>> 6
-			// )
-			// | ( ( DECODABET[ source[ srcOffset + 1] ] << 24 ) >>> 12 );
+			// ) | ( ( DECODABET[ source[ srcOffset + 1] ] << 24 ) >>> 12 );
 			int outBuff =
 				((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12);
 
@@ -494,9 +493,8 @@ public final class Base64 {
 		} else if (source[srcOffset + 3] == EQUALS_SIGN) {
 			// Two ways to do the same thing. Don't know which way I like best.
 			// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 ) >>> 6
-			// )
-			// | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 )
-			// | ( ( DECODABET[ source[ srcOffset + 2 ] ] << 24 ) >>> 18 );
+			// ) | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 ) | ( ( DECODABET[
+			// source[ srcOffset + 2 ] ] << 24 ) >>> 18 );
 			int outBuff =
 				((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12)
 					| ((DECODABET[source[srcOffset + 2]] & 0xFF) << 6);
@@ -509,10 +507,9 @@ public final class Base64 {
 				// Two ways to do the same thing. Don't know which way I like
 				// best.
 				// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 )
-				// >>> 6 )
-				// | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 )
-				// | ( ( DECODABET[ source[ srcOffset + 2 ] ] << 24 ) >>> 18 )
-				// | ( ( DECODABET[ source[ srcOffset + 3 ] ] << 24 ) >>> 24 );
+				// >>> 6 ) | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 ) | ( (
+				// DECODABET[ source[ srcOffset + 2 ] ] << 24 ) >>> 18 ) | ( ( DECODABET[
+				// source[ srcOffset + 3 ] ] << 24 ) >>> 24 );
 				int outBuff =
 					((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12)
 						| ((DECODABET[source[srcOffset + 2]] & 0xFF) << 6) | (DECODABET[source[srcOffset + 3]] & 0xFF);
@@ -911,8 +908,7 @@ public final class Base64 {
 
 			for (i = 0; i < len; i++) {
 				b = read();
-				// if( b < 0 && i == 0 )
-				// return -1;
+				// if( b < 0 && i == 0 ) return -1;
 				if (b >= 0) {
 					dest[off + i] = (byte) b;
 				} else if (i == 0) {

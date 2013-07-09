@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSessionListener;
  */
 public class CountListener implements HttpSessionListener {
 
-	// private CountService countService;
-
 	/**
 	 * (non-Javadoc).
 	 * 
@@ -17,7 +15,6 @@ public class CountListener implements HttpSessionListener {
 	 */
 	public final void sessionCreated(final HttpSessionEvent arg0) {
 		init();
-		// countService.getCount(true);
 		OnlineCounter.raise();
 	}
 
@@ -33,9 +30,5 @@ public class CountListener implements HttpSessionListener {
 	}
 
 	private void init() {
-		/*
-		 * if (countService == null) { countService = (CountService)
-		 * ServiceLocator.getInstance() .getService("countService"); }
-		 */
 	}
 }

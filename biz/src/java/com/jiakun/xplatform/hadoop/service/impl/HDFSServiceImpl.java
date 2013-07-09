@@ -62,10 +62,7 @@ public class HDFSServiceImpl implements IDFSService {
 			return true;
 		} catch (Exception e) {
 			logger.error(e);
-		} /*
-		 * finally { if (fs != null) { try { fs.close(); } catch (Exception e) {
-		 * logger.error(e); } } }
-		 */
+		}
 
 		return false;
 	}
@@ -82,10 +79,7 @@ public class HDFSServiceImpl implements IDFSService {
 			return true;
 		} catch (Exception e) {
 			logger.error(e);
-		} /*
-		 * finally { if (fs != null) { try { fs.close(); } catch (Exception e) {
-		 * logger.error(e); } } }
-		 */
+		}
 
 		return false;
 	}
@@ -107,10 +101,7 @@ public class HDFSServiceImpl implements IDFSService {
 			return fileId;
 		} catch (Exception e) {
 			logger.error(e);
-		} /*
-		 * finally { if (fs != null) { try { fs.close(); } catch (Exception e) {
-		 * logger.error(e); } } }
-		 */
+		}
 
 		return null;
 	}
@@ -132,10 +123,7 @@ public class HDFSServiceImpl implements IDFSService {
 			return fileId;
 		} catch (Exception e) {
 			logger.error(e);
-		} /*
-		 * finally { if (fs != null) { try { fs.close(); } catch (Exception e) {
-		 * logger.error(e); } } }
-		 */
+		}
 
 		return null;
 	}
@@ -157,10 +145,7 @@ public class HDFSServiceImpl implements IDFSService {
 			return fileId;
 		} catch (Exception e) {
 			logger.error(e);
-		} /*
-		 * finally { if (fs != null) { try { fs.close(); } catch (Exception e) {
-		 * logger.error(e); } } }
-		 */
+		}
 
 		return null;
 	}
@@ -174,7 +159,7 @@ public class HDFSServiceImpl implements IDFSService {
 	private FileInfo getFileInfo(String fileId) {
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setFileId(fileId);
-		// fileInfo.setFlag(IFileService.FILE_FLAG_USED);
+		// 查询所有类型文件 fileInfo.setFlag(IFileService.FILE_FLAG_USED);
 
 		return fileService.getFileInfo(fileInfo);
 	}

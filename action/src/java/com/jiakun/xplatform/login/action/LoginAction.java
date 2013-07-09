@@ -81,21 +81,10 @@ public class LoginAction extends BaseAction {
 			session.setAttribute("ACEGI_SECURITY_LAST_USERNAME", loginUser.getLoginId());
 			session.setAttribute("ACEGI_SECURITY_LAST_LOGINUSER", loginUser);
 
-			// if (validate) {
-			// // �ж�����ʧЧ���ڣ���ǰ����ʧЧ�Ļ���������
-			// if (new Date().getTime() > getUser().getPaswdSignDate()
-			// .getTime()) { // ʧЧ
-			// // allAsers = getUser();
-			// // cust_type = getUser().getCustType();
-			// return "modifyPasswd";
-			// }
-			// }
-
 			// modify by xujiakun 2010-11-6
 			HttpServletResponse response = getServletResponse();
 			if (response != null) {
 				Cookie ps = new Cookie("PS", loginUser.getLoginId());
-				// ps.setMaxAge(-1);
 				ps.setPath("/");
 				ps.setDomain(domain);
 				response.addCookie(ps);
@@ -106,14 +95,12 @@ public class LoginAction extends BaseAction {
 					password = null;
 				}
 				Cookie pw = new Cookie("PW", password);
-				// pw.setMaxAge(-1);
 				pw.setPath("/");
 				pw.setDomain(domain);
 				response.addCookie(pw);
 
 				// modify by xujiakun 2012-8-17 add cookie
 				Cookie cookie = new Cookie(fchCookieKey, passport);
-				// cookie.setPath("/");
 				cookie.setDomain(fchCookieDomain);
 				response.addCookie(cookie);
 			}
