@@ -31,7 +31,7 @@ public class DataLogAction extends BaseAction {
 
 	private String dataConfigId;
 
-	// private List<CmsTbDict> cmsTbDictList;
+	// private List<CmsTbDict> cmsTbDictList
 
 	/**
 	 * getDBTableJsonList.
@@ -48,7 +48,7 @@ public class DataLogAction extends BaseAction {
 
 		total = dataLogService.getDBTableCount(s);
 		// if (total != 0) {
-		// cmsTbDictList = dataLogService.getDBTableList(s);
+		// cmsTbDictList = dataLogService.getDBTableList(s)
 		// }
 
 		return JSON;

@@ -484,7 +484,7 @@ public final class Base64 {
 		if (source[srcOffset + 2] == EQUALS_SIGN) {
 			// Two ways to do the same thing. Don't know which way I like best.
 			// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 ) >>> 6
-			// ) | ( ( DECODABET[ source[ srcOffset + 1] ] << 24 ) >>> 12 );
+			// ) | ( ( DECODABET[ source[ srcOffset + 1] ] << 24 ) >>> 12 )
 			int outBuff =
 				((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12);
 
@@ -494,7 +494,7 @@ public final class Base64 {
 			// Two ways to do the same thing. Don't know which way I like best.
 			// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 ) >>> 6
 			// ) | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 ) | ( ( DECODABET[
-			// source[ srcOffset + 2 ] ] << 24 ) >>> 18 );
+			// source[ srcOffset + 2 ] ] << 24 ) >>> 18 )
 			int outBuff =
 				((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12)
 					| ((DECODABET[source[srcOffset + 2]] & 0xFF) << 6);
@@ -509,7 +509,7 @@ public final class Base64 {
 				// int outBuff = ( ( DECODABET[ source[ srcOffset ] ] << 24 )
 				// >>> 6 ) | ( ( DECODABET[ source[ srcOffset + 1 ] ] << 24 ) >>> 12 ) | ( (
 				// DECODABET[ source[ srcOffset + 2 ] ] << 24 ) >>> 18 ) | ( ( DECODABET[
-				// source[ srcOffset + 3 ] ] << 24 ) >>> 24 );
+				// source[ srcOffset + 3 ] ] << 24 ) >>> 24 )
 				int outBuff =
 					((DECODABET[source[srcOffset]] & 0xFF) << 18) | ((DECODABET[source[srcOffset + 1]] & 0xFF) << 12)
 						| ((DECODABET[source[srcOffset + 2]] & 0xFF) << 6) | (DECODABET[source[srcOffset + 3]] & 0xFF);

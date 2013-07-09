@@ -59,7 +59,7 @@ public class DataLogDaoImpl extends BaseDaoImpl implements IDataLogDao {
 
 	// public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
 	// return (List<CmsTbDict>) getSqlMapClientTemplate().queryForList("data.getDBTableList",
-	// dataLogTotal);
+	// dataLogTotal)
 	// }
 
 	public int getDataLogDetailCount(DataLogTotal dataLogTotal) {

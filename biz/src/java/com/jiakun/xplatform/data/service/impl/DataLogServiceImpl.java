@@ -52,12 +52,12 @@ public class DataLogServiceImpl implements IDataLogService {
 
 	// public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
 	// try {
-	// return dataLogDao.getDBTableList(dataLogTotal);
+	// return dataLogDao.getDBTableList(dataLogTotal)
 	// } catch (Exception e) {
-	// logger.error(LogUtil.parserBean(dataLogTotal), e);
+	// logger.error(LogUtil.parserBean(dataLogTotal), e)
 	// }
 	//
-	// return null;
+	// return null
 	// }
 
 	public IDataLogDao getDataLogDao() {
