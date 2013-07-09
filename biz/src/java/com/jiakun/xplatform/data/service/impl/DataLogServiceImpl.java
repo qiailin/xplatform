@@ -50,16 +50,6 @@ public class DataLogServiceImpl implements IDataLogService {
 		return 0;
 	}
 
-	// public List<CmsTbDict> getDBTableList(DataLogTotal dataLogTotal) {
-	// try {
-	// return dataLogDao.getDBTableList(dataLogTotal)
-	// } catch (Exception e) {
-	// logger.error(LogUtil.parserBean(dataLogTotal), e)
-	// }
-	//
-	// return null
-	// }
-
 	public IDataLogDao getDataLogDao() {
 		return dataLogDao;
 	}

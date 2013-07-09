@@ -607,9 +607,7 @@ public final class Base64 {
 
 		// end catch
 		bytes = decode(bytes, 0, bytes.length);
-		// if (bytes == null) {
-		// return new byte[0];
-		// }
+		// if (bytes == null) { return new byte[0] }
 
 		// Check to see if it's gzip-compressed
 		// GZIP Magic Two-Byte Number: 0x8b1f (35615)
@@ -907,7 +905,7 @@ public final class Base64 {
 
 			for (i = 0; i < len; i++) {
 				b = read();
-				// if( b < 0 && i == 0 ) return -1;
+				// if( b < 0 && i == 0 ) return -1
 				if (b >= 0) {
 					dest[off + i] = (byte) b;
 				} else if (i == 0) {
@@ -1040,7 +1038,7 @@ public final class Base64 {
 
 						out.write(b4, 0, len);
 
-						// out.write( Base64.decode4to3( buffer ) );
+						// out.write( Base64.decode4to3( buffer ) )
 						position = 0;
 					}
 
