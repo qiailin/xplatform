@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -113,10 +114,14 @@ public class DataManageAction extends BaseAction {
 
 			this.setFailMessage("û�е�ǰ���ģ������Ȩ��");
 			return RESULT_MESSAGE;
-		} catch (Exception e) {
-			logger.error(e);
-			this.setFailMessage(IDataService.ERROR_MESSAGE);
-			return RESULT_MESSAGE;
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException: ", e);
+		} catch (IllegalAccessException e) {
+			logger.error("IllegalAccessException: ", e);
+		} catch (InvocationTargetException e) {
+			logger.error("InvocationTargetException: ", e);
+		} catch (IOException e) {
+			logger.error("IOException: ", e);
 		} finally {
 			if (outputStream != null) {
 				try {
@@ -133,6 +138,9 @@ public class DataManageAction extends BaseAction {
 				}
 			}
 		}
+
+		this.setFailMessage(IDataService.ERROR_MESSAGE);
+		return RESULT_MESSAGE;
 	}
 
 	public void importData() {
