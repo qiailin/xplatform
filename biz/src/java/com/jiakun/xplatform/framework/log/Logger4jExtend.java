@@ -1,5 +1,6 @@
 package com.jiakun.xplatform.framework.log;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -168,7 +169,7 @@ public class Logger4jExtend {
 			memcachedCacheService = new MemcachedCacheServiceImpl();
 			memcachedCacheService.setMemcachedClient(client);
 
-		} catch (Exception e) {
+		} catch (IOException e) {
 
 		}
 	}
