@@ -33,7 +33,7 @@ public class MenuAction extends BaseAction {
 
 	private List<Menu> menuList = new ArrayList<Menu>();
 
-	private int total = 0;
+	private int total;
 
 	private String id;
 

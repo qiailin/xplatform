@@ -41,7 +41,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 	 * �����е�ʵ������.
 	 */
 	@SuppressWarnings("rawtypes")
-	private Class genericType = null;
+	private Class genericType;
 
 	@SuppressWarnings("rawtypes")
 	@Override

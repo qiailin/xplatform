@@ -23,7 +23,7 @@ public class ResponseAction extends BaseAction {
 
 	private List<ResponseStats> responseStatsList;
 
-	private String methodName = null;
+	private String methodName;
 
 	public String searchResponseStats() {
 		return "searchResponseStats";

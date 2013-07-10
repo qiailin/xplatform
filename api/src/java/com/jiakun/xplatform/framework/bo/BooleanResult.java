@@ -9,7 +9,7 @@ public class BooleanResult extends BaseResult {
 
 	private static final long serialVersionUID = 4115289089294330499L;
 
-	private boolean result = false;
+	private boolean result;
 
 	/**
 	 * @return the result
