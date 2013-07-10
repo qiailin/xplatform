@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 
@@ -55,7 +56,7 @@ public final class EncryptUtil {
 		String returnStr = null;
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			returnStr = byteArrayToHexString(md5.digest(strSrc.getBytes()));
+			returnStr = byteArrayToHexString(md5.digest(strSrc.getBytes(Charset.forName(CHARSET_UTF8))));
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
