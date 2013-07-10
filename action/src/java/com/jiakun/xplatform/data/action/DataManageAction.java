@@ -2,10 +2,12 @@ package com.jiakun.xplatform.data.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jxl.Sheet;
 import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 import org.springframework.beans.BeanUtils;
 
@@ -113,10 +116,14 @@ public class DataManageAction extends BaseAction {
 
 			this.setFailMessage("û�е�ǰ���ģ������Ȩ��");
 			return RESULT_MESSAGE;
-		} catch (Exception e) {
-			logger.error(e);
-			this.setFailMessage(IDataService.ERROR_MESSAGE);
-			return RESULT_MESSAGE;
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException: ", e);
+		} catch (IllegalAccessException e) {
+			logger.error("IllegalAccessException: ", e);
+		} catch (InvocationTargetException e) {
+			logger.error("InvocationTargetException: ", e);
+		} catch (IOException e) {
+			logger.error("IOException: ", e);
 		} finally {
 			if (outputStream != null) {
 				try {
@@ -133,6 +140,9 @@ public class DataManageAction extends BaseAction {
 				}
 			}
 		}
+
+		this.setFailMessage(IDataService.ERROR_MESSAGE);
+		return RESULT_MESSAGE;
 	}
 
 	public void importData() {
@@ -291,9 +301,18 @@ public class DataManageAction extends BaseAction {
 			} else {
 				return IDataService.ERROR_MESSAGE;
 			}
-		} catch (Exception e) {
-			logger.error(e);
-			return IDataService.ERROR_MESSAGE;
+		} catch (BiffException e) {
+			logger.error("BiffException: ", e);
+		} catch (IllegalArgumentException e) {
+			logger.error("IllegalArgumentException: ", e);
+		} catch (IllegalAccessException e) {
+			logger.error("IllegalAccessException: ", e);
+		} catch (InvocationTargetException e) {
+			logger.error("InvocationTargetException: ", e);
+		} catch (FileNotFoundException e) {
+			logger.error("FileNotFoundException: ", e);
+		} catch (IOException e) {
+			logger.error("IOException: ", e);
 		} finally {
 			if (tBook != null) {
 				try {
@@ -310,6 +329,8 @@ public class DataManageAction extends BaseAction {
 				}
 			}
 		}
+
+		return IDataService.ERROR_MESSAGE;
 	}
 
 	public String searchDataPreview() {
