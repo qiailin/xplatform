@@ -25,7 +25,7 @@ import com.opensymphony.xwork.util.OgnlUtil;
 import com.opensymphony.xwork.util.XWorkConverter;
 
 /**
- * �ͻ��˽��ӱ������JSON����ķ�ʽ�ύ������� �������ʵ��JSON��List<E>����֮��Ļ���
+ * �ͻ��˽��ӱ������JSON����ķ�ʽ�ύ������� �������ʵ��JSON��List<E>����֮��Ļ���.
  * 
  * @author tingjia.chentj
  * 
@@ -38,7 +38,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 	private Logger4jExtend log = Logger4jCollection.getLogger(Json2ListConverter.class);
 
 	/**
-	 * �����е�ʵ������
+	 * �����е�ʵ������.
 	 */
 	@SuppressWarnings("rawtypes")
 	private Class genericType = null;
@@ -57,7 +57,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 	}
 
 	/**
-	 * ��JSON��ʽת����List<E>
+	 * ��JSON��ʽת����List<E>.
 	 * 
 	 * @param context
 	 * @param values
@@ -117,7 +117,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 	}
 
 	/**
-	 * ��List<E>ת����JSON��ʽ
+	 * ��List<E>ת����JSON��ʽ.
 	 * 
 	 * @param context
 	 * @param o

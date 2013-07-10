@@ -30,14 +30,14 @@ import com.jiakun.xplatform.framework.util.LogUtil;
 public class DSAServiceImpl implements IDSAService {
 
 	/**
-	 * 配置文件名
+	 * 配置文件名.
 	 */
 	private static final String KEY_CONFIG_FILE = "dsaConfig.xml";
 
 	private static final String CONF_SUB_DIR = "/dsa/";
 
 	/**
-	 * 在配置文件中的节点标识
+	 * 在配置文件中的节点标识.
 	 */
 	private static final String KEY_TOKEN_TEXT = "key";
 
@@ -52,7 +52,7 @@ public class DSAServiceImpl implements IDSAService {
 	private DSA dsa;
 
 	/**
-	 * 根据配置文件获取公私钥信息列表
+	 * 根据配置文件获取公私钥信息列表.
 	 * 
 	 * @return
 	 */

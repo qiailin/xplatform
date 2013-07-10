@@ -22,7 +22,7 @@ public final class MapUtil {
 	}
 
 	/**
-	 * 将一个bean转换成map
+	 * 将一个bean转换成map.
 	 * 
 	 * @param map
 	 * @param bean

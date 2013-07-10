@@ -23,7 +23,7 @@ public final class EncodeUtil {
 	public static final String DB_ENCODING = "GBK";
 
 	/**
-	 * 预定义图片格式
+	 * 预定义图片格式.
 	 */
 	static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
 
@@ -111,7 +111,7 @@ public final class EncodeUtil {
 
 	/**
 	 * 对单、双引号中的特殊字符进行预处理，防止javascript解析出错。 当输出脚本变量时，必须预处理。例如： <script> var s =
-	 * "<%= EncodeUtil.script(value) %>"; </script>
+	 * "<%= EncodeUtil.script(value) %>"; </script>.
 	 */
 	public static String javascript(Object obj) {
 		if (obj == null) {
@@ -123,7 +123,7 @@ public final class EncodeUtil {
 
 	/**
 	 * 对特殊字符<>"&等进行预处理，防止HTML解析出错。 当输出input、area等元素的value属性时，必须预处理。例如： <input
-	 * name="foo" value="<%= EncodeUtil.html(value) %>">
+	 * name="foo" value="<%= EncodeUtil.html(value) %>">.
 	 */
 	public static String html(Object obj) {
 		if (obj == null) {
@@ -135,7 +135,7 @@ public final class EncodeUtil {
 
 	/**
 	 * 对特殊字符<>"&等进行预处理，防止XML解析出错。 当输出XML的属性值时，必须预处理。例如： <node
-	 * attribute="<%= EncodeUtil.xml(value) %>" />
+	 * attribute="<%= EncodeUtil.xml(value) %>" />.
 	 */
 	public static String xml(Object obj) {
 		if (obj == null) {
@@ -154,7 +154,7 @@ public final class EncodeUtil {
 	 * 22<br/>
 	 * <br/>
 	 * ss<br/>
-	 * d&nbsp;&nbsp;&nbsp;t"
+	 * d&nbsp;&nbsp;&nbsp;t".
 	 * 
 	 * @added by hao.lvh
 	 */
@@ -172,7 +172,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * 截取子字符串
+	 * 截取子字符串.
 	 * 
 	 * @param str
 	 *            ָ指定的字符串
@@ -185,7 +185,7 @@ public final class EncodeUtil {
 	}
 
 	/**
-	 * 1. 截取子字符串 2. 子字符串 + ... + title提示
+	 * 1. 截取子字符串 2. 子字符串 + ... + title提示.
 	 * 
 	 * @param str
 	 *            指定的字符串

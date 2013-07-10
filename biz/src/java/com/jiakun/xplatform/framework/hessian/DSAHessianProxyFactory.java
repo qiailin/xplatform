@@ -13,7 +13,7 @@ import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
 /**
- * DSA for Hessian
+ * DSA for Hessian.
  * 
  * @author xujiakun
  * 
@@ -27,7 +27,7 @@ public class DSAHessianProxyFactory extends HessianProxyFactory {
 	private String keyPairName;
 
 	/**
-	 * 固定的加密字符串
+	 * 固定的加密字符串.
 	 */
 	private String secureKey;
 

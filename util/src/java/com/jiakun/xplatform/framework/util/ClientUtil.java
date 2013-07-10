@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 import com.alibaba.common.lang.StringUtil;
 
 /**
- * 获取请求客户端信息工具类
+ * 获取请求客户端信息工具类.
  * 
  * @author xiaodan.daixd
  */
@@ -27,7 +27,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * 获取客户端IP地址
+	 * 获取客户端IP地址.
 	 * 
 	 * @param request
 	 * @return ip
@@ -50,7 +50,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * 解析参数性能安全的 参数规则 param1=abc&param2=cde;
+	 * 解析参数性能安全的 参数规则 param1=abc&param2=cde;.
 	 * 
 	 * @param ctrl
 	 * @return map
@@ -71,7 +71,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * 获取请求域名
+	 * 获取请求域名.
 	 * 
 	 * @param request
 	 * @return
@@ -93,7 +93,7 @@ public final class ClientUtil {
 	}
 
 	/**
-	 * IP串格式成数字格式的字符串
+	 * IP串格式成数字格式的字符串.
 	 * 
 	 * @param ip
 	 * @return String 12位数字的字符串. 异常情况返回"-1"

@@ -204,7 +204,7 @@ public class JSONResult implements Result, WebWorkStatics {
 	}
 
 	/**
-	 * ��֤�ַ����Ч��
+	 * ��֤�ַ����Ч��.
 	 * 
 	 * @return
 	 */

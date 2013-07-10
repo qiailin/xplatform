@@ -34,7 +34,7 @@ public interface ICacheService<K, V> {
 	V add(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * 保存有有效期的数据
+	 * 保存有有效期的数据.
 	 * 
 	 * @param key
 	 * @param value
@@ -45,7 +45,7 @@ public interface ICacheService<K, V> {
 	V add(K key, V value, int exp) throws Exception;
 
 	/**
-	 * 保存数据
+	 * 保存数据.
 	 * 
 	 * @param key
 	 * @param value
@@ -55,7 +55,7 @@ public interface ICacheService<K, V> {
 	V set(K key, V value) throws Exception;
 
 	/**
-	 * 保存有有效期的数据
+	 * 保存有有效期的数据.
 	 * 
 	 * @param key
 	 * @param value
@@ -66,7 +66,7 @@ public interface ICacheService<K, V> {
 	V set(K key, V value, Date expiry) throws Exception;
 
 	/**
-	 * 保存有有效期的数据
+	 * 保存有有效期的数据.
 	 * 
 	 * @param key
 	 * @param value

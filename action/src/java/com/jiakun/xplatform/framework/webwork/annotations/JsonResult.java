@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * ����ָʾ�ֶ���Ҫת����JSON���� һ��include��exclude����ͬʱʹ��
+ * ����ָʾ�ֶ���Ҫת����JSON���� һ��include��exclude����ͬʱʹ��.
  * 
  * example:
  * 
@@ -20,26 +20,26 @@ import java.lang.annotation.Target;
 public @interface JsonResult {
 
 	/**
-	 * ��¼���ֶε�����
+	 * ��¼���ֶε�����.
 	 */
 	String field();
 
 	/**
-	 * �ܼ�¼���ֶ�����
+	 * �ܼ�¼���ֶ�����.
 	 * 
 	 * @return
 	 */
 	String total() default "";
 
 	/**
-	 * �������
+	 * �������.
 	 */
 	String[] include() default {
 
 	};
 
 	/**
-	 * �ų������
+	 * �ų������.
 	 */
 	String[] exclude() default {
 
