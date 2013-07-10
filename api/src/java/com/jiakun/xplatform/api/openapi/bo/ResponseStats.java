@@ -60,7 +60,9 @@ public class ResponseStats extends SearchInfo {
 	}
 
 	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+		if (createDate != null) {
+			this.createDate = (Date) createDate.clone();
+		}
 	}
 
 }

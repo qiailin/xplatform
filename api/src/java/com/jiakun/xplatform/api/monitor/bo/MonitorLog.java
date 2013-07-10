@@ -47,7 +47,9 @@ public class MonitorLog extends SearchInfo {
 	}
 
 	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
+		if (modifyDate != null) {
+			this.modifyDate = (Date) modifyDate.clone();
+		}
 	}
 
 	public int getMonitorResult() {
@@ -71,7 +73,9 @@ public class MonitorLog extends SearchInfo {
 	}
 
 	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+		if (createDate != null) {
+			this.createDate = (Date) createDate.clone();
+		}
 	}
 
 	public String getSqlMonitorTitle() {

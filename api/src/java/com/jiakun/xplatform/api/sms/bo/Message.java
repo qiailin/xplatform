@@ -62,7 +62,9 @@ public class Message implements Serializable {
 	}
 
 	public void setSendTime(Date sendTime) {
-		this.sendTime = sendTime;
+		if (sendTime != null) {
+			this.sendTime = (Date) sendTime.clone();
+		}
 	}
 
 	public Long getSendFlag() {

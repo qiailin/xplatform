@@ -238,7 +238,9 @@ public class ApplyUsers extends SearchInfo {
 	}
 
 	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+		if (createTime != null) {
+			this.createTime = (Date) createTime.clone();
+		}
 	}
 
 	public String getJjReason() {
@@ -254,7 +256,9 @@ public class ApplyUsers extends SearchInfo {
 	}
 
 	public void setLastModify(Date lastModify) {
-		this.lastModify = lastModify;
+		if (lastModify != null) {
+			this.lastModify = (Date) lastModify.clone();
+		}
 	}
 
 	public String getEmpIdCard() {

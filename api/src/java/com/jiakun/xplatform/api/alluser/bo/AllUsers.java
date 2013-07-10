@@ -247,7 +247,9 @@ public class AllUsers extends SearchInfo {
 	}
 
 	public void setPaswdSignDate(Date paswdSignDate) {
-		this.paswdSignDate = paswdSignDate;
+		if (paswdSignDate != null) {
+			this.paswdSignDate = (Date) paswdSignDate.clone();
+		}
 	}
 
 	public String getOrgId() {
