@@ -17,7 +17,7 @@ public class StringArrayResult extends BaseResult {
 	 * @return the result
 	 */
 	public String[] getResult() {
-		return result;
+		return result != null ? Arrays.copyOf(result, result.length) : null;
 	}
 
 	/**

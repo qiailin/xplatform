@@ -58,7 +58,7 @@ public class Message implements Serializable {
 	}
 
 	public Date getSendTime() {
-		return sendTime;
+		return sendTime != null ? (Date) sendTime.clone() : null;
 	}
 
 	public void setSendTime(Date sendTime) {

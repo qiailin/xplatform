@@ -243,7 +243,7 @@ public class AllUsers extends SearchInfo {
 	}
 
 	public Date getPaswdSignDate() {
-		return paswdSignDate;
+		return paswdSignDate != null ? (Date) paswdSignDate.clone() : null;
 	}
 
 	public void setPaswdSignDate(Date paswdSignDate) {
@@ -355,7 +355,7 @@ public class AllUsers extends SearchInfo {
 	}
 
 	public String[] getOrgIds() {
-		return orgIds;
+		return orgIds != null ? Arrays.copyOf(orgIds, orgIds.length) : null;
 	}
 
 	public void setOrgIds(String[] orgIds) {

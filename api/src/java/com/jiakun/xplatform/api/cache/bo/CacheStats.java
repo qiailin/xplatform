@@ -674,7 +674,7 @@ public class CacheStats extends SearchInfo {
 	}
 
 	public Date getCreateDate() {
-		return createDate;
+		return createDate != null ? (Date) createDate.clone() : null;
 	}
 
 	public void setCreateDate(Date createDate) {

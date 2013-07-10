@@ -140,7 +140,7 @@ public class SearchInfo implements Serializable {
 	}
 
 	public String[] getCodes() {
-		return codes;
+		return codes != null ? Arrays.copyOf(codes, codes.length) : null;
 	}
 
 	public void setCodes(String[] codes) {

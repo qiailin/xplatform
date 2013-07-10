@@ -21,7 +21,7 @@ public class BaseBo implements Serializable {
 	private String modifier;
 
 	public Date getGmtCreated() {
-		return gmtCreated;
+		return gmtCreated != null ? (Date) gmtCreated.clone() : null;
 	}
 
 	public void setGmtCreated(Date gmtCreated) {
@@ -29,7 +29,7 @@ public class BaseBo implements Serializable {
 	}
 
 	public Date getGmtModified() {
-		return gmtModified;
+		return gmtModified != null ? (Date) gmtModified.clone() : null;
 	}
 
 	public void setGmtModified(Date gmtModified) {

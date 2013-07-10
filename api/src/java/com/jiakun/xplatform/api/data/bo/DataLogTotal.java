@@ -69,7 +69,7 @@ public class DataLogTotal extends SearchInfo {
 	}
 
 	public Date getCreateDate() {
-		return createDate;
+		return createDate != null ? (Date) createDate.clone() : null;
 	}
 
 	public void setCreateDate(Date createDate) {
@@ -101,7 +101,7 @@ public class DataLogTotal extends SearchInfo {
 	}
 
 	public Date getModifyDate() {
-		return modifyDate;
+		return modifyDate != null ? (Date) modifyDate.clone() : null;
 	}
 
 	public void setModifyDate(Date modifyDate) {

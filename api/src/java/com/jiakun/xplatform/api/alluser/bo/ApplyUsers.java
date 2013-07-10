@@ -234,7 +234,7 @@ public class ApplyUsers extends SearchInfo {
 	}
 
 	public Date getCreateTime() {
-		return createTime;
+		return createTime != null ? (Date) createTime.clone() : null;
 	}
 
 	public void setCreateTime(Date createTime) {
@@ -250,7 +250,7 @@ public class ApplyUsers extends SearchInfo {
 	}
 
 	public Date getLastModify() {
-		return lastModify;
+		return lastModify != null ? (Date) lastModify.clone() : null;
 	}
 
 	public void setLastModify(Date lastModify) {
@@ -290,7 +290,7 @@ public class ApplyUsers extends SearchInfo {
 	}
 
 	public String[] getOrgIds() {
-		return orgIds;
+		return orgIds != null ? Arrays.copyOf(orgIds, orgIds.length) : null;
 	}
 
 	public void setOrgIds(String[] orgIds) {

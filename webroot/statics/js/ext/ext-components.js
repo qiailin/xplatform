@@ -3436,19 +3436,6 @@ Ext.reg('itemselector', Ext.ux.form.ItemSelector);
 Ext.ux.ItemSelector = Ext.ux.form.ItemSelector;
 
 /**
- * <script type="text/javascript" src="$!{env.imgUrl}/js/ext/ext-copy.js"></script>
- */
-
-if (!Ext.grid.GridView.prototype.templates) {
-	Ext.grid.GridView.prototype.templates = {};
-}
-
-Ext.grid.GridView.prototype.templates.cell = new Ext.Template(
-		'<td class="x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
-		'<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
-		'</td>');
-
-/**
  * <script type="text/javascript"
  * src="$!{env.imgUrl}/js/ext/Ext.ux.grid.RowExpander.js"></script>
  */
@@ -3912,6 +3899,19 @@ Ext.reg('fileuploadfield', Ext.ux.form.FileUploadField);
 // backwards compat
 Ext.form.FileUploadField = Ext.ux.form.FileUploadField;
 
+/**
+ * <script type="text/javascript" src="$!{env.imgUrl}/js/ext/ext-copy.js"></script>
+ */
+
+if (!Ext.grid.GridView.prototype.templates) {
+	Ext.grid.GridView.prototype.templates = {};
+}
+
+Ext.grid.GridView.prototype.templates.cell = new Ext.Template(
+		'<td class="x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
+		'<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
+		'</td>');
+		
 /**
  * <script type="text/javascript"
  * src="$!{env.imgUrl}/js/ext/Ext.date.Conversion.js"></script>
