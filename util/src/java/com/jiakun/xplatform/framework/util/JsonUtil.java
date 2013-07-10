@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import com.opensymphony.xwork.util.OgnlUtil;
 
 /**
- * java������json�ַ�ת�Ĺ�����
+ * java������json�ַ�ת�Ĺ�����.
  * 
  * @author cuican.dingcc
  * 
@@ -38,7 +38,7 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * ��json�ַ�ת��javabean
+	 * ��json�ַ�ת��javabean.
 	 * 
 	 * @param jsonStr
 	 *            Ҫת����json�ַ�
@@ -253,7 +253,7 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * ��javabeanת��json�ַ�
+	 * ��javabeanת��json�ַ�.
 	 * 
 	 * @param cls
 	 *            Ҫת��javabean����

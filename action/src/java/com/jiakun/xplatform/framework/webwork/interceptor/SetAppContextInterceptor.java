@@ -12,7 +12,7 @@ import com.opensymphony.xwork.interceptor.Interceptor;
 /**
  * ���õ�ǰӦ�������ĵ�������
  * 
- * VM�п���ʹ�õı����� currentUser: ��ǰ�û����� currentUrl: ��ǰ�����URL�����������
+ * VM�п���ʹ�õı����� currentUser: ��ǰ�û����� currentUrl: ��ǰ�����URL�����������.
  * 
  * @author jacky.chenb
  * 
@@ -37,8 +37,7 @@ public class SetAppContextInterceptor implements Interceptor {
 		ctx.put(CURRENT_USER, SecurityContext.getUser());
 
 		// ���õ�ǰ�����URL
-		HttpServletRequest request = (HttpServletRequest) ctx
-				.get(ServletActionContext.HTTP_REQUEST);
+		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 
 		StringBuffer url = request.getRequestURL();
 		String queryString = request.getQueryString();

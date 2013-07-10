@@ -10,7 +10,7 @@ import com.jiakun.xplatform.framework.bo.StringResult;
 
 /**
  * �����T����������������<br>
- * �����������T�������������� ������I��������
+ * �����������T�������������� ������I��������.
  * 
  * @author xujiakun
  * 

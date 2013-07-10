@@ -63,7 +63,7 @@ public class CacheStats extends SearchInfo {
 	private String authErrors;
 
 	/**
-	 * 为了给新的数据项目释放空间，从缓存移除的缓存对象的数目。比如超过缓存大小时根据LRU算法移除的对象，以及过期的对象
+	 * 为了给新的数据项目释放空间，从缓存移除的缓存对象的数目。比如超过缓存大小时根据LRU算法移除的对象，以及过期的对象.
 	 */
 	private String evictions;
 
@@ -136,28 +136,28 @@ public class CacheStats extends SearchInfo {
 	private String connectionStructures;
 
 	/**
-	 * Number of keys that have been compared and swapped and found present
+	 * Number of keys that have been compared and swapped and found present.
 	 */
 	private String casHits;
 
 	/**
-	 * Number of items that have been delete and not found
+	 * Number of items that have been delete and not found.
 	 */
 	private String deleteMisses;
 
 	/**
-	 * 表示从memcached服务启动到当前时间，系统打开过的连接的总数
+	 * 表示从memcached服务启动到当前时间，系统打开过的连接的总数.
 	 */
 	private String totalConnections;
 
 	/**
-	 * Total user time for this instance (seconds:microseconds)
+	 * Total user time for this instance (seconds:microseconds).
 	 */
 	private String rusageUser;
 
 	/**
 	 * The “flush_all” command clears the whole cache and shouldn’t be used
-	 * during normal operation
+	 * during normal operation.
 	 */
 	private String cmdFlush;
 
@@ -174,7 +174,7 @@ public class CacheStats extends SearchInfo {
 
 	/**
 	 * The “cas” command is some kind of Memcached’s way to avoid locking. “cas”
-	 * calls with bad identifier are counted in this stats key
+	 * calls with bad identifier are counted in this stats key.
 	 */
 	private String casBadval;
 
@@ -194,12 +194,12 @@ public class CacheStats extends SearchInfo {
 	private String currItems;
 
 	/**
-	 * Number of items that have been compared and swapped and not found
+	 * Number of items that have been compared and swapped and not found.
 	 */
 	private String casMisses;
 
 	/**
-	 * The Memcached server is currently accepting new connections
+	 * The Memcached server is currently accepting new connections.
 	 */
 	private String acceptingConns;
 
@@ -224,26 +224,26 @@ public class CacheStats extends SearchInfo {
 	private String authCmds;
 
 	/**
-	 * Number of failed “incr” commands (see incr_hits)
+	 * Number of failed “incr” commands (see incr_hits).
 	 */
 	private String incrMisses;
 
 	private String hashBytes;
 
 	/**
-	 * Number of items that have been decremented and not found
+	 * Number of items that have been decremented and not found.
 	 */
 	private String decrMisses;
 
 	/**
-	 * Number of keys that have been decremented and found present
+	 * Number of keys that have been decremented and found present.
 	 */
 	private String decrHits;
 
 	/**
 	 * Memcached has a configurable maximum number of requests per event (-R
 	 * command line argument), this counter shows the number of times any client
-	 * hit this limit
+	 * hit this limit.
 	 */
 	private String connYields;
 

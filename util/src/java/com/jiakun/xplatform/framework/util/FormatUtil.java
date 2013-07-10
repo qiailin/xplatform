@@ -74,7 +74,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * 根据数据得到数据金额字符串格式（如果为负依然返回负值）
+	 * 根据数据得到数据金额字符串格式（如果为负依然返回负值）.
 	 * 
 	 * @param amount
 	 * @return
@@ -87,7 +87,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * 根据字符串得到数据金额字符串格式（如果为负依然返回负值）
+	 * 根据字符串得到数据金额字符串格式（如果为负依然返回负值）.
 	 * 
 	 * @param amount
 	 * @return
@@ -97,7 +97,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * 根据数据得到金额字符串格式（如果为负,返回０.００）
+	 * 根据数据得到金额字符串格式（如果为负,返回０.００）.
 	 * 
 	 * @param amount
 	 * @return if(amount==null||amount<=0):0.00;else 220.00
@@ -110,7 +110,7 @@ public final class FormatUtil {
 	}
 
 	/**
-	 * 字符串大小写转换
+	 * 字符串大小写转换.
 	 */
 	public static String lowerToUpper(String s) {
 		if (StringUtil.isEmpty(s)) {

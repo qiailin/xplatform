@@ -60,7 +60,7 @@ public final class HttpUtil {
 	private static final int EXECUTION_COUNT = 3;
 
 	/**
-	 * 异常自动恢复处理, 使用HttpRequestRetryHandler接口实现请求的异常恢复
+	 * 异常自动恢复处理, 使用HttpRequestRetryHandler接口实现请求的异常恢复.
 	 */
 	private static HttpRequestRetryHandler requestRetryHandler = new HttpRequestRetryHandler() {
 		// 自定义的恢复策略
@@ -123,7 +123,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn
+	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn.
 	 * 
 	 * @param url
 	 *            提交地址
@@ -137,7 +137,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn
+	 * Get方式提交,URL中不包含查询参数, 格式：http://www.g.cn.
 	 * 
 	 * @param url
 	 *            提交地址
@@ -178,7 +178,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn
+	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn.
 	 * 
 	 * @param url
 	 *            提交地址
@@ -192,7 +192,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn
+	 * Post方式提交,URL中不包含提交参数, 格式：http://www.g.cn.
 	 * 
 	 * @param url
 	 *            提交地址
@@ -237,7 +237,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * Post方式提交,忽略URL中包含的参数,解决SSL双向数字证书认证
+	 * Post方式提交,忽略URL中包含的参数,解决SSL双向数字证书认证.
 	 * 
 	 * @param url
 	 *            提交地址
@@ -306,7 +306,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * 获取DefaultHttpClient实例
+	 * 获取DefaultHttpClient实例.
 	 * 
 	 * @param charset
 	 *            参数编码集, 可空
@@ -327,7 +327,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * 释放HttpClient连接
+	 * 释放HttpClient连接.
 	 * 
 	 * @param hrb
 	 *            请求对象
@@ -344,7 +344,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * 从给定的路径中加载此 KeyStore
+	 * 从给定的路径中加载此 KeyStore.
 	 * 
 	 * @param url
 	 *            keystore URL路径
@@ -373,7 +373,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * 将传入的键/值对参数转换为NameValuePair参数集
+	 * 将传入的键/值对参数转换为NameValuePair参数集.
 	 * 
 	 * @param paramsMap
 	 *            参数集, 键/值对

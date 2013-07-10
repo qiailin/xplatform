@@ -20,26 +20,26 @@ import java.lang.annotation.Target;
 public @interface JsonResult {
 
 	/**
-	 * ��¼���ֶε�����
+	 * ��¼���ֶε�����.
 	 */
 	String field();
 
 	/**
-	 * �ܼ�¼���ֶ�����
+	 * �ܼ�¼���ֶ�����.
 	 * 
 	 * @return
 	 */
 	String total() default "";
 
 	/**
-	 * �������
+	 * �������.
 	 */
 	String[] include() default {
 
 	};
 
 	/**
-	 * �ų������
+	 * �ų������.
 	 */
 	String[] exclude() default {
 

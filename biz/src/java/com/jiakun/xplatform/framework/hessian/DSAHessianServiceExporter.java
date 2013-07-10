@@ -28,22 +28,22 @@ public class DSAHessianServiceExporter extends HessianServiceExporter {
 	private IDSAService dsaService;
 
 	/**
-	 * 请求过期时间
+	 * 请求过期时间.
 	 */
 	private long timeout;
 
 	/**
-	 * 令牌原文
+	 * 令牌原文.
 	 */
 	private String secureKey;
 
 	/**
-	 * 允许访问的客户端
+	 * 允许访问的客户端.
 	 */
 	private String allowedClients;
 
 	/**
-	 * 密钥名称
+	 * 密钥名称.
 	 */
 	private String keyPairName;
 

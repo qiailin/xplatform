@@ -134,7 +134,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * 获取文件类型名 (.txt)
+	 * 获取文件类型名 (.txt).
 	 * 
 	 * @param fileName
 	 * @return
@@ -148,7 +148,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * 获取文件名
+	 * 获取文件名.
 	 * 
 	 * @param fileName
 	 * @return
@@ -166,7 +166,7 @@ public final class FileUtil {
 	}
 
 	/**
-	 * 获取文件类型名 (txt)
+	 * 获取文件类型名 (txt).
 	 * 
 	 * @param fileName
 	 * @return

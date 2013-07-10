@@ -17,7 +17,7 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.AroundInterceptor;
 
 /**
- * ������webwork�����ļ�������ʱ�����params֮ǰ ���ڴ���AJAX����ʱ����������
+ * ������webwork�����ļ�������ʱ�����params֮ǰ ���ڴ���AJAX����ʱ����������.
  * 
  * @author tingjia.chentj
  */

@@ -4,7 +4,7 @@ import com.alibaba.service.ServiceInitializationException;
 import com.alibaba.service.dsa.DSAException;
 
 /**
- * DSA加密簽名接口
+ * DSA加密簽名接口.
  * 
  * @author xujiakun
  * 

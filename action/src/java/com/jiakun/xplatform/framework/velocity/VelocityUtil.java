@@ -28,14 +28,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�
+	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�.
 	 */
 	public static void mergeFile(String fileName, Context ctx, OutputStream os) throws Exception {
 		mergeFile(fileName, ctx, os, DEFAULT_INPUT_ENCODING, DEFAULT_OUTPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�
+	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�.
 	 */
 	public static void mergeFile(String fileName, Context ctx, OutputStream os, String inputEncoding,
 		String outputEncoding) throws Exception {
@@ -45,14 +45,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�
+	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�.
 	 */
 	public static void mergeFile(String fileName, Context ctx, Writer writer) throws Exception {
 		mergeFile(fileName, ctx, writer, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�
+	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�.
 	 */
 	public static void mergeFile(String fileName, Context ctx, Writer writer, String inputEncoding) throws Exception {
 
@@ -66,14 +66,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context
+	 * �ϲ�ģ���ļ���Context.
 	 */
 	public static String mergeFile(String fileName, Context ctx) throws Exception {
 		return mergeFile(fileName, ctx, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context
+	 * �ϲ�ģ���ļ���Context.
 	 */
 	public static String mergeFile(String fileName, Context ctx, String inputEncoding) throws Exception {
 
@@ -83,7 +83,7 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ַ���Context
+	 * �ϲ�ģ���ַ���Context.
 	 * 
 	 * @param str
 	 *            ģ�����ݣ����԰�VTL
