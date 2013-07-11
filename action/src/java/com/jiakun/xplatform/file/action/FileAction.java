@@ -96,7 +96,7 @@ public class FileAction extends BaseAction {
 					out.write(BYTE);
 					out.flush();
 				}
-			} catch (Exception e) {
+			} catch (IOException e) {
 				logger.error(fileId, e);
 			} finally {
 				if (out != null) {
