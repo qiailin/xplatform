@@ -8,6 +8,7 @@ import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.cache.bo.CacheStats;
 import com.jiakun.xplatform.api.monitor.ICacheMonitorService;
 import com.jiakun.xplatform.framework.action.BaseAction;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.JsonUtil;
@@ -57,7 +58,7 @@ public class CacheMonitorAction extends BaseAction {
 
 		try {
 			cacheStatsList = memcachedCacheService.getStats();
-		} catch (Exception e) {
+		} catch (ServiceException e) {
 		}
 
 		total = cacheStatsList == null ? 0 : cacheStatsList.size();
