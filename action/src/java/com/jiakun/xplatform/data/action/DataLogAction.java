@@ -47,7 +47,7 @@ public class DataLogAction extends BaseAction {
 		s.setUserId(users.getUserId());
 
 		total = dataLogService.getDBTableCount(s);
-		// if (total != 0) { cmsTbDictList = dataLogService.getDBTableList(s) }
+		// if (total != 0) { cmsTbDictList = dataLogService.getDBTableList(s) }.
 
 		return JSON;
 	}
