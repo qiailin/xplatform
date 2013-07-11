@@ -330,8 +330,8 @@ public final class DateUtil {
 			return "";
 		}
 
-		dateTimeStr = dateTimeStr.replaceAll("\\s+", "|");
-		String[] a = dateTimeStr.split("\\|");
+		String str = dateTimeStr.replaceAll("\\s+", "|");
+		String[] a = str.split("\\|");
 		List<String> list = Arrays.asList(a);
 		String datetime = "";
 		int count = 1;
