@@ -34,7 +34,7 @@ public final class SplitString {
 	 * @return
 	 */
 	public static String joinIds(String[] roleIds) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < roleIds.length; i++) {
 			if (i == 0) {
 				sb.append(roleIds[i]);
@@ -47,7 +47,7 @@ public final class SplitString {
 	}
 
 	public static String buildBooksiteIdCacheKey(String id) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append("booksiteId_").append(id);
 		return sb.toString();
 	}
@@ -79,5 +79,5 @@ public final class SplitString {
 		}
 		return paraMap;
 	}
-	
+
 }

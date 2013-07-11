@@ -33,7 +33,7 @@ public final class EncryptUtil {
 	}
 
 	public static String byteArrayToHexString(byte[] b) {
-		StringBuffer resultSb = new StringBuffer();
+		StringBuilder resultSb = new StringBuilder();
 		for (int i = 0; i < b.length; i++) {
 			resultSb.append(byteToHexString(b[i]));
 		}

@@ -99,7 +99,7 @@ public final class FileUtil {
 	}
 
 	public static String readFile(String filePath) {
-		StringBuffer fileContent = new StringBuffer();
+		StringBuilder fileContent = new StringBuilder();
 		InputStreamReader isr = null;
 		BufferedReader br = null;
 		try {

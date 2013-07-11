@@ -117,7 +117,7 @@ public final class FormatUtil {
 			return null;
 		}
 
-		StringBuffer t = new StringBuffer();
+		StringBuilder t = new StringBuilder();
 		for (int i = 0; i < s.length(); i++) {
 			t.append(s.substring(i, i + 1).toUpperCase());
 		}

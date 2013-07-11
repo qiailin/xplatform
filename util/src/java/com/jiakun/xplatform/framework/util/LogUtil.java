@@ -27,10 +27,10 @@ public final class LogUtil {
 		StringBuilder sb = new StringBuilder();
 		try {
 			Object obj = o;
-			
+
 			if (obj == null) {
 				return "null";
-			} else if (obj instanceof String || (obj instanceof StringBuffer)) {
+			} else if (obj instanceof String || (obj instanceof StringBuilder)) {
 				obj = obj.toString();
 				String v = ((String) obj).replaceAll("/\\{0}\"{1}/", "\\\"");
 				v = v.replaceAll("/\r/", "\\n");
@@ -78,7 +78,7 @@ public final class LogUtil {
 				sb.append('"').append(DateUtil.datetime((Date) obj, DateUtil.DEFAULT_DATETIME_FORMAT)).append('"');
 			} else if (obj instanceof Exception) {
 				Exception e = (Exception) obj;
-				StringBuffer t = new StringBuffer();
+				StringBuilder t = new StringBuilder();
 				t.append(e.getClass().getName()).append(':').append(e.getMessage());
 				sb.append(parserBean(t));
 			} else if (obj instanceof Calendar) {
@@ -95,7 +95,7 @@ public final class LogUtil {
 					Object value = entry.getValue();
 					if (value == null) {
 						sb.append("\"" + element + "\":").append('"').append("null").append('"').append(',');
-					} else if (value instanceof String || (value instanceof StringBuffer)) {
+					} else if (value instanceof String || (value instanceof StringBuilder)) {
 						sb.append("\"" + element + "\":");
 						value = value.toString();
 						String v = ((String) value).replaceAll("/\\{0}\"{1}/", "\\\"");
