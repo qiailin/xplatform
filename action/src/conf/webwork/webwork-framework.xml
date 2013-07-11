@@ -21,7 +21,7 @@
 
 		<interceptors>
 			<interceptor name="exception"
-				class="com.jiakun.xplatform.framework.webwork.interceptor.ExceptionMappingInterceptor">
+				class="com.jiakun.xplatform.framework.webwork.interceptor.ExceptionInterceptor">
 				<param name="ignoreExceptions">java.net.SocketException</param>
 				<param name="logEnabled">true</param>
 				<param name="logLevel">error</param>
