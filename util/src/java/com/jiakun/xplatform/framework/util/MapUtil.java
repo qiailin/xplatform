@@ -17,6 +17,10 @@ public final class MapUtil {
 
 	private static final Object[] EMPTY_ARRAY = {};
 
+	private static final int INDEX_3 = 3;
+
+	private static final int BEGIN_INDEX_4 = 4;
+
 	private MapUtil() {
 
 	}
@@ -54,7 +58,8 @@ public final class MapUtil {
 				Class rt = methods[i].getReturnType();
 
 				if (methodName.startsWith("get") && pts.length == 0 && !Void.class.equals(rt)) {
-					String propName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
+					String propName =
+						Character.toLowerCase(methodName.charAt(INDEX_3)) + methodName.substring(BEGIN_INDEX_4);
 					if ("class".equals(propName)) {
 						continue;
 					}
@@ -111,7 +116,8 @@ public final class MapUtil {
 				String methodName = methods[i].getName();
 
 				if (methodName.startsWith("set")) {
-					String propName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);
+					String propName =
+						Character.toLowerCase(methodName.charAt(INDEX_3)) + methodName.substring(BEGIN_INDEX_4);
 					String key = withoutPrefix ? propName : prefix + propName;
 
 					Object value = map.get(key);

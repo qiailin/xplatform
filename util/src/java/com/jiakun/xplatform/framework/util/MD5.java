@@ -163,7 +163,8 @@ public class MD5 {
 		byte[] block = new byte[64];
 		index = (int) (count[0] >>> 3) & 0x3F;
 		// /* Update number of bits */
-		if ((count[0] += inputLen << 3) < (inputLen << 3)) {
+		int len = inputLen << 3;
+		if ((count[0] += len) < len) {
 			count[1]++;
 		}
 		count[1] += inputLen >>> 29;
