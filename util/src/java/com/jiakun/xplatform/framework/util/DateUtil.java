@@ -475,8 +475,8 @@ public final class DateUtil {
 	 */
 	public static int getQuot(String startDateStr, String endDateStr, String format) {
 		long quot = 0;
-		format = (format != null && format.length() > 0) ? format : DEFAULT_DATE_FORMAT;
-		SimpleDateFormat ft = new SimpleDateFormat(format);
+		String str = (format != null && format.length() > 0) ? format : DEFAULT_DATE_FORMAT;
+		SimpleDateFormat ft = new SimpleDateFormat(str);
 		try {
 			Date date1 = ft.parse(endDateStr);
 			Date date2 = ft.parse(startDateStr);
@@ -647,12 +647,14 @@ public final class DateUtil {
 		GregorianCalendar calendar = new GregorianCalendar();
 		calendar.setTime(new Date());
 
-		if (StringUtil.isBlank(monthRange)) {
-			monthRange = "cm";
+		String range = monthRange;
+
+		if (StringUtil.isBlank(range)) {
+			range = "cm";
 		}
 
-		if (!"sm".equals(monthRange)) {
-			if ("pm".equals(monthRange)) {
+		if (!"sm".equals(range)) {
+			if ("pm".equals(range)) {
 				calendar.add(Calendar.MONTH, -1);
 			}
 

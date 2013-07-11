@@ -149,19 +149,24 @@ public final class HttpUtil {
 	 * @throws Exception
 	 */
 	public static String get(String url, Map<String, String> params, String charset) throws Exception {
-		if (url == null || StringUtil.isEmpty(url)) {
+		String urls = url;
+
+		if (urls == null || StringUtil.isEmpty(urls)) {
 			return null;
 		}
+
+		String charsets = charset;
+
 		List<NameValuePair> qparams = getParamsList(params);
 		if (qparams != null && qparams.size() > 0) {
-			charset = charset == null ? CHARSET_GBK : charset;
-			String formatParams = URLEncodedUtils.format(qparams, charset);
-			url =
-				(url.indexOf('?')) < 0 ? (url + "?" + formatParams)
-					: (url.substring(0, url.indexOf('?') + 1) + formatParams);
+			charsets = charsets == null ? CHARSET_GBK : charsets;
+			String formatParams = URLEncodedUtils.format(qparams, charsets);
+			urls =
+				(urls.indexOf('?')) < 0 ? (urls + "?" + formatParams)
+					: (urls.substring(0, urls.indexOf('?') + 1) + formatParams);
 		}
-		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
-		HttpGet hg = new HttpGet(url);
+		DefaultHttpClient httpclient = getDefaultHttpClient(charsets);
+		HttpGet hg = new HttpGet(urls);
 
 		String responseStr = null;
 		try {

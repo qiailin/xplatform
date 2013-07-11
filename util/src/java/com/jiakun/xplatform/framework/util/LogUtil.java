@@ -23,9 +23,11 @@ public final class LogUtil {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static String parserBean(Object obj) {
+	public static String parserBean(Object o) {
 		StringBuilder sb = new StringBuilder();
 		try {
+			Object obj = o;
+			
 			if (obj == null) {
 				return "null";
 			} else if (obj instanceof String || (obj instanceof StringBuffer)) {

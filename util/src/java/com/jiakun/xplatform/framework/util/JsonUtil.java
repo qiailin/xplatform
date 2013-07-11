@@ -53,10 +53,13 @@ public final class JsonUtil {
 	 */
 
 	@SuppressWarnings("rawtypes")
-	public static Object json2Bean(Class toClass, String jsonValue, Map<String, Class> childMap) throws Exception {
+	public static Object json2Bean(Class toClass, String jsonStr, Map<String, Class> childMap) throws Exception {
 		if (toClass == null) {
 			return null;
 		}
+
+		String jsonValue = jsonStr;
+
 		try {
 			jsonValue = URLDecoder.decode(jsonValue, "utf-8");
 		} catch (Exception e) {
@@ -140,8 +143,7 @@ public final class JsonUtil {
 		if (date == null || date.trim().length() != 10) {
 			return false;
 		} else {
-			date = date.trim();
-			String[] param = date.split("-");
+			String[] param = (date.trim()).split("-");
 			if (param[0].length() != 4) {
 				return false;
 			}
