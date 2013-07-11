@@ -2,6 +2,8 @@ package com.jiakun.xplatform.api.cache;
 
 import java.util.Date;
 
+import com.jiakun.xplatform.framework.exception.ServiceException;
+
 /**
  * cacheService.
  * 
@@ -18,9 +20,9 @@ public interface ICacheService<K, V> {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V add(K key, V value) throws Exception;
+	V add(K key, V value) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据.
@@ -29,9 +31,9 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 有效期
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V add(K key, V value, Date expiry) throws Exception;
+	V add(K key, V value, Date expiry) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据.
@@ -40,9 +42,9 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 数据超时的秒数
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V add(K key, V value, int exp) throws Exception;
+	V add(K key, V value, int exp) throws ServiceException;
 
 	/**
 	 * 保存数据.
@@ -50,9 +52,9 @@ public interface ICacheService<K, V> {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V set(K key, V value) throws Exception;
+	V set(K key, V value) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据.
@@ -61,9 +63,9 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 有效期
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V set(K key, V value, Date expiry) throws Exception;
+	V set(K key, V value, Date expiry) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据.
@@ -72,9 +74,9 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 数据超时的秒数
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V set(K key, V value, int exp) throws Exception;
+	V set(K key, V value, int exp) throws ServiceException;
 
 	/**
 	 * 保存数据,前提是key必须存在于memcache中，否则保存不成功.
@@ -82,9 +84,9 @@ public interface ICacheService<K, V> {
 	 * @param key
 	 * @param value
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V replace(K key, V value) throws Exception;
+	V replace(K key, V value) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据，前提是key必须存在于memcache中，否则保存不成功.
@@ -93,9 +95,9 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 有效期
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V replace(K key, V value, Date expiry) throws Exception;
+	V replace(K key, V value, Date expiry) throws ServiceException;
 
 	/**
 	 * 保存有有效期的数据，前提是key必须存在于memcache中，否则保存不成功.
@@ -104,26 +106,26 @@ public interface ICacheService<K, V> {
 	 * @param value
 	 * @param 有效期
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V replace(K key, V value, int exp) throws Exception;
+	V replace(K key, V value, int exp) throws ServiceException;
 
 	/**
 	 * 获取缓存数据.
 	 * 
 	 * @param key
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V get(K key) throws Exception;
+	V get(K key) throws ServiceException;
 
 	/**
 	 * 移出缓存数据.
 	 * 
 	 * @param key
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	V remove(K key) throws Exception;
+	V remove(K key) throws ServiceException;
 
 }

@@ -3,6 +3,7 @@ package com.jiakun.xplatform.framework.util;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -13,6 +14,8 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
 import org.apache.log4j.Logger;
+
+import com.jiakun.xplatform.framework.exception.ServiceException;
 
 /***
  * HDFS Util.
@@ -28,7 +31,7 @@ public final class HDFSUtil {
 
 	}
 
-	public static FileSystem getFileSystem(String ip, int port) throws Exception {
+	public static FileSystem getFileSystem(String ip, int port) throws ServiceException {
 		FileSystem fs = null;
 
 		try {
@@ -37,10 +40,10 @@ public final class HDFSUtil {
 			config.set("fs.default.name", url);
 
 			fs = FileSystem.get(config);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("getFileSystem failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("getFileSystem exception");
+			throw new ServiceException("getFileSystem exception");
 		}
 
 		return fs;
@@ -51,9 +54,9 @@ public final class HDFSUtil {
 	 * 
 	 * @param fs
 	 * @param dirName
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void mkdirs(FileSystem fs, String dirName) throws Exception {
+	public static void mkdirs(FileSystem fs, String dirName) throws ServiceException {
 		String dir = null;
 
 		try {
@@ -63,12 +66,12 @@ public final class HDFSUtil {
 			boolean succ = fs.mkdirs(src);
 
 			if (!succ) {
-				throw new Exception("mkdirs error");
+				throw new ServiceException("mkdirs error");
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("create directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("mkdirs exception");
+			throw new ServiceException("mkdirs exception");
 		}
 	}
 
@@ -77,9 +80,9 @@ public final class HDFSUtil {
 	 * 
 	 * @param fs
 	 * @param dirName
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void rmdirs(FileSystem fs, String dirName) throws Exception {
+	public static void rmdirs(FileSystem fs, String dirName) throws ServiceException {
 		String dir = null;
 
 		try {
@@ -89,12 +92,12 @@ public final class HDFSUtil {
 			boolean succ = fs.delete(src, true);
 
 			if (!succ) {
-				throw new Exception("rmdirs error");
+				throw new ServiceException("rmdirs error");
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("remove directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("rmdirs exception");
+			throw new ServiceException("rmdirs exception");
 		}
 	}
 
@@ -104,19 +107,19 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param local
 	 * @param remote
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void upload(FileSystem fs, String local, String remote) throws Exception {
+	public static void upload(FileSystem fs, String local, String remote) throws ServiceException {
 		try {
 			Path workDir = fs.getWorkingDirectory();
 			Path dst = new Path(workDir + "/" + remote);
 			Path src = new Path(local);
 
 			fs.copyFromLocalFile(false, true, src, dst);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("upload " + local + " to  " + remote + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("upload exception");
+			throw new ServiceException("upload exception");
 		}
 	}
 
@@ -126,19 +129,19 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param local
 	 * @param remote
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void download(FileSystem fs, String local, String remote) throws Exception {
+	public static void download(FileSystem fs, String local, String remote) throws ServiceException {
 		try {
 			Path dst = new Path(remote);
 			Path src = new Path(local);
 
 			fs.copyToLocalFile(false, dst, src);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("download from " + remote + " to  " + local + " failed :"
 				+ ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("download exception");
+			throw new ServiceException("download exception");
 		}
 	}
 
@@ -148,9 +151,9 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param path
 	 * @param data
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void write(FileSystem fs, String path, byte[] bytes) throws Exception {
+	public static void write(FileSystem fs, String path, byte[] bytes) throws ServiceException {
 		FSDataOutputStream out = null;
 
 		try {
@@ -159,10 +162,10 @@ public final class HDFSUtil {
 
 			out = fs.create(dst);
 			out.write(bytes);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("write exception");
+			throw new ServiceException("write exception");
 		} finally {
 			IOUtils.closeStream(out);
 		}
@@ -174,10 +177,10 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param path
 	 * @param data
-	 * @throws Exception
+	 * @throws ServiceException
 	 * 
 	 */
-	public static void write(FileSystem fs, String path, File data) throws Exception {
+	public static void write(FileSystem fs, String path, File data) throws ServiceException {
 		InputStream in = null;
 		FSDataOutputStream out = null;
 
@@ -189,10 +192,10 @@ public final class HDFSUtil {
 			out = fs.create(dst);
 
 			IOUtils.copyBytes(in, out, BUFF_SIZE, true);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("write exception");
+			throw new ServiceException("write exception");
 		} finally {
 			IOUtils.closeStream(out);
 			IOUtils.closeStream(in);
@@ -205,9 +208,9 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param path
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static String read(FileSystem fs, String path) throws Exception {
+	public static String read(FileSystem fs, String path) throws ServiceException {
 		FSDataInputStream in = null;
 
 		try {
@@ -216,10 +219,10 @@ public final class HDFSUtil {
 			// reading
 			in = fs.open(dst);
 			return in.readUTF();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("read exception");
+			throw new ServiceException("read exception");
 		} finally {
 			IOUtils.closeStream(in);
 		}
@@ -231,9 +234,9 @@ public final class HDFSUtil {
 	 * @param fs
 	 * @param path
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	public static void read(FileSystem fs, String path, OutputStream output) throws Exception {
+	public static void read(FileSystem fs, String path, OutputStream output) throws ServiceException {
 		FSDataInputStream in = null;
 
 		try {
@@ -243,10 +246,10 @@ public final class HDFSUtil {
 			in = fs.open(dst);
 
 			IOUtils.copyBytes(in, output, BUFF_SIZE, true);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
 
-			throw new Exception("read exception");
+			throw new ServiceException("read exception");
 		} finally {
 			IOUtils.closeStream(in);
 		}
