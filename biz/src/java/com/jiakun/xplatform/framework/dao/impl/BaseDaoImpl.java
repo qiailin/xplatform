@@ -20,10 +20,6 @@ public class BaseDaoImpl extends SqlMapClientDaoSupport implements IBaseDao {
 	 */
 	protected String namespace;
 
-	public void setNamespace(String namespace) {
-		this.namespace = namespace;
-	}
-
 	/**
 	 * listToString.
 	 * 
