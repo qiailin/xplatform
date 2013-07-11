@@ -135,10 +135,10 @@ public final class ClientUtil {
 
 	public static void sendRedirect(HttpServletResponse response, String url) throws IOException {
 		try {
-			url = new String(url.getBytes("GBK"), "ISO8859_1");
-			response.sendRedirect(url);
+			response.sendRedirect(new String(url.getBytes("GBK"), "ISO8859_1"));
 		} catch (UnsupportedEncodingException e) {
 			logger.error("字符转换错误！" + e);
 		}
 	}
+
 }

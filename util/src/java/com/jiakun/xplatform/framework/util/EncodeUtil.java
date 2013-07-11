@@ -187,7 +187,7 @@ public final class EncodeUtil {
 	/**
 	 * 1. 截取子字符串 2. 子字符串 + ... + title提示.
 	 * 
-	 * @param str
+	 * @param s
 	 *            指定的字符串
 	 * @param iLen
 	 *            截取长度
@@ -195,7 +195,9 @@ public final class EncodeUtil {
 	 *            是否添加title提示。true：显示、false：不显示，默认false
 	 * @return substr
 	 */
-	public static String substr(String str, int iLen, boolean showTitle) {
+	public static String substr(String s, int iLen, boolean showTitle) {
+		String str = s;
+
 		if (str == null || "".equals(str)) {
 			return "";
 		}
