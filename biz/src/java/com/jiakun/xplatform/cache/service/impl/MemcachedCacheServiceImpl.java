@@ -14,6 +14,7 @@ import net.rubyeye.xmemcached.exception.MemcachedException;
 
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.cache.bo.CacheStats;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.util.DateUtil;
 
 /**
@@ -27,11 +28,11 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 
 	private MemcachedClient memcachedClient;
 
-	public Object add(String key, Object value) throws Exception {
+	public Object add(String key, Object value) throws ServiceException {
 		return add(key, value, IMemcachedCacheService.DEFAULT_EXP);
 	}
 
-	public Object add(String key, Object value, Date expiry) throws Exception {
+	public Object add(String key, Object value, Date expiry) throws ServiceException {
 		if (expiry == null) {
 			return add(key, value);
 		}
@@ -39,7 +40,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return add(key, value, DateUtil.getQuotSeconds(new Date(), expiry));
 	}
 
-	public Object add(String key, Object value, int exp) throws Exception {
+	public Object add(String key, Object value, int exp) throws ServiceException {
 		try {
 			return memcachedClient.add(key, exp, value);
 		} catch (TimeoutException e) {
@@ -50,14 +51,14 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public Object set(String key, Object value) throws Exception {
+	public Object set(String key, Object value) throws ServiceException {
 		return set(key, value, IMemcachedCacheService.DEFAULT_EXP);
 	}
 
-	public Object set(String key, Object value, Date expiry) throws Exception {
+	public Object set(String key, Object value, Date expiry) throws ServiceException {
 		if (expiry == null) {
 			return set(key, value);
 		}
@@ -65,7 +66,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return set(key, value, DateUtil.getQuotSeconds(new Date(), expiry));
 	}
 
-	public Object set(String key, Object value, int exp) throws Exception {
+	public Object set(String key, Object value, int exp) throws ServiceException {
 		try {
 			return memcachedClient.set(key, exp, value);
 		} catch (TimeoutException e) {
@@ -76,14 +77,14 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public Object replace(String key, Object value) throws Exception {
+	public Object replace(String key, Object value) throws ServiceException {
 		return replace(key, value, IMemcachedCacheService.DEFAULT_EXP);
 	}
 
-	public Object replace(String key, Object value, Date expiry) throws Exception {
+	public Object replace(String key, Object value, Date expiry) throws ServiceException {
 		if (expiry == null) {
 			return replace(key, value);
 		}
@@ -91,7 +92,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return replace(key, value, DateUtil.getQuotSeconds(new Date(), expiry));
 	}
 
-	public Object replace(String key, Object value, int exp) throws Exception {
+	public Object replace(String key, Object value, int exp) throws ServiceException {
 		try {
 			return memcachedClient.replace(key, exp, value);
 		} catch (TimeoutException e) {
@@ -102,10 +103,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public Object get(String key) throws Exception {
+	public Object get(String key) throws ServiceException {
 		try {
 			return memcachedClient.get(key);
 		} catch (TimeoutException e) {
@@ -116,10 +117,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public Object remove(String key) throws Exception {
+	public Object remove(String key) throws ServiceException {
 		try {
 			return memcachedClient.delete(key);
 		} catch (TimeoutException e) {
@@ -130,10 +131,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public long incr(String key, int inc) throws Exception {
+	public long incr(String key, int inc) throws ServiceException {
 		try {
 			return memcachedClient.incr(key, inc);
 		} catch (TimeoutException e) {
@@ -144,10 +145,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public long incr(String key, long inc) throws Exception {
+	public long incr(String key, long inc) throws ServiceException {
 		try {
 			return memcachedClient.incr(key, inc);
 		} catch (TimeoutException e) {
@@ -158,10 +159,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public long decr(String key, int decr) throws Exception {
+	public long decr(String key, int decr) throws ServiceException {
 		try {
 			return memcachedClient.decr(key, decr);
 		} catch (TimeoutException e) {
@@ -172,10 +173,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public long decr(String key, long decr) throws Exception {
+	public long decr(String key, long decr) throws ServiceException {
 		try {
 			return memcachedClient.decr(key, decr);
 		} catch (TimeoutException e) {
@@ -186,10 +187,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public void flushAll(InetSocketAddress address) throws Exception {
+	public void flushAll(InetSocketAddress address) throws ServiceException {
 		try {
 			memcachedClient.flushAll(address);
 		} catch (MemcachedException e) {
@@ -200,10 +201,10 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
-	public List<CacheStats> getStats() throws Exception {
+	public List<CacheStats> getStats() throws ServiceException {
 		Map<InetSocketAddress, Map<String, String>> maps = getStatsDetail();
 
 		List<CacheStats> cacheStatsList = new ArrayList<CacheStats>();
@@ -273,7 +274,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 		return cacheStatsList;
 	}
 
-	private Map<InetSocketAddress, Map<String, String>> getStatsDetail() throws Exception {
+	private Map<InetSocketAddress, Map<String, String>> getStatsDetail() throws ServiceException {
 		try {
 			return memcachedClient.getStats();
 		} catch (MemcachedException e) {
@@ -284,7 +285,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new Exception();
+		throw new ServiceException();
 	}
 
 	public MemcachedClient getMemcachedClient() {

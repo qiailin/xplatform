@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import java.util.List;
 
 import com.jiakun.xplatform.api.cache.bo.CacheStats;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 
 /**
  * MemcachedCache.
@@ -81,9 +82,9 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	 * @param key
 	 * @param inc
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	long incr(String key, int inc) throws Exception;
+	long incr(String key, int inc) throws ServiceException;
 
 	/**
 	 * incr.
@@ -91,9 +92,9 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	 * @param key
 	 * @param inc
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	long incr(String key, long inc) throws Exception;
+	long incr(String key, long inc) throws ServiceException;
 
 	/**
 	 * decr.
@@ -101,9 +102,9 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	 * @param key
 	 * @param decr
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	long decr(String key, int decr) throws Exception;
+	long decr(String key, int decr) throws ServiceException;
 
 	/**
 	 * decr.
@@ -111,23 +112,23 @@ public interface IMemcachedCacheService extends ICacheService<String, Object> {
 	 * @param key
 	 * @param decr
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	long decr(String key, long decr) throws Exception;
+	long decr(String key, long decr) throws ServiceException;
 
 	/**
 	 * 
 	 * @param address
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	void flushAll(InetSocketAddress address) throws Exception;
+	void flushAll(InetSocketAddress address) throws ServiceException;
 
 	/**
 	 * cache stats.
 	 * 
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	List<CacheStats> getStats() throws Exception;
+	List<CacheStats> getStats() throws ServiceException;
 
 }
