@@ -21,12 +21,12 @@ import org.apache.log4j.Logger;
  */
 public final class EncryptUtil {
 
-	public static final String CHARSET_UTF8 = "UTF-8";
-
 	private static final Logger logger = Logger.getLogger(EncryptUtil.class);
 
 	private static final String[] HEX_DIGITS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
 		"e", "f" };
+
+	private static final String CHARSET_UTF8 = "UTF-8";
 
 	private EncryptUtil() {
 
