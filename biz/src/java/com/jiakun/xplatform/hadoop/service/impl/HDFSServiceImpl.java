@@ -11,6 +11,7 @@ import com.jiakun.xplatform.api.file.IDFSService;
 import com.jiakun.xplatform.api.file.IFileService;
 import com.jiakun.xplatform.api.file.bo.FileInfo;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.HDFSUtil;
@@ -172,9 +173,9 @@ public class HDFSServiceImpl implements IDFSService {
 	 * @param suffix
 	 * @param workDir
 	 * @return
-	 * @throws Exception
+	 * @throws ServiceException
 	 */
-	private void createFileInfo(String fileId, String fileName, String suffix, Path workDir) throws Exception {
+	private void createFileInfo(String fileId, String fileName, String suffix, Path workDir) throws ServiceException {
 		FileInfo fileInfo = new FileInfo();
 		fileInfo.setFileId(fileId);
 		fileInfo.setFileName(fileName);
@@ -184,7 +185,7 @@ public class HDFSServiceImpl implements IDFSService {
 		BooleanResult result = fileService.createFileInfo(fileInfo);
 
 		if (!result.getResult()) {
-			throw new Exception("createFileInfo error");
+			throw new ServiceException("createFileInfo error");
 		}
 	}
 
