@@ -43,7 +43,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
 import com.alibaba.common.lang.StringUtil;
-import com.jiakun.xplatform.framework.exception.ServiceException;
+import com.jiakun.xplatform.framework.exception.SystemException;
 
 /**
  * 
@@ -117,9 +117,9 @@ public final class HttpUtil {
 	 * @param url
 	 *            提交地址
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
-	public static String get(String url) throws ServiceException {
+	public static String get(String url) throws SystemException {
 		return get(url, null, null);
 	}
 
@@ -131,9 +131,9 @@ public final class HttpUtil {
 	 * @param params
 	 *            查询参数集, 键/值对
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
-	public static String get(String url, Map<String, String> params) throws ServiceException {
+	public static String get(String url, Map<String, String> params) throws SystemException {
 		return get(url, params, null);
 	}
 
@@ -147,9 +147,9 @@ public final class HttpUtil {
 	 * @param charset
 	 *            参数提交编码集
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
-	public static String get(String url, Map<String, String> params, String charset) throws ServiceException {
+	public static String get(String url, Map<String, String> params, String charset) throws SystemException {
 		String urls = url;
 
 		if (urls == null || StringUtil.isEmpty(urls)) {
@@ -173,9 +173,9 @@ public final class HttpUtil {
 		try {
 			responseStr = httpclient.execute(hg, responseHandler);
 		} catch (ClientProtocolException e) {
-			throw new ServiceException("客户端连接协议错误", e);
+			throw new SystemException("客户端连接协议错误", e);
 		} catch (IOException e) {
-			throw new ServiceException("IO操作异常", e);
+			throw new SystemException("IO操作异常", e);
 		} finally {
 			abortConnection(hg, httpclient);
 		}
@@ -191,9 +191,9 @@ public final class HttpUtil {
 	 * @param params
 	 *            提交参数集, 键/值对
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
-	public static String post(String url, Map<String, String> params) throws ServiceException {
+	public static String post(String url, Map<String, String> params) throws SystemException {
 		return post(url, params, null);
 	}
 
@@ -207,9 +207,9 @@ public final class HttpUtil {
 	 * @param charset
 	 *            参数提交编码集
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
-	public static String post(String url, Map<String, String> params, String charset) throws ServiceException {
+	public static String post(String url, Map<String, String> params, String charset) throws SystemException {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
@@ -223,7 +223,7 @@ public final class HttpUtil {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
-			throw new ServiceException("不支持的编码集", e);
+			throw new SystemException("不支持的编码集", e);
 		}
 		HttpPost hp = new HttpPost(url);
 		hp.setEntity(formEntity);
@@ -232,9 +232,9 @@ public final class HttpUtil {
 		try {
 			responseStr = httpclient.execute(hp, responseHandler);
 		} catch (ClientProtocolException e) {
-			throw new ServiceException("客户端连接协议错误", e);
+			throw new SystemException("客户端连接协议错误", e);
 		} catch (IOException e) {
-			throw new ServiceException("IO操作异常", e);
+			throw new SystemException("IO操作异常", e);
 		} finally {
 			abortConnection(hp, httpclient);
 		}
@@ -260,11 +260,10 @@ public final class HttpUtil {
 	 * @param truststorePassword
 	 *            信任存储库访问密码, 可为null
 	 * @return 响应消息
-	 * @throws ServiceException
+	 * @throws SystemException
 	 */
 	public static String post(String url, Map<String, String> params, String charset, final URL keystoreUrl,
-		final String keystorePassword, final URL truststoreUrl, final String truststorePassword)
-		throws ServiceException {
+		final String keystorePassword, final URL truststoreUrl, final String truststorePassword) throws SystemException {
 		if (url == null || StringUtil.isEmpty(url)) {
 			return null;
 		}
@@ -277,7 +276,7 @@ public final class HttpUtil {
 				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
 			}
 		} catch (UnsupportedEncodingException e) {
-			throw new ServiceException("不支持的编码集", e);
+			throw new SystemException("不支持的编码集", e);
 		}
 		HttpPost hp = null;
 		String responseStr = null;
@@ -292,19 +291,19 @@ public final class HttpUtil {
 			hp.setEntity(formEntity);
 			responseStr = httpclient.execute(hp, responseHandler);
 		} catch (NoSuchAlgorithmException e) {
-			throw new ServiceException("指定的加密算法不可用", e);
+			throw new SystemException("指定的加密算法不可用", e);
 		} catch (KeyStoreException e) {
-			throw new ServiceException("keytore解析异常", e);
+			throw new SystemException("keytore解析异常", e);
 		} catch (CertificateException e) {
-			throw new ServiceException("信任证书过期或解析异常", e);
+			throw new SystemException("信任证书过期或解析异常", e);
 		} catch (FileNotFoundException e) {
-			throw new ServiceException("keystore文件不存在", e);
+			throw new SystemException("keystore文件不存在", e);
 		} catch (IOException e) {
-			throw new ServiceException("I/O操作失败或中断", e);
+			throw new SystemException("I/O操作失败或中断", e);
 		} catch (UnrecoverableKeyException e) {
-			throw new ServiceException("keystore中的密钥无法恢复异常", e);
+			throw new SystemException("keystore中的密钥无法恢复异常", e);
 		} catch (KeyManagementException e) {
-			throw new ServiceException("处理密钥管理的操作异常", e);
+			throw new SystemException("处理密钥管理的操作异常", e);
 		} finally {
 			abortConnection(hp, httpclient);
 		}
