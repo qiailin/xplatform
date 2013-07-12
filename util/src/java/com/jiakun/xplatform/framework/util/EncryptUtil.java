@@ -76,7 +76,7 @@ public final class EncryptUtil {
 			bytes = md.digest(data.getBytes(CHARSET_UTF8));
 		} catch (GeneralSecurityException gse) {
 			String msg = getStringFromException(gse);
-			throw new IOException(msg);
+			throw new IOException(msg, gse);
 		}
 
 		return byte2hex(bytes);
@@ -90,7 +90,7 @@ public final class EncryptUtil {
 			bytes = md.digest(data.getBytes(CHARSET_UTF8));
 		} catch (GeneralSecurityException gse) {
 			String msg = getStringFromException(gse);
-			throw new IOException(msg);
+			throw new IOException(msg, gse);
 		}
 
 		return byte2hex(bytes);
@@ -106,7 +106,7 @@ public final class EncryptUtil {
 			bytes = mac.doFinal(data.getBytes(CHARSET_UTF8));
 		} catch (GeneralSecurityException gse) {
 			String msg = getStringFromException(gse);
-			throw new IOException(msg);
+			throw new IOException(msg, gse);
 		}
 
 		return byte2hex(bytes);

@@ -63,13 +63,13 @@ public final class JsonUtil {
 		try {
 			jsonValue = URLDecoder.decode(jsonValue, "utf-8");
 		} catch (Exception e) {
-			throw new Exception("�����ʽ����");
+			throw new Exception("�����ʽ����", e);
 		}
 		JSONObject object = null;
 		try {
 			object = new JSONObject(jsonValue);
 		} catch (Exception e) {
-			throw new Exception("json��ʽ����");
+			throw new Exception("json��ʽ����", e);
 		}
 		Object obj = toClass.newInstance();
 
@@ -123,9 +123,9 @@ public final class JsonUtil {
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!");
+								throw new Exception(desc.getName() + "ӦΪ����!", e);
 							} else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!");
+								throw new Exception(desc.getName() + "ӦΪ����!", e);
 							}
 						}
 					} else {
@@ -225,9 +225,9 @@ public final class JsonUtil {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.class || clz == Short.class || clz == Long.class
 								|| clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!");
+								throw new Exception(desc.getName() + "ӦΪ����!", e);
 							} else if (clz == Double.class || clz == Float.class || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!");
+								throw new Exception(desc.getName() + "ӦΪ����!", e);
 							}
 						}
 

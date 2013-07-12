@@ -6,14 +6,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
-import org.apache.log4j.Logger;
 
 import com.jiakun.xplatform.framework.exception.ServiceException;
 
@@ -22,8 +20,6 @@ import com.jiakun.xplatform.framework.exception.ServiceException;
  * 
  */
 public final class HDFSUtil {
-
-	private static Logger logger = Logger.getLogger(HDFSUtil.class);
 
 	private static final int BUFF_SIZE = 4 * 1024;
 
@@ -41,9 +37,7 @@ public final class HDFSUtil {
 
 			fs = FileSystem.get(config);
 		} catch (IOException e) {
-			logger.error("getFileSystem failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("getFileSystem exception");
+			throw new ServiceException("getFileSystem failed :", e);
 		}
 
 		return fs;
@@ -69,9 +63,7 @@ public final class HDFSUtil {
 				throw new ServiceException("mkdirs error");
 			}
 		} catch (IOException e) {
-			logger.error("create directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("mkdirs exception");
+			throw new ServiceException("create directory " + dir + " failed :", e);
 		}
 	}
 
@@ -95,9 +87,7 @@ public final class HDFSUtil {
 				throw new ServiceException("rmdirs error");
 			}
 		} catch (IOException e) {
-			logger.error("remove directory " + dir + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("rmdirs exception");
+			throw new ServiceException("remove directory " + dir + " failed :", e);
 		}
 	}
 
@@ -117,9 +107,7 @@ public final class HDFSUtil {
 
 			fs.copyFromLocalFile(false, true, src, dst);
 		} catch (IOException e) {
-			logger.error("upload " + local + " to  " + remote + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("upload exception");
+			throw new ServiceException("upload " + local + " to  " + remote + " failed :", e);
 		}
 	}
 
@@ -138,10 +126,7 @@ public final class HDFSUtil {
 
 			fs.copyToLocalFile(false, dst, src);
 		} catch (IOException e) {
-			logger.error("download from " + remote + " to  " + local + " failed :"
-				+ ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("download exception");
+			throw new ServiceException("download from " + remote + " to  " + local + " failed :", e);
 		}
 	}
 
@@ -163,9 +148,7 @@ public final class HDFSUtil {
 			out = fs.create(dst);
 			out.write(bytes);
 		} catch (IOException e) {
-			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("write exception");
+			throw new ServiceException("write content to " + path + " failed :", e);
 		} finally {
 			IOUtils.closeStream(out);
 		}
@@ -193,9 +176,7 @@ public final class HDFSUtil {
 
 			IOUtils.copyBytes(in, out, BUFF_SIZE, true);
 		} catch (IOException e) {
-			logger.error("write content to " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("write exception");
+			throw new ServiceException("write content to " + path + " failed :", e);
 		} finally {
 			IOUtils.closeStream(out);
 			IOUtils.closeStream(in);
@@ -220,9 +201,7 @@ public final class HDFSUtil {
 			in = fs.open(dst);
 			return in.readUTF();
 		} catch (IOException e) {
-			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("read exception");
+			throw new ServiceException("read content from " + path + " failed :", e);
 		} finally {
 			IOUtils.closeStream(in);
 		}
@@ -247,9 +226,7 @@ public final class HDFSUtil {
 
 			IOUtils.copyBytes(in, output, BUFF_SIZE, true);
 		} catch (IOException e) {
-			logger.error("read content from " + path + " failed :" + ExceptionUtils.getFullStackTrace(e));
-
-			throw new ServiceException("read exception");
+			throw new ServiceException("read content from " + path + " failed :", e);
 		} finally {
 			IOUtils.closeStream(in);
 		}
