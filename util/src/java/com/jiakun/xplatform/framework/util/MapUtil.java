@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.alibaba.common.lang.StringUtil;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 
 /**
  * 
@@ -75,7 +76,7 @@ public final class MapUtil {
 
 			return map;
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ServiceException("populateMap: ", e);
 		}
 	}
 
@@ -92,7 +93,7 @@ public final class MapUtil {
 			BeanUtils.populate(bean, map);
 			return bean;
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ServiceException("populateBean: ", e);
 		}
 	}
 
@@ -133,7 +134,7 @@ public final class MapUtil {
 			BeanUtils.populate(bean, m);
 			return bean;
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ServiceException("populateBean: ", e);
 		}
 	}
 
