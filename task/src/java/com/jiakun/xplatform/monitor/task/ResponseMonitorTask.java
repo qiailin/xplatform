@@ -2,9 +2,12 @@ package com.jiakun.xplatform.monitor.task;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.openapi.IResponseService;
 import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 
 /**
  * 
@@ -12,6 +15,8 @@ import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
  * 
  */
 public class ResponseMonitorTask {
+
+	private Logger logger = Logger.getLogger(ResponseMonitorTask.class);
 
 	private IMemcachedCacheService memcachedCacheService;
 
@@ -23,7 +28,8 @@ public class ResponseMonitorTask {
 		try {
 			list = (List<ResponseStats>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
 			memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_OPEN_API);
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			logger.error(e);
 		}
 
 		if (list != null && list.size() != 0) {

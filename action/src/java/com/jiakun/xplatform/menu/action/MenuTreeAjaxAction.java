@@ -11,6 +11,7 @@ import com.jiakun.xplatform.api.menu.IMenuService;
 import com.jiakun.xplatform.api.menu.bo.Menu;
 import com.jiakun.xplatform.api.tree.bo.Tree4Ajax;
 import com.jiakun.xplatform.framework.action.BaseAction;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
@@ -48,7 +49,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 			try {
 				menu.setUserId(alluser.getUserId());
 				menu.setPid(Long.parseLong(node));
-			} catch (Exception e) {
+			} catch (NumberFormatException e) {
 				logger.error(LogUtil.parserBean(alluser) + "node:" + node, e);
 			}
 
@@ -59,7 +60,8 @@ public class MenuTreeAjaxAction extends BaseAction {
 					o =
 						(List<Menu>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_MENU_TREE
 							+ alluser.getUserId() + "_" + node);
-				} catch (Exception e) {
+				} catch (ServiceException e) {
+					logger.error(e);
 				}
 			}
 

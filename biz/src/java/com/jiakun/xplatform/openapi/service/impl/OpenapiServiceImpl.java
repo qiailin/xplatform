@@ -14,6 +14,9 @@ import com.jiakun.xplatform.api.openapi.IOpenapiService;
 import com.jiakun.xplatform.api.openapi.bo.Response;
 import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
 import com.jiakun.xplatform.api.openapi.bo.UserResponse;
+import com.jiakun.xplatform.framework.exception.ServiceException;
+import com.jiakun.xplatform.framework.log.Logger4jCollection;
+import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.JsonUtil;
 
 /**
@@ -22,6 +25,8 @@ import com.jiakun.xplatform.framework.util.JsonUtil;
  * 
  */
 public class OpenapiServiceImpl implements IOpenapiService {
+
+	private Logger4jExtend logger = Logger4jCollection.getLogger(OpenapiServiceImpl.class);
 
 	private IMemcachedCacheService memcachedCacheService;
 
@@ -121,7 +126,8 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_OPEN_API, list,
 				IMemcachedCacheService.CACHE_KEY_OPEN_API_DEFAULT_EXP);
 
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			logger.error(e);
 		}
 
 		return JsonUtil.bean2Json(obj.getClass(), obj);

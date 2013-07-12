@@ -170,7 +170,7 @@ public class Logger4jExtend {
 			memcachedCacheService.setMemcachedClient(client);
 
 		} catch (IOException e) {
-
+			Logger4jCollection.getLogger(Logger4jExtend.class).error(e);
 		}
 	}
 

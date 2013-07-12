@@ -59,6 +59,7 @@ public class CacheMonitorAction extends BaseAction {
 		try {
 			cacheStatsList = memcachedCacheService.getStats();
 		} catch (ServiceException e) {
+			logger.error(e);
 		}
 
 		total = cacheStatsList == null ? 0 : cacheStatsList.size();

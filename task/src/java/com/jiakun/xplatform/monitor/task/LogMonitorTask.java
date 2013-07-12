@@ -5,6 +5,9 @@ import java.util.List;
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.monitor.ILogMonitorService;
 import com.jiakun.xplatform.api.monitor.bo.LogMonitor;
+import com.jiakun.xplatform.framework.exception.ServiceException;
+import com.jiakun.xplatform.framework.log.Logger4jCollection;
+import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.mail.MailService;
 import com.jiakun.xplatform.framework.util.DateUtil;
 
@@ -18,6 +21,8 @@ public class LogMonitorTask {
 	private static final String TD_BEGIN = "<td>";
 
 	private static final String TD_END = "</td>";
+
+	private Logger4jExtend logger = Logger4jCollection.getLogger(LogMonitorTask.class);
 
 	private IMemcachedCacheService memcachedCacheService;
 
@@ -35,7 +40,8 @@ public class LogMonitorTask {
 		try {
 			list = (List<LogMonitor>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
 			memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_LOG_MONITOR);
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			logger.error(e);
 		}
 
 		if (list != null && list.size() != 0) {

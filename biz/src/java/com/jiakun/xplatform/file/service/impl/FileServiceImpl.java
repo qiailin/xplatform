@@ -8,6 +8,7 @@ import com.jiakun.xplatform.api.file.IFileService;
 import com.jiakun.xplatform.api.file.bo.FileInfo;
 import com.jiakun.xplatform.file.dao.IFileDao;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.LogUtil;
@@ -114,7 +115,8 @@ public class FileServiceImpl implements IFileService {
 			for (String id : ids) {
 				memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_FILE_ID + id);
 			}
-		} catch (Exception e) {
+		} catch (ServiceException e) {
+			logger.error(e);
 		}
 	}
 
