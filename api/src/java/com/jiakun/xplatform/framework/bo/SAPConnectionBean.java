@@ -1,5 +1,6 @@
 package com.jiakun.xplatform.framework.bo;
 
+import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.sap.mw.jco.IFunctionTemplate;
 import com.sap.mw.jco.JCO;
 
@@ -85,7 +86,7 @@ public class SAPConnectionBean {
 			}
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
 		}
 		return sapclient;
 	}
@@ -97,7 +98,7 @@ public class SAPConnectionBean {
 			sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr, group);
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
 		}
 		return sapclient;
 	}
