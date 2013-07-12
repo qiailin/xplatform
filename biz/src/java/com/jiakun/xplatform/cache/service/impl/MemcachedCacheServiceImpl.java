@@ -51,7 +51,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached add.");
 	}
 
 	public Object set(String key, Object value) throws ServiceException {
@@ -77,7 +77,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached set.");
 	}
 
 	public Object replace(String key, Object value) throws ServiceException {
@@ -103,7 +103,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached replace.");
 	}
 
 	public Object get(String key) throws ServiceException {
@@ -117,7 +117,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached get.");
 	}
 
 	public Object remove(String key) throws ServiceException {
@@ -131,7 +131,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached remove.");
 	}
 
 	public long incr(String key, int inc) throws ServiceException {
@@ -145,7 +145,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached incr.");
 	}
 
 	public long incr(String key, long inc) throws ServiceException {
@@ -159,7 +159,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached incr.");
 	}
 
 	public long decr(String key, int decr) throws ServiceException {
@@ -173,7 +173,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached decr.");
 	}
 
 	public long decr(String key, long decr) throws ServiceException {
@@ -187,7 +187,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached decr.");
 	}
 
 	public void flushAll(InetSocketAddress address) throws ServiceException {
@@ -201,7 +201,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached flushAll.");
 	}
 
 	public List<CacheStats> getStats() throws ServiceException {
@@ -285,7 +285,7 @@ public class MemcachedCacheServiceImpl implements IMemcachedCacheService {
 			logger.error(e);
 		}
 
-		throw new ServiceException();
+		throw new ServiceException("memcached getStatsDetail.");
 	}
 
 	public MemcachedClient getMemcachedClient() {
