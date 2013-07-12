@@ -16,6 +16,7 @@ import java.util.Map;
 import ognl.OgnlOps;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
@@ -137,7 +138,7 @@ public class Json2ListConverter extends WebWorkTypeConverter {
 
 	// ��JSONObjectת����Map
 	@SuppressWarnings("rawtypes")
-	private Map toMap(JSONObject object) throws Exception {
+	private Map toMap(JSONObject object) throws JSONException {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		Iterator iter = object.keys();
 		while (iter.hasNext()) {
