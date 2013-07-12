@@ -9,7 +9,7 @@ Ext.onReady(function() {
 
 			var flagStore = new Ext.data.SimpleStore({
 						fields : ['itemId', 'itemName'],
-						data : [['', '����״̬'], ['U', '��Ч'], ['D', 'ɾ��']]
+						data : [['', '所有状态'], ['U', '有效'], ['D', '删除']]
 					});
 
 			var flag = new Ext.form.ComboBox({
@@ -69,7 +69,7 @@ Ext.onReady(function() {
 					});
 
 			var cm = new Ext.grid.ColumnModel([sm, {
-				header : "�ļ����",
+				header : "文件编号",
 				dataIndex : 'fileId',
 				width : 120,
 				sortable : false,
@@ -80,7 +80,7 @@ Ext.onReady(function() {
 							+ Ext.util.Format.htmlEncode(v) + "</a>";
 				}
 			}, {
-				header : "�ļ����",
+				header : "文件名称",
 				dataIndex : 'fileName',
 				width : 100,
 				sortable : false,
@@ -90,7 +90,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��׺",
+				header : "后缀",
 				dataIndex : 'suffix',
 				width : 40,
 				sortable : false,
@@ -100,7 +100,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "�ļ�·��",
+				header : "文件路径",
 				dataIndex : 'filePath',
 				width : 100,
 				sortable : false,
@@ -110,20 +110,20 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "״̬",
+				header : "状态",
 				dataIndex : 'flag',
 				width : 40,
 				sortable : false,
 				align : 'center',
 				renderer : function(v, p) {
 					if ('U' == v) {
-						return "<p style='color:green'>��Ч</p>";
+						return "<p style='color:green'>有效</p>";
 					} else {
-						return "<p style='color:red'>ɾ��</p>";
+						return "<p style='color:red'>删除</p>";
 					}
 				}
 			}, {
-				header : "����ʱ��",
+				header : "创建时间",
 				dataIndex : 'createDate',
 				width : 70,
 				sortable : false,
@@ -134,7 +134,7 @@ Ext.onReady(function() {
 					return v;
 				}
 			}, {
-				header : "�޸�ʱ��",
+				header : "修改时间",
 				dataIndex : 'modifyDate',
 				width : 70,
 				sortable : true,
@@ -164,8 +164,8 @@ Ext.onReady(function() {
 									pageSize : pageSize,
 									store : store,
 									displayInfo : true,
-									displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-									emptyMsg : "û���ҵ���¼��"
+									displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+									emptyMsg : "没有找到记录！"
 								})
 					});
 
@@ -198,15 +198,15 @@ function fetchFile(fileId) {
 }
 
 function deleteFile() {
-	Ext.Msg.confirm("��ʾ", "ȷ������ɾ���ļ���", function(button) {
+	Ext.Msg.confirm("提示", "确认批量删除文件？", function(button) {
 				if (button == 'yes') {
 					createShadeDiv();
 					var rows = grid.getSelectionModel().getSelections();
 
 					if (rows == "") {
 						Ext.Msg.show({
-									title : '��ʾ',
-									msg : '�빴ѡҪɾ���ļ������',
+									title : '提示',
+									msg : '请勾选要删除文件的数据',
 									buttons : Ext.Msg.OK,
 									icon : Ext.Msg.ERROR
 								});
@@ -250,24 +250,24 @@ function saveFile() {
 		items : [{
 					xtype : 'fileuploadfield',
 					id : 'form-file',
-					emptyText : '��ѡ���ϴ��ļ�',
-					fieldLabel : '�ļ�',
+					emptyText : '请选择上传文件',
+					fieldLabel : '文件',
 					name : 'upload',
-					buttonText : '���'
+					buttonText : '浏览'
 				}],
 		buttons : [{
-			text : '����',
+			text : '保存',
 			handler : function() {
-				Ext.Msg.confirm("��ʾ", "ȷ���ύ��", function(button) {
+				Ext.Msg.confirm("提示", "确定提交？", function(button) {
 					if (button == 'yes') {
 						if (fp.getForm().isValid()) {
 							fp.getForm().submit({
 										url : 'fileAction!saveFile.htm',
-										waitMsg : '�����ύ�ļ�...',
+										waitMsg : '正在提交文件...',
 										success : function(form, action) {
 											try {
 												Ext.Msg.show({
-															title : '��Ϣ',
+															title : '信息',
 															msg : action.result.msg,
 															buttons : Ext.Msg.OK,
 															fn : function(btn) {
@@ -284,7 +284,7 @@ function saveFile() {
 										},
 										failure : function(form, action) {
 											Ext.Msg.show({
-														title : '��Ϣ',
+														title : '信息',
 														msg : action.result.msg,
 														buttons : Ext.Msg.OK,
 														icon : Ext.Msg.ERROR
@@ -296,12 +296,12 @@ function saveFile() {
 				});
 			}
 		}, {
-			text : '����',
+			text : '重置',
 			handler : function() {
 				fp.getForm().reset();
 			}
 		}, {
-			text : 'ȡ��',
+			text : '取消',
 			handler : function() {
 				win.close();
 				Ext.getBody().unmask();
@@ -310,7 +310,7 @@ function saveFile() {
 	});
 
 	var win = new Ext.Window({
-				title : "�ļ��ϴ�",
+				title : "文件上传",
 				width : 300,
 				items : [fp],
 				listeners : {
@@ -329,7 +329,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -341,7 +341,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {

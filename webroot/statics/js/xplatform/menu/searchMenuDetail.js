@@ -74,7 +74,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -86,8 +86,8 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
-					msg : "�����ɹ���",
+					title : '信息',
+					msg : "操作成功！",
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
 						if (btn == 'ok') {
@@ -103,7 +103,7 @@ function promgtMsg() {
 
 function warn(msg) {
 	Ext.Msg.show({
-				title : '����',
+				title : '警告',
 				msg : msg,
 				buttons : Ext.Msg.OK,
 				icon : Ext.Msg.WARNING

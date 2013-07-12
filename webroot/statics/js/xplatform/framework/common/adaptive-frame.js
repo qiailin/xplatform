@@ -1,5 +1,5 @@
 /**
- * ¿çÓòiframe×ÔÊÊÓ¦¸ß¶È½â¾ö·½°¸ Author: changyin@taobao.com <http://www.lzlu.com> Copyright
+ * è·¨åŸŸiframeè‡ªé€‚åº”é«˜åº¦è§£å†³æ–¹æ¡ˆ Author: changyin@taobao.com <http://www.lzlu.com> Copyright
  * (c) 2011, Taobao Inc. All rights reserved.
  */
 
@@ -8,16 +8,16 @@
 	var adaptFrame = new function() {
 		var doc = document, body = doc.body, self = this,
 
-		// »ñÈ¡urlÖĞµÄ²ÎÊı
+		// è·å–urlä¸­çš„å‚æ•°
 		getRequest = function(name) {
 			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"), r = window.location.search
 					.substr(1).match(reg);
 			return (r != null) ? unescape(r[2]) : null;
 		},
 
-		// »ñÈ¡ÅäÖÃ£¬scriptµÄÓÅÏÈ¼¶´óÓÚurlÖĞµÄ²ÎÊı
+		// è·å–é…ç½®ï¼Œscriptçš„ä¼˜å…ˆçº§å¤§äºurlä¸­çš„å‚æ•°
 		getConfig = function() {
-			// scripts¶ÔÏóÒ»¶¨ÒªÔÚÕâÀï¸³Öµ£¬²»È»È¡²»µ½ÕıÈ·µÄscript¶ÔÏó
+			// scriptså¯¹è±¡ä¸€å®šè¦åœ¨è¿™é‡Œèµ‹å€¼ï¼Œä¸ç„¶å–ä¸åˆ°æ­£ç¡®çš„scriptå¯¹è±¡
 			var scripts = doc.getElementsByTagName('script'), script = scripts[scripts.length
 					- 1];
 			return function(param) {
@@ -26,19 +26,19 @@
 			};
 		}(),
 
-		// ´úÀí¸ß¶È
+		// ä»£ç†é«˜åº¦
 		proxyheight = 0,
 
-		// topÒ³frameµÄid
+		// topé¡µframeçš„id
 		frameid = getConfig("data-frameid"),
 
-		// ¼àÌıÊµÊ±¸üĞÂ¸ß¶È¼ä¸ô
+		// ç›‘å¬å®æ—¶æ›´æ–°é«˜åº¦é—´éš”
 		timer = getConfig("data-timer"),
 
-		// »ñÈ¡´úÀíµÄurl
+		// è·å–ä»£ç†çš„url
 		getProxyuUrl = getConfig("data-proxy"),
 
-		// ´´½¨´úÀíµÄiframe
+		// åˆ›å»ºä»£ç†çš„iframe
 		proxyframe = function() {
 			var el = doc.createElement("iframe");
 			el.style.display = "none";
@@ -46,7 +46,7 @@
 			return el;
 		}();
 
-		// ÖØÖÃ¸ß¶È
+		// é‡ç½®é«˜åº¦
 		this.resize = function() {
 			proxyheight = body.offsetHeight;
 			// proxyframe.src = getProxyuUrl + "?data-frameid=" + frameid
@@ -64,7 +64,7 @@
 			var init = function() {
 				body.appendChild(proxyframe);
 				self.resize();
-				// ÊÇ·ñupdate
+				// æ˜¯å¦update
 				if (!isNaN(timer)) {
 					timer = timer < 500 ? 500 : timer;
 					window.setInterval(function() {
@@ -74,7 +74,7 @@
 							}, timer);
 				};
 			};
-			// Èç¹ûÒıÈëKISSY£¬½¨Òé¸Ä³É£ºKISSY.ready(function(){init();});
+			// å¦‚æœå¼•å…¥KISSYï¼Œå»ºè®®æ”¹æˆï¼šKISSY.ready(function(){init();});
 			if (doc.addEventListener) {
 				window.addEventListener("load", init, false);
 			} else {
@@ -99,10 +99,10 @@
  * </body> </html> ------------------------------------------/
  * 
  * 
- * Ê¹ÓÃ·½·¨£º <iframe scrolling="no" id="testframe" width="500"
+ * ä½¿ç”¨æ–¹æ³•ï¼š <iframe scrolling="no" id="testframe" width="500"
  * src="http://xxxx/frame.html?data-frameid=testframe&data-auto=200&data-proxy=http://xxx/proxy.html"></iframe>
  * 
- * »òÕß
+ * æˆ–è€…
  * 
  * <script src="loader.js" data-frameid="testframe" data-auto="200"
  * data-proxy="http://xxx/proxy.html"></script>
@@ -110,4 +110,3 @@
  * 
  * 
  */
-

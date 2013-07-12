@@ -260,8 +260,8 @@ Ext.onReady(function() {
 							pageSize : pageSize,
 							store : store,
 							displayInfo : true,
-							displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-							emptyMsg : "û���ҵ���¼��"
+							displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+							emptyMsg : "没有找到记录！"
 						})
 			});
 

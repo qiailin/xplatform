@@ -14,7 +14,7 @@ Ext.onReady(function() {
 
 	var statusStore = new Ext.data.SimpleStore({
 				fields : ['itemId', 'itemName'],
-				data : [['', '����״̬'], ['Y', '������'], ['N', 'ֹͣ����']]
+				data : [['', '所有状态'], ['Y', '正常运行'], ['N', '停止运行']]
 			});
 
 	var status = new Ext.form.ComboBox({
@@ -30,7 +30,7 @@ Ext.onReady(function() {
 
 	var logStore = new Ext.data.SimpleStore({
 				fields : ['itemId', 'itemName'],
-				data : [['', '����״̬'], ['Y', '��¼'], ['N', '����¼']]
+				data : [['', '所有状态'], ['Y', '记录'], ['N', '不记录']]
 			});
 
 	var log = new Ext.form.ComboBox({
@@ -80,7 +80,7 @@ Ext.onReady(function() {
 			});
 
 	var cm = new Ext.grid.ColumnModel([{
-				header : "��ؼƻ����",
+				header : "监控计划编号",
 				dataIndex : 'sqlMonitorId',
 				width : 50,
 				sortable : true,
@@ -90,7 +90,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��ر���",
+				header : "监控标题",
 				dataIndex : 'sqlMonitorTitle',
 				width : 100,
 				sortable : false,
@@ -100,21 +100,21 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��ؼƻ�״̬",
+				header : "监控计划状态",
 				dataIndex : 'status',
 				width : 50,
 				sortable : false,
 				align : 'center',
 				renderer : function(v, p) {
 					if (v == 'Y') {
-						return "<p style='color:green'>������</p>";
+						return "<p style='color:green'>正常运行</p>";
 					}
 					if (v == 'N') {
-						return "<p style='color:red'>ֹͣ����</p>";
+						return "<p style='color:red'>停止运行</p>";
 					}
 				}
 			}, {
-				header : "����ʱ��",
+				header : "创建时间",
 				dataIndex : 'createDate',
 				width : 70,
 				sortable : false,
@@ -125,7 +125,7 @@ Ext.onReady(function() {
 					return v;
 				}
 			}, {
-				header : "���Ƶ��(��)",
+				header : "监控频率(分)",
 				dataIndex : 'freq',
 				width : 40,
 				sortable : false,
@@ -135,7 +135,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��ֵ",
+				header : "阈值",
 				dataIndex : 'threshold',
 				width : 25,
 				sortable : false,
@@ -145,28 +145,28 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "�Ƿ��¼��־",
+				header : "是否记录日志",
 				dataIndex : 'log',
 				width : 50,
 				sortable : false,
 				align : 'center',
 				renderer : function(v, p) {
 					if (v == 'Y') {
-						return "��¼";
+						return "记录";
 					}
 					if (v == 'N') {
-						return "����¼";
+						return "不记录";
 					}
 				}
 			}, {
-				header : "����",
+				header : "操作",
 				width : 40,
 				sortable : false,
 				align : 'center',
 				renderer : function(value, cellmeta, record, rowIndex,
 						columnIndex, store) {
 					var strReturn = "<a href=javascript:searchSqlMonitorDetail('"
-							+ record.get('sqlMonitorId') + "') > �鿴/�޸�</a>";
+							+ record.get('sqlMonitorId') + "') > 查看/修改</a>";
 
 					return strReturn;
 				}
@@ -189,8 +189,8 @@ Ext.onReady(function() {
 							pageSize : pageSize,
 							store : store,
 							displayInfo : true,
-							displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-							emptyMsg : "û���ҵ���¼��"
+							displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+							emptyMsg : "没有找到记录！"
 						})
 			});
 
@@ -223,7 +223,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -235,7 +235,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {

@@ -10,8 +10,8 @@ Ext.onReady(function() {
 					});
 			var freqStore = new Ext.data.SimpleStore({
 						fields : ['itemId', 'itemName'],
-						data : [['15', '15����һ��'], ['30', '30����һ��'],
-								['60', '60����һ��']]
+						data : [['15', '15分钟一次'], ['30', '30分钟一次'],
+								['60', '60分钟一次']]
 					});
 
 			var freq = new Ext.form.ComboBox({
@@ -33,7 +33,7 @@ Ext.onReady(function() {
 					});
 			var logStore = new Ext.data.SimpleStore({
 						fields : ['itemId', 'itemName'],
-						data : [['Y', '��¼'], ['N', '����¼']]
+						data : [['Y', '记录'], ['N', '不记录']]
 					});
 
 			var log = new Ext.form.ComboBox({
@@ -98,7 +98,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -110,8 +110,8 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
-					msg : "�����ɹ���",
+					title : '信息',
+					msg : "操作成功！",
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
 						if (btn == 'ok') {
@@ -126,7 +126,7 @@ function promgtMsg() {
 
 function warn(msg) {
 	Ext.Msg.show({
-				title : '����',
+				title : '警告',
 				msg : msg,
 				buttons : Ext.Msg.OK,
 				icon : Ext.Msg.WARNING

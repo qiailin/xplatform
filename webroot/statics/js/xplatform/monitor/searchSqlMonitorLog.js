@@ -42,7 +42,7 @@ Ext.onReady(function() {
 			});
 
 	var cm = new Ext.grid.ColumnModel([{
-				header : "�����־���",
+				header : "监控日志编号",
 				dataIndex : 'monitorLogId',
 				width : 40,
 				sortable : true,
@@ -52,7 +52,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��ر���",
+				header : "监控标题",
 				dataIndex : 'sqlMonitorTitle',
 				sortable : false,
 				align : 'left',
@@ -61,7 +61,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��ؽ��",
+				header : "监控结果",
 				dataIndex : 'monitorResult',
 				width : 40,
 				sortable : false,
@@ -71,7 +71,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "ʵ����ֵ",
+				header : "实际阈值",
 				dataIndex : 'threshold',
 				width : 30,
 				sortable : false,
@@ -81,7 +81,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "����ʱ��",
+				header : "创建时间",
 				dataIndex : 'createDate',
 				width : 70,
 				sortable : false,
@@ -110,8 +110,8 @@ Ext.onReady(function() {
 							pageSize : pageSize,
 							store : store,
 							displayInfo : true,
-							displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-							emptyMsg : "û���ҵ���¼��"
+							displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+							emptyMsg : "没有找到记录！"
 						})
 			});
 
@@ -127,7 +127,7 @@ function search() {
 	var monitorId = document.getElementById("monitorId").value;
 
 	if (monitorId == "") {
-		warn("��ѡ���ؼƻ���");
+		warn("请选择监控计划！");
 		return;
 	}
 
@@ -146,7 +146,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -158,7 +158,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -195,7 +195,7 @@ function create() {
 
 function warn(msg) {
 	Ext.Msg.show({
-				title : '����',
+				title : '警告',
 				msg : msg,
 				buttons : Ext.Msg.OK,
 				icon : Ext.Msg.WARNING

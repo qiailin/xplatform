@@ -53,19 +53,19 @@ Ext.onReady(function() {
 	var sm = new Ext.grid.CheckboxSelectionModel();
 
 	var cm = new Ext.grid.ColumnModel([sm, {
-				header : "�˵����",
+				header : "菜单编号",
 				dataIndex : 'id',
 				width : 70,
 				sortable : true,
 				align : 'center'
 			}, {
-				header : "�ϼ��˵����",
+				header : "上级菜单编号",
 				dataIndex : 'pid',
 				width : 90,
 				sortable : true,
 				align : 'center'
 			}, {
-				header : "�˵����",
+				header : "菜单名称",
 				dataIndex : 'name',
 				width : 150,
 				sortable : false,
@@ -75,7 +75,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "�˵���ַ",
+				header : "菜单地址",
 				dataIndex : 'url',
 				width : 220,
 				sortable : false,
@@ -85,7 +85,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "��project��ת��ַ",
+				header : "跨project跳转地址",
 				dataIndex : 'redirectUrl',
 				width : 150,
 				sortable : false,
@@ -95,7 +95,7 @@ Ext.onReady(function() {
 					return Ext.util.Format.htmlEncode(v);
 				}
 			}, {
-				header : "�˵�Ŀ��",
+				header : "菜单目标",
 				dataIndex : 'target',
 				width : 70,
 				sortable : false,
@@ -106,11 +106,11 @@ Ext.onReady(function() {
 				}
 			}, {
 				xtype : 'actioncolumn',
-				header : "����",
+				header : "操作",
 				width : 60,
 				align : 'center',
 				items : [{
-							tooltip : '�޸�',
+							tooltip : '修改',
 							icon : imgUrl + '/image/actions/icon_edit.gif',
 							handler : function(grid, rowIndex, colIndex) {
 								createShadeDiv();
@@ -119,7 +119,7 @@ Ext.onReady(function() {
 								updateMenu(rec.get("id"));
 							}
 						}, '', '', '', '', '', {
-							tooltip : '�鿴��ɫ',
+							tooltip : '查看角色',
 							icon : imgUrl + '/image/actions/icon_note.gif',
 							handler : function(grid, rowIndex, colIndex) {
 								var rec = store.getAt(rowIndex);
@@ -171,8 +171,8 @@ Ext.onReady(function() {
 							pageSize : pageSize,
 							store : store,
 							displayInfo : true,
-							displayMsg : '�� {2} ����¼����ǰ��ʾ {0} - {1}',
-							emptyMsg : "û���ҵ���¼��"
+							displayMsg : '共 {2} 条记录，当前显示 {0} - {1}',
+							emptyMsg : "没有找到记录！"
 						})
 			});
 
@@ -223,15 +223,15 @@ function updateMenu(id) {
 
 function deleteMenu() {
 
-	Ext.Msg.confirm("��ʾ", "ȷ������ɾ��˵���", function(button) {
+	Ext.Msg.confirm("提示", "确认批量删除菜单？", function(button) {
 				if (button == 'yes') {
 					createShadeDiv();
 					var rows = grid.getSelectionModel().getSelections();
 
 					if (rows == "") {
 						Ext.Msg.show({
-									title : '��ʾ',
-									msg : '�빴ѡҪɾ��˵������',
+									title : '提示',
+									msg : '请勾选要删除菜单的数据',
 									buttons : Ext.Msg.OK,
 									icon : Ext.Msg.ERROR
 								});
@@ -264,7 +264,7 @@ function promgtMsg() {
 	var successResult = hideFrame.contentWindow.successResult;
 	if (failResult != "") {
 		Ext.Msg.show({
-					title : '����',
+					title : '错误',
 					msg : failResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
@@ -276,7 +276,7 @@ function promgtMsg() {
 				});
 	} else {
 		Ext.Msg.show({
-					title : '��Ϣ',
+					title : '信息',
 					msg : successResult,
 					buttons : Ext.Msg.OK,
 					fn : function(btn) {
