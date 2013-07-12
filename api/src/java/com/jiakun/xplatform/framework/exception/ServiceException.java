@@ -1,6 +1,7 @@
 package com.jiakun.xplatform.framework.exception;
 
 /**
+ * RuntimeException.
  * 
  * @author xujiakun
  * 
