@@ -14,6 +14,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.log4j.Logger;
 
+import com.jiakun.xplatform.framework.exception.SystemException;
+
 /**
  * 
  * @author
@@ -52,17 +54,17 @@ public final class EncryptUtil {
 		return HEX_DIGITS[d1] + HEX_DIGITS[d2];
 	}
 
-	public static String md5Encry(String strSrc) throws Exception {
+	public static String md5Encry(String strSrc) throws SystemException {
 		String returnStr = null;
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
 			returnStr = byteArrayToHexString(md5.digest(strSrc.getBytes(Charset.forName(CHARSET_UTF8))));
 		} catch (Exception e) {
-			throw new Exception(e);
+			throw new SystemException("Exception: ", e);
 		}
 
 		if (returnStr == null) {
-			throw new Exception("md5Encry null result");
+			throw new SystemException("md5Encry null result");
 		}
 
 		return returnStr;
