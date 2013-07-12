@@ -37,11 +37,6 @@
             <script type="text/javascript" src="$!{env.appUrl}/dwr/interface/userRoleDwr.js"></script>
             <script type="text/javascript" src="$!{env.appUrl}/dwr/interface/userModelDwr.js"></script>
 			<script type="text/javascript" src="$!{env.appUrl}/dwr/interface/modelUtilDwr.js"></script>
-			<script type="text/javascript" src="$!{env.imgUrl}/js/xplatform/wfe/model/modelUtilDwr.js"></script>
-		#elseif($key == 'wfe')
-			<script type="text/javascript" src="$!{env.imgUrl}/js/xplatform/wfe/model/webflowEngine.js"></script>
-		#elseif($key == 'upload')
-			<script type="text/javascript" src="$!{env.imgUrl}/js/upload.js"></script>
 		#end
 	#end
 #end

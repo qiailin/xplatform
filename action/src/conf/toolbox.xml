@@ -18,8 +18,7 @@
 	<tool>
 		<key>stringEscUtil</key>
 		<scope>application</scope>
-		<class>com.alibaba.common.lang.StringEscapeUtil
-		</class>
+		<class>com.alibaba.common.lang.StringEscapeUtil</class>
 	</tool>
 	<tool>
 		<key>formatUtil</key>
@@ -29,8 +28,7 @@
 	<tool>
 		<key>count</key>
 		<scope>application</scope>
-		<class>com.jiakun.xplatform.framework.listener.OnlineCounter
-		</class>
+		<class>com.jiakun.xplatform.framework.listener.OnlineCounter</class>
 	</tool>
 	<tool>
 		<key>velocityMath</key>
