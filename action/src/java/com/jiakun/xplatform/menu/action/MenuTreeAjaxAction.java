@@ -74,6 +74,7 @@ public class MenuTreeAjaxAction extends BaseAction {
 					memcachedCacheService.set(IMemcachedCacheService.CACHE_KEY_MENU_TREE + alluser.getUserId() + "_"
 						+ node, menuList, IMemcachedCacheService.CACHE_KEY_MENU_TREE_DEFAULT_EXP);
 				} catch (Exception e) {
+					logger.error(e);
 				}
 			}
 		}
