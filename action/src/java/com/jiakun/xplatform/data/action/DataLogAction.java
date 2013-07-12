@@ -65,7 +65,7 @@ public class DataLogAction extends BaseAction {
 		if (StringUtil.isNotEmpty(dataConfigId)) {
 			try {
 				s.setDataConfigId(Long.parseLong(dataConfigId));
-			} catch (Exception e) {
+			} catch (NumberFormatException e) {
 				logger.error("dataConfigId:" + dataConfigId, e);
 				return JSON;
 			}

@@ -67,7 +67,7 @@ public class DataConfigAction extends BaseAction {
 		if (StringUtil.isNotEmpty(itemId)) {
 			try {
 				s.setItemId(Long.parseLong(itemId));
-			} catch (Exception e) {
+			} catch (NumberFormatException e) {
 				logger.error("itemId:" + itemId, e);
 			}
 		}
@@ -107,7 +107,7 @@ public class DataConfigAction extends BaseAction {
 
 		try {
 			item = Long.parseLong(itemId);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			logger.error("itemId:" + itemId, e);
 			this.setFailMessage(IDataConfigService.ERROR_MESSAGE);
 			return RESULT_MESSAGE;

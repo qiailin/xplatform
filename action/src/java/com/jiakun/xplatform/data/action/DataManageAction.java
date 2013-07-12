@@ -159,7 +159,7 @@ public class DataManageAction extends BaseAction {
 			out.write(StringUtil.isEmpty(resultMsg) ? "{success:true,msg:'�����ɹ�'}" : "{success:false,msg:'"
 				+ resultMsg + "'}");
 			out.flush();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.error("dataConfigId:" + dataConfigId, e);
 		} finally {
 			if (out != null) {
