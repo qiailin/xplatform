@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.openapi.IResponseService;
 import com.jiakun.xplatform.api.openapi.bo.ResponseStats;
-import com.jiakun.xplatform.framework.exception.ServiceException;
 
 /**
  * 
@@ -28,7 +27,7 @@ public class ResponseMonitorTask {
 		try {
 			list = (List<ResponseStats>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
 			memcachedCacheService.remove(IMemcachedCacheService.CACHE_KEY_OPEN_API);
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 

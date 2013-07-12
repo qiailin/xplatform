@@ -8,7 +8,6 @@ import com.jiakun.xplatform.api.login.ICAService;
 import com.jiakun.xplatform.api.login.ILDAPService;
 import com.jiakun.xplatform.api.login.bo.ValidateResult;
 import com.jiakun.xplatform.framework.bo.BooleanResult;
-import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 import com.jiakun.xplatform.framework.util.EncryptUtil;
@@ -154,7 +153,7 @@ public class CAServiceImpl implements ICAService {
 				memcachedCacheService.remove(token);
 				return setSuccessResult(result, user);
 			}
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 

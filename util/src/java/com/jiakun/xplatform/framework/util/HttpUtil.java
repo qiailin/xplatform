@@ -405,7 +405,7 @@ public final class HttpUtil {
 		params.put("password", "123");
 		try {
 			HttpUtil.post("http://ims.jiakun.com.cn/xplatform/router/rest", params);
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 	}

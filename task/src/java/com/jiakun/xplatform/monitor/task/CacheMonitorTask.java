@@ -2,7 +2,6 @@ package com.jiakun.xplatform.monitor.task;
 
 import com.jiakun.xplatform.api.cache.IMemcachedCacheService;
 import com.jiakun.xplatform.api.monitor.ICacheMonitorService;
-import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.jiakun.xplatform.framework.log.Logger4jCollection;
 import com.jiakun.xplatform.framework.log.Logger4jExtend;
 
@@ -22,7 +21,7 @@ public class CacheMonitorTask {
 	public void cacheMonitor() {
 		try {
 			cacheMonitorService.createCacheMonitor(memcachedCacheService.getStats());
-		} catch (ServiceException e) {
+		} catch (Exception e) {
 			logger.error(e);
 		}
 	}
