@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import com.opensymphony.xwork.util.OgnlUtil;
 
 /**
- * java������json�ַ�ת�Ĺ�����.
+ * java对象与json字符串互转的工具类.
  * 
  * @author cuican.dingcc
  * 
@@ -38,20 +38,19 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * ��json�ַ�ת��javabean.
+	 * 将json字符串转成javabean
 	 * 
 	 * @param jsonStr
-	 *            Ҫת����json�ַ�
+	 *            要转换的json字符串
 	 * @param toClass
-	 *            Ҫת����������
+	 *            要转化到的类型
 	 * @param childMap
-	 *            �������м����ֶε��ֶ���ͼ���Ԫ������map
+	 *            该类型中集合字段的字段名和集合元素类型map
 	 * @return Object
 	 * @throws InvocationTargetException
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
-
 	@SuppressWarnings("rawtypes")
 	public static Object json2Bean(Class toClass, String jsonStr, Map<String, Class> childMap) throws Exception {
 		if (toClass == null) {
@@ -63,20 +62,20 @@ public final class JsonUtil {
 		try {
 			jsonValue = URLDecoder.decode(jsonValue, "utf-8");
 		} catch (Exception e) {
-			throw new Exception("�����ʽ����", e);
+			throw new Exception("编码格式错误！", e);
 		}
 		JSONObject object = null;
 		try {
 			object = new JSONObject(jsonValue);
 		} catch (Exception e) {
-			throw new Exception("json��ʽ����", e);
+			throw new Exception("json格式错误！", e);
 		}
 		Object obj = toClass.newInstance();
 
 		Map<String, Object> sourceMap = toMap(object);
 		PropertyDescriptor[] props = OgnlUtil.getPropertyDescriptors(obj);
 		Map<String, Object> map = new HashMap<String, Object>();
-		// ������ִ�Сд
+		// 参数不区分大小写
 		for (PropertyDescriptor desc : props) {
 			Set entrys = sourceMap.entrySet();
 			boolean contains = false;
@@ -91,18 +90,18 @@ public final class JsonUtil {
 
 			if (contains) {
 				Object value = null;
-				// ����������
-				// "yyyy-MM-dd'T'HH:mm:ss'Z'"�˸�ʽ����json2.jsת�����Date��ʽ
+				// 处理日期型
+				// "yyyy-MM-dd'T'HH:mm:ss'Z'"此格式是由json2.js转换后的Date格式
 				if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + "���ڸ�ʽ����!");
+						throw new Exception(desc.getName() + "日期格式错误!");
 					}
 					value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
 				} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + "���ڸ�ʽ����!");
+						throw new Exception(desc.getName() + "日期格式错误!");
 					}
 					value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
 				} else if (Collection.class.isAssignableFrom(desc.getPropertyType())) {
@@ -123,9 +122,9 @@ public final class JsonUtil {
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!", e);
+								throw new Exception(desc.getName() + "应为整数!", e);
 							} else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!", e);
+								throw new Exception(desc.getName() + "应为数字!", e);
 							}
 						}
 					} else {
@@ -173,13 +172,13 @@ public final class JsonUtil {
 			if (java.util.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception("���ڸ�ʽ����!");
+					throw new Exception("日期格式错误!");
 				}
 				value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
 			} else if (java.sql.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception("���ڸ�ʽ����!");
+					throw new Exception("日期格式错误!");
 				}
 				value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
 			} else {
@@ -204,18 +203,18 @@ public final class JsonUtil {
 			for (PropertyDescriptor desc : props) {
 				if (map.containsKey(desc.getName())) {
 					Object value = null;
-					// ����������
-					// "yyyy-MM-dd'T'HH:mm:ss'Z'"�˸�ʽ����json2.jsת�����Date��ʽ
+					// 处理日期型
+					// "yyyy-MM-dd'T'HH:mm:ss'Z'"此格式是由json2.js转换后的Date格式
 					if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + "���ڸ�ʽ����!");
+							throw new Exception(desc.getName() + "日期格式错误!");
 						}
 						value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
 					} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + "���ڸ�ʽ����!");
+							throw new Exception(desc.getName() + "日期格式错误!");
 						}
 						value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
 					} else {
@@ -225,9 +224,9 @@ public final class JsonUtil {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.class || clz == Short.class || clz == Long.class
 								|| clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!", e);
+								throw new Exception(desc.getName() + "应为整数!", e);
 							} else if (clz == Double.class || clz == Float.class || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "ӦΪ����!", e);
+								throw new Exception(desc.getName() + "应为数字!", e);
 							}
 						}
 
@@ -255,12 +254,12 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * ��javabeanת��json�ַ�.
+	 * 将javabean转成json字符串
 	 * 
 	 * @param cls
-	 *            Ҫת��javabean����
+	 *            要转的javabean类型
 	 * @param value
-	 *            Ҫת��javabean
+	 *            要转的javabean
 	 * @return String
 	 * 
 	 */
@@ -268,18 +267,18 @@ public final class JsonUtil {
 		try {
 			return transToJSONObject(cls, value).toString();
 		} catch (Exception e) {
-			log.error("ת��jsonObjectʧ��", e);
+			log.error("转换jsonObject失败", e);
 			return null;
 		}
 	}
 
-	// ��valueת����JSONObject
+	// 将value转换成JSONObject
 	@SuppressWarnings("rawtypes")
 	private static Object transToJSONObject(Class<?> cls, Object value) throws Exception {
 		Object json = null;
 		if (value != null) {
 			if (Collection.class.isAssignableFrom(cls)) {
-				// �б�s
+				// 列表s
 				Iterator iter = ((Collection) value).iterator();
 				JSONArray array = new JSONArray();
 				while (iter.hasNext()) {
@@ -290,7 +289,7 @@ public final class JsonUtil {
 				}
 				json = array;
 			} else if (cls.isArray()) {
-				// ����
+				// 数组
 				JSONArray array = new JSONArray();
 				int length = Array.getLength(value);
 				for (int i = 0; i < length; i++) {
@@ -301,7 +300,7 @@ public final class JsonUtil {
 				}
 				json = array;
 			} else if (Map.class.isAssignableFrom(cls)) {
-				// ӳ��
+				// 映射
 				Iterator iter = ((Map) value).entrySet().iterator();
 				JSONObject object = new JSONObject();
 				while (iter.hasNext()) {
@@ -314,7 +313,7 @@ public final class JsonUtil {
 				json = object;
 			} else if (cls.isPrimitive() || CharSequence.class.isAssignableFrom(cls)
 				|| Number.class.isAssignableFrom(cls) || Boolean.class.isAssignableFrom(cls)) {
-				// �����͡���ֵ���ַ�
+				// 基本类型、数值或字符串
 				if (cls == Boolean.TYPE || cls == Integer.TYPE || cls == Float.TYPE || cls == Double.TYPE
 					|| cls == Long.TYPE || cls == Short.TYPE || cls == Byte.TYPE || cls.isAssignableFrom(Number.class)) {
 					json = value;
@@ -324,7 +323,7 @@ public final class JsonUtil {
 			} else if (java.util.Date.class.isAssignableFrom(cls) || java.sql.Date.class.isAssignableFrom(cls)) {
 				json = value.toString();
 			} else {
-				// ����
+				// 对象
 				Map map = OgnlUtil.getBeanMap(value);
 				JSONObject object = new JSONObject();
 				if (map != null) {
