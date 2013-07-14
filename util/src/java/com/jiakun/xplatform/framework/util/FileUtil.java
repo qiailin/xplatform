@@ -77,7 +77,7 @@ public final class FileUtil {
 
 			flag = true;
 		} catch (Exception e) {
-			logger.error("�ļ����Ϊʧ�ܣ�", e);
+			logger.error("文件另存为失败！", e);
 		} finally {
 			if (in != null) {
 				try {

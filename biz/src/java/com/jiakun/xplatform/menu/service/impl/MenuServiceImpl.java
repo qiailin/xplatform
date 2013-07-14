@@ -144,12 +144,12 @@ public class MenuServiceImpl implements IMenuService {
 			final String roleId = menu.getRoleId();
 			StringBuilder ids = new StringBuilder();
 
-			// ����ѡ��Ĳ˵� ��֤ÿһ���˵��������ǿ�����Ч�ģ���ɫ��Ӧ�Ĳ˵���������
+			// 遍历选择的菜单 保证每一个菜单创建后是可用有效的（角色对应的菜单树是完整）
 			for (String code : menu.getCodes()) {
 
 				final Long menuId = Long.parseLong(code.trim());
 
-				// ��֤��ɫ�¸ò˵��Ƿ����
+				// 验证角色下该菜单是否存在
 				boolean b = menuDao.checkSelectedMenu4Role(roleId, menuId);
 				if (b) {
 					continue;
@@ -158,7 +158,7 @@ public class MenuServiceImpl implements IMenuService {
 				Object o = transactionTemplate.execute(new TransactionCallback() {
 					public Object doInTransaction(TransactionStatus ts) {
 						Long roleMenuId;
-						// 1st ������ɫ�˵�
+						// 1st 创建角色菜单
 						try {
 							roleMenuId = menuDao.selectMenu4Role(roleId, menuId);
 						} catch (Exception e) {
@@ -167,7 +167,7 @@ public class MenuServiceImpl implements IMenuService {
 							return null;
 						}
 
-						// 2nd ������ɫ�˵�����һ���˵� pid == -1
+						// 2nd 创建角色菜单的上一级菜单 pid == -1
 						Long id = menuId;
 						do {
 							try {
@@ -186,7 +186,7 @@ public class MenuServiceImpl implements IMenuService {
 
 						} while (true);
 
-						// ���ؽ�ɫ�˵�id
+						// 返回角色菜单id
 						return roleMenuId;
 					}
 				});

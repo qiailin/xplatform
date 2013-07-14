@@ -34,7 +34,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 	public String rest(MultivaluedMap<String, String> params) {
 		Long startTime = System.currentTimeMillis();
 
-		// û�в���
+		// 没有参数
 		if (params == null || params.isEmpty()) {
 			Response response = new Response();
 			response.setCode(IOpenapiService.ERROR);
@@ -50,7 +50,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			method = methods.get(0);
 		}
 
-		// û�з���
+		// 没有方法
 		if (StringUtil.isEmpty(method)) {
 			Response response = new Response();
 			response.setCode(IOpenapiService.ERROR);
@@ -59,7 +59,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			return response(memcachedCacheService, IOpenapiService.ERROR_MSG_METHOD, startTime, response);
 		}
 
-		// ��� method�жϽӿ�
+		// 根据 method判断接口
 		if (IOpenapiService.XPLATFORM_USER_LOGIN.equals(method)) {
 			String passport = null;
 			String password = null;
@@ -115,7 +115,7 @@ public class OpenapiServiceImpl implements IOpenapiService {
 			List<ResponseStats> list =
 				(List<ResponseStats>) memcachedCacheService.get(IMemcachedCacheService.CACHE_KEY_OPEN_API);
 
-			// ��ʼ��cache
+			// 初始化cache
 			if (list == null || list.size() == 0) {
 				list = new ArrayList<ResponseStats>();
 			}

@@ -39,37 +39,37 @@ public class CAServiceImpl implements ICAService {
 
 	private ValidateResult validateUser(String passport, String password, boolean validate) {
 
-		// ��ʼ������ֵ ״̬ = ʧ��
+		// 初始化返回值 状态 = 失败
 		ValidateResult result = new ValidateResult();
 		result.setResultCode(ICAService.RESULT_FAILED);
 		result.setMessage(ICAService.INCORRECT_LOGIN);
 
-		// �˺Ż�����Ϊ��
+		// 账号或密码为空
 		if (StringUtil.isEmpty(passport) || StringUtil.isEmpty(password)) {
 			result.setMessage(ICAService.INCORRECT_NULL);
 			return result;
 		}
 
-		// ���passport�����û���Ϣ
+		// 根据passport查找用户信息
 		AllUsers loginUser = allUserService.getAllUserByPassport(passport);
 
-		// �жϵ�¼�û��Ƿ���OSAPϵͳ��
+		// 判断登录用户是否在OSAP系统中
 		if (loginUser == null) {
 			result.setMessage(ICAService.INCORRECT_LOGINID);
 			return result;
 		}
 
-		// ��������֤ ��������
+		// 经销商验证 密码明文
 		if ("G".equals(loginUser.getCustType())) {
 			if (password.equals(loginUser.getPassWd())) {
 
 				return setSuccessResult(result, loginUser);
 			}
-			// ��֤ʧ��
+			// 验证失败
 			return result;
 		}
 
-		// ϵͳ����Ա���������֤ �������
+		// 系统管理员和消费者验证 密码加密
 		if ("admin".equals(passport) || "X".equals(loginUser.getCustType())) {
 			try {
 				if ((passport.equals(loginUser.getLoginId()) || passport.equals(loginUser.getMobile()) || passport
@@ -80,7 +80,7 @@ public class CAServiceImpl implements ICAService {
 			} catch (Exception e) {
 				logger.error(e);
 			}
-			// ��֤ʧ��
+			// 验证失败
 			return result;
 		}
 
@@ -94,19 +94,19 @@ public class CAServiceImpl implements ICAService {
 			} catch (Exception e) {
 				logger.error(e);
 			}
-			// ��֤ʧ��
+			// 验证失败
 			return result;
 		}
 
-		// ����֤
+		// 域验证
 		if (validate) {
 			if (ldapService.authenticate(passport, password)) {
 
-				// �ж� ���˺����� �� ims �Ƿ�һ�� / ��һ��ʱ �޸�ims����
+				// 判断 域账号密码 和 ims 是否一致 / 不一致时 修改ims密码
 				try {
 					String pw = EncryptUtil.md5Encry(password);
 
-					// ����һ�� -> �ɹ�
+					// 密码一致 -> 成功
 					if (pw.equals(loginUser.getPassWd())) {
 						return setSuccessResult(result, loginUser);
 					} else {
@@ -115,12 +115,12 @@ public class CAServiceImpl implements ICAService {
 						allUsers.setPassWd(pw);
 
 						BooleanResult r = allUserService.updateAllUser(allUsers);
-						// �޸ĳɹ� -> �ɹ�
-						// �޸�ʧ�� -> ���µ�¼
+						// 修改成功 -> 成功
+						// 修改失败 -> 重新登录
 						if (r.getResult()) {
 							return setSuccessResult(result, loginUser);
 						} else {
-							logger.error("passport:" + passport + " ���˺�������IMS��һ��");
+							logger.error("passport:" + passport + " 域账号密码与IMS不一致");
 						}
 					}
 				} catch (Exception e) {
@@ -149,7 +149,7 @@ public class CAServiceImpl implements ICAService {
 		try {
 			AllUsers user = (AllUsers) memcachedCacheService.get(token);
 			if (user != null) {
-				// ������֤һ�κ� ʧЧ
+				// 令牌验证一次后 失效
 				memcachedCacheService.remove(token);
 				return setSuccessResult(result, user);
 			}

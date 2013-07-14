@@ -40,7 +40,7 @@ public class LDAPServiceImpl implements ILDAPService {
 			flag = true;
 		} catch (LDAPException e) {
 			flag = false;
-			logger.info("LDAP����" + e.getMessage());
+			logger.info("LDAP错误：" + e.getMessage());
 		} catch (Exception e) {
 			logger.error(e);
 		} finally {
