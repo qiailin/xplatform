@@ -13,9 +13,9 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IDataConfigService {
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
-	String ERROR_INPUT_MESSAGE = "����ʧ�ܣ���������";
+	String ERROR_INPUT_MESSAGE = "操作失败，输入有误！";
 
 	/**
 	 * 

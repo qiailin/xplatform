@@ -14,10 +14,10 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
  */
 public interface IDataService {
 
-	String ERROR_MESSAGE = "����ʧ�ܣ�";
+	String ERROR_MESSAGE = "操作失败！";
 
 	/**
-	 * getTabColumnsByLogId.
+	 * 根据日志id查询对应表字段信息.
 	 * 
 	 * @param dataLogTotalId
 	 * @param userId
@@ -26,7 +26,7 @@ public interface IDataService {
 	List<TabColumn> getTabColumnsByLogId(Long dataLogTotalId, String userId);
 
 	/**
-	 * getTabColumnsByConfigId.
+	 * 获取表字段信息.
 	 * 
 	 * @param dataConfigId
 	 * @param userId
@@ -35,7 +35,7 @@ public interface IDataService {
 	List<TabColumn> getTabColumnsByConfigId(Long dataConfigId, String userId);
 
 	/**
-	 * createDataInfo.
+	 * 批量创建datainfo.
 	 * 
 	 * @param dataInfoList
 	 * @return
@@ -43,7 +43,7 @@ public interface IDataService {
 	BooleanResult createDataInfo(Long dataConfigId, List<DataInfo> dataInfoList);
 
 	/**
-	 * getDataPreviewCount.
+	 * 根据dataLogTotalId 数据预览.
 	 * 
 	 * @param dataLogTotal
 	 * @return
@@ -59,7 +59,7 @@ public interface IDataService {
 	List<DataInfo> getDataPreviewList(DataLogTotal dataLogTotal);
 
 	/**
-	 * deleteDataInfo.
+	 * 删除数据.
 	 * 
 	 * @param dataLogTotalId
 	 * @param userId
