@@ -159,7 +159,7 @@ public class SAPConnectionBean {
 		try {
 			JCO.addClientPool(poolName, maximumConnectionCount, clientName, user, password, language, hostName, sysnr);
 		} catch (JCO.Exception e) {
-			throw new RuntimeException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
 		}
 
 	}
