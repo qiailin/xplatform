@@ -164,7 +164,8 @@ public class MD5 {
 		index = (int) (count[0] >>> 3) & 0x3F;
 		// /* Update number of bits */
 		int len = inputLen << 3;
-		if ((count[0] += len) < len) {
+		count[0] += len;
+		if (count[0] < len) {
 			count[1]++;
 		}
 		count[1] += inputLen >>> 29;
