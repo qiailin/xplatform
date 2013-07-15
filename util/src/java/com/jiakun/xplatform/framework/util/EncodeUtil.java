@@ -111,7 +111,7 @@ public final class EncodeUtil {
 
 	/**
 	 * 对单、双引号中的特殊字符进行预处理，防止javascript解析出错。 当输出脚本变量时，必须预处理。例如： <script> var s =
-	 * "<%= EncodeUtil.script(value) %>"; </script>.
+	 * "<%= EncodeUtil.script(value) %>"; <\script>.
 	 */
 	public static String javascript(Object obj) {
 		if (obj == null) {
