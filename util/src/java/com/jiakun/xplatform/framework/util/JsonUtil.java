@@ -33,6 +33,10 @@ public final class JsonUtil {
 
 	private static Logger log = Logger.getLogger(JsonUtil.class);
 
+	private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+
+	private static final String ERROR_MESSAGE = "日期格式错误!";
+
 	private JsonUtil() {
 
 	}
@@ -95,15 +99,15 @@ public final class JsonUtil {
 				if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + "日期格式错误!");
+						throw new Exception(desc.getName() + ERROR_MESSAGE);
 					}
-					value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
+					value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 				} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + "日期格式错误!");
+						throw new Exception(desc.getName() + ERROR_MESSAGE);
 					}
-					value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
+					value = new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
 				} else if (Collection.class.isAssignableFrom(desc.getPropertyType())) {
 					Class clz = childMap.get(desc.getName());
 					if (clz.isPrimitive() || CharSequence.class.isAssignableFrom(clz)
@@ -172,15 +176,15 @@ public final class JsonUtil {
 			if (java.util.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception("日期格式错误!");
+					throw new Exception(ERROR_MESSAGE);
 				}
-				value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
+				value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 			} else if (java.sql.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception("日期格式错误!");
+					throw new Exception(ERROR_MESSAGE);
 				}
-				value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
+				value = new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
 			} else {
 				value = OgnlOps.convertValue(property, toClass);
 			}
@@ -208,15 +212,16 @@ public final class JsonUtil {
 					if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + "日期格式错误!");
+							throw new Exception(desc.getName() + ERROR_MESSAGE);
 						}
-						value = new SimpleDateFormat("yyyy-MM-dd").parse(date.trim());
+						value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 					} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + "日期格式错误!");
+							throw new Exception(desc.getName() + ERROR_MESSAGE);
 						}
-						value = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date.trim()).getTime());
+						value =
+							new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
 					} else {
 						try {
 							value = OgnlOps.convertValue(map.get(desc.getName()), desc.getPropertyType());
