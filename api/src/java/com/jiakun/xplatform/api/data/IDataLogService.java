@@ -27,7 +27,7 @@ public interface IDataLogService {
 	List<DataLogTotal> getDataLogTotalList(DataLogTotal dataLogTotal);
 
 	/**
-	 * 获取当前操作人所对应table
+	 * 获取当前操作人所对应table.
 	 * 
 	 * @param dataLogTotal
 	 * @return
