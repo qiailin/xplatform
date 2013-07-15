@@ -13,7 +13,7 @@ public final class OidUtil {
 	private static char[] x36s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
 	// 随机数长度
-	private static short len = 20;
+	private static final short len = 20;
 
 	private OidUtil() {
 
