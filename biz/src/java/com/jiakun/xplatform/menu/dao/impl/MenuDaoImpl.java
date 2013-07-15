@@ -15,6 +15,10 @@ import com.jiakun.xplatform.menu.dao.IMenuDao;
  */
 public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 
+	private static final String ROLE_ID = "roleId";
+
+	private static final String MENU_ID = "menuId";
+
 	@SuppressWarnings("unchecked")
 	public List<Menu> getMenuTreeList(Menu menu) {
 		return (List<Menu>) getSqlMapClientTemplate().queryForList("menu.getMenuTreeList", menu);
@@ -60,8 +64,8 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 
 	public boolean checkSelectedMenu4Role(String roleId, Long menuId) {
 		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("roleId", roleId);
-		m.put("menuId", menuId);
+		m.put(ROLE_ID, roleId);
+		m.put(MENU_ID, menuId);
 
 		int c = (Integer) getSqlMapClientTemplate().queryForObject("menu.checkSelectedMenu4Role", m);
 
@@ -70,16 +74,16 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 
 	public Long selectMenu4Role(String roleId, Long menuId) {
 		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("roleId", roleId);
-		m.put("menuId", menuId);
+		m.put(ROLE_ID, roleId);
+		m.put(MENU_ID, menuId);
 
 		return (Long) getSqlMapClientTemplate().insert("menu.selectMenu4Role", m);
 	}
 
 	public Long getParentMenuId4Role(String roleId, Long menuId) {
 		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("roleId", roleId);
-		m.put("menuId", menuId);
+		m.put(ROLE_ID, roleId);
+		m.put(MENU_ID, menuId);
 
 		return (Long) getSqlMapClientTemplate().queryForObject("menu.getParentMenuId4Role", m);
 	}
@@ -87,8 +91,8 @@ public class MenuDaoImpl extends BaseDaoImpl implements IMenuDao {
 	@SuppressWarnings("unchecked")
 	public List<Long> getChildMenuId4Role(String roleId, Long menuId) {
 		Map<String, Object> m = new HashMap<String, Object>();
-		m.put("roleId", roleId);
-		m.put("menuId", menuId);
+		m.put(ROLE_ID, roleId);
+		m.put(MENU_ID, menuId);
 
 		return (List<Long>) getSqlMapClientTemplate().queryForList("menu.getChildMenuId4Role", m);
 	}
