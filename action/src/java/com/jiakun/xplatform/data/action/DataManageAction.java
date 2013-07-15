@@ -105,7 +105,7 @@ public class DataManageAction extends BaseAction {
 				HttpServletResponse response = this.getServletResponse();
 				response.setContentType("application/x-download");
 				response.setHeader("Content-Disposition", "attachment; filename=\""
-					+ new String(("���ģ��(" + tabColumnList.get(0).getTableName() + ")").getBytes("GBK"), "ISO8859-1")
+					+ new String(("数据模板(" + tabColumnList.get(0).getTableName() + ")").getBytes("GBK"), "ISO8859-1")
 					+ ".xls\"");
 				outputStream = response.getOutputStream();
 				util.createExcelWithTemplate(inputStream, outputStream, props, dataInfos);
@@ -114,7 +114,7 @@ public class DataManageAction extends BaseAction {
 				return RESULT_MESSAGE;
 			}
 
-			this.setFailMessage("û�е�ǰ���ģ������Ȩ��");
+			this.setFailMessage("没有权限下载当前数据模板");
 			return RESULT_MESSAGE;
 		} catch (IllegalArgumentException e) {
 			logger.error("IllegalArgumentException: ", e);
@@ -156,8 +156,8 @@ public class DataManageAction extends BaseAction {
 
 			String resultMsg = processData(uploadFileName, upload, Long.parseLong(dataConfigId), users.getUserId());
 
-			out.write(StringUtil.isEmpty(resultMsg) ? "{success:true,msg:'�����ɹ�'}" : "{success:false,msg:'"
-				+ resultMsg + "'}");
+			out.write(StringUtil.isEmpty(resultMsg) ? "{success:true,msg:'操作成功'}" : "{success:false,msg:'" + resultMsg
+				+ "'}");
 			out.flush();
 		} catch (IOException e) {
 			logger.error("dataConfigId:" + dataConfigId, e);
@@ -178,16 +178,16 @@ public class DataManageAction extends BaseAction {
 		StringBuilder sb = new StringBuilder();
 
 		try {
-			// �ϴ��ļ�������
+			// 上传文件不存在
 			if (StringUtil.isEmpty(uploadFileName)) {
-				return "��ѡ����Ҫ�ϴ��ļ�";
+				return "请选择需要上传文件";
 			}
 
 			String end = StringUtil.substring(uploadFileName, StringUtil.lastIndexOf(uploadFileName, '.'));
 
-			// �ļ���ʽ����ȷ
+			// 文件格式不正确
 			if (StringUtil.isEmpty(end) || (!".xls".equals(end) && !".xlsx".equals(end))) {
-				return "�ϴ��ļ������޷�ʶ��";
+				return "上传文件类型无法识别";
 			}
 
 			inputStream = new FileInputStream(upload);
@@ -199,12 +199,12 @@ public class DataManageAction extends BaseAction {
 			List<TabColumn> tabColumnList = dataService.getTabColumnsByConfigId(dataConfigId, userId);
 
 			if (tabColumnList == null || tabColumnList.size() == 0) {
-				return "û�и���ݿ��ĵ���Ȩ��";
+				return "没有该数据库表的导入权限";
 			}
 
-			// ��ݿ���ֶθ���һ��
+			// 数据库表字段个数不一致
 			if (tabColumnList.size() != rsColumns) {
-				return "�ϴ��ļ���������ݿ���ֶβ�һ��";
+				return "上传文件列数与数据库表字段不一致";
 			}
 
 			List<DataInfo> dataInfos = new ArrayList<DataInfo>();
@@ -224,63 +224,63 @@ public class DataManageAction extends BaseAction {
 					Method method1 = BeanUtils.findMethod(dataInfo.getClass(), "setParameter" + (j + 1), c);
 					method1.invoke(dataInfo, new Object[] { tabColumn.getColumnName() });
 
-					// ��i�� ��j�� rs.getCell(j, i).getContents()
+					// 第i行 第j列 rs.getCell(j, i).getContents()
 					String value = rs.getCell(j, i).getContents();
 
 					Method method2 = BeanUtils.findMethod(dataInfo.getClass(), "setValue" + (j + 1), c);
 					method2.invoke(dataInfo, new Object[] { StringUtil.isNotEmpty(value) ? value : "" });
 
-					// ��֤value��Ч��
-					// �ж��Ƿ��Ϊ��
+					// 验证value有效性
+					// 判断是否可为空
 					if (StringUtil.isEmpty(value)) {
 						if ("N".equals(tabColumn.getNullable())) {
 							if (sb.length() > 0) {
 								sb.append(BR);
 							}
-							sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
-								.append("����Ϊ��");
+							sb.append("第").append(i + 1).append("行").append("第").append(j + 1).append("列")
+								.append("不能为空");
 						}
 					} else {
-						// �ж��Ƿ�Ϊdate
+						// 判断是否为date
 						if ("DATE".equals(tabColumn.getDataType())) {
 							if (DateUtil.getDateTime(value) == null) {
 								if (sb.length() > 0) {
 									sb.append(BR);
 								}
-								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
-									.append("������yyyy-MM-dd��ʽ");
+								sb.append("第").append(i + 1).append("行").append("第").append(j + 1).append("列")
+									.append("必须是yyyy-MM-dd格式");
 							}
 						} else if ("NUMBER".equals(tabColumn.getDataType())) {
 							try {
-								// �ж��Ƿ�Ϊ��������
+								// 判断是否为数字类型
 								new BigDecimal(value);
 
-								// �жϳ���
+								// 判断长度
 								int length = tabColumn.getDataLength();
 								if (value.length() > length) {
 									if (sb.length() > 0) {
 										sb.append(BR);
 									}
-									sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
-										.append("�ֶγ��ȳ���").append(length);
+									sb.append("第").append(i + 1).append("行").append("第").append(j + 1).append("列")
+										.append("字段长度超过").append(length);
 								}
 							} catch (Exception e) {
 								logger.error("value:" + value, e);
 								if (sb.length() > 0) {
 									sb.append(BR);
 								}
-								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
-									.append("���������ָ�ʽ");
+								sb.append("第").append(i + 1).append("行").append("第").append(j + 1).append("列")
+									.append("必须是数字格式");
 							}
 						} else if ("VARCHAR2".equals(tabColumn.getDataType())) {
-							// �жϳ���
+							// 判断长度
 							int length = tabColumn.getDataLength();
 							if (value.length() * 2 > length) {
 								if (sb.length() > 0) {
 									sb.append(BR);
 								}
-								sb.append("��").append(i + 1).append("��").append("��").append(j + 1).append("��")
-									.append("�ֶγ��ȳ���").append(length);
+								sb.append("第").append(i + 1).append("行").append("第").append(j + 1).append("列")
+									.append("字段长度超过").append(length);
 							}
 						}
 					}

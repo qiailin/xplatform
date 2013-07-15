@@ -53,10 +53,10 @@ public class AuthencationInterceptor implements Interceptor {
 	 */
 	private String getActionName() {
 		String actionName = null;
-		// ��ȡ��ǰapplicationContex
+		// 获取当前applicationContex
 		ActionContext ctx = ActionContext.getContext();
 		// Map map = ctx.getSession()
-		// ���õ�ǰ�����URL
+		// 设置当前请求的URL
 		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		StringBuffer url = request.getRequestURL();
 		int index = url.lastIndexOf(request.getContextPath()) + request.getContextPath().length();
@@ -65,7 +65,7 @@ public class AuthencationInterceptor implements Interceptor {
 	}
 
 	private String getRequetSessionId() {
-		// ��ȡ��ǰapplicationContex
+		// 获取当前applicationContex
 		ActionContext ctx = ActionContext.getContext();
 		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 		return request.getRequestedSessionId();

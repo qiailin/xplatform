@@ -10,9 +10,9 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.Interceptor;
 
 /**
- * ���õ�ǰӦ�������ĵ�������
+ * 设置当前应用上下文的拦截器
  * 
- * VM�п���ʹ�õı����� currentUser: ��ǰ�û����� currentUrl: ��ǰ�����URL�����������.
+ * VM中可以使用的变量： currentUser: 当前用户对象； currentUrl: 当前请求的URL，包含请求参数；
  * 
  * @author jacky.chenb
  * 
@@ -32,11 +32,11 @@ public class SetAppContextInterceptor implements Interceptor {
 	}
 
 	public String intercept(ActionInvocation invocation) throws Exception {
-		// ���õ�ǰ�û�
+		// 设置当前用户
 		ActionContext ctx = ActionContext.getContext();
 		ctx.put(CURRENT_USER, SecurityContext.getUser());
 
-		// ���õ�ǰ�����URL
+		// 设置当前请求的URL
 		HttpServletRequest request = (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
 
 		StringBuffer url = request.getRequestURL();

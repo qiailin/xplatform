@@ -17,7 +17,7 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.AroundInterceptor;
 
 /**
- * ������webwork�����ļ�������ʱ�����params֮ǰ ���ڴ���AJAX����ʱ����������.
+ * 此类在webwork配置文件中配置时须加在params之前 用于处理AJAX请求时的乱码问题.
  * 
  * @author tingjia.chentj
  */
@@ -51,7 +51,7 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 	}
 
 	private static PropertyAccessor getObjectAccessor() {
-		// ������ǰ�����Ҫ�Ƚ���URLDecode
+		// 在设置前根据需要先进行URLDecode
 		return new ObjectPropertyAccessor() {
 			@SuppressWarnings("rawtypes")
 			@Override
@@ -72,7 +72,7 @@ public class DecodeParametersInterceptor extends AroundInterceptor {
 							}
 						}
 					} catch (Exception e) {
-						// getDeclaredField���ܻ᷵�ؿ�ֵ���Ҳ�����Ӧ��fieldʱ��
+						// getDeclaredField可能会返回空值（找不到相应的field时）
 						log.error(e);
 					}
 				}

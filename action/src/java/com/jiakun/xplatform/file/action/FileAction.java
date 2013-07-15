@@ -109,7 +109,7 @@ public class FileAction extends BaseAction {
 			}
 		}
 
-		this.setFailMessage("�ļ�����ʧ�ܣ�");
+		this.setFailMessage("文件下载失败！");
 		return RESULT_MESSAGE;
 	}
 
@@ -131,7 +131,7 @@ public class FileAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		// ����Ч�Ĳ˵�id
+		// 无有效的菜单id
 		if (i == 0) {
 			this.setFailMessage(IFileService.ERROR_INPUT_MESSAGE);
 			return RESULT_MESSAGE;
@@ -141,7 +141,7 @@ public class FileAction extends BaseAction {
 		BooleanResult result = fileService.deleteFile(fileInfo);
 
 		if (result.getResult()) {
-			this.setSuccessMessage("�ѳɹ�ɾ��" + result.getCode() + "���ļ���");
+			this.setSuccessMessage("已成功删除" + result.getCode() + "个文件！");
 		} else {
 			this.setFailMessage(result.getCode());
 		}

@@ -56,22 +56,22 @@ public class LoginAction extends BaseAction {
 
 		ValidateResult result = null;
 
-		// true:��Ҫ����֤ false:����Ҫ����֤
+		// true:需要域验证 false:不需要域验证
 		if (validate) {
 			result = caService.validateUserByLDAP(passport, password);
 		} else {
 			result = caService.validateUser(passport, password);
 		}
 
-		// ��֤ʧ��
+		// 验证失败
 		if (ICAService.RESULT_FAILED.equals(result.getResultCode())
 			|| ICAService.RESULT_ERROR.equals(result.getResultCode())) {
 			this.setFailMessage(result.getMessage());
 			return "incorrect";
 		}
 
-		// ��֤ͨ��
-		// 1 or Y or U ����
+		// 验证通过
+		// 1 or Y or U 调整
 		AllUsers loginUser = result.getAllUser();
 
 		if ("1".equals(loginUser.getUserState()) || "Y".equals(loginUser.getUserState())
@@ -156,7 +156,7 @@ public class LoginAction extends BaseAction {
 	}
 
 	private void initToken() {
-		// ��ʼ��
+		// 初始化
 		token = caService.generateToken(this.getUser());
 	}
 
@@ -169,7 +169,7 @@ public class LoginAction extends BaseAction {
 
 		AllUsers user = getUser();
 
-		// �û���Ϣ��ʾ
+		// 用户信息显示
 		passport = user.getLoginId();
 		this.setName(user.getUserName());
 

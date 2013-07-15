@@ -92,7 +92,7 @@ public class CacheMonitorAction extends BaseAction {
 			}
 		} catch (Exception e) {
 			logger.error("operate:" + operate + "key:" + key, e);
-			this.setSuccessMessage("����ʧ�ܣ�");
+			this.setSuccessMessage("操作失败！");
 		}
 
 		return RESULT_MESSAGE;

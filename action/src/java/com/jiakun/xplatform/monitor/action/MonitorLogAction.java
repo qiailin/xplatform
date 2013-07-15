@@ -27,6 +27,7 @@ public class MonitorLogAction extends BaseAction {
 	private int total;
 
 	private List<MonitorLog> monitorLogList;
+
 	@Decode
 	private String monitorId;
 

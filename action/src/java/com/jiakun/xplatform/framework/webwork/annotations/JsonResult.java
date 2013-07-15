@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * ����ָʾ�ֶ���Ҫת����JSON���� һ��include��exclude����ͬʱʹ��.
+ * 用于指示字段需要转换成JSON对象 一般include和exclude不会同时使用
  * 
  * example:
  * 
@@ -20,26 +20,26 @@ import java.lang.annotation.Target;
 public @interface JsonResult {
 
 	/**
-	 * ��¼���ֶε�����.
+	 * 记录集字段的名字.
 	 */
 	String field();
 
 	/**
-	 * �ܼ�¼���ֶ�����.
+	 * 总记录数字段名字.
 	 * 
 	 * @return
 	 */
 	String total() default "";
 
 	/**
-	 * �������.
+	 * 包含的属性.
 	 */
 	String[] include() default {
 
 	};
 
 	/**
-	 * �ų������.
+	 * 排除的属性.
 	 */
 	String[] exclude() default {
 

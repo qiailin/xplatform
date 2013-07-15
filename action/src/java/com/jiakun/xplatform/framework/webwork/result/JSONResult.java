@@ -57,7 +57,7 @@ public class JSONResult implements Result, WebWorkStatics {
 	public void execute(ActionInvocation invocation) throws Exception {
 		HttpServletResponse response = ServletActionContext.getResponse();
 
-		// ����ContentType
+		// 设置ContentType
 		StringBuffer contentType = new StringBuffer();
 		contentType.append(APPLICATION_JSON);
 		contentType.append(isLegalCharSet() ? ("; charset=" + charset) : "; charset=GBK");
@@ -113,13 +113,13 @@ public class JSONResult implements Result, WebWorkStatics {
 		return transToJSONObject(cls, value, null);
 	}
 
-	// ��valueת����JSONObject
+	// 将value转换成JSONObject
 	@SuppressWarnings("rawtypes")
 	private Object transToJSONObject(Class<?> cls, Object value, JsonResult tojson) throws Exception {
 		Object json = null;
 		if (value != null) {
 			if (Collection.class.isAssignableFrom(cls)) {
-				// �б�
+				// 列表
 				Iterator iter = ((Collection) value).iterator();
 				JSONArray array = new JSONArray();
 				while (iter.hasNext()) {
@@ -130,7 +130,7 @@ public class JSONResult implements Result, WebWorkStatics {
 				}
 				json = array;
 			} else if (cls.isArray()) {
-				// ����
+				// 数组
 				JSONArray array = new JSONArray();
 				int length = Array.getLength(value);
 				for (int i = 0; i < length; i++) {
@@ -141,7 +141,7 @@ public class JSONResult implements Result, WebWorkStatics {
 				}
 				json = array;
 			} else if (Map.class.isAssignableFrom(cls)) {
-				// ӳ��
+				// 映射
 				Iterator iter = ((Map) value).entrySet().iterator();
 				JSONObject object = new JSONObject();
 				while (iter.hasNext()) {
@@ -154,7 +154,7 @@ public class JSONResult implements Result, WebWorkStatics {
 				json = object;
 			} else if (cls.isPrimitive() || CharSequence.class.isAssignableFrom(cls)
 				|| Number.class.isAssignableFrom(cls) || Boolean.class.isAssignableFrom(cls)) {
-				// �����͡���ֵ���ַ�
+				// 基本类型、数值或字符串
 				// 2012-2-12 modify by xujiakun
 				// cls.isAssignableFrom(Boolean.class)
 				if (cls == Boolean.TYPE || cls == Integer.TYPE || cls == Float.TYPE || cls == Double.TYPE
@@ -167,14 +167,14 @@ public class JSONResult implements Result, WebWorkStatics {
 			} else if (java.util.Date.class.isAssignableFrom(cls) || java.sql.Date.class.isAssignableFrom(cls)) {
 				json = value.toString();
 			} else {
-				// ����
+				// 对象
 				Map map = OgnlUtil.getBeanMap(value);
 				JSONObject object = new JSONObject();
 				if (map != null) {
 					if (tojson != null) {
 						String[] include = tojson.include();
 						String[] exclude = tojson.exclude();
-						// ����������
+						// 处理包含的属性
 						if (include.length > 0) {
 							HashMap<String, Object> elements = new HashMap<String, Object>();
 							for (int i = 0; i < include.length; i++) {
@@ -182,7 +182,7 @@ public class JSONResult implements Result, WebWorkStatics {
 							}
 							map = elements;
 						} else if (exclude.length > 0) {
-							// �����ų������
+							// 处理排除的属性
 							for (int i = 0; i < exclude.length; i++) {
 								map.remove(exclude[i]);
 							}
@@ -204,7 +204,7 @@ public class JSONResult implements Result, WebWorkStatics {
 	}
 
 	/**
-	 * ��֤�ַ����Ч��.
+	 * 验证字符集的有效性.
 	 * 
 	 * @return
 	 */
