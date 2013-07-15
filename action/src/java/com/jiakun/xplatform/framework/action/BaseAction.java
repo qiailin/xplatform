@@ -76,9 +76,9 @@ public class BaseAction extends ActionSupport {
 	}
 
 	/**
-	 * ȡ��HttpServletRequest����.
+	 * 取得HttpServletRequest对象.
 	 * 
-	 * @return HttpServletRequest����.
+	 * @return HttpServletRequest对象.
 	 */
 	protected HttpServletRequest getServletRequest() {
 		ActionContext ctx = ActionContext.getContext();
@@ -86,9 +86,9 @@ public class BaseAction extends ActionSupport {
 	}
 
 	/**
-	 * ȡ��HttpServletResponse����.
+	 * 取得HttpServletResponse对象.
 	 * 
-	 * @return HttpServletResponse����.
+	 * @return HttpServletResponse对象.
 	 */
 	protected HttpServletResponse getServletResponse() {
 		ActionContext ctx = ActionContext.getContext();

@@ -28,14 +28,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�.
+	 * 合并模板文件与Context 调用者负责OutputStream的安全关闭.
 	 */
 	public static void mergeFile(String fileName, Context ctx, OutputStream os) throws Exception {
 		mergeFile(fileName, ctx, os, DEFAULT_INPUT_ENCODING, DEFAULT_OUTPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���OutputStream�İ�ȫ�ر�.
+	 * 合并模板文件与Context 调用者负责OutputStream的安全关闭.
 	 */
 	public static void mergeFile(String fileName, Context ctx, OutputStream os, String inputEncoding,
 		String outputEncoding) throws Exception {
@@ -45,14 +45,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�.
+	 * 合并模板文件与Context 调用者负责Writer的安全关闭.
 	 */
 	public static void mergeFile(String fileName, Context ctx, Writer writer) throws Exception {
 		mergeFile(fileName, ctx, writer, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context �����߸���Writer�İ�ȫ�ر�.
+	 * 合并模板文件与Context 调用者负责Writer的安全关闭.
 	 */
 	public static void mergeFile(String fileName, Context ctx, Writer writer, String inputEncoding) throws Exception {
 
@@ -66,14 +66,14 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context.
+	 * 合并模板文件与Context.
 	 */
 	public static String mergeFile(String fileName, Context ctx) throws Exception {
 		return mergeFile(fileName, ctx, DEFAULT_INPUT_ENCODING);
 	}
 
 	/**
-	 * �ϲ�ģ���ļ���Context.
+	 * 合并模板文件与Context.
 	 */
 	public static String mergeFile(String fileName, Context ctx, String inputEncoding) throws Exception {
 
@@ -83,10 +83,10 @@ public final class VelocityUtil {
 	}
 
 	/**
-	 * �ϲ�ģ���ַ���Context.
+	 * 合并模板字符串与Context.
 	 * 
 	 * @param str
-	 *            ģ�����ݣ����԰�VTL
+	 *            模板内容，可以包含VTL
 	 */
 	public static String mergeString(String str, Context ctx) throws Exception {
 		VelocityManagerEx mgr = (VelocityManagerEx) VelocityManager.getInstance();

@@ -163,7 +163,7 @@ public class SqlMonitorAction extends BaseAction {
 		if (!result.getResult()) {
 			this.setFailMessage(result.getCode());
 		} else {
-			this.setSuccessMessage("�޸ĳɹ�");
+			this.setSuccessMessage("修改成功");
 		}
 
 		return RESULT_MESSAGE;

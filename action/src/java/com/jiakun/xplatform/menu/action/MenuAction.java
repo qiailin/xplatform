@@ -194,7 +194,7 @@ public class MenuAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		// ����Ч�Ĳ˵�id
+		// 无有效的菜单id
 		if (i == 0) {
 			this.setFailMessage(IMenuService.ERROR_INPUT_MESSAGE);
 			return RESULT_MESSAGE;
@@ -206,7 +206,7 @@ public class MenuAction extends BaseAction {
 		if (IMenuService.ERROR.equals(result.getCode())) {
 			this.setFailMessage(result.getResult());
 		} else {
-			this.setSuccessMessage("�ѳɹ�ɾ��" + result.getResult() + "���˵���");
+			this.setSuccessMessage("已成功删除" + result.getResult() + "个菜单！");
 		}
 
 		return RESULT_MESSAGE;
@@ -272,7 +272,7 @@ public class MenuAction extends BaseAction {
 		}
 
 		if (IMenuService.SUCCESS.equals(result.getCode())) {
-			this.setSuccessMessage("�ɹ�ά���˵���ţ�" + result.getResult());
+			this.setSuccessMessage("成功维护菜单编号：" + result.getResult());
 		}
 
 		return RESULT_MESSAGE;
@@ -295,7 +295,7 @@ public class MenuAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		// ����Ч�Ĳ˵�id
+		// 无有效的菜单id
 		if (ids.size() == 0) {
 			this.setFailMessage(IMenuService.ERROR_INPUT_MESSAGE);
 			return RESULT_MESSAGE;
@@ -308,7 +308,7 @@ public class MenuAction extends BaseAction {
 		if (IMenuService.ERROR.equals(result.getCode())) {
 			this.setFailMessage(result.getResult());
 		} else {
-			this.setSuccessMessage("�ѳɹ�ɾ��" + result.getResult() + "���˵���");
+			this.setSuccessMessage("已成功删除" + result.getResult() + "个菜单！");
 		}
 
 		return RESULT_MESSAGE;
