@@ -84,12 +84,12 @@ public final class Base64 {
 	}
 
 	/**
-	 * Encodes up to the first three bytes of array <var>threeBytes</var> and
+	 * Encodes up to the first three bytes of array <b>threeBytes</b> and
 	 * returns a four-byte array in Base64 notation. The actual number of
-	 * significant bytes in your array is given by <var>numSigBytes</var>. The
-	 * array <var>threeBytes</var> needs only be as big as
-	 * <var>numSigBytes</var>. Code can reuse a byte array by passing a
-	 * four-byte array as <var>b4</var>.
+	 * significant bytes in your array is given by <b>numSigBytes</b>. The
+	 * array <b>threeBytes</b> needs only be as big as
+	 * <b>numSigBytes</b>. Code can reuse a byte array by passing a
+	 * four-byte array as <b>b4</b>.
 	 * 
 	 * @param b4
 	 *            A reusable byte array to reduce array instantiation
@@ -106,15 +106,15 @@ public final class Base64 {
 	}
 
 	/**
-	 * Encodes up to three bytes of the array <var>source</var> and writes the
-	 * resulting four Base64 bytes to <var>destination</var>. The source and
+	 * Encodes up to three bytes of the array <b>source</b> and writes the
+	 * resulting four Base64 bytes to <b>destination</b>. The source and
 	 * destination arrays can be manipulated anywhere along their length by
-	 * specifying <var>srcOffset</var> and <var>destOffset</var>. This method
+	 * specifying <b>srcOffset</b> and <b>destOffset</b>. This method
 	 * does not check to make sure your arrays are large enough to accomodate
-	 * <var>srcOffset</var> + 3 for the <var>source</var> array or
-	 * <var>destOffset</var> + 4 for the <var>destination</var> array. The
+	 * <b>srcOffset</b> + 3 for the <b>source</b> array or
+	 * <b>destOffset</b> + 4 for the <b>destination</b> array. The
 	 * actual number of significant bytes in your array is given by
-	 * <var>numSigBytes</var>.
+	 * <b>numSigBytes</b>.
 	 * 
 	 * @param source
 	 *            the array to convert
@@ -126,7 +126,7 @@ public final class Base64 {
 	 *            the array to hold the conversion
 	 * @param destOffset
 	 *            the index where output will be put
-	 * @return the <var>destination</var> array
+	 * @return the <b>destination</b> array
 	 * @since 1.3
 	 */
 	private static byte[] encode3to4(byte[] source, int srcOffset, int numSigBytes, byte[] destination, int destOffset) {
@@ -457,13 +457,13 @@ public final class Base64 {
 	/* ******** D E C O D I N G M E T H O D S ******** */
 
 	/**
-	 * Decodes four bytes from array <var>source</var> and writes the resulting
-	 * bytes (up to three of them) to <var>destination</var>. The source and
+	 * Decodes four bytes from array <b>source</b> and writes the resulting
+	 * bytes (up to three of them) to <b>destination</b>. The source and
 	 * destination arrays can be manipulated anywhere along their length by
-	 * specifying <var>srcOffset</var> and <var>destOffset</var>. This method
+	 * specifying <b>srcOffset</b> and <b>destOffset</b>. This method
 	 * does not check to make sure your arrays are large enough to accomodate
-	 * <var>srcOffset</var> + 4 for the <var>source</var> array or
-	 * <var>destOffset</var> + 3 for the <var>destination</var> array. This
+	 * <b>srcOffset</b> + 4 for the <b>source</b> array or
+	 * <b>destOffset</b> + 3 for the <b>destination</b> array. This
 	 * method returns the actual number of bytes that were converted from the
 	 * Base64 encoding.
 	 * 
@@ -887,7 +887,7 @@ public final class Base64 {
 
 		/**
 		 * Calls {@link #read} repeatedly until the end of stream is reached or
-		 * <var>len</var> bytes are read. Returns number of bytes read into
+		 * <b>len</b> bytes are read. Returns number of bytes read into
 		 * array or -1 if end of stream is encountered.
 		 * 
 		 * @param dest
@@ -1049,7 +1049,7 @@ public final class Base64 {
 		}
 
 		/**
-		 * Calls {@link #write} repeatedly until <var>len</var> bytes are
+		 * Calls {@link #write} repeatedly until <b>len</b> bytes are
 		 * written.
 		 * 
 		 * @param theBytes
