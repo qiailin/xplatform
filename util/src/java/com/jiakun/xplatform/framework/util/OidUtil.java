@@ -13,14 +13,14 @@ public final class OidUtil {
 	private static char[] x36s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
 	// 随机数长度
-	private static final short len = 20;
+	private static final short LEN = 20;
 
 	private OidUtil() {
 
 	}
 
 	public static String newId() {
-		char[] chs = new char[len];
+		char[] chs = new char[LEN];
 
 		// 生成前8位随机字符(以系统时间为随机池, 以36位数字+英文字母为随机种子)
 		long v = (System.currentTimeMillis() - 936748800000L) >> 1;
@@ -39,7 +39,7 @@ public final class OidUtil {
 			v = -v;
 		}
 
-		for (int i = 8; i < len; i++) {
+		for (int i = 8; i < LEN; i++) {
 			chs[i] = x36s[(int) (v % 36)];
 			v = v / 36;
 		}
