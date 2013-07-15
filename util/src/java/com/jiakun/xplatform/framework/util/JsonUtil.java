@@ -42,7 +42,7 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * 将json字符串转成javabean
+	 * 将json字符串转成javabean.
 	 * 
 	 * @param jsonStr
 	 *            要转换的json字符串
@@ -259,7 +259,7 @@ public final class JsonUtil {
 	}
 
 	/**
-	 * 将javabean转成json字符串
+	 * 将javabean转成json字符串.
 	 * 
 	 * @param cls
 	 *            要转的javabean类型
