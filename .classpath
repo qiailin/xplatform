@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="api/src/java"/>
 	<classpathentry kind="src" path="biz/src/conf"/>
 	<classpathentry kind="src" path="biz/src/java"/>
+	<classpathentry kind="src" path="biz/src/java.test"/>
 	<classpathentry kind="src" path="task/src/conf"/>
 	<classpathentry kind="src" path="task/src/java"/>
 	<classpathentry kind="src" path="util/src/java"/>
@@ -85,5 +86,8 @@
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/alibaba.toolkit-service-framework-1.0.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/zkclient.zkclient-0.1.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/zookeeper.zookeeper-3.4.5.jar"/>
+	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit.jmockit-coverage.jar"/>
+	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit.jmockit.jar"/>
+	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit..hamcrest-core-1.2.jar"/>
 	<classpathentry kind="output" path="webroot/WEB-INF/classes"/>
 </classpath>
