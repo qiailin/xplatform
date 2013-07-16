@@ -37,7 +37,7 @@
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/javamail.mail.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jexcelapi.jxl.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/json.json.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/junit.junit-4.10.jar"/>
+	<classpathentry kind="lib" path="webroot/WEB-INF/lib/junit.junit-4.11.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/ldap.ldapjdk.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/log4j.log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/lucene.lucene-analyzers-smartcn-4.3.0.jar"/>
