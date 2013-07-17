@@ -69,5 +69,15 @@ public class DataServiceTest {
 
 		Assert.assertNull(dataService.getTabColumnsByConfigId(1L, "1"));
 
+		new Expectations() {
+			{
+				dataDao.getTabColumnsByLogId(anyLong, anyString);
+				result = new Exception();
+				times = 1;
+			}
+		};
+
+		Assert.assertNull(dataService.getTabColumnsByLogId(1L, "1"));
+
 	}
 }
