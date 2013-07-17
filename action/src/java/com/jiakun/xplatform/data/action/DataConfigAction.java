@@ -154,7 +154,7 @@ public class DataConfigAction extends BaseAction {
 			return RESULT_MESSAGE;
 		}
 
-		// ����Ч����Ȩ��Ϣid
+		// 无有效的授权信息id
 		if (i == 0) {
 			this.setFailMessage(IDataConfigService.ERROR_INPUT_MESSAGE);
 			return RESULT_MESSAGE;
@@ -164,7 +164,7 @@ public class DataConfigAction extends BaseAction {
 		BooleanResult result = dataConfigService.updateDataConfig(dataConfig);
 
 		if (result.getResult()) {
-			this.setSuccessMessage("�ɹ�����" + result.getCode() + "��������Ա");
+			this.setSuccessMessage("成功禁用" + result.getCode() + "个操作人员");
 		} else {
 			this.setFailMessage(result.getCode());
 		}

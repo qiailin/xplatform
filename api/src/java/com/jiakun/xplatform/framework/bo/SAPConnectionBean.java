@@ -15,67 +15,102 @@ public class SAPConnectionBean {
 
 	private static Logger logger = Logger.getLogger(SAPConnectionBean.class);
 
+	/**
+	 * 接池别名.
+	 */
 	private String poolName;
 
+	/**
+	 * 最大连接数.
+	 */
 	private int maximumConnectionCount;
 
+	/**
+	 * SAP客户端(SAP集团).
+	 */
 	private String clientName;
 
+	/**
+	 * 登陆用户.
+	 */
 	private String user;
 
+	/**
+	 * 登陆密码.
+	 */
 	private String password;
 
+	/**
+	 * 语言.
+	 */
 	private String language;
 
+	/**
+	 * SAP服务器名或IP地址.
+	 */
 	private String hostName;
 
+	/**
+	 * SAP系统码.
+	 */
 	private String sysnr;
 
-	// Name of the group of application servers
+	/**
+	 * Name of the group of application servers.
+	 */
 	private String group;
 
+	/**
+	 * 是否通过GROUP方式连接.
+	 */
 	private String byGroup;
 
+	/**
+	 * 函数仓库名称.
+	 */
 	private String repositoryName;
 
+	/**
+	 * 函数名称.
+	 */
 	private String funcName;
 
 	public SAPConnectionBean() {
 
 	}
 
-	// �����ӳ��л�ȡSAP�ͻ�������
+	// 从连接池中获取SAP客户端连接
 	@SuppressWarnings("deprecation")
 	public JCO.Client getSAPClientFromPool() {
-		logger.debug("����getSAPClientFromPool����");
+		logger.debug("进入getSAPClientFromPool方法");
 		JCO.Client sapclient = null;
 		try {
-			// �ж����ӳ��Ƿ����
+			// 判断连接池是否存在
 			JCO.Pool pool = null;
 			pool = JCO.getClientPoolManager().getPool(poolName);
 			if (pool == null) {
-				// δ�ҵ�ָ�������ӳ�������һ�����ӳ�
+				// 未找到指定的连接池则增加一个连接池
 				addClientPool();
 				pool = JCO.getClientPoolManager().getPool(poolName);
 			}
 			int maxConnections = pool.getMaxConnections();
 			int numUserd = pool.getNumUsed();
 			if (maxConnections - numUserd < 1) {
-				logger.debug("�̳߳���û�п��õĿͻ������ӣ�����ֱ�Ӵ������Ӻ���getSAPClientDirect()");
+				logger.debug("线程池中没有可用的客户端连接，调用直接创建连接函数getSAPClientDirect()");
 				sapclient = this.getSAPClientDirect();
 			} else {
-				logger.debug("����" + SAPConnectionBean.class + "�еķ���getSAPClientFromPool()���̳߳��л�ȡSAP�ͻ�������");
+				logger.debug("调用" + SAPConnectionBean.class + "中的方法getSAPClientFromPool()从线程池中获取SAP客户端连接");
 				sapclient = JCO.getClient(poolName);
 			}
 		} catch (JCO.Exception e) {
 			throw new JCO.Exception(1, "t", e.getMessage());
-			// logger.error("����" + SAPConnectionBean.class
-			// + "�ķ���getSAPClientFromPool���?" + e.getMessage())
+			// logger.error("调用" + SAPConnectionBean.class
+			// + "的方法getSAPClientFromPool出错：" + e.getMessage());
 		}
 		return sapclient;
 	}
 
-	// ֱ�ӻ�ȡSAP�ͻ�������
+	// 直接获取SAP客户端连接
 	public JCO.Client getSAPClientDirect() {
 		JCO.Client sapclient = null;
 		try {
@@ -86,25 +121,25 @@ public class SAPConnectionBean {
 			}
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage());
 		}
 		return sapclient;
 	}
 
-	// ����ķ�ʽֱ������SAP
+	// 以组的方式直接链接SAP
 	public JCO.Client getSAPClientDirectByGroup() {
 		JCO.Client sapclient = null;
 		try {
 			sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr, group);
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage());
 		}
 		return sapclient;
 	}
 
 	public JCO.Function getFunction() {
-		logger.debug("����getFunction����");
+		logger.debug("进入getFunction方法");
 		if (this.funcName == null || this.funcName.equals("")) {
 			return null;
 		}
@@ -113,13 +148,13 @@ public class SAPConnectionBean {
 			IFunctionTemplate ft = this.getRepository().getFunctionTemplate(funcName);
 			func = ft.getFunction();
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class + "�ķ���getFunction���?" + e.getMessage(), e);
+			logger.error("调用" + SAPConnectionBean.class + "的方法getFunction出错：" + e.getMessage(), e);
 		}
 		return func;
 	}
 
 	public JCO.Function getFunction(JCO.Client client) {
-		logger.debug("����getFunction(client)����,����SAP�ӿ�" + funcName);
+		logger.debug("进入getFunction(client)方法,调用SAP接口" + funcName);
 		if (this.funcName == null || this.funcName.equals("")) {
 			return null;
 		}
@@ -129,37 +164,37 @@ public class SAPConnectionBean {
 			IFunctionTemplate ft = repository.getFunctionTemplate(funcName);
 			func = ft.getFunction();
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class + "�ķ���getFunction���?" + e.getMessage(), e);
+			logger.error("调用" + SAPConnectionBean.class + "的方法getFunction出错：" + e.getMessage(), e);
 		}
 		return func;
 	}
 
-	// ��ȡSAP��repository
+	// 获取SAP的repository
 	@SuppressWarnings("deprecation")
 	private JCO.Repository getRepository() {
-		logger.debug("����getRepository����");
+		logger.debug("进入getRepository方法");
 		JCO.Repository repository = null;
 		try {
 			JCO.Pool pool = JCO.getClientPoolManager().getPool(poolName);
 			if (pool == null) {
-				// δ�ҵ�ָ�������ӳ�������һ�����ӳ�
+				// 未找到指定的连接池则增加一个连接池
 				addClientPool();
 			}
-			logger.debug("����" + SAPConnectionBean.class + "�з���getRepository��ȡSAP����ֿ�");
+			logger.debug("调用" + SAPConnectionBean.class + "中方法getRepository获取SAP函数仓库");
 			repository = new JCO.Repository(this.repositoryName, this.poolName);
 		} catch (JCO.Exception e) {
-			logger.error("����" + SAPConnectionBean.class + "�ķ���getRepository���?" + e.getMessage(), e);
+			logger.error("调用" + SAPConnectionBean.class + "的方法getRepository出错：" + e.getMessage(), e);
 		}
 		return repository;
 	}
 
 	@SuppressWarnings("deprecation")
 	private void addClientPool() {
-		logger.debug("���̳߳�" + this.poolName + "������һ���µ�SAP�ͻ�������");
+		logger.debug("向线程池" + this.poolName + "中增加一个新的SAP客户端连接");
 		try {
 			JCO.addClientPool(poolName, maximumConnectionCount, clientName, user, password, language, hostName, sysnr);
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP���Ӵ���" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage());
 		}
 
 	}

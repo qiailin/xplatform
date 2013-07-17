@@ -17,13 +17,19 @@ public class ValidateResult implements Serializable {
 
 	private static final long serialVersionUID = 807590090225810140L;
 
-	// ���ؽ��
+	/**
+	 * 返回结果.
+	 */
 	private String resultCode;
 
-	// ��Ϣ
+	/**
+	 * 信息.
+	 */
 	private String message;
 
-	// ��½�û���Ϣ
+	/**
+	 * 登陆用户信息.
+	 */
 	private AllUsers allUser;
 
 	public String getResultCode() {

@@ -9,8 +9,8 @@ import com.jiakun.xplatform.framework.bo.BooleanResult;
 import com.jiakun.xplatform.framework.bo.StringResult;
 
 /**
- * �����T����������������<br>
- * �����������T�������������� ������I��������.
+ * 人員信息接口<br>
+ * 包含人員基本信息 企業架構.
  * 
  * @author xujiakun
  * 
@@ -21,15 +21,15 @@ public interface IAllUserService {
 
 	String ERROR = "error";
 
-	String ERROR_MESSAGE = "����������������������";
+	String ERROR_MESSAGE = "操作失败！";
 
-	String ERROR_INPUT_MESSAGE = "����������������������������������������������";
+	String ERROR_INPUT_MESSAGE = "操作失败，输入有误！";
 
-	String ERROR_NULL_MESSAGE = "������������������������������������������";
+	String ERROR_NULL_MESSAGE = "操作失败，不存在！";
 
-	String ERROR_EXIST_MESSAGE = "���������������������� ����������������";
+	String ERROR_EXIST_MESSAGE = "操作失败，已存在！";
 
-	String ERROR_CONNET_MESSAGE = "����������������������WebService������������������������";
+	String ERROR_CONNET_MESSAGE = "操作失败，WebService连接异常！";
 
 	String CHECK_TYPE_HR = "hr";
 
@@ -147,8 +147,9 @@ public interface IAllUserService {
 	int getSupplierCount(CmsVwSupplier supplier);
 
 	/**
+	 * 测试用户是否存在.
 	 * 
-	 * @param ���������loginId
+	 * @param 检查loginId
 	 * @return
 	 */
 	BooleanResult checkUserAvilb(String loginId);

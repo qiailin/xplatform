@@ -18,6 +18,7 @@ public class MonitorLog extends SearchInfo {
 	private Long monitorId;
 
 	private Date createDate;
+
 	private Date modifyDate;
 
 	private String sqlMonitorTitle;
