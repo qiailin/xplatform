@@ -9,4 +9,5 @@
 .DS_Store
 
 webroot/WEB-INF/classes
+coverage-report
 .settings
