@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 用于指示字段需要转换成JSON对象 一般include和exclude不会同时使用
+ * 用于指示字段需要转换成JSON对象 一般include和exclude不会同时使用.
  * 
  * example:
  * 

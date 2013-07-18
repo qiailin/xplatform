@@ -10,9 +10,9 @@ import com.opensymphony.xwork.ActionInvocation;
 import com.opensymphony.xwork.interceptor.Interceptor;
 
 /**
- * 设置当前应用上下文的拦截器
+ * 设置当前应用上下文的拦截器.
  * 
- * VM中可以使用的变量： currentUser: 当前用户对象； currentUrl: 当前请求的URL，包含请求参数；
+ * VM中可以使用的变量： currentUser: 当前用户对象； currentUrl: 当前请求的URL，包含请求参数.
  * 
  * @author jacky.chenb
  * 
