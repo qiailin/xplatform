@@ -63,7 +63,7 @@ public final class HDFSUtil {
 				throw new ServiceException("mkdirs error");
 			}
 		} catch (IOException e) {
-			throw new ServiceException("create directory " + dir + " failed :", e);
+			throw new ServiceException("create directory " + dir, e);
 		}
 	}
 
@@ -87,7 +87,7 @@ public final class HDFSUtil {
 				throw new ServiceException("rmdirs error");
 			}
 		} catch (IOException e) {
-			throw new ServiceException("remove directory " + dir + " failed :", e);
+			throw new ServiceException("remove directory " + dir, e);
 		}
 	}
 
@@ -107,7 +107,7 @@ public final class HDFSUtil {
 
 			fs.copyFromLocalFile(false, true, src, dst);
 		} catch (IOException e) {
-			throw new ServiceException("upload " + local + " to  " + remote + " failed :", e);
+			throw new ServiceException("upload " + local + " to  " + remote, e);
 		}
 	}
 
@@ -126,7 +126,7 @@ public final class HDFSUtil {
 
 			fs.copyToLocalFile(false, dst, src);
 		} catch (IOException e) {
-			throw new ServiceException("download from " + remote + " to  " + local + " failed :", e);
+			throw new ServiceException("download from " + remote + " to  " + local, e);
 		}
 	}
 
@@ -148,7 +148,7 @@ public final class HDFSUtil {
 			out = fs.create(dst);
 			out.write(bytes);
 		} catch (IOException e) {
-			throw new ServiceException("write content to " + path + " failed :", e);
+			throw new ServiceException("write content to " + path, e);
 		} finally {
 			IOUtils.closeStream(out);
 		}
@@ -176,7 +176,7 @@ public final class HDFSUtil {
 
 			IOUtils.copyBytes(in, out, BUFF_SIZE, true);
 		} catch (IOException e) {
-			throw new ServiceException("write content to " + path + " failed :", e);
+			throw new ServiceException("write content to " + path, e);
 		} finally {
 			IOUtils.closeStream(out);
 			IOUtils.closeStream(in);
@@ -201,7 +201,7 @@ public final class HDFSUtil {
 			in = fs.open(dst);
 			return in.readUTF();
 		} catch (IOException e) {
-			throw new ServiceException("read content from " + path + " failed :", e);
+			throw new ServiceException("read content from " + path, e);
 		} finally {
 			IOUtils.closeStream(in);
 		}
@@ -226,7 +226,7 @@ public final class HDFSUtil {
 
 			IOUtils.copyBytes(in, output, BUFF_SIZE, true);
 		} catch (IOException e) {
-			throw new ServiceException("read content from " + path + " failed :", e);
+			throw new ServiceException("read content from " + path, e);
 		} finally {
 			IOUtils.closeStream(in);
 		}
