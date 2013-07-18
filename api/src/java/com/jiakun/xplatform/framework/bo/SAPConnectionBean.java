@@ -104,8 +104,8 @@ public class SAPConnectionBean {
 			}
 		} catch (JCO.Exception e) {
 			throw new JCO.Exception(1, "t", e.getMessage());
-			// logger.error("调用" + SAPConnectionBean.class
-			// + "的方法getSAPClientFromPool出错：" + e.getMessage());
+			// logger.error("调用" + SAPConnectionBean.class + "的方法getSAPClientFromPool出错：" +
+			// e.getMessage()).
 		}
 		return sapclient;
 	}
