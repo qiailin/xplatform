@@ -19,6 +19,8 @@ public final class LogUtil {
 
 	private static final Logger logger = Logger.getLogger(LogUtil.class);
 
+	private static final String TAG = "\":";
+
 	private LogUtil() {
 	}
 
@@ -67,7 +69,7 @@ public final class LogUtil {
 				for (Map.Entry<Object, Object> entry : map.entrySet()) {
 					Object key = entry.getKey();
 					Object v = entry.getValue();
-					sb.append('"').append(key.toString()).append("\":").append(parserBean(v)).append(',');
+					sb.append('"').append(key.toString()).append(TAG).append(parserBean(v)).append(',');
 				}
 
 				if (sb.charAt(sb.length() - 1) == ',') {
@@ -94,25 +96,25 @@ public final class LogUtil {
 					String element = entry.getKey();
 					Object value = entry.getValue();
 					if (value == null) {
-						sb.append("\"" + element + "\":").append('"').append("null").append('"').append(',');
+						sb.append("\"" + element + TAG).append('"').append("null").append('"').append(',');
 					} else if (value instanceof String || (value instanceof StringBuilder)) {
-						sb.append("\"" + element + "\":");
+						sb.append("\"" + element + TAG);
 						value = value.toString();
 						String v = ((String) value).replaceAll("/\\{0}\"{1}/", "\\\"");
 						v = v.replaceAll("/\r/", "\\n");
 						sb.append('"').append(v).append('"').append(',');
 					} else if (value instanceof java.util.Date) {
-						sb.append("\"" + element + "\":");
+						sb.append("\"" + element + TAG);
 						sb.append('"').append(DateUtil.datetime((Date) value, DateUtil.DEFAULT_DATETIME_FORMAT))
 							.append('"').append(',');
 
 					} else if (value instanceof Calendar) {
-						sb.append("\"" + element + "\":");
+						sb.append("\"" + element + TAG);
 						Calendar c = (Calendar) value;
 						sb.append('"').append(DateUtil.datetime((Date) c.getTime(), DateUtil.DEFAULT_DATETIME_FORMAT))
 							.append('"').append(',');
 					} else if (value instanceof java.lang.Number || (value instanceof Boolean)) {
-						sb.append("\"" + element + "\":").append(":\"" + value + "\"").append(',');
+						sb.append("\"" + element + TAG).append(":\"" + value + "\"").append(',');
 					}
 				}
 
