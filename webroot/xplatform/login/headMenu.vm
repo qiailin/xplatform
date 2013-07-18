@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>农夫山泉 - 农夫山泉有点甜</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -28,13 +29,13 @@
                 	<div class="MessageContent" style="width:95%; float:none;">
                     	<marquee onmouseover="stop();" onmouseout="start();" scrollamount="3">
                     		<span id="oContent">
-                    			<a href="javascript:gotoProcessEvent();">����$!{eventCount}��������ˣ����⣺$!{eventSummary}......</a>
+                    			<a href="javascript:gotoProcessEvent();">您有$!{eventCount}条待办事宜，标题：$!{eventSummary}......</a>
                     		</span>
                         </marquee>
                     </div>
                     <div class="Close" style="position:absolute; right:5px; top:5px;">
                     	<a href="javascript:closeDiv()">
-                    		<img src="$!{env.imgUrl}/image/login/icon_close.gif" alt="�ر�" border="0"/>
+                    		<img src="$!{env.imgUrl}/image/login/icon_close.gif" alt="关闭" border="0"/>
                         </a>
                     </div>
                 </div>
@@ -60,7 +61,7 @@
 										</td>
 										<td align=right noWrap class=title>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
-											<a href="$!{env.appUrl}/login/loginAction!homePage.htm" target="_parent">��ҳ</a>
+											<a href="$!{env.appUrl}/login/loginAction!homePage.jspa" target="_parent">首页</a>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
 											<a target=mainFrame></a>
 											<img src="$!{env.imgUrl}/image/login/txt_ico1.gif" align=absMiddle />
@@ -73,7 +74,7 @@
 											<a target=_parent width="12" height="18" align="absmiddle"></a>
 											<font class=font12pt color=red align="absmiddle"></font>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
-											<a href="/$!{env.appName}/login/logout.htm" target=_parent width="12" height="18" align="absmiddle">�˳�</a>
+											<a href="/$!{env.appName}/login/logout.jspa" target=_parent width="12" height="18" align="absmiddle">退出</a>
 										</td>
 									</tr>
 								</tbody>

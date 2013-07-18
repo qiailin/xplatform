@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>��ؼƻ�����</title>
+		<title>监控计划配置</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,18 +14,18 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									��ؼƻ���ѯ��ά��
+									监控计划查询及维护
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:create();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >�ƻ����� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >计划创建 </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									��ѯ����
+									查询条件
 								</td>
 							</tr>
 							<tr>
@@ -32,13 +33,13 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											��ؼƻ����
+    											监控计划编号
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="sqlMonitorId" id="sqlMonitorId" />
     			    						</td>
     										<td class="head" noWrap style="text-align: center">
-    											��ؼƻ�����
+    											监控计划标题
     										</td>
 											<td class="even" noWrap colspan='2'>
 												<input type='text' id='sqlMonitorTitle' name="sqlMonitorTitle" />
@@ -46,25 +47,25 @@
                                         </tr>
 										<tr>
 											<td class="head" noWrap style="text-align: center">
-    											��ؼƻ�״̬
+    											监控计划状态
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='status' name="status" />
     			    						</td>
 											<td class="head" noWrap style="text-align: center">
-    											�Ƿ���Ҫ��־
+    											是否需要日志
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='log' name="log" />
     			    						</td>
     			    						<td class="even" noWrap>
-    			    						<input type="button" onclick="javascript:search()" value="��ѯ" />
+    			    						<input type="button" onclick="javascript:search()" value="查询" />
     			    						</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									��ѯ�б�
+        									查询列表
         								</td>
 									</tr>
 								</td>

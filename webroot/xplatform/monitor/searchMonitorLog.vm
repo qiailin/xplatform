@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>监控日志</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,12 +14,12 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									�����־��ѯ
+									监控日志查询
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									��ѯ����
+									查询条件
 								</td>
 							</tr>
 							<tr>
@@ -26,20 +27,20 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
 										<tr>
     										<td class="head" noWrap >
-    											ѡ���ؼƻ�
+    											选择监控计划
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='title' name="title" size="30" />
 												<input type='hidden' id='monitorId' name='monitorId'/>
 											</td>
 											<td class="even" noWrap>
-												<input type="button" onclick="javascript:search()" value="��ѯ" />
+												<input type="button" onclick="javascript:search()" value="查询" />
 											</td>
 										</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									��ѯ�б�
+        									查询列表
         								</td>
 									</tr>
 								</td>

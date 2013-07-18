@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,18 +13,18 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									cache≈‰÷√
+									cacheÈÖçÁΩÆ
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:window.close()">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_close.gif" align="absMiddle" >πÿ±’ </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_close.gif" align="absMiddle" >ÂÖ≥Èó≠ </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									≈‰÷√œÓ
+									ÈÖçÁΩÆÈ°π
 								</td>
 							</tr>
 							<tr>
@@ -40,7 +41,7 @@
     											result
     										</td>
 											<td class="even" noWrap align=center >
-    											≤Ÿ◊˜
+    											Êìç‰Ωú
     										</td>
                                         </tr>
     									<tr>

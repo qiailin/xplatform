@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>系统提示</title>
+		<title>绯荤粺鎻愮ず</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -15,7 +16,7 @@
 						<table width="100%" border="0" cellspacing="1" cellpadding="0">
 							<tr>
 								<td height="25" align="center" background="$!{env.imgUrl}/image/style/errors_title_bg.gif" style="color: #000000; font-size: 12px; font-weight: bold; padding-top: 3px">
-									系统提示
+									绯荤粺鎻愮ず
 								</td>
 							</tr>
 						</table>
@@ -23,10 +24,10 @@
 				</tr>
 				<tr>
 					<td height="98" align="center" bgcolor="#FFFFFF" style="color: #000000; font-size: 12px; line-height: 200%; padding: 12px">
-						登录超时或未登录
+						鐧诲綍瓒呮椂鎴栨湭鐧诲綍
 						<br>
 						<br>
-						<a href="javascript:login()" class="list">点击这里重新登陆系统</a>
+						<a href="javascript:login()" class="list">鐐瑰嚮杩欓噷閲嶆柊鐧婚檰绯荤粺</a>
 					</td>
 				</tr>
 			</table>

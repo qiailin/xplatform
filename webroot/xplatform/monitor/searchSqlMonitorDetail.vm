@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,18 +13,18 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									��ؼƻ���ϸ
+									监控计划明细
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:update($!{sqlMonitor.sqlMonitorId});">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_save.png" align="absMiddle" >�޸� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_save.png" align="absMiddle" >修改 </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									�ƻ���ϸ
+									计划明细
 								</td>
 							</tr>
 							<tr>
@@ -31,7 +32,7 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
 										<tr>
     										<td class="head" width="20%" noWrap style="text-align: left">
-    											��ر���
+    											监控标题
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='sql_monitor_title' name="sqlMonitor.sqlMonitorTitle" value='$!{sqlMonitor.sqlMonitorTitle}'/>
@@ -39,7 +40,7 @@
                                     	</tr>
                                     	<tr>
     										<td class="head" noWrap style="text-align: left">
-    											���Ƶ��
+    											监控频率
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='freq' name="sqlMonitor.freq" value='$!{sqlMonitor.freq}'/>
@@ -47,7 +48,7 @@
                                     	</tr>
 										<tr>
     										<td class="head" noWrap style="text-align: left">
-    											��ֵ
+    											阈值
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='threshold' name="sqlMonitor.threshold" value='$!{sqlMonitor.threshold}'/>
@@ -55,7 +56,7 @@
                                     	</tr>
                                     	<tr>
     										<td class="head" noWrap style="text-align: left">
-    											�Ƿ���Ҫ��־
+    											是否需要日志
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='log' name="sqlMonitor.log" value='$!{sqlMonitor.log}'/>
@@ -63,7 +64,7 @@
                                     	</tr>
                                     	<tr>
     										<td class="head" noWrap style="text-align: left">
-    											��ؼƻ�״̬
+    											监控计划状态
     										</td>
 											<td  class="even" colspan="3">
 													<input type='text' id='status' name="sqlMonitor.status" value='$!{sqlMonitor.status}'/>
@@ -71,7 +72,7 @@
                                     	</tr>
 										<tr>
     										<td class="head" noWrap style="text-align: left">
-    											���ž����б�<p style='color:red'>(����֮���÷ֺŸ���)</p>
+    											短信警报列表<p style='color:red'>(号码之间用分号隔开)</p>
     										</td>
 											<td  class="even" colspan="3">
 												<input type='text' id='sms_alarm' name="sqlMonitor.smsAlarm" value='$!{sqlMonitor.smsAlarm}'/>
@@ -79,7 +80,7 @@
                                     	</tr>
 										<tr>
     										<td class="head" noWrap style="text-align: left">
-    											�ʼ������б�<p style='color:red'>(�ʼ�֮���÷ֺŸ���)</p>
+    											邮件警报列表<p style='color:red'>(邮件之间用分号隔开)</p>
     										</td>
 											<td  class="even" colspan="3">
 													<input type='text' id='email_alarm' name="sqlMonitor.emailAlarm" value='$!{sqlMonitor.emailAlarm}'/>
@@ -87,7 +88,7 @@
                                     	</tr>
 										<tr>
     										<td class="head" noWrap style="text-align: left">
-    											���SQL<p style='color:red'>(��Ҫ��ص�sql������count)</p>
+    											监控SQL<p style='color:red'>(需要监控的sql必须是count)</p>
     										</td>
 											<td class="even" noWrap>
 												<textarea id='sql' name="sqlMonitor.sql" >$!{sqlMonitor.sql}</textarea>
@@ -95,7 +96,7 @@
                                     	</tr>
                                     	<tr>
     										<td class="head" noWrap style="text-align: left">
-    											SQL<p style='color:red'>(��־��ϣ�����ص��ֶ�)</p>
+    											SQL<p style='color:red'>(日志中希望返回的字段)</p>
     										</td>
 											<td class="even" noWrap>
 												<textarea  id='sql_detail' name="sqlMonitor.sqlDetail" >$!{sqlMonitor.sqlDetail}</textarea>

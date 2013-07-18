@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>Log监控</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,7 +14,7 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									Log���
+									Log监控
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<br>
@@ -30,13 +31,13 @@
 												<input type='text' id='methodName' name="methodName" />
     			    						</td>
     			    						<td class="even" noWrap>
-    			    						<input type="button" onclick="javascript:search()" value="��ѯ" />
+    			    						<input type="button" onclick="javascript:search()" value="查询" />
     			    						</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									��ѯ�б�
+        									查询列表
         								</td>
 									</tr>
 								</td>
