@@ -6,6 +6,7 @@
 	<property name="source" value="1.6" />
 	<path id="xplatform.classpath">
 		<pathelement location="webroot/WEB-INF/classes" />
+		<pathelement location="webroot/WEB-INF/lib/*.jar" />
 	</path>
 	<target name="init">
 		<mkdir dir="webroot/WEB-INF/classes" />
