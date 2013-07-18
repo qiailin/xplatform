@@ -121,7 +121,7 @@ public class SAPConnectionBean {
 			}
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP连接错误：" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage(), e);
 		}
 		return sapclient;
 	}
@@ -133,7 +133,7 @@ public class SAPConnectionBean {
 			sapclient = JCO.createClient(clientName, user, password, language, hostName, sysnr, group);
 			sapclient.connect();
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP连接错误：" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage(), e);
 		}
 		return sapclient;
 	}
@@ -194,7 +194,7 @@ public class SAPConnectionBean {
 		try {
 			JCO.addClientPool(poolName, maximumConnectionCount, clientName, user, password, language, hostName, sysnr);
 		} catch (JCO.Exception e) {
-			throw new ServiceException("SAP连接错误：" + e.getMessage());
+			throw new ServiceException("SAP连接错误：" + e.getMessage(), e);
 		}
 
 	}
