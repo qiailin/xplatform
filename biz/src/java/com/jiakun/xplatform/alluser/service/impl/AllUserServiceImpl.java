@@ -114,7 +114,7 @@ public class AllUserServiceImpl implements IAllUserService {
 			}
 		} catch (Exception e) {
 			logger.error(LogUtil.parserBean(allUsers), e);
-			result.setCode("�޸�salesemp_info��ʧ�ܣ�");
+			result.setCode("修改salesemp_info表失败！");
 		}
 
 		return result;
@@ -178,7 +178,7 @@ public class AllUserServiceImpl implements IAllUserService {
 
 	public BooleanResult modifyUserPsw(AllUsers user) {
 		BooleanResult bResult = updateAllUser(user);
-		// ���貹���޸�AD�����webservice����
+		// 还需补充修改AD密码的webservice调用
 		return bResult;
 	}
 

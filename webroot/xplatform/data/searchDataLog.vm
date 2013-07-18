@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,21 +13,21 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									Êý¾Ý²Ù×÷ÈÕÖ¾
+									æ•°æ®æ“ä½œæ—¥å¿—
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="#" onclick="exportDataTemplate();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_download.gif" align="absMiddle" >Êý¾ÝÄ£°åÏÂÔØ </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_download.gif" align="absMiddle" >æ•°æ®æ¨¡æ¿ä¸‹è½½ </img>
 									</a>
 									<a href="#" onclick="importData()">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >Êý¾ÝÅúÁ¿µ¼Èë </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >æ•°æ®æ‰¹é‡å¯¼å…¥ </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 						 		<td colspan="1" class="home_title">
-									²éÑ¯Ìõ¼þ
+									æŸ¥è¯¢æ¡ä»¶
 			                     </td>
                             </tr>
 							<tr>
@@ -34,14 +35,14 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: right">
-    											ÒÑÅäÖÃ±íÃû
+    											å·²é…ç½®è¡¨å
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='itemValue' />
 												<input type='hidden' id='itemId' name="dataConfigId" />
 											</td>
 											<td class="even" noWrap>
-												<input type="button" onclick="javascript:search()" value="²éÑ¯" />
+												<input type="button" onclick="javascript:search()" value="æŸ¥è¯¢" />
 											</td>
                                     	</tr>
                                   </table>
@@ -50,7 +51,7 @@
                         </table>
 						<tr>
     						<td colspan="1" class="home_title">
-    							²éÑ¯ÁÐ±í
+    							æŸ¥è¯¢åˆ—è¡¨
     						</td>
     					</tr>
                     </td>

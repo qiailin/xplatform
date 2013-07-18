@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,14 +13,14 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									数据预览
+									鏁版嵁棰勮
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="#" onclick="ok();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_ok.gif" align="absMiddle" >确认 </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_ok.gif" align="absMiddle" >纭 </img>
 									</a>
 									<a href="#" onclick="del()">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >删除 </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >鍒犻櫎 </img>
 									</a>
 									<br>
 								</td>
@@ -27,7 +28,7 @@
                         </table>
 						<tr>
     						<td colspan="1" class="home_title">
-    							数据列表
+    							鏁版嵁鍒楄〃
     						</td>
     					</tr>
                     </td>

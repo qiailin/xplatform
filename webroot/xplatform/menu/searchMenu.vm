@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>菜单配置</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,21 +14,21 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									�˵�����
+									菜单配置
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:createMenu();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >���� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_add.gif" align="absMiddle" >创建 </img>
 									</a>
 									<a href="javascript:deleteMenu();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >ɾ�� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >删除 </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									��ѯ����
+									查询条件
 								</td>
 							</tr>
 							<tr>
@@ -35,13 +36,13 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											�˵����
+    											菜单编号
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="id" id="id" />
     			    						</td>
 											<td class="head" noWrap style="text-align: center">
-    											�˵����
+    											菜单名称
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='name' name="name" />
@@ -49,23 +50,23 @@
                                         </tr>
 										<tr>
 											<td class="head" noWrap style="text-align: center">
-    											�ϼ��˵����
+    											上级菜单编号
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="pid" id="pid" />
     			    						</td>
     										<td class="head" noWrap style="text-align: center">
-    											�ϼ��˵����
+    											上级菜单名称
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='pname' name="pname" />
-												<input type="button" onclick="javascript:search()" value="��ѯ" />
+												<input type="button" onclick="javascript:search()" value="查询" />
 											</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									��ѯ�б�
+        									查询列表
         								</td>
 									</tr>
 								</td>

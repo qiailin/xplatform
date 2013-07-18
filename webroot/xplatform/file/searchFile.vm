@@ -1,7 +1,8 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title></title>
+		<title>文件管理</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		#CSSM(["ext", "style"])
 	</head>
@@ -13,21 +14,21 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									�ļ�����
+									文件管理
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<a href="javascript:saveFile();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_save.png" align="absMiddle" >�����ļ��ϴ� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_save.png" align="absMiddle" >测试文件上传 </img>
 									</a>
 									<a href="javascript:deleteFile();">
-                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >ɾ�� </img>
+                                        <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >删除 </img>
 									</a>
 									<br>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									��ѯ����
+									查询条件
 								</td>
 							</tr>
 							<tr>
@@ -35,25 +36,25 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											�ļ����
+    											文件名称
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="fileName" id="fileName" />
     			    						</td>
 											<td class="head" noWrap style="text-align: center">
-    											״̬
+    											状态
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="flag" id="flag" />
     			    						</td>
 											<td class="even" noWrap>
-												<input type="button" onclick="javascript:search()" value="��ѯ" />
+												<input type="button" onclick="javascript:search()" value="查询" />
 											</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									��ѯ�б�
+        									查询列表
         								</td>
 									</tr>
 								</td>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -12,7 +13,7 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 							<tr>
 								<td class="form_top_icon_01" >
-									角色菜单配置
+									瑙掕壊鑿滃崟閰嶇疆
 								</td>
 								<td class="title_bottom_line" noWrap align='right'>
 									<br>
@@ -20,7 +21,7 @@
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									新增菜单
+									鏂板鑿滃崟
 								</td>
 							</tr>
 							<tr>
@@ -28,13 +29,13 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											选择菜单
+    											閫夋嫨鑿滃崟
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='menuIds' name="menuIds" size='80' />
 											</td>
 											<td class="even" noWrap>
-												<input type="button" onclick="javascript:selectMenu4Role()" value="保存新增菜单" />
+												<input type="button" onclick="javascript:selectMenu4Role()" value="淇濆瓨鏂板鑿滃崟" />
 											</td>
                                     	</tr>
 									</table>
@@ -42,7 +43,7 @@
 							</tr>
 							<tr>
 								<td colspan="1" class="home_title">
-									查询条件
+									鏌ヨ鏉′欢
 								</td>
 							</tr>
 							<tr>
@@ -50,27 +51,27 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="1" class=outer>
     									<tr>
     										<td class="head" noWrap style="text-align: center">
-    											菜单编号
+    											鑿滃崟缂栧彿
     										</td>
                                      		<td class="even" noWrap >
     											<input type="text" name="id" id="id" />
     			    						</td>
 											<td class="head" noWrap style="text-align: center">
-    											菜单名称
+    											鑿滃崟鍚嶇О
     										</td>
 											<td class="even" noWrap>
 												<input type='text' id='name' name="name" />
-												<input type="button" onclick="javascript:search()" value="查询" />
+												<input type="button" onclick="javascript:search()" value="鏌ヨ" />
 											</td>
                                     	</tr>
 									</table>
 									<tr>
         								<td colspan="1" class="home_title">
-        									查询列表
+        									鏌ヨ鍒楄〃
         								</td>
 										<td noWrap align='right'>
         									<a href="javascript:deleteMenu();">
-                                                <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >删除 </img>
+                                                <img src="$!{env.imgUrl}/image/actions/icon_del.gif" align="absMiddle" >鍒犻櫎 </img>
         									</a>
         									<br>
         								</td>
