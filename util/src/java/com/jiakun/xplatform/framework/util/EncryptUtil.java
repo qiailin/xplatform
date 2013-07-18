@@ -131,10 +131,9 @@ public final class EncryptUtil {
 	private static String getStringFromException(Throwable e) {
 		String result = null;
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		PrintStream ps = new PrintStream(bos);
-		e.printStackTrace(ps);
-
 		try {
+			PrintStream ps = new PrintStream(bos, false, CHARSET_UTF8);
+			e.printStackTrace(ps);
 			result = bos.toString(CHARSET_UTF8);
 		} catch (UnsupportedEncodingException ee) {
 			logger.error(ee);
