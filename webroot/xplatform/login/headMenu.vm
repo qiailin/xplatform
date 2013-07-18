@@ -61,7 +61,7 @@
 										</td>
 										<td align=right noWrap class=title>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
-											<a href="$!{env.appUrl}/login/loginAction!homePage.jspa" target="_parent">首页</a>
+											<a href="$!{env.appUrl}/login/loginAction!homePage.htm" target="_parent">首页</a>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
 											<a target=mainFrame></a>
 											<img src="$!{env.imgUrl}/image/login/txt_ico1.gif" align=absMiddle />
@@ -74,7 +74,7 @@
 											<a target=_parent width="12" height="18" align="absmiddle"></a>
 											<font class=font12pt color=red align="absmiddle"></font>
 											<img height=18 src="$!{env.imgUrl}/image/login/txt_ico1.gif" width=12 align=absMiddle />
-											<a href="/$!{env.appName}/login/logout.jspa" target=_parent width="12" height="18" align="absmiddle">退出</a>
+											<a href="/$!{env.appName}/login/logout.htm" target=_parent width="12" height="18" align="absmiddle">退出</a>
 										</td>
 									</tr>
 								</tbody>
