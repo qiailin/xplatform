@@ -51,6 +51,8 @@ public final class DateUtil {
 	private static final Pattern PATTERN = Pattern
 		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
 
+	private static final int TEN = 10;
+
 	private DateUtil() {
 
 	}
@@ -351,25 +353,25 @@ public final class DateUtil {
 				} else {
 					if (("0".equals(sttemp)) || ("00".equals(sttemp))) {
 						sttemp = "0";
-					} else if ((Integer.valueOf(sttemp).intValue()) < 10) {
+					} else if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 						sttemp = sttemp.replaceAll("0", "");
 					}
 					if (count < 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10) {
+						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + "-0" + sttemp;
 						} else {
 							datetime = datetime + "-" + sttemp;
 						}
 					}
 					if (count == 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10) {
+						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + " 0" + sttemp;
 						} else {
 							datetime = datetime + " " + sttemp;
 						}
 					}
 					if (count > 4) {
-						if ((Integer.valueOf(sttemp).intValue()) < 10) {
+						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + ":0" + sttemp;
 						} else {
 							datetime = datetime + ":" + sttemp;
@@ -426,7 +428,7 @@ public final class DateUtil {
 			}
 		}
 
-		if (datetime.length() > 10) {
+		if (datetime.length() > TEN) {
 			String sfm = datetime.substring(11, 19);
 			StringTokenizer st2 = new StringTokenizer(sfm, ":");
 			count = st2.countTokens();
