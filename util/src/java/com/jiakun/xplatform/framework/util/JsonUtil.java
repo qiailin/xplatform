@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.jiakun.xplatform.framework.exception.SystemException;
 import com.opensymphony.xwork.util.OgnlUtil;
 
 /**
@@ -66,13 +67,13 @@ public final class JsonUtil {
 		try {
 			jsonValue = URLDecoder.decode(jsonValue, "utf-8");
 		} catch (Exception e) {
-			throw new Exception("编码格式错误！", e);
+			throw new SystemException("编码格式错误！", e);
 		}
 		JSONObject object = null;
 		try {
 			object = new JSONObject(jsonValue);
 		} catch (Exception e) {
-			throw new Exception("json格式错误！", e);
+			throw new SystemException("json格式错误！", e);
 		}
 		Object obj = toClass.newInstance();
 
@@ -99,13 +100,13 @@ public final class JsonUtil {
 				if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + ERROR_MESSAGE);
+						throw new SystemException(desc.getName() + ERROR_MESSAGE);
 					}
 					value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 				} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 					String date = (String) map.get(desc.getName());
 					if (!validateDate(date)) {
-						throw new Exception(desc.getName() + ERROR_MESSAGE);
+						throw new SystemException(desc.getName() + ERROR_MESSAGE);
 					}
 					value = new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
 				} else if (Collection.class.isAssignableFrom(desc.getPropertyType())) {
@@ -126,9 +127,9 @@ public final class JsonUtil {
 						} catch (NumberFormatException e) {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.TYPE || clz == Short.TYPE || clz == Long.TYPE || clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "应为整数!", e);
+								throw new SystemException(desc.getName() + "应为整数!", e);
 							} else if (clz == Double.TYPE || clz == Float.TYPE || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "应为数字!", e);
+								throw new SystemException(desc.getName() + "应为数字!", e);
 							}
 						}
 					} else {
@@ -176,13 +177,13 @@ public final class JsonUtil {
 			if (java.util.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception(ERROR_MESSAGE);
+					throw new SystemException(ERROR_MESSAGE);
 				}
 				value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 			} else if (java.sql.Date.class.isAssignableFrom(toClass)) {
 				String date = (String) property;
 				if (!validateDate(date)) {
-					throw new Exception(ERROR_MESSAGE);
+					throw new SystemException(ERROR_MESSAGE);
 				}
 				value = new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
 			} else {
@@ -212,13 +213,13 @@ public final class JsonUtil {
 					if (java.util.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + ERROR_MESSAGE);
+							throw new SystemException(desc.getName() + ERROR_MESSAGE);
 						}
 						value = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim());
 					} else if (java.sql.Date.class.isAssignableFrom(desc.getPropertyType())) {
 						String date = (String) map.get(desc.getName());
 						if (!validateDate(date)) {
-							throw new Exception(desc.getName() + ERROR_MESSAGE);
+							throw new SystemException(desc.getName() + ERROR_MESSAGE);
 						}
 						value =
 							new java.sql.Date(new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(date.trim()).getTime());
@@ -229,9 +230,9 @@ public final class JsonUtil {
 							Class clz = desc.getPropertyType();
 							if (clz == Integer.class || clz == Short.class || clz == Long.class
 								|| clz == BigInteger.class) {
-								throw new Exception(desc.getName() + "应为整数!", e);
+								throw new SystemException(desc.getName() + "应为整数!", e);
 							} else if (clz == Double.class || clz == Float.class || clz == BigDecimal.class) {
-								throw new Exception(desc.getName() + "应为数字!", e);
+								throw new SystemException(desc.getName() + "应为数字!", e);
 							}
 						}
 
