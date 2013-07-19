@@ -30,6 +30,8 @@ import com.jiakun.xplatform.framework.util.LogUtil;
  */
 public class DataServiceImpl implements IDataService {
 
+	private static final String TAG_USER_ID = "userId:";
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(DataServiceImpl.class);
 
 	private TransactionTemplate transactionTemplate;
@@ -60,7 +62,7 @@ public class DataServiceImpl implements IDataService {
 		try {
 			return dataDao.getTabColumnsByConfigId(dataConfigId, userId);
 		} catch (Exception e) {
-			logger.error("dataConfigId:" + dataConfigId + "userId:" + userId, e);
+			logger.error("dataConfigId:" + dataConfigId + TAG_USER_ID + userId, e);
 		}
 
 		return null;
@@ -193,7 +195,7 @@ public class DataServiceImpl implements IDataService {
 				try {
 					tabColumns = dataDao.getTabColumnsByLogId(dataLogTotalId, userId);
 				} catch (Exception e) {
-					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					logger.error("dataLogTotalId:" + dataLogTotalId + TAG_USER_ID + userId, e);
 					status.setRollbackOnly();
 					return res;
 				}
@@ -205,7 +207,7 @@ public class DataServiceImpl implements IDataService {
 						dataDao.deleteDataInfo(dataLogTotalId, userId, tabColumn.getTableName(),
 							tabColumn.getPrimaryKey());
 				} catch (Exception e) {
-					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					logger.error("dataLogTotalId:" + dataLogTotalId + TAG_USER_ID + userId, e);
 					status.setRollbackOnly();
 					return res;
 				}
@@ -214,7 +216,7 @@ public class DataServiceImpl implements IDataService {
 				try {
 					dataLogDao.updateDataLogTotal(dataLogTotalId, userId, "D");
 				} catch (Exception e) {
-					logger.error("dataLogTotalId:" + dataLogTotalId + "userId:" + userId, e);
+					logger.error("dataLogTotalId:" + dataLogTotalId + TAG_USER_ID + userId, e);
 					status.setRollbackOnly();
 					return res;
 				}
