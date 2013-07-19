@@ -30,6 +30,8 @@ public final class EncryptUtil {
 
 	private static final String CHARSET_UTF8 = "UTF-8";
 
+	private static final int SIXTEEN = 16;
+
 	private EncryptUtil() {
 
 	}
@@ -48,8 +50,8 @@ public final class EncryptUtil {
 		if (n < 0) {
 			n = 256 + n;
 		}
-		int d1 = n / 16;
-		int d2 = n % 16;
+		int d1 = n / SIXTEEN;
+		int d2 = n % SIXTEEN;
 
 		return HEX_DIGITS[d1] + HEX_DIGITS[d2];
 	}
