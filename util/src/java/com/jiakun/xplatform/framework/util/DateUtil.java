@@ -51,6 +51,10 @@ public final class DateUtil {
 	private static final Pattern PATTERN = Pattern
 		.compile("(?:(?:19|20)\\d{2})-(?:0?[1-9]|1[0-2])-(?:0?[1-9]|[12][0-9]|3[01])");
 
+	private static final int FOUR = 4;
+
+	private static final int SIX = 6;
+
 	private static final int TEN = 10;
 
 	private DateUtil() {
@@ -356,21 +360,21 @@ public final class DateUtil {
 					} else if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 						sttemp = sttemp.replaceAll("0", "");
 					}
-					if (count < 4) {
+					if (count < FOUR) {
 						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + "-0" + sttemp;
 						} else {
 							datetime = datetime + "-" + sttemp;
 						}
 					}
-					if (count == 4) {
+					if (count == FOUR) {
 						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + " 0" + sttemp;
 						} else {
 							datetime = datetime + " " + sttemp;
 						}
 					}
-					if (count > 4) {
+					if (count > FOUR) {
 						if ((Integer.valueOf(sttemp).intValue()) < TEN) {
 							datetime = datetime + ":0" + sttemp;
 						} else {
@@ -788,7 +792,7 @@ public final class DateUtil {
 		Calendar c = new GregorianCalendar();
 		c.setFirstDayOfWeek(Calendar.MONDAY);
 		c.setTime(date);
-		c.set(Calendar.DAY_OF_WEEK, c.getFirstDayOfWeek() + 6);
+		c.set(Calendar.DAY_OF_WEEK, c.getFirstDayOfWeek() + SIX);
 		return c.getTime();
 	}
 
