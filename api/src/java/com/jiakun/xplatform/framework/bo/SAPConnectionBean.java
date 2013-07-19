@@ -103,7 +103,7 @@ public class SAPConnectionBean {
 				sapclient = JCO.getClient(poolName);
 			}
 		} catch (JCO.Exception e) {
-			throw new JCO.Exception(1, "t", e.getMessage());
+			throw new ServiceException("getSAPClientFromPool: ", e);
 			// logger.error("调用" + SAPConnectionBean.class + "的方法getSAPClientFromPool出错：" +
 			// e.getMessage()).
 		}
