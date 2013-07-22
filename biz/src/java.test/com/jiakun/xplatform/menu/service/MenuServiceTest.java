@@ -14,6 +14,7 @@ import com.jiakun.xplatform.menu.service.impl.MenuServiceImpl;
 import mockit.Injectable;
 import mockit.NonStrictExpectations;
 import mockit.Tested;
+import mockit.Verifications;
 
 /**
  * 
@@ -44,6 +45,7 @@ public class MenuServiceTest {
 
 				menuDao.deleteSelectedMenu4Role((Menu) any);
 				result = 0;
+				times = 10;
 			}
 		};
 
@@ -69,6 +71,14 @@ public class MenuServiceTest {
 		};
 
 		Assert.assertEquals(IMenuService.ERROR, menuService.deleteSelectedMenu4Role(menu).getCode());
+
+		new Verifications() {
+			{
+				menuDao.deleteSelectedMenu4Role((Menu) any);
+				// minTimes = 0;
+				// maxTimes = 1;
+			}
+		};
 	}
 
 }
