@@ -9,46 +9,16 @@
 	<classpathentry kind="src" path="task/src/conf"/>
 	<classpathentry kind="src" path="task/src/java"/>
 	<classpathentry kind="src" path="util/src/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/commons.commons-codec-1.7.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/commons.commons-configuration-1.9.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/curator.curator-client-1.2.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/curator.curator-framework-1.2.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.cxf-2.6.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.jaxb-impl-2.2.5.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.jettison-1.3.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.jsr311-api-1.1.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.neethi-3.0.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.wsdl4j-1.6.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/cxf.xmlschema-core-2.0.3.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/dom4j.dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/dom4j.jaxen-1.1-beta-6.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/druid.druid-0.2.20.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/dubbo.dubbo-2.5.3.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/dwr.dwr.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/eval.eval-0.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/google.guava-13.0.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/hadoop.hadoop-core-1.1.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/hessian.hessian-3.2.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/httpclient.httpclient-4.2.3.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/httpclient.httpcore-4.2.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/ibatis.ibatis-2.3.4.726.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/j2ee.javaee.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jaf.activation.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/javamail.mail.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jexcelapi.jxl.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/json.json.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/ldap.ldapjdk.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/log4j.log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/lucene.lucene-analyzers-smartcn-4.3.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/lucene.lucene-core-4.3.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/lucene.lucene-highlighter-4.3.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/lucene.lucene-memory-4.3.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/netty.netty-3.6.6.Final.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/oracle.ojdbc14.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/proxool.proxool-0.9.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/proxool.proxool-cglib.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/quartz.quartz-1.8.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.cecore.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.celib.jar"/>
 	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.cesession.jar"/>
