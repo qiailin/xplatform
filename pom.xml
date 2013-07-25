@@ -11,9 +11,21 @@
 	<description>.</description>
 
 	<properties>
+		<curator.version>1.3.3</curator.version>
+		<druid.version>0.2.23</druid.version>
+		<eval.version>0.5</eval.version>
+		<guava.version>14.0.1</guava.version>
+		<httpclient.version>4.2.5</httpclient.version>
+		<ibatis.version>2.3.4.726</ibatis.version>
+		<jdk.version>1.6</jdk.version>
+		<log4j.version>1.2.17</log4j.version>
+		<netty.version>3.6.6.Final</netty.version>
+		<quartz.version>1.8.6</quartz.version>
+		<slf4j.version>1.7.5</slf4j.version>
 		<spring.version>2.5.6</spring.version>
 		<junit.version>4.11</junit.version>
-		<jdk.version>1.6</jdk.version>
+		<xmemcached.version>1.4.2</xmemcached.version>
+		<zkclient.version>0.1</zkclient.version>
 	</properties>
 
 	<developers>
@@ -54,27 +66,23 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.7</version>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
 			<version>1.9</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.netflix.curator</groupId>
 			<artifactId>curator-client</artifactId>
-			<version>1.3.3</version>
+			<version>${curator.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.curator</groupId>
 			<artifactId>curator-framework</artifactId>
-			<version>1.3.3</version>
+			<version>${curator.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.netflix.curator</groupId>
-			<artifactId>curator-framework</artifactId>
-			<version>1.3.3</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf</artifactId>
@@ -124,6 +132,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/cxf.xmlschema-core-2.0.3.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -138,16 +147,21 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dom4j.jaxen-1.1-beta-6.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>0.2.23</version>
+			<version>${druid.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>2.5.3</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/webroot/WEB-INF/lib/dubbo.dubbo-2.5.3.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>dwr</groupId>
 			<artifactId>dwr</artifactId>
@@ -155,16 +169,18 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dwr.dwr.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>net.java.dev.eval</groupId>
 			<artifactId>eval</artifactId>
-			<version>0.5</version>
+			<version>${eval.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>14.0.1</version>
+			<version>${guava.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
@@ -172,6 +188,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/hadoop.hadoop-core-1.1.2.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>com.caucho</groupId>
 			<artifactId>hessian</artifactId>
@@ -179,23 +196,19 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/hessian.hessian-3.2.0.jar</systemPath>
 		</dependency>
-		<dependency>
-			<groupId>com.caucho</groupId>
-			<artifactId>hessian</artifactId>
-			<version>3.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/hessian.hessian-3.2.0.jar</systemPath>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.2.5</version>
+			<version>${httpclient.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
-			<version>2.3.4.726</version>
+			<version>${ibatis.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.javaee</groupId>
 			<artifactId>javaee</artifactId>
@@ -203,6 +216,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/j2ee.javaee.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>jaf</groupId>
 			<artifactId>activation</artifactId>
@@ -224,6 +238,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/jexcelapi.jxl.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -231,6 +246,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/json.json.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>ldap</groupId>
 			<artifactId>ldapjdk</artifactId>
@@ -238,10 +254,11 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/ldap.ldapjdk.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>${log4j.version}</version>
 		</dependency>
 
 		<dependency>
@@ -276,7 +293,7 @@
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty</artifactId>
-			<version>3.6.6.Final</version>
+			<version>${netty.version}</version>
 		</dependency>
 
 		<dependency>
@@ -290,7 +307,7 @@
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
-			<version>1.8.6</version>
+			<version>${quartz.version}</version>
 		</dependency>
 
 		<!-- sap -->
@@ -354,21 +371,19 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.5</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>2.5.6</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/spring.spring-test.jar</systemPath>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -409,6 +424,8 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/webroot/WEB-INF/lib/velocity.velocity-1.7.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
@@ -493,7 +510,7 @@
 		<dependency>
 			<groupId>com.googlecode.xmemcached</groupId>
 			<artifactId>xmemcached</artifactId>
-			<version>1.4.2</version>
+			<version>${xmemcached.version}</version>
 		</dependency>
 
 		<dependency>
@@ -528,7 +545,7 @@
 		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
-			<version>0.1</version>
+			<version>${zkclient.version}</version>
 		</dependency>
 
 		<dependency>
@@ -557,11 +574,9 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit.version}</version>
 		</dependency>
-		
-		
-		
+
 	</dependencies>
 
 </project>
