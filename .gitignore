@@ -8,6 +8,7 @@
 # Mac Files #
 .DS_Store
 
-webroot/WEB-INF/classes
-coverage-report
 .settings
+webroot/WEB-INF/classes
+target
+coverage-report
