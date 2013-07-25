@@ -78,6 +78,7 @@
 			<version>${commons-configuration.version}</version>
 		</dependency>
 
+		<!-- netflix -->
 		<dependency>
 			<groupId>com.netflix.curator</groupId>
 			<artifactId>curator-client</artifactId>
