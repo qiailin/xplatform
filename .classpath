@@ -19,45 +19,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.cecore.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.celib.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.cesession.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.corbaidl.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.ebus405.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.logging.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.ngdbc.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/sap.sapjco.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/slf4j.slf4j-api-1.7.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/slf4j.slf4j-log4j12-1.7.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/spring.spring-test.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/spring.spring-webmvc.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/spring.spring.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.commons-beanutils.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.commons-digester.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.commons-lang-2.4.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.velocity-1.7.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/velocity.velocity-tools-1.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.commons-fileupload.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.commons-io.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.commons-logging.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.freemarker.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.javassist.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.ognl.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.oscore.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.rife-continuations.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.webwork-2.2.7.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/webwork.xwork.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/xmemcached.xmemcached-1.4.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/alibaba.toolkit-common-lang-1.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/alibaba.toolkit-common-logging-1.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/alibaba.toolkit-service-dsa-1.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/alibaba.toolkit-service-framework-1.0.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/zkclient.zkclient-0.1.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/zookeeper.zookeeper-3.4.5.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit.jmockit-coverage.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit.jmockit.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/jmockit..hamcrest-core-1.2.jar"/>
-	<classpathentry kind="lib" path="webroot/WEB-INF/lib/junit.junit-4.11.jar"/>
 	<classpathentry kind="output" path="webroot/WEB-INF/classes"/>
 </classpath>
