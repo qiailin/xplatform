@@ -54,12 +54,14 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.7</version>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
 			<version>1.9</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/webroot/WEB-INF/lib/commons.commons-configuration-1.9.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>com.netflix.curator</groupId>
 			<artifactId>curator-client</artifactId>
@@ -70,11 +72,7 @@
 			<artifactId>curator-framework</artifactId>
 			<version>1.3.3</version>
 		</dependency>
-		<dependency>
-			<groupId>com.netflix.curator</groupId>
-			<artifactId>curator-framework</artifactId>
-			<version>1.3.3</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf</artifactId>
@@ -124,6 +122,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/cxf.xmlschema-core-2.0.3.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -138,16 +137,21 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dom4j.jaxen-1.1-beta-6.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>0.2.23</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>2.5.3</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/webroot/WEB-INF/lib/dubbo.dubbo-2.5.3.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>dwr</groupId>
 			<artifactId>dwr</artifactId>
@@ -155,6 +159,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dwr.dwr.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>net.java.dev.eval</groupId>
 			<artifactId>eval</artifactId>
@@ -165,6 +170,7 @@
 			<artifactId>guava</artifactId>
 			<version>14.0.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
@@ -172,6 +178,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/hadoop.hadoop-core-1.1.2.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>com.caucho</groupId>
 			<artifactId>hessian</artifactId>
@@ -179,23 +186,19 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/hessian.hessian-3.2.0.jar</systemPath>
 		</dependency>
-		<dependency>
-			<groupId>com.caucho</groupId>
-			<artifactId>hessian</artifactId>
-			<version>3.2.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/hessian.hessian-3.2.0.jar</systemPath>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.2.5</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>2.3.4.726</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.javaee</groupId>
 			<artifactId>javaee</artifactId>
@@ -203,6 +206,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/j2ee.javaee.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>jaf</groupId>
 			<artifactId>activation</artifactId>
@@ -224,6 +228,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/jexcelapi.jxl.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -231,6 +236,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/json.json.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>ldap</groupId>
 			<artifactId>ldapjdk</artifactId>
@@ -238,6 +244,7 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/ldap.ldapjdk.jar</systemPath>
 		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -409,6 +416,8 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/webroot/WEB-INF/lib/velocity.velocity-1.7.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
@@ -559,7 +568,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-		
+
 	</dependencies>
 
 </project>
