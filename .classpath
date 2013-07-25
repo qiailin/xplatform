@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="api/src/java"/>
 	<classpathentry kind="src" path="biz/src/conf"/>
 	<classpathentry kind="src" path="biz/src/java"/>
-	<classpathentry kind="src" path="biz/src/java.test"/>
 	<classpathentry kind="src" path="task/src/conf"/>
 	<classpathentry kind="src" path="task/src/java"/>
 	<classpathentry kind="src" path="util/src/java"/>
