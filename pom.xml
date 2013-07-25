@@ -102,6 +102,7 @@
 			<version>${curator.version}</version>
 		</dependency>
 
+		<!-- cxf -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf</artifactId>
