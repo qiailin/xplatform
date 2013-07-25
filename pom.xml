@@ -18,10 +18,13 @@
 		<eval.version>0.5</eval.version>
 		<guava.version>14.0.1</guava.version>
 		<httpclient.version>4.2.5</httpclient.version>
-		<ibatis.version>2.3.4.726</ibatis.version>
+		<ibatis-sqlmap.version>2.3.4.726</ibatis-sqlmap.version>
 		<javax.mail.version>1.4.4</javax.mail.version>
 		<jdk.version>1.6</jdk.version>
+		<json.version>20090211</json.version>
+		<jxl.version>2.6.12</jxl.version>
 		<log4j.version>1.2.17</log4j.version>
+		<lucene.version>4.3.1</lucene.version>
 		<netty.version>3.6.6.Final</netty.version>
 		<quartz.version>1.8.6</quartz.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -61,6 +64,18 @@
 				<targetPath>../xplatform</targetPath>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 	<dependencies>
@@ -75,6 +90,7 @@
 			<version>${commons-configuration.version}</version>
 		</dependency>
 
+		<!-- netflix -->
 		<dependency>
 			<groupId>com.netflix.curator</groupId>
 			<artifactId>curator-client</artifactId>
@@ -136,6 +152,7 @@
 			<systemPath>${basedir}/webroot/WEB-INF/lib/cxf.xmlschema-core-2.0.3.jar</systemPath>
 		</dependency>
 
+		<!-- dom4j -->
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -144,9 +161,9 @@
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dom4j.dom4j-1.6.1.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>dom4j</groupId>
+			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
-			<version>1.1</version>
+			<version>1.1-beta-6</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/webroot/WEB-INF/lib/dom4j.jaxen-1.1-beta-6.jar</systemPath>
 		</dependency>
@@ -209,7 +226,7 @@
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
-			<version>${ibatis.version}</version>
+			<version>${ibatis-sqlmap.version}</version>
 		</dependency>
 
 		<dependency>
@@ -227,19 +244,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>jexcelapi</groupId>
+			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/jexcelapi.jxl.jar</systemPath>
+			<version>${jxl.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/json.json.jar</systemPath>
+			<version>${json.version}</version>
 		</dependency>
 
 		<dependency>
@@ -259,30 +272,22 @@
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-smartcn</artifactId>
-			<version>4.3.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/lucene.lucene-analyzers-smartcn-4.3.0.jar</systemPath>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
-			<version>4.3.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/lucene.lucene-core-4.3.0.jar</systemPath>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-highlighter</artifactId>
-			<version>4.3.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/lucene.lucene-highlighter-4.3.0.jar</systemPath>
+			<version>${lucene.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-memory</artifactId>
-			<version>4.3.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/webroot/WEB-INF/lib/lucene.lucene-memory-4.3.0.jar</systemPath>
+			<version>${lucene.version}</version>
 		</dependency>
 
 		<dependency>
@@ -363,6 +368,7 @@
 			<systemPath>${basedir}/webroot/WEB-INF/lib/sap.sapjco.jar</systemPath>
 		</dependency>
 
+		<!-- slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
