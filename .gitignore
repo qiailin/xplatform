@@ -1,13 +1,16 @@
 *.class
 
 # Package Files #
-#*.jar
+*.jar
 *.war
 *.ear
 
 # Mac Files #
 .DS_Store
 
+.classpath
+.project
 .settings
+webroot/WEB-INF/classes
 target
 coverage-report
