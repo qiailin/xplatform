@@ -60,6 +60,26 @@
 		<finalName>xplatform</finalName>
 		<resources>
 			<resource>
+				<directory>action/src/conf</directory>
+				<targetPath>../xplatform/WEB-INF/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>api/src/conf</directory>
+				<targetPath>../xplatform/WEB-INF/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>biz/src/conf</directory>
+				<targetPath>../xplatform/WEB-INF/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>task/src/conf</directory>
+				<targetPath>../xplatform/WEB-INF/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>util/src/conf</directory>
+				<targetPath>../xplatform/WEB-INF/classes</targetPath>
+			</resource>
+			<resource>
 				<directory>webroot</directory>
 				<targetPath>../xplatform</targetPath>
 			</resource>
