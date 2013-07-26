@@ -9,6 +9,5 @@
 .DS_Store
 
 .settings
-webroot/WEB-INF/classes
 target
 coverage-report
