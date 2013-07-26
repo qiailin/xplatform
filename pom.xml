@@ -292,6 +292,7 @@
 			<version>${log4j.version}</version>
 		</dependency>
 
+		<!-- lucene -->
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-smartcn</artifactId>
