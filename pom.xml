@@ -622,7 +622,5 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 		</dependency>
-
 	</dependencies>
-
 </project>
