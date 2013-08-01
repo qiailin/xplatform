@@ -48,5 +48,5 @@
 		<sqlMap resource="ibatis/sqlmap-file.xml" />
 		<sqlMap resource="ibatis/sqlmap-data.xml" />
 -->
-     
+
 </sqlMapConfig>

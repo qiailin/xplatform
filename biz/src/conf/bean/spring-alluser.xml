@@ -6,7 +6,6 @@
 	<bean id="allUserService"
 		class="com.jiakun.xplatform.alluser.service.impl.AllUserServiceImpl">
 		<property name="allUserDao" ref="allUserDao" />
-		<property name="orgService" ref="orgService" />
 		<property name="positionTypeService" ref="positionTypeService" />
 		<property name="transactionTemplate" ref="transactionTemplate" />
 		<property name="positionService" ref="positionService" />
