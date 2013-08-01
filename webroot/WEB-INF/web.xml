@@ -17,7 +17,7 @@
 			classpath:bean/spring*.xml
 			classpath:cxf/cxf*.xml
 			classpath:hessian/hessian*.xml
-			classpath:dubbo/dubbo*.xml
+			<!-- classpath:dubbo/dubbo*.xml -->
 		</param-value>
 	</context-param>
 
