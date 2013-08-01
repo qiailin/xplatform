@@ -38,13 +38,15 @@
 		type="com.jiakun.xplatform.framework.ibatis.type.CharacterReplaceHanlderCallback" />
 
 	<sqlMap resource="ibatis/global.xml" />
-	<sqlMap resource="ibatis/sqlmap-alluser.xml" />
-	<sqlMap resource="ibatis/sqlmap-menu.xml" />
-	<sqlMap resource="ibatis/sqlmap-cust.xml" />
-	<sqlMap resource="ibatis/sqlmap-monitor.xml" />
-	<sqlMap resource="ibatis/sqlmap-sms.xml" />
-	<sqlMap resource="ibatis/sqlmap-response.xml" />
-	<sqlMap resource="ibatis/sqlmap-file.xml" />
-	<sqlMap resource="ibatis/sqlmap-data.xml" />
+	<!-- 
+		<sqlMap resource="ibatis/sqlmap-alluser.xml" />
+		<sqlMap resource="ibatis/sqlmap-menu.xml" />
+		<sqlMap resource="ibatis/sqlmap-cust.xml" />
+		<sqlMap resource="ibatis/sqlmap-monitor.xml" />
+		<sqlMap resource="ibatis/sqlmap-sms.xml" />
+		<sqlMap resource="ibatis/sqlmap-response.xml" />
+		<sqlMap resource="ibatis/sqlmap-file.xml" />
+		<sqlMap resource="ibatis/sqlmap-data.xml" />
+-->
      
 </sqlMapConfig>
