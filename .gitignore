@@ -8,8 +8,6 @@
 # Mac Files #
 .DS_Store
 
-.classpath
-.project
 .settings
 webroot/WEB-INF/classes
 target
