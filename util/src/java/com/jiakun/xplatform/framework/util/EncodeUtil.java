@@ -27,10 +27,6 @@ public final class EncodeUtil {
 	 */
 	static final String[] SUFFIXS = { ".gif", ".jpg", ".jpeg", ".png", ".ico" };
 
-	private EncodeUtil() {
-
-	}
-
 	/**
 	 * 根据数据库的字符集计算出该字符串的存储字节数.
 	 */

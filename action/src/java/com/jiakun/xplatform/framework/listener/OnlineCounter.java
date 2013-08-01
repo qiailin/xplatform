@@ -9,10 +9,6 @@ public final class OnlineCounter {
 
 	private static long online;
 
-	private OnlineCounter() {
-
-	}
-
 	public static long getOnline() {
 		return online;
 	}

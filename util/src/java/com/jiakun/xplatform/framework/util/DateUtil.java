@@ -57,10 +57,6 @@ public final class DateUtil {
 
 	private static final int TEN = 10;
 
-	private DateUtil() {
-
-	}
-
 	/**
 	 * 当前时间加上days天.
 	 */

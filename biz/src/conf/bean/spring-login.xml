@@ -12,7 +12,6 @@
 			<value>${domain}</value>
 		</property>
 		<property name="caService" ref="caService" />
-		<property name="eventService" ref="eventService" />
 		
 		<property name="fchCookieKey">
 			<value>${fch.cookie.key}</value>

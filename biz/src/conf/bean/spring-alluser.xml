@@ -7,9 +7,6 @@
 		class="com.jiakun.xplatform.alluser.service.impl.AllUserServiceImpl">
 		<property name="allUserDao" ref="allUserDao" />
 		<property name="transactionTemplate" ref="transactionTemplate" />
-		<property name="webserviceURL">
-			<value>${adex.webserviceURL}</value>
-		</property>
 	</bean>
 	
 	<bean id="allUserDao"

@@ -12,10 +12,6 @@ import com.alibaba.common.lang.StringUtil;
  */
 public final class FormatUtil {
 
-	private FormatUtil() {
-
-	}
-
 	public static boolean isEmpty(String str) {
 		if ((str == null) || (str.length() <= 0)) {
 			return true;
