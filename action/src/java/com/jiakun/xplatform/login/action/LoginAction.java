@@ -40,12 +40,6 @@ public class LoginAction extends BaseAction {
 
 	private String eventSummary;
 
-	private String fchCookieKey;
-
-	private String fchCookieValue;
-
-	private String fchCookieDomain;
-
 	private IMemcachedCacheService memcachedCacheService;
 
 	public String index() {
@@ -99,10 +93,6 @@ public class LoginAction extends BaseAction {
 				pw.setDomain(domain);
 				response.addCookie(pw);
 
-				// modify by xujiakun 2012-8-17 add cookie
-				Cookie cookie = new Cookie(fchCookieKey, passport);
-				cookie.setDomain(fchCookieDomain);
-				response.addCookie(cookie);
 			}
 
 			result = null;
@@ -245,30 +235,6 @@ public class LoginAction extends BaseAction {
 
 	public void setEventSummary(String eventSummary) {
 		this.eventSummary = eventSummary;
-	}
-
-	public String getFchCookieKey() {
-		return fchCookieKey;
-	}
-
-	public void setFchCookieKey(String fchCookieKey) {
-		this.fchCookieKey = fchCookieKey;
-	}
-
-	public String getFchCookieValue() {
-		return fchCookieValue;
-	}
-
-	public void setFchCookieValue(String fchCookieValue) {
-		this.fchCookieValue = fchCookieValue;
-	}
-
-	public String getFchCookieDomain() {
-		return fchCookieDomain;
-	}
-
-	public void setFchCookieDomain(String fchCookieDomain) {
-		this.fchCookieDomain = fchCookieDomain;
 	}
 
 	public IMemcachedCacheService getMemcachedCacheService() {

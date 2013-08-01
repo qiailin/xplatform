@@ -12,16 +12,6 @@
 			<value>${domain}</value>
 		</property>
 		<property name="caService" ref="caService" />
-		
-		<property name="fchCookieKey">
-			<value>${fch.cookie.key}</value>
-		</property>
-		<property name="fchCookieValue">
-			<value>${fch.cookie.value}</value>
-		</property>
-		<property name="fchCookieDomain">
-			<value>${fch.cookie.domain}</value>
-		</property>
 		<property name="memcachedCacheService" ref="memcachedCacheService" />
 	</bean>
 	
