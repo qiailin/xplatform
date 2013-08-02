@@ -30,7 +30,7 @@
 			<table width="841" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr>
 					<td align="center">
-						<img src="$!{env.imgUrl}/image/login/Flogo.jpg" alt="ũ��ɽȪ - ũ��ɽȪ�е���" border="" />
+						<img src="$!{env.imgUrl}/image/login/Flogo.jpg" alt="" border="" />
 					</td>
 				</tr>
 			</table>
@@ -47,7 +47,7 @@
 						<table width="251" border="0" cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="59" height="33">
-									<img src="$!{env.imgUrl}/image/login/FLoginA.jpg" alt="�û���" border="" />
+									<img src="$!{env.imgUrl}/image/login/FLoginA.jpg" alt="" border="" />
 								</td>
 								<td>
 									<input type='text' maxLength='50' name='passport' autocomplete="on" class="LoginPut">
@@ -55,7 +55,7 @@
 							</tr>
 							<tr>
 								<td height="33">
-									<img src="$!{env.imgUrl}/image/login/FLoginB.jpg" alt="����" border="" />
+									<img src="$!{env.imgUrl}/image/login/FLoginB.jpg" alt="" border="" />
 								</td>
 								<td>
 									<input type='password' maxLength='50' class="LoginPut" name='password' autocomplete="off">
@@ -70,7 +70,7 @@
 								<td colspan="2">
 									<div align="right" valign="top">
 										<font size="2.5px" >
-											<a href="" ><b>������룿</b></a>
+											<a href="" ><b>忘记密码</b></a>
 										</font>
 									</div>
 								</td>
@@ -83,9 +83,9 @@
 				<tr>
 					<td height="120" background="$!{env.imgUrl}/image/login/FPic8.jpg"></td>
 					<td align="center" valign="top" background="$!{env.imgUrl}/image/login/FPic11.jpg" class="FLoginA">
-						<input type='image' src="$!{env.imgUrl}/image/login/FLoginC.jpg" alt="��¼" name='submit' onclick="setPassportCookies();">
+						<input type='image' src="$!{env.imgUrl}/image/login/FLoginC.jpg" alt="" name='submit' onclick="setPassportCookies();">
 						<a href="#">
-							<img src="$!{env.imgUrl}/image/login/FLoginD.jpg" alt="ע��" border="" onclick="reg();"/>
+							<img src="$!{env.imgUrl}/image/login/FLoginD.jpg" alt="" border="" onclick="reg();"/>
 						</a>
 					</td>
 					<td background="$!{env.imgUrl}/image/login/FPic9.jpg"></td>
