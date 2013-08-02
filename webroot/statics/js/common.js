@@ -1,5 +1,5 @@
 /**
- * µÃµ½×Ö·û´®µÄÕæÊµ³¤¶È£¨Ë«×Ö½Ú×Ö·ûÈçºº×Ö»»Ëã³ÉÁ½¸öµ¥×Ö½Ú×Ö·û£©.
+ * å¾—åˆ°å­—ç¬¦ä¸²çš„çœŸå®é•¿åº¦ï¼ˆåŒå­—èŠ‚å­—ç¬¦å¦‚æ±‰å­—æ¢ç®—æˆä¸¤ä¸ªå•å­—èŠ‚å­—ç¬¦ï¼‰.
  */
 String.prototype.len = (function() {
 	var re = /[^\x00-\xff]/g, xx = 'xx';
@@ -11,7 +11,7 @@ String.prototype.len = (function() {
 String.prototype.getLength = String.prototype.len;
 
 /**
- * ¸ñÊ½»¯×Ö·û´®ÖĞµÄ±í´ïÊ½£º{\d}
+ * æ ¼å¼åŒ–å­—ç¬¦ä¸²ä¸­çš„è¡¨è¾¾å¼ï¼š{\d}
  */
 String.prototype.format = (function() {
 	var re = /\{(?:\d+)\}/g;
@@ -22,13 +22,13 @@ String.prototype.format = (function() {
 		}
 
 		return this.replace(re, function(m, i) {
-					return arguments[i] != null ? arguments[i] : m;
-				});
+			return arguments[i] != null ? arguments[i] : m;
+		});
 	};
 })();
 
 /**
- * È¥µô×Ö·û´®Ç°ºó¿Õ¸ñ.
+ * å»æ‰å­—ç¬¦ä¸²å‰åç©ºæ ¼.
  */
 String.prototype.trim = (function() {
 	var re = /^\s+|\s+$/g, s = '';
@@ -39,7 +39,7 @@ String.prototype.trim = (function() {
 })();
 
 /**
- * È¥µô×Ö·û´®×ó±ß¿Õ¸ñ.
+ * å»æ‰å­—ç¬¦ä¸²å·¦è¾¹ç©ºæ ¼.
  */
 String.prototype.trimLeft = (function() {
 	var re = /^\s+/g, s = '';
@@ -50,7 +50,7 @@ String.prototype.trimLeft = (function() {
 })();
 
 /**
- * È¥µô×Ö·û´®ÓÒ±ß¿Õ¸ñ.
+ * å»æ‰å­—ç¬¦ä¸²å³è¾¹ç©ºæ ¼.
  */
 String.prototype.trimRight = (function() {
 	var re = /\s+$/g, s = '';
@@ -61,7 +61,7 @@ String.prototype.trimRight = (function() {
 })();
 
 /**
- * È¥µô×Ö·û´®ÖĞµÄhtml±êÇ©.
+ * å»æ‰å­—ç¬¦ä¸²ä¸­çš„htmlæ ‡ç­¾.
  */
 String.prototype.stripHTML = (function() {
 	var re = /<(?:.|\s)*?>/g, s = '';
@@ -72,24 +72,24 @@ String.prototype.stripHTML = (function() {
 })();
 
 /**
- * ¸ñÊ½»¯Êı×Ö(#,###.##).
+ * æ ¼å¼åŒ–æ•°å­—(#,###.##).
  * 
  * @param v
  * @param iScale
- *            ¾«¶ÈÎ»Êı
+ *            ç²¾åº¦ä½æ•°
  * @param showPreScale
- *            ÊÇ·ñÌí¼ÓÄ¬ÈÏµÄ¾«¶È×Ö·û£¬±ÈÈç½ğ¶îÊı×Ö£¬Ìí¼Ó¡°.00¡±
+ *            æ˜¯å¦æ·»åŠ é»˜è®¤çš„ç²¾åº¦å­—ç¬¦ï¼Œæ¯”å¦‚é‡‘é¢æ•°å­—ï¼Œæ·»åŠ â€œ.00â€
  */
 Number.format = function(v, iScale, showPreScale) {
 	if (v == null || v == '') {
 		return '';
 	}
 
-	if (showPreScale == null || typeof(showPreScale) != 'boolean') {
+	if (showPreScale == null || typeof (showPreScale) != 'boolean') {
 		showPreScale = true;
 	}
 
-	if (typeof(iScale) == 'number') {
+	if (typeof (iScale) == 'number') {
 		if (iScale < 0)
 			iScale = 0;
 		if (iScale > 8)
@@ -102,8 +102,8 @@ Number.format = function(v, iScale, showPreScale) {
 
 	var arrs = String(v).split('.');
 
-	var zs = arrs[0], // ÕûÊı²¿·Ö
-	xs = arrs[1], // Ğ¡Êı²¿·Ö
+	var zs = arrs[0], // æ•´æ•°éƒ¨åˆ†
+	xs = arrs[1], // å°æ•°éƒ¨åˆ†
 	ret = [], c = 0;
 
 	var i = zs.length - 1;
@@ -130,14 +130,14 @@ Number.format = function(v, iScale, showPreScale) {
 };
 
 /**
- * 1. È¡×Ó×Ö·û´®. 2. ×Ó×Ö·û´® + ... + titleÌáÊ¾
+ * 1. å–å­å­—ç¬¦ä¸². 2. å­å­—ç¬¦ä¸² + ... + titleæç¤º
  * 
  * @param is
- *            ¿ªÊ¼Î»ÖÃ£¨ÏÂ±ê´Ó0¿ªÊ¼£©
+ *            å¼€å§‹ä½ç½®ï¼ˆä¸‹æ ‡ä»0å¼€å§‹ï¼‰
  * @param ie
- *            ½áÊøÎ»ÖÃ
+ *            ç»“æŸä½ç½®
  * @param showTitle
- *            ÊÇ·ñÏÔÊ¾titleÌáÊ¾¡£true£ºÏÔÊ¾¡¢false£º²»ÏÔÊ¾¡£Ä¬ÈÏfalse
+ *            æ˜¯å¦æ˜¾ç¤ºtitleæç¤ºã€‚trueï¼šæ˜¾ç¤ºã€falseï¼šä¸æ˜¾ç¤ºã€‚é»˜è®¤false
  */
 String.prototype.substring2 = function(is, ie, showTitle) {
 	if (arguments.length == 0) {
@@ -148,11 +148,11 @@ String.prototype.substring2 = function(is, ie, showTitle) {
 		ie = this.length;
 	}
 
-	if (typeof(is) != 'number' || typeof(ie) != 'number') {
+	if (typeof (is) != 'number' || typeof (ie) != 'number') {
 		return '';
 	}
 
-	if (typeof(showTitle) == 'undefined' || typeof(showTitle) != 'boolean') {
+	if (typeof (showTitle) == 'undefined' || typeof (showTitle) != 'boolean') {
 		showTitle = false;
 	}
 
@@ -170,7 +170,7 @@ String.prototype.substring2 = function(is, ie, showTitle) {
 	var str = '', c = '', len = 0;
 	var reg = /[^\x00-\xff]/;
 
-	for (var i = 0; c = sSource.charAt(i); i++) {
+	for ( var i = 0; c = sSource.charAt(i); i++) {
 		str += c;
 		len += (c.match(reg) != null ? 2 : 1);
 
