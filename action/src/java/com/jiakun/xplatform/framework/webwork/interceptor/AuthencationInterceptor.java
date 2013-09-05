@@ -35,7 +35,7 @@ public class AuthencationInterceptor implements Interceptor {
 		String name = (String) session.get("ACEGI_SECURITY_LAST_USERNAME");
 
 		if (StringUtil.isEmpty(name)) {
-			// return LOGIN;
+			return LOGIN;
 		}
 
 		getActionName();
