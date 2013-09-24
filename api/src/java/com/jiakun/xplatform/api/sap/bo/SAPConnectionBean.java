@@ -1,4 +1,4 @@
-package com.jiakun.xplatform.framework.bo;
+package com.jiakun.xplatform.api.sap.bo;
 
 import com.jiakun.xplatform.framework.exception.ServiceException;
 import com.sap.mw.jco.IFunctionTemplate;
