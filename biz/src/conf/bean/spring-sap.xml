@@ -42,4 +42,14 @@
 		</bean>
 		-->
 
+	<bean id="ssoService"
+		class="com.jiakun.xplatform.sap.service.impl.SSOServiceImpl">
+		<property name="portalUrl">
+			<value>${sap.portal.url}</value>
+		</property>
+		<property name="sapClient">
+			<value>${sap.portal.client}</value>
+		</property>
+	</bean>
+	
 </beans>
