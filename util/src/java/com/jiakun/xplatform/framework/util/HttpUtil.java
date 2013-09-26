@@ -217,10 +217,13 @@ public final class HttpUtil {
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		UrlEncodedFormEntity formEntity = null;
 		try {
-			if (charset == null || StringUtil.isEmpty(charset)) {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params));
-			} else {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
+			List<NameValuePair> qparams = getParamsList(params);
+			if (qparams != null && qparams.size() > 0) {
+				if (charset == null || StringUtil.isEmpty(charset)) {
+					formEntity = new UrlEncodedFormEntity(qparams);
+				} else {
+					formEntity = new UrlEncodedFormEntity(qparams, charset);
+				}
 			}
 		} catch (UnsupportedEncodingException e) {
 			throw new SystemException("不支持的编码集", e);
@@ -270,10 +273,13 @@ public final class HttpUtil {
 		DefaultHttpClient httpclient = getDefaultHttpClient(charset);
 		UrlEncodedFormEntity formEntity = null;
 		try {
-			if (charset == null || StringUtil.isEmpty(charset)) {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params));
-			} else {
-				formEntity = new UrlEncodedFormEntity(getParamsList(params), charset);
+			List<NameValuePair> qparams = getParamsList(params);
+			if (qparams != null && qparams.size() > 0) {
+				if (charset == null || StringUtil.isEmpty(charset)) {
+					formEntity = new UrlEncodedFormEntity(qparams);
+				} else {
+					formEntity = new UrlEncodedFormEntity(qparams, charset);
+				}
 			}
 		} catch (UnsupportedEncodingException e) {
 			throw new SystemException("不支持的编码集", e);
