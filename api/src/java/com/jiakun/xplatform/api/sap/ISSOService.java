@@ -9,6 +9,8 @@ import com.jiakun.xplatform.framework.exception.SystemException;
  */
 public interface ISSOService {
 
+	String RESULT_ERROR = "免登失败！";
+
 	/**
 	 * 根据帐号密码免登sap.
 	 * 
