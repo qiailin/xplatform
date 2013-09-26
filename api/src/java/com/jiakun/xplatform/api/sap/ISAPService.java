@@ -11,6 +11,8 @@ import com.jiakun.xplatform.framework.exception.SystemException;
  */
 public interface ISAPService {
 
+	String RESULT_ERROR = "RFC操作失败！";
+
 	/**
 	 * 根据当前用户的sap角色，更新sap临时帐号权限.
 	 * 

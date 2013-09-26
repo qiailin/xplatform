@@ -4,48 +4,48 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<!--SAP -->
-	<!--
-		<bean id="sapConnection" class="com.jiakun.xplatform.framework.bo.SAPConnectionBean">
-			<property name="poolName">
-				<value>${sap.jdbc.poolName}</value>
-			</property>
-			<property name="maximumConnectionCount">
-				<value>${sap.jdbc.maximumConnectionCount}</value>
-			</property>
-			<property name="clientName">
-				<value>${sap.jdbc.clientName}</value>
-			</property>
-			<property name="user">
-				<value>${sap.jdbc.user}</value>
-			</property>
-			<property name="password">
-				<value>${sap.jdbc.password}</value>
-			</property>
-			<property name="language">
-				<value>${sap.jdbc.language}</value>
-			</property>
-			<property name="hostName">
-				<value>${sap.jdbc.hostName}</value>
-			</property>
-			<property name="sysnr">
-				<value>${sap.jdbc.sysnr}</value>
-			</property>
-			<property name="group">
-				<value>${sap.jdbc.group}</value>
-			</property>
-			<property name="repositoryName">
-				<value>${sap.jdbc.repositoryName}</value>
-			</property>
-			<property name="byGroup">
-				<value>${sap.jdbc.byGroup}</value>
-			</property>
-		</bean>
-		-->
+	<bean id="sapConnection" class="com.jiakun.xplatform.api.sap.bo.SAPConnectionBean">
+		<property name="poolName">
+			<value>${sap.jdbc.poolName}</value>
+		</property>
+		<property name="maximumConnectionCount">
+			<value>${sap.jdbc.maximumConnectionCount}</value>
+		</property>
+		<property name="clientName">
+			<value>${sap.jdbc.clientName}</value>
+		</property>
+		<property name="user">
+			<value>${sap.jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${sap.jdbc.password}</value>
+		</property>
+		<property name="language">
+			<value>${sap.jdbc.language}</value>
+		</property>
+		<property name="hostName">
+			<value>${sap.jdbc.hostName}</value>
+		</property>
+		<property name="sysnr">
+			<value>${sap.jdbc.sysnr}</value>
+		</property>
+		<property name="group">
+			<value>${sap.jdbc.group}</value>
+		</property>
+		<property name="repositoryName">
+			<value>${sap.jdbc.repositoryName}</value>
+		</property>
+		<property name="byGroup">
+			<value>${sap.jdbc.byGroup}</value>
+		</property>
+	</bean>
 
 	<bean id="sapAction" class="com.jiakun.xplatform.sap.action.SapAction"
 		scope="request" parent="baseAction">
 		<property name="ssoService" ref="ssoService" />
+		<property name="sapService" ref="sapService" />
 	</bean>
+	
 	<bean id="ssoService"
 		class="com.jiakun.xplatform.sap.service.impl.SSOServiceImpl">
 		<property name="portalHost">
@@ -57,6 +57,11 @@
 		<property name="sapClient">
 			<value>${sap.portal.client}</value>
 		</property>
+	</bean>
+	
+	<bean id="sapService"
+		class="com.jiakun.xplatform.sap.service.impl.SAPServiceImpl">
+		<property name="sapConnection" ref="sapConnection" />
 	</bean>
 	
 </beans>
