@@ -1,0 +1,11 @@
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="{http://xplatform}xplatform$sap"
+		extends="{http://xplatform}xplatform$framework" namespace="/sap">
+
+		<action name="sapAction" class="sapAction" >
+			<result name="success">${url}</result>
+		</action>
+
+	</package>
+</xwork>
