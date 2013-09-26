@@ -9,4 +9,5 @@
 	<include file="webwork/webwork-openapi.xml" />
 	<include file="webwork/webwork-file.xml" />
 	<include file="webwork/webwork-data.xml" />
+	<include file="webwork/webwork-sap.xml" />
 </xwork>

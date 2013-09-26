@@ -42,10 +42,17 @@
 		</bean>
 		-->
 
+	<bean id="sapAction" class="com.jiakun.xplatform.sap.action.SapAction"
+		scope="request" parent="baseAction">
+		<property name="ssoService" ref="ssoService" />
+	</bean>
 	<bean id="ssoService"
 		class="com.jiakun.xplatform.sap.service.impl.SSOServiceImpl">
-		<property name="portalUrl">
-			<value>${sap.portal.url}</value>
+		<property name="portalHost">
+			<value>${sap.portal.host}</value>
+		</property>
+		<property name="portalService">
+			<value>${sap.portal.service}</value>
 		</property>
 		<property name="sapClient">
 			<value>${sap.portal.client}</value>
