@@ -28,12 +28,12 @@ public class SSOServiceImpl implements ISSOService {
 	/**
 	 * http://192.168.160.28:8000.
 	 */
-	private String portalDomain;
+	private String portalHost;
 
 	/**
 	 * /sap/bc/gui/sap/its/webgui.
 	 */
-	private String portalUrl;
+	private String portalService;
 
 	/**
 	 * 800.
@@ -47,12 +47,12 @@ public class SSOServiceImpl implements ISSOService {
 			params.put(PARAM_CLIENT, sapClient);
 			params.put(PARAM_USER, user);
 			params.put(PARAM_PASSWORD, password);
-			String responseStr = HttpUtil.post(portalDomain + portalUrl, params);
+			String responseStr = HttpUtil.post(portalHost + portalService, params);
 
 			int start = responseStr.indexOf(STRING_START);
 			if (start != -1) {
 				start = start + STRING_START.length();
-				ssoUrl = portalDomain + responseStr.substring(start, start + portalUrl.length() + 102);
+				ssoUrl = portalHost + responseStr.substring(start, start + portalService.length() + 102);
 			}
 		} catch (Exception e) {
 			throw new SystemException("免登失败", e);
@@ -65,7 +65,7 @@ public class SSOServiceImpl implements ISSOService {
 		String ticket = null;
 		StringBuilder str = new StringBuilder();
 		try {
-			str.append(portalDomain).append(portalUrl).append("?").append(PARAM_CLIENT).append("=").append(sapClient)
+			str.append(portalHost).append(portalService).append("?").append(PARAM_CLIENT).append("=").append(sapClient)
 				.append("&").append(PARAM_USER).append("=").append(user).append("&").append(PARAM_PASSWORD).append("=")
 				.append(password);
 
@@ -96,20 +96,20 @@ public class SSOServiceImpl implements ISSOService {
 		return ticket;
 	}
 
-	public String getPortalDomain() {
-		return portalDomain;
+	public String getPortalHost() {
+		return portalHost;
 	}
 
-	public void setPortalDomain(String portalDomain) {
-		this.portalDomain = portalDomain;
+	public void setPortalHost(String portalHost) {
+		this.portalHost = portalHost;
 	}
 
-	public String getPortalUrl() {
-		return portalUrl;
+	public String getPortalService() {
+		return portalService;
 	}
 
-	public void setPortalUrl(String portalUrl) {
-		this.portalUrl = portalUrl;
+	public void setPortalService(String portalService) {
+		this.portalService = portalService;
 	}
 
 	public String getSapClient() {
