@@ -21,10 +21,17 @@ public class SSOServiceImpl implements ISSOService {
 
 	private static final String PARAM_PASSWORD = "sap-password";
 
+	private static final String STRING_START = "action=\"";
+
 	private Logger4jExtend logger = Logger4jCollection.getLogger(SSOServiceImpl.class);
 
 	/**
-	 * http://192.168.160.28:8000/sap/bc/gui/sap/its/webgui.
+	 * http://192.168.160.28:8000.
+	 */
+	private String portalDomain;
+
+	/**
+	 * /sap/bc/gui/sap/its/webgui.
 	 */
 	private String portalUrl;
 
@@ -33,33 +40,33 @@ public class SSOServiceImpl implements ISSOService {
 	 */
 	private String sapClient;
 
-	public String getSSOTicket(String user, String password) throws SystemException {
-		String ticket = null;
+	public String getSSOUrl(String user, String password) throws SystemException {
+		String ssoUrl = null;
 		try {
 			Map<String, String> params = new HashMap<String, String>();
 			params.put(PARAM_CLIENT, sapClient);
 			params.put(PARAM_USER, user);
 			params.put(PARAM_PASSWORD, password);
-			String responseStr = HttpUtil.post(portalUrl, params);
+			String responseStr = HttpUtil.post(portalDomain + portalUrl, params);
 
-			int index = responseStr.indexOf("action=\"/sap(");
-			if (index != -1) {
-				ticket = responseStr.substring(index + 13, index + 113);
+			int start = responseStr.indexOf(STRING_START);
+			if (start != -1) {
+				start = start + STRING_START.length();
+				ssoUrl = portalDomain + responseStr.substring(start, start + portalUrl.length() + 102);
 			}
-
 		} catch (Exception e) {
 			throw new SystemException("免登失败", e);
 		}
 
-		return ticket;
+		return ssoUrl;
 	}
 
 	public String getMySAPSSO2Ticket(String user, String password) throws SystemException {
 		String ticket = null;
 		StringBuilder str = new StringBuilder();
 		try {
-			str.append(portalUrl).append("?").append(PARAM_CLIENT).append("=").append(sapClient).append("&")
-				.append(PARAM_USER).append("=").append(user).append("&").append(PARAM_PASSWORD).append("=")
+			str.append(portalDomain).append(portalUrl).append("?").append(PARAM_CLIENT).append("=").append(sapClient)
+				.append("&").append(PARAM_USER).append("=").append(user).append("&").append(PARAM_PASSWORD).append("=")
 				.append(password);
 
 			URL url = new URL(str.toString());
@@ -87,6 +94,14 @@ public class SSOServiceImpl implements ISSOService {
 		}
 
 		return ticket;
+	}
+
+	public String getPortalDomain() {
+		return portalDomain;
+	}
+
+	public void setPortalDomain(String portalDomain) {
+		this.portalDomain = portalDomain;
 	}
 
 	public String getPortalUrl() {

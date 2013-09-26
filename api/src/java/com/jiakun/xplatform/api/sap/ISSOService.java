@@ -17,7 +17,7 @@ public interface ISSOService {
 	 * @return
 	 * @throws SystemException
 	 */
-	String getSSOTicket(String user, String password) throws SystemException;
+	String getSSOUrl(String user, String password) throws SystemException;
 
 	/**
 	 * 根据帐号密码免登sap(MYSAPSSO2).
