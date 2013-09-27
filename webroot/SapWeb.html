@@ -5,14 +5,27 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-		<form action="sap/sapAction!tcode.htm" method="post" target="hideFrame">
+		<form method="post" target="hideFrame">
 			当前登陆人：张三 </br>
-			使用sap帐号：<input name="passport" value="wsap"></input>
-			使用帐号密码：<input name="password" value="654321"></input> </br>
-			使用sap角色：<input name="role"></input>
+			使用sap帐号：<input name="passport" value="wsap001"></input>
+			使用帐号密码：<input name="password" value="123456"></input> </br>
+			使用sap角色：<input name="role" value="ZWSAP_MM01" size="60"></input>
 			使用tcode：<input name="tcode" value="va01"></input> </br>
-			<input type="submit" value="模拟点击菜单"></input> </p>
+			<input type="submit" value="模拟点击菜单" onclick="login()"></input> <input type="button" value="模拟退出系统" onclick="logout()"></input> </p>
 		</form>
 		 <iframe id="hideFrame" name="hideFrame" style="height: 500px; width: 100%"></iframe>
 	</body>
+	<script type="text/javascript" >
+	function login(){
+		var form = window.document.forms[0];
+		form.action = "sap/sapAction!tcode.htm";
+		form.submit();
+	}
+	function logout(){
+		var form = window.document.forms[0];
+		form.action = "sap/sapAction!logout.htm";
+		form.submit();
+	}
+	</script>
+	
 </html>
